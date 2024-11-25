@@ -1,0 +1,69 @@
+---
+import Image from "astro/components/Image.astro";
+
+---
+
+<section id="work" class="w-full">
+  <div class="card border-b-[3px] border-[#1d1d1f0f]">
+    <div class="p-6 md:p-10">
+      <div
+        class="flex flex-col md:flex-row md:justify-between items-center gap-5"
+      >
+        <div class="flex flex-col w-full">
+          <h3 class="mb-5">
+            Work.
+            <span class="font-bold opacity-50"
+              >Special places that I have been.</span
+            >
+          </h3>
+          <div class="flex flex-col gap-2">
+            <div
+              class="flex items-center gap-1 bg-[#2aff6611] border-[1.3px] border-[#2aff6676] rounded-xl px-1 py-[1px] w-fit"
+            >
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2aff66] opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-[#2aff66]"
+                ></span>
+              </span>
+              <p class="text-xs font-bold opacity-50">
+                Currently I'm Available for Working
+              </p>
+            </div>
+            <div>
+              <div class="flex items-center gap-1 pl-1">
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-[#333333]"
+                ></span>
+                <p class="text-xs font-bold">Frontend Developer at ACS</p>
+              </div>
+              <p class="text-xs font-bold opacity-50 pl-4">Part-Time</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-1 pl-1">
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-[#333333]"
+                ></span>
+                <p class="text-xs font-bold">
+                  Software Engineering Trainee at ITI
+                </p>
+              </div>
+              <p class="text-xs font-bold opacity-50 pl-4">
+                May 2024 • Oct 2024
+              </p>
+            </div>
+          </div>
+        </div>
+        <Image
+          src="/images/angular-illustration-2.svg"
+          width="150"
+          height="150"
+          alt=""
+          class="shrink-0"
+        />
+      </div>
+    </div>
+  </div>
+</section>

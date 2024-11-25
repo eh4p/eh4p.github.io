@@ -1,0 +1,186 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Hacking, Building and Solving" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#f5f5f7] text-[#333333]">
+    <slot />
+    <!-- <script is:inline>
+      class ThemeManager {
+  constructor() {
+    this.themeKey = 'theme';
+    this.darkClass = 'dark';
+    this.defaultTheme = 'dark';
+    this.init();
+  }
+
+  init() {
+    const theme = this.getInitialTheme();
+    this.applyTheme(theme);
+    this.setupEventListeners();
+  }
+
+  getInitialTheme() {
+    return (
+      localStorage.getItem(this.themeKey) ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    );
+  }
+
+  applyTheme(theme) {
+    document.documentElement.classList.toggle(this.darkClass, theme === 'dark');
+    localStorage.setItem(this.themeKey, theme);
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: theme }));
+  }
+
+  toggleTheme() {
+    const isDark = document.documentElement.classList.contains(this.darkClass);
+    this.applyTheme(isDark ? 'light' : 'dark');
+  }
+
+  setupEventListeners() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      const newToggle = themeToggle.cloneNode(true);
+      themeToggle.replaceWith(newToggle);
+      newToggle.addEventListener('click', () => this.toggleTheme());
+    }
+  }
+}
+
+const themeManager = new ThemeManager();
+
+document.addEventListener('astro:after-swap', () => {
+  themeManager.applyTheme(localStorage.getItem('theme') || themeManager.defaultTheme);
+  themeManager.setupEventListeners();
+});
+
+document.addEventListener('astro:after-page-load', () => themeManager.setupEventListeners());
+    </script> -->
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: "Helvetica";
+    src: url("../../public/fonts/HelveticaNeueRegular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Helvetica";
+    src: url("../../public/fonts/HelveticaNeueMedium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Helvetica";
+    src: url("../../public/fonts/HelveticaNeueBold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Helvetica";
+    src: url("../../public/fonts/HelveticaNeueBlack.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ProtestRiot";
+    src: url("../../public/fonts/ProtestRiot-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "PlayfairDisplay";
+    src: url("../../public/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "PlayfairDisplay";
+    src: url("../../public/fonts/PlayfairDisplay-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Allan";
+    src: url("../../public/fonts/Allan-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .font-helvetica {
+    font-family: "Helvetica";
+  }
+
+  .font-playfairdisplay {
+    font-family: "PlayfairDisplay";
+  }
+
+  .font-protestriot {
+    font-family: "ProtestRiot";
+  }
+
+  .font-allan {
+    font-family: "Allan";
+  }
+  h1 {
+    font-family: "ProtestRiot";
+  }
+  h2 {
+    font-family: "PlayfairDisplay";
+  }
+
+  h3 {
+    font-family: "Helvetica";
+    font-weight: 900;
+  }
+
+  h4 {
+    font-family: "PlayfairDisplay";
+  }
+
+  h5 {
+    font-family: "Helvetica";
+  }
+
+  p {
+    font-family: "Helvetica";
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+</style>

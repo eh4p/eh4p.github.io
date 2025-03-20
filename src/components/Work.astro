@@ -1,6 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
-
+import AvailabilityIndicator from './AvailabilityIndicator.astro';
+import WorkExperienceItem from './WorkExperienceItem.astro';
 ---
 
 <section id="work" class="w-full">
@@ -17,43 +18,10 @@ import Image from "astro/components/Image.astro";
             >
           </h3>
           <div class="flex flex-col gap-2">
-            <div
-              class="flex items-center gap-1 bg-[#2aff6611] border-[1.3px] border-[#2aff6676] rounded-xl px-1 py-[1px] w-fit"
-            >
-              <span class="relative flex h-2 w-2">
-                <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2aff66] opacity-75"
-                ></span>
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 bg-[#2aff66]"
-                ></span>
-              </span>
-              <p class="text-xs font-bold opacity-50">
-                Currently I'm Available for Working
-              </p>
-            </div>
-            <div>
-              <div class="flex items-center gap-1 pl-1">
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 bg-[#333333]"
-                ></span>
-                <p class="text-xs font-bold">Frontend Developer at ACS</p>
-              </div>
-              <p class="text-xs font-bold opacity-50 pl-4">Part-Time</p>
-            </div>
-            <div>
-              <div class="flex items-center gap-1 pl-1">
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 bg-[#333333]"
-                ></span>
-                <p class="text-xs font-bold">
-                  Software Engineering Trainee at ITI
-                </p>
-              </div>
-              <p class="text-xs font-bold opacity-50 pl-4">
-                May 2024 • Oct 2024
-              </p>
-            </div>
+            <AvailabilityIndicator status="unavailable" />
+            <WorkExperienceItem title="Frontend Developer at QRFD Solutions" timeframe="Jan 2025 • Present" />
+            <WorkExperienceItem title="Frontend Developer at ACS" timeframe="Freelance" />
+            <WorkExperienceItem title="Software Engineering Trainee at ITI" timeframe="May 2024 • Oct 2024" />
           </div>
         </div>
         <Image

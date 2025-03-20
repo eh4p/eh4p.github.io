@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  technologies: string;
+  link: string;
+}
+
+const { title, description, technologies, link } = Astro.props;
+---
+
+<div class="text-xs font-bold">
+  <h5>{title}</h5>
+  <p class="opacity-50">{description}</p>
+  <p class="opacity-50">{technologies}</p>
+  <p class="w-fit">
+    <a
+      class="opacity-50 hover:opacity-100 border-b-4 border-b-[#333333] hover:text-[#ff2a2a] hover:border-b-4 hover:border-[#ff2a2a] transition-none"
+      href={link}
+      >Explore the full project details</a
+    >
+  </p>
+</div>

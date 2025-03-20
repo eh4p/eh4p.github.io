@@ -1,28 +1,18 @@
+---
+import StatisticItem from './StatisticItem.astro';
+---
+
 <section
   id="stats"
   class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 p-4 w-full"
 >
   <div class="grid justify-center md:justify-start">
-    <div class="text-center">
-      <h2 class="text-[0.8rem] opacity-80 leading-none mb-1">
-        Current Position:
-      </h2>
-      <h2 class="text-[0.9rem] opacity-80 leading-none">Open To Work</h2>
-    </div>
+    <StatisticItem title="Current Position:" value="FrontEnd Engineer" />
   </div>
   <div class="grid place-items-center">
-    <div class="text-center">
-      <h2 class="text-[0.8rem] opacity-80 leading-none mb-1">Current Stack:</h2>
-      <h2 class="text-[0.9rem] opacity-80 leading-none">.NET / Angular</h2>
-      <h2 class="text-[0.9rem] opacity-80 leading-none">NestJS / NextJS</h2>
-    </div>
+    <StatisticItem title="Current Stack:" value={[".NET / Angular", "NestJS / NextJS"]} />
   </div>
   <div class="grid justify-center md:justify-end">
-    <div class="text-center">
-      <h2 class="text-[0.8rem] opacity-80 leading-none mb-1">
-        Current Company:
-      </h2>
-      <h2 class="text-[0.9rem] opacity-80 leading-none">Soon</h2>
-    </div>
+    <StatisticItem title="Current Company:" value="QRFD Solutions" />
   </div>
 </section>

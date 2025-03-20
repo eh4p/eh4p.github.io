@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  timeframe: string;
+}
+
+const { title, timeframe } = Astro.props;
+---
+
+<div>
+  <div class="flex items-center gap-1 pl-1">
+    <span
+      class="relative inline-flex rounded-full h-2 w-2 bg-[#333333]"
+    ></span>
+    <p class="text-xs font-bold">{title}</p>
+  </div>
+  <p class="text-xs font-bold opacity-50 pl-4">{timeframe}</p>
+</div>

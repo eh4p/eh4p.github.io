@@ -61,23 +61,10 @@
   <mask id="mask0_33_2012" style="mask-type: luminance;" maskUnits="userSpaceOnUse" x="100" y="106" width="32" height="34">
     <path d="M131.791 111.839L130.657 129.683L119.793 106.302L131.791 111.851V111.839ZM122.592 130.866H109.52L107.843 134.911L116.056 139.585L124.269 134.911L122.592 130.866ZM111.752 125.613H120.348L116.044 115.156L111.74 125.613H111.752ZM112.32 106.29C107.979 108.3 100.321 111.839 100.321 111.839L101.456 129.683L112.32 106.302V106.29Z" fill="white"></path>
   </mask>
-  <g mask="url(#mask0_33_2012)">
-    <mask id="mask1_33_2012" style="mask-type: luminance;" maskUnits="userSpaceOnUse" x="95" y="102" width="41" height="41">
-      <path d="M115.501 142.187C126.453 142.187 135.33 133.309 135.33 122.358C135.33 111.406 126.453 102.528 115.501 102.528C104.55 102.528 95.6721 111.406 95.6721 122.358C95.6721 133.309 104.55 142.187 115.501 142.187Z" fill="white"></path>
-    </mask>
-    <g mask="url(#mask1_33_2012)">
-      <mask id="mask2_33_2012" style="mask-type: luminance;" maskUnits="userSpaceOnUse" x="89" y="96" width="53" height="53">
-        <path d="M141.484 96.3625H89.5063V148.365H141.484V96.3625Z" fill="white"></path>
-      </mask>
-      <g mask="url(#mask2_33_2012)">
-        <mask id="mask3_33_2012" style="mask-type: luminance;" maskUnits="userSpaceOnUse" x="89" y="96" width="53" height="53">
-          <path d="M141.484 96.3625H89.5063V148.365H141.484V96.3625Z" fill="white"></path>
-        </mask>
-        <g mask="url(#mask3_33_2012)">
-          <rect x="89.3461" y="95.9556" width="52.6805" height="52.6805" fill="url(#pattern0)"></rect>
-        </g>
-      </g>
-    </g>
+  <g transform="translate(64, 48)">
+<path d="M57.338 89.0128C64.9795 89.0128 71.174 82.8182 71.174 75.1767C71.174 67.5353 64.9795 61.3407 57.338 61.3407C49.6966 61.3407 43.502 67.5353 43.502 75.1767C43.502 82.8182 49.6966 89.0128 57.338 89.0128Z" fill="#F637E3" stroke="black" stroke-width="0.93421" stroke-miterlimit="10"></path>
+<path d="M57.3382 77.1963C60.0685 77.1963 62.2818 74.9829 62.2818 72.2527C62.2818 69.5224 60.0685 67.3091 57.3382 67.3091C54.608 67.3091 52.3947 69.5224 52.3947 72.2527C52.3947 74.9829 54.608 77.1963 57.3382 77.1963Z" fill="white" stroke="black" stroke-width="0.93421" stroke-miterlimit="10"></path>
+<path d="M57.3382 80.3315C54.2033 80.3315 48.1594 81.9593 47.5264 84.9284C50.0284 87.4605 53.51 89.028 57.3382 89.028C61.1665 89.028 64.6481 87.4605 67.1501 84.9284C66.502 81.9593 60.4431 80.3315 57.3382 80.3315Z" fill="white" stroke="black" stroke-width="0.93421" stroke-miterlimit="10"></path>
   </g>
   <defs>
     <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">

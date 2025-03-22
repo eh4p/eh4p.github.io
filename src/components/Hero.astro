@@ -1,9 +1,19 @@
 ---
+import Image from "astro/components/Image.astro";
+
 ---
 
 <section id="hero" class="flex-1 flex items-center justify-center">
   <div class="flex flex-col items-center justify-center text-center">
-    <h1 class="text-3xl font-bold">Ehab Muhammad</h1>
+    <div class="mb-4 bg-[#622aff11] border-[1.3px] border-[#622aff76] rounded-xl px-3 py-2 relative">
+      <div class="flex items-center justify-center ">
+  <Image src="/images/main.png" width="35" height="35" alt="main" loading="eager" />
+      <p class="text-sm font-bold text-[#622aff]">Hacking, Building and Solving</p>
+    </div>
+      <!-- Triangle pointer for the bubble -->
+      <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-[#622aff76]"></div>
+    </div>
+    <h1 class="text-6xl font-bold">Ehab Muhammad</h1>
     <h2 class="text-[1rem] opacity-80 leading-none">Software Engineer,</h2>
     <h2 class="text-[0.9rem] opacity-80 leading-tight">
       Based in Cairo, Egypt

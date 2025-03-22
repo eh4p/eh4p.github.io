@@ -9,19 +9,6 @@ const projects = [
     technologies: "ASP.NET Core, Angular, Bootstrap, SASS",
     link: "https://github.com/eh4p/itiacceptanceprocesssystem_api",
   },
-  {
-    title: "MSG",
-    description: "Real-time Chat Web Application",
-    technologies: "ASP.NET Core, SignalR, Angular, Bootstrap, SASS",
-    link: "https://github.com/eh4p/msg_api",
-  },
-  {
-    title: "BuyFlex",
-    description: "E-Commerce Web Application",
-    technologies: "NestJS, NextJS, PostgreSQL, TailwindCSS",
-    link: "https://github.com/eh4p/buyflex_api",
-  },
-  
 ];
 ---
 
@@ -34,7 +21,7 @@ const projects = [
         <div class="flex flex-col w-full">
           <h3 class="mb-5">
             Projects.
-            <span class="font-bold opacity-50">Some of my featured projects.</span>
+            <span class="font-bold opacity-50 hover:opacity-100 transition-opacity">Some of my featured projects.</span>
           </h3>
           <div class="flex flex-col gap-5">
             {projects.map((project) => (

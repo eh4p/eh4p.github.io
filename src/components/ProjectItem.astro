@@ -2,20 +2,27 @@
 interface Props {
   title: string;
   description: string;
-  technologies: string;
+  technologies?: string; // Made optional since we're not displaying it anymore
   link: string;
+  techBadges?: { name: string; color: string }[];
 }
 
-const { title, description, technologies, link } = Astro.props;
+const { title, description, technologies, link, techBadges = [] } = Astro.props;
 ---
 
 <div class="text-xs font-bold">
-  <h5>{title}</h5>
+  <div class="flex items-center gap-2 mb-1">
+    <h5>{title}</h5>
+    {techBadges.map((badge) => (
+      <div class={`bg-[${badge.color}11] border-[0.5px] border-[${badge.color}76] rounded-md px-1 py-[0.5px] text-[0.6rem]`}>
+        <p class={`text-[0.6rem] font-bold ${badge.name === "Angular" ? "text-[#ff2a2a]" : `text-[${badge.color}]`}`}>{badge.name}</p>
+      </div>
+    ))}
+  </div>
   <p class="opacity-50">{description}</p>
-  <p class="opacity-50">{technologies}</p>
   <p class="w-fit">
     <a
-      class="opacity-50 hover:opacity-100 border-b-4 border-b-[#333333] hover:text-[#ff2a2a] hover:border-b-4 hover:border-[#ff2a2a] transition-none"
+      class="opacity-50 hover:opacity-100 border-b-4 border-b-[#0C0821] hover:text-[#312aff] hover:border-b-4 hover:border-[#312aff] transition-none"
       href={link}
       >Explore the full project details</a
     >

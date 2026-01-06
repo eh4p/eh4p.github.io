@@ -2,17 +2,17 @@
 interface Props {
   title: string;
   timeframe: string;
+  role: string;
 }
 
-const { title, timeframe } = Astro.props;
+const { title, timeframe, role } = Astro.props;
 ---
 
-<div>
-  <div class="flex items-center gap-1 pl-1">
-    <span
-      class="relative inline-flex rounded-full h-2 w-2 bg-[#0C0821] "
-    ></span>
-    <p class="text-xs font-bold">{title}</p>
+<div class="">
+  <p class="text-small opacity-50 font-semibold mb-[0.25rem]">{role}</p>
+  <div class="flex items-center gap-1 ">
+    <!-- <span class="relative inline-flex rounded-full h-2 w-2 bg-[#0C0821]"></span> -->
+    <p class="text-[1.3rem] font-bold">{title}</p>
   </div>
-  <p class="text-xs font-bold opacity-50 pl-4">{timeframe}</p>
+  <p class="text-small opacity-50 font-semibold">{timeframe}</p>
 </div>

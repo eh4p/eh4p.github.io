@@ -3,20 +3,115 @@ import Image from "astro/components/Image.astro";
 
 ---
 
-<section id="hero" class="flex-1 flex items-center justify-center">
+<section id="hero" class="flex-1 flex items-center justify-center ">
   <div class="flex flex-col items-center justify-center text-center">
     <div class="mb-4 bg-[#622aff11] border-[1.3px] border-[#622aff76] rounded-xl px-3 py-2 relative">
       <div class="flex items-center justify-center ">
   <Image src="/images/main.png" width="35" height="35" alt="main" loading="eager" />
       <p class="text-sm font-bold text-[#622aff]">Hacking, Building and Solving</p>
     </div>
-      <!-- Triangle pointer for the bubble -->
       <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-[#622aff76]"></div>
     </div>
-    <h1 class="text-6xl font-bold">Ehab Muhammad</h1>
-    <h2 class="text-[1rem] opacity-80 leading-none">Software Engineer,</h2>
-    <h2 class="text-[0.9rem] opacity-80 leading-tight">
+    <h1 class="text-8xl font-bold">Ehab Muhammad</h1>
+    <h2 class="text-[1.2rem] opacity-80 leading-none">Software Engineer,</h2>
+    <h2 class="text-[1.1rem] opacity-80 leading-tight">
       Based in Cairo, Egypt
     </h2>
   </div>
+
+
+
+<!-- 
+<svg class="bubble-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 614 94" preserveAspectRatio="none">
+													<path d="M598.708,68.2V46.847l-0.009.007A44.66,44.66,0,0,0,554.255,2.041L45.484,1.957a44.85,44.85,0,0,0-.052,89.7L554.2,91.739a44.091,44.091,0,0,0,29.025-10.847c0.054,0.063.1,0.127,0.157,0.192,13.2,15.237,27.881,9.657,27.881,9.657C603.816,89.025,598.708,78.722,598.708,68.2Z"></path>
+													<foreignObject x="29" y="12" width="100%" height="100%">
+														<p class="bubble-copy bubble-copy-2">with education savings</p>
+													</foreignObject>
+												</svg> -->
+  
+
+
 </section>
+
+
+
+<style>
+
+  /* .bubble-svg{
+    fill: #312aff;
+  } */
+  .glass-button {
+    position: relative;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(2deg);
+  }
+
+  .glass-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%) skewX(-15deg);
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .glass-button:hover {
+    transform: perspective(1000px) translateY(-6px) rotateX(5deg) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(55, 55, 55, 1);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-button:hover:before {
+    transform: translateX(100%) skewX(-15deg);
+  }
+
+  .glass-button:active {
+    transform: perspective(1000px) translateY(-2px) rotateX(2deg) scale(0.98);
+    transition: all 0.1s ease;
+  }
+
+  .hire-me-btn {
+    background: rgba(147, 51, 234, 0.3);
+    border-color: rgba(147, 51, 234, 0.6);
+  }
+
+  .hire-me-btn:hover {
+    background: rgba(147, 51, 234, 0.45);
+    border-color: rgba(147, 51, 234, 0.8);
+    box-shadow: 
+      0 8px 24px rgba(147, 51, 234, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .copy-email-btn {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.6);
+  }
+
+  .copy-email-btn:hover {
+    background: rgba(99, 102, 241, 0.45);
+    border-color: rgba(99, 102, 241, 0.8);
+    box-shadow: 
+      0 8px 24px rgba(99, 102, 241, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+</style>

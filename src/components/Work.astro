@@ -5,33 +5,35 @@ import WorkExperienceItem from './WorkExperienceItem.astro';
 ---
 
 <section id="work" class="w-full">
-  <div class="card border-b-[3px] border-[#0C08210f]">
+  <div class="card">
     <div class="p-6 md:p-10">
       <div
         class="flex flex-col md:flex-row md:justify-between items-center gap-5"
       >
         <div class="flex flex-col w-full">
-          <h3 class="mb-5">
-            Work.
-            <span class="font-bold opacity-50 hover:opacity-100 transition-opacity"
-              >Special places that I have been.</span
-            >
+          <h3 class="mb-5 text-[2.5rem]">Experience. Special places that I have been.
+
+            <!-- <span class="font-bold opacity-50 hover:opacity-100 transition-opacity">Special places that I have been.</span> -->
           </h3>
-          <div class="flex flex-col gap-2">
-            <AvailabilityIndicator status="unavailable" />
-            <WorkExperienceItem title="Frontend Developer at QRFD Solutions" timeframe="Jan 2025 • Present" />
-            <WorkExperienceItem title="Frontend Developer at ACS" timeframe="Freelance" />
-            <WorkExperienceItem title="Software Engineering Trainee at ITI" timeframe="May 2024 • Oct 2024" />
+          <div class="flex items-center justify-between">
+            <!-- <AvailabilityIndicator status="unavailable" /> -->
+            <WorkExperienceItem role="Software Engineer" title="QRFD Solutions" timeframe="Jan 2025 • Present" />
+            <WorkExperienceItem role="Frontend Developer" title="Advanced Computer Systems" timeframe="Freelance" />
+            <WorkExperienceItem role="SWE Intern" title="Information Technology Institute" timeframe="May 2024 • Oct 2024" />
           </div>
         </div>
-        <Image
+        <!-- <Image
           src="/images/angular-illustration-2.svg"
           width="150"
           height="150"
           alt=""
           class="shrink-0"
-        />
+        /> -->
       </div>
     </div>
   </div>
 </section>
+
+
+
+<!-- border-b-[3px] border-[#0C08210f] -->

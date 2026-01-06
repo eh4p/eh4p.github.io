@@ -1,0 +1,145 @@
+---
+import Image from "astro/components/Image.astro";
+import Contact from './Contact.astro';
+
+---
+
+<section id="hero" class=" flex items-center flex-col gap-24 justify-center p-[2rem]">
+  <div class="relative w-[90%] max-w-2xl mx-auto">
+    <div class="absolute bg-[#2aff3f] rounded-[3rem] w-full h-full transform translate-y-[4rem] flex items-end justify-center pb-[1rem] green-shadow">
+      <div class="flex items-center gap-2 text-[#1D1D1F] font-bold">
+        <svg stroke="#1D1D1F" fill="#1D1D1F" stroke-width="0" viewBox="0 0 1024 1024" height="32px" width="32px" xmlns="http://www.w3.org/2000/svg"><path d="M848 359.3H627.7L825.8 109c4.1-5.3.4-13-6.3-13H436c-2.8 0-5.5 1.5-6.9 4L170 547.5c-3.1 5.3.7 12 6.9 12h174.4l-89.4 357.6c-1.9 7.8 7.5 13.3 13.3 7.7L853.5 373c5.2-4.9 1.7-13.7-5.5-13.7zM378.2 732.5l60.3-241H281.1l189.6-327.4h224.6L487 427.4h211L378.2 732.5z"></path></svg>
+        <span class="text-xl font-allan">CURRENTLY AVAILABLE FOR FREELANCING</span>
+      </div>
+    </div>
+    
+    <div class="bg-[#1D1D1F] rounded-[3rem] p-6 text-[#f5f5f7] overflow-hidden relative z-10 shadow-2xl" style="box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.5);">
+      <div class="flex flex-col">
+        <div class="flex justify-between items-center mb-2">
+          <div class="flex items-center justify-end w-full">
+            <span class="inline-block mr-1">
+              <svg stroke="currentColor" fill="currentColor" class="w-5 h-5 text-[#2aff3f]" stroke-width="0" viewBox="0 0 512 512" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0 0 25.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z"></path><circle cx="256" cy="192" r="48" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></circle></svg>
+            </span>
+            <h2 class="font-allan mt-[0.2rem]">CAIRO, EGYPT</h2>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4 mb-6">
+          <div class="w-28 h-28 rounded-full overflow-hidden">
+            <Image src="/images/em-2.png" width={120} height={120} alt="Avatar" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold font">Ehab Muhammad</h1>
+            <div class="flex items-center">
+              <h2 class="opacity-80 text-xl font-allan">Software Engineer</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <a href="mailto:em.ehabm@gmail.com" class="glass-button flex-1 py-3 flex items-center justify-center group hire-me-btn">
+            <span class="mr-2 text-[#622aff] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#2aff3f">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="font-bold font-allan text-xl z-10 relative mt-[0.3rem]">HIRE ME</span>
+          </a>
+          <a href="/home" class="glass-button flex-1 py-3 flex items-center justify-center group portfolio-btn">
+            <span class="mr-2 text-[#312aff] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#2aff3f">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+            </span>
+            <span class="font-bold font-allan text-xl z-10 relative mt-[0.3rem]">PORTFOLIO</span>
+          </a>
+        </div>
+             </div>
+    </div>
+  </div> 
+          <Contact />
+</section>
+
+
+
+
+<style>
+  .green-shadow {
+    box-shadow: inset 0 -6px 10px #1d1d1f35;
+  }
+
+  .glass-button {
+    position: relative;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(2deg);
+  }
+
+  .glass-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%) skewX(-15deg);
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .glass-button:hover {
+    transform: perspective(1000px) translateY(-6px) rotateX(5deg) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(55, 55, 55, 1);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-button:hover:before {
+    transform: translateX(100%) skewX(-15deg);
+  }
+
+  .glass-button:active {
+    transform: perspective(1000px) translateY(-2px) rotateX(2deg) scale(0.98);
+    transition: all 0.1s ease;
+  }
+
+  .hire-me-btn {
+    background: rgba(147, 51, 234, 0.3);
+    border-color: rgba(147, 51, 234, 0.6);
+  }
+
+  .hire-me-btn:hover {
+    background: rgba(147, 51, 234, 0.45);
+    border-color: rgba(147, 51, 234, 0.8);
+    box-shadow: 
+      0 8px 24px rgba(147, 51, 234, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .portfolio-btn {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.6);
+  }
+
+  .portfolio-btn:hover {
+    background: rgba(99, 102, 241, 0.45);
+    border-color: rgba(99, 102, 241, 0.8);
+    box-shadow: 
+      0 8px 24px rgba(99, 102, 241, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+</style>

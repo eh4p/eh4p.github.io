@@ -7,62 +7,13 @@ import About from "../components/About.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Stats from "../components/Stats.astro";
-import Contact from "../components/Contact.astro";
+import Welcome from "../components/Welcome.astro";
 ---
 
 <Layout title="ehab ─ software engineer">
-  <header
-    class="min-h-screen flex flex-col justify-between px-4 md:px-8 py-8 mb-10 text-[#0C0821]"
-  >
-    <!-- <Nav /> -->
-    <Hero />
-    <!-- <Stats /> -->
+  <header class="h-screen">
+    <Welcome />
   </header>
-
-  <main>
-    <div class="mx-auto px-4 max-w-[51rem] flex flex-col items-center">
-      <About />
-      <Work />
-      <Projects />
-    </div>
-
-    <Contact />
-  </main>
-
-  <footer>
-    <Footer />
-  </footer>
 </Layout>
 
-<style>
-  .animated-gradient {
-    background-size: 1000% 1000%;
-    background-image: linear-gradient(
-      60deg,
-      #0C0821 0%,
-      #ff2a2a 25%,
-      #0C0821 50%,
-      #622aff 75%,
-      #0C0821 100%
-    );
-    animation: AnimateGradientWide 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
 
-  @keyframes AnimateGradientWide {
-    0% {
-      background-position: 0% 0%;
-    }
-    25% {
-      background-position: 100% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    75% {
-      background-position: 0% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
-  }
-</style>

@@ -1,0 +1,65 @@
+---
+import Work from "../components/Work.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Stats from "../components/Stats.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout title="ehab ─ software engineer">
+  <header
+    class="min-h-screen flex flex-col justify-between px-2 md:px-4 py-8 text-[#0C0821]">
+    <Hero />
+  </header>
+
+  <main class="py-16 md:py-24">
+    <div class="mx-auto px-2 max-w-[80rem] flex flex-col items-center space-y-16 md:space-y-24">
+      <About />
+      <Work />
+    </div>
+  </main>
+
+  <footer class="py-16 md:py-24">
+    <div class="flex flex-col space-y-8">
+      <Contact />
+      <Footer />
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .animated-gradient {
+    background-size: 1000% 1000%;
+    background-image: linear-gradient(
+      60deg,
+      #0C0821 0%,
+      #ff2a2a 25%,
+      #0C0821 50%,
+      #622aff 75%,
+      #0C0821 100%
+    );
+    animation: AnimateGradientWide 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes AnimateGradientWide {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+</style>

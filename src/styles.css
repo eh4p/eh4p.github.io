@@ -373,6 +373,18 @@ p, span, a, button, input, textarea, label {
 
 .timeline-item:nth-child(even)::after {
   left: calc(50% + 8px);
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 .timeline-item.visible::after {

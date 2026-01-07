@@ -110,7 +110,6 @@ p, span, a, button, input, textarea, label {
 
 .education h2 {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .education > .subtitle {
@@ -121,7 +120,7 @@ p, span, a, button, input, textarea, label {
 /* Timeline */
 .timeline {
   position: relative;
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding: 0 1rem;
 }
 

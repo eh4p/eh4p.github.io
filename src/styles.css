@@ -1,5 +1,19 @@
 /* Font Imports */
 @font-face {
+  font-family: 'SF Pro Display';
+  src: url('/public/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/public/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'GOT';
   src: url('/public/fonts/GOT.ttf') format('truetype');
   font-weight: normal;
@@ -27,6 +41,7 @@
   --font-title: 'GOT', serif;
   --font-subtitle: 'Trajan', serif;
   --font-body: 'Trajan', serif;
+  --font-quote: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -65,6 +80,7 @@ p, span, a, button, input, textarea, label {
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .hero h1 {
@@ -80,6 +96,24 @@ p, span, a, button, input, textarea, label {
 .hero .subtitle {
   font-size: 1rem;
   opacity: 0.8;
+}
+
+/* Quote at top of page */
+.hero-quotes {
+  position: absolute;
+  top: 2rem;
+  text-align: center;
+}
+
+.hero-quote {
+  font-family: var(--font-quote);
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1.5;
+  opacity: 0.5;
+  max-width: 600px;
+  padding: 0 1.5rem;
+  margin: -0.25rem 0;
 }
 
 /* Overview Section */

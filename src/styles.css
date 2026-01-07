@@ -135,6 +135,20 @@ p, span, a, button, input, textarea, label {
   width: 2px;
   height: 100%;
   background: rgba(245, 245, 247, 0.1);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
 }
 
 /* Animated lightning/progress line */
@@ -150,6 +164,20 @@ p, span, a, button, input, textarea, label {
     rgba(245, 245, 247, 0.4),
     rgba(245, 245, 247, 0.9),
     rgba(245, 245, 247, 1)
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
   );
   box-shadow:
     0 0 8px rgba(245, 245, 247, 0.6),

@@ -75,3 +75,81 @@ p, span, a, button, input, textarea, label {
   font-size: 1rem;
   opacity: 0.8;
 }
+
+/* Overview Section */
+.overview {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.overview h2 {
+  font-size: 1.3rem;
+}
+
+.overview .subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.overview p {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* Education Section */
+.education {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.education h2 {
+  font-size: 1.3rem;
+}
+
+.education-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.education-list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 1.3rem;
+}
+
+.projects .subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.projects-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.projects-list li {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}

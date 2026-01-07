@@ -187,7 +187,8 @@ p, span, a, button, input, textarea, label {
   border: 3px solid var(--bg-color);
   box-shadow: 0 0 0 3px rgba(245, 245, 247, 0.2);
   z-index: 2;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.3s ease;
+  cursor: pointer;
 }
 
 .timeline-item.visible .timeline-dot {
@@ -196,6 +197,40 @@ p, span, a, button, input, textarea, label {
 
 .timeline-item:hover .timeline-dot {
   box-shadow: 0 0 0 6px rgba(245, 245, 247, 0.3);
+}
+
+.timeline-dot:hover {
+  background: #fff;
+  box-shadow:
+    0 0 0 8px rgba(245, 245, 247, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.5);
+  transform: translateX(-50%) scale(1.2);
+}
+
+.timeline-dot:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* Active state when dot is clicked */
+.timeline-item.active .timeline-dot {
+  background: #fff;
+  box-shadow:
+    0 0 0 8px rgba(245, 245, 247, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.6);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 8px rgba(245, 245, 247, 0.5),
+      0 0 30px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 0 12px rgba(245, 245, 247, 0.3),
+      0 0 40px rgba(255, 255, 255, 0.4);
+  }
 }
 
 /* Timeline content */

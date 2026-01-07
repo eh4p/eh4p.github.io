@@ -83,4 +83,38 @@
 
   // Also update on window resize
   window.addEventListener('resize', updateProgressLine);
+
+  // Handle dot clicks
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+
+  timelineDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const parentItem = dot.closest('.timeline-item');
+
+      // Remove active class from all items
+      timelineItems.forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Add active class to clicked item
+      parentItem.classList.add('active');
+
+      // Smooth scroll to the item's card
+      const card = parentItem.querySelector('.timeline-content');
+      if (card) {
+        card.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+
+      // Trigger flash effect on the card
+      if (card) {
+        card.style.background = 'rgba(255, 255, 255, 0.2)';
+        setTimeout(() => {
+          card.style.background = '';
+        }, 300);
+      }
+    });
+  });
 })();

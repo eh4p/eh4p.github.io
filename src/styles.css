@@ -203,10 +203,13 @@ p, span, a, button, input, textarea, label {
   position: relative;
   width: calc(50% - 40px);
   padding: 1.5rem;
-  background: rgba(245, 245, 247, 0.03);
-  border: 1px solid rgba(245, 245, 247, 0.08);
-  border-radius: 12px;
+  background: rgba(245, 245, 247, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
   text-align: left;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Alternating layout */

@@ -756,7 +756,6 @@ p, span, a, button, input, textarea, label {
 .company-details::before {
   content: '↑ Click a company to view details';
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 0.9rem;

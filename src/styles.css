@@ -102,26 +102,202 @@ p, span, a, button, input, textarea, label {
 
 /* Education Section */
 .education {
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+  max-width: 1000px;
+  margin: 6rem auto;
+  padding: 0 2rem 4rem;
   text-align: center;
 }
 
 .education h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.education-list {
-  list-style: none;
-  margin-top: 2rem;
-}
-
-.education-list li {
+.education > .subtitle {
   font-size: 1rem;
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin-top: 4rem;
+  padding: 0 1rem;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(245, 245, 247, 0.1);
+}
+
+/* Animated lightning/progress line */
+.timeline-progress-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 245, 247, 0.4),
+    rgba(245, 245, 247, 0.9),
+    rgba(245, 245, 247, 1)
+  );
+  box-shadow:
+    0 0 8px rgba(245, 245, 247, 0.6),
+    0 0 16px rgba(245, 245, 247, 0.4),
+    0 0 24px rgba(245, 245, 247, 0.2);
+  border-radius: 2px;
+  transition: height 0.1s linear;
+  z-index: 1;
+}
+
+/* Timeline items */
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline dot */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scale(0);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-color);
+  border: 3px solid var(--bg-color);
+  box-shadow: 0 0 0 3px rgba(245, 245, 247, 0.2);
+  z-index: 2;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.timeline-item.visible .timeline-dot {
+  transform: translateX(-50%) scale(1);
+}
+
+.timeline-item:hover .timeline-dot {
+  box-shadow: 0 0 0 6px rgba(245, 245, 247, 0.3);
+}
+
+/* Timeline content */
+.timeline-content {
+  position: relative;
+  width: calc(50% - 40px);
+  padding: 1.5rem;
+  background: rgba(245, 245, 247, 0.03);
+  border: 1px solid rgba(245, 245, 247, 0.08);
+  border-radius: 12px;
+  text-align: left;
+}
+
+/* Alternating layout */
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: auto;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-right: auto;
+}
+
+/* Timeline year badge */
+.timeline-year {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(245, 245, 247, 0.1);
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Timeline content title */
+.timeline-content h3 {
+  font-family: var(--font-subtitle);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.timeline-institution {
+  font-family: var(--font-subtitle);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Connector lines */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  width: 40px;
+  height: 2px;
+  background: rgba(245, 245, 247, 0.15);
+  transition: width 0.5s ease, background 0.3s ease;
+}
+
+.timeline-item:nth-child(odd)::after {
+  right: calc(50% + 8px);
+}
+
+.timeline-item:nth-child(even)::after {
+  left: calc(50% + 8px);
+}
+
+.timeline-item.visible::after {
+  width: calc(50% - 60px);
+}
+
+.timeline-item:hover::after {
+  background: rgba(245, 245, 247, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-progress-line {
+    left: 20px;
+  }
+
+  .timeline-dot {
+    left: 20px;
+  }
+
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 60px !important;
+  }
+
+  .timeline-item::after {
+    left: 36px !important;
+    width: 24px !important;
+  }
+
+  .timeline-item.visible::after {
+    width: 24px !important;
+  }
 }
 
 /* Projects Section */

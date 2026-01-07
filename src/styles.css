@@ -558,6 +558,20 @@ p, span, a, button, input, textarea, label {
   box-shadow:
     0 0 8px rgba(245, 245, 247, 0.4),
     0 0 16px rgba(245, 245, 247, 0.2);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
 }
 
 /* Moving circle */

@@ -178,8 +178,9 @@
         const activeIndex = Array.from(companyBtns).indexOf(activeBtn);
         if (activeIndex >= 0) {
           const targetPosition = positions[activeIndex];
+          const progressWidth = activeIndex === companyBtns.length - 1 ? 100 : targetPosition;
           movingCircle.style.left = `${targetPosition}%`;
-          horizontalProgress.style.width = `${targetPosition}%`;
+          horizontalProgress.style.width = `${progressWidth}%`;
         }
       }
     }, 150);
@@ -241,8 +242,9 @@
     movingCircle.classList.add('visible');
     movingCircle.classList.add('active');
 
-    // Update progress line (fill up to selected position)
-    horizontalProgress.style.width = `${targetPosition}%`;
+    // Update progress line (fill up to selected position, or 100% for last item)
+    const progressWidth = index === companyBtns.length - 1 ? 100 : targetPosition;
+    horizontalProgress.style.width = `${progressWidth}%`;
 
     // Update line dots
     lineDots.forEach((dot, dotIndex) => {

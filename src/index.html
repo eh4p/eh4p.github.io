@@ -65,40 +65,83 @@
   <section class="experience">
     <h2>Experience</h2>
     <p class="subtitle">Professional Journey</p>
+
     <div class="experience-timeline">
-      <div class="experience-line"></div>
-      <div class="experience-moving-circle"></div>
-
-      <div class="experience-item" data-company="qwicksite">
-        <div class="experience-company-box">
-          <span class="company-name">QwickSite</span>
-        </div>
-        <div class="experience-details">
-          <h3>Full Stack Developer</h3>
-          <p class="experience-date">2023 - Present</p>
-          <p class="experience-description">Building scalable web applications and contributing to full-stack development projects.</p>
-        </div>
+      <!-- Company names navigation -->
+      <div class="company-nav">
+        <button class="company-btn" data-company="techcorp" tabindex="0">
+          <span class="company-name">TechCorp</span>
+          <span class="company-period">2023 - Present</span>
+        </button>
+        <button class="company-btn" data-company="innovate" tabindex="0">
+          <span class="company-name">Innovate Labs</span>
+          <span class="company-period">2022 - 2023</span>
+        </button>
+        <button class="company-btn" data-company="startup" tabindex="0">
+          <span class="company-name">StartUp Co</span>
+          <span class="company-period">2021 - 2022</span>
+        </button>
+        <button class="company-btn" data-company="freelance" tabindex="0">
+          <span class="company-name">Freelance</span>
+          <span class="company-period">2020 - 2021</span>
+        </button>
       </div>
 
-      <div class="experience-item" data-company="alqariues360">
-        <div class="experience-company-box">
-          <span class="company-name">Alqariues360</span>
+      <!-- Horizontal scrolling line with circle -->
+      <div class="horizontal-line-container">
+        <div class="horizontal-line"></div>
+        <div class="horizontal-progress"></div>
+        <div class="moving-circle"></div>
+        <div class="line-dot" data-index="0"></div>
+        <div class="line-dot" data-index="1"></div>
+        <div class="line-dot" data-index="2"></div>
+        <div class="line-dot" data-index="3"></div>
+      </div>
+
+      <!-- Company detail panels -->
+      <div class="company-details">
+        <div class="company-panel" data-company="techcorp">
+          <h3>Senior Software Engineer</h3>
+          <p class="company-role">TechCorp • Full-time</p>
+          <p class="company-duration">January 2023 - Present • 2 yrs</p>
+          <ul class="company-achievements">
+            <li>Led development of microservices architecture serving 1M+ daily users</li>
+            <li>Reduced API response time by 60% through optimization strategies</li>
+            <li>Mentored team of 5 junior developers</li>
+          </ul>
         </div>
-        <div class="experience-details">
+
+        <div class="company-panel" data-company="innovate">
           <h3>Software Engineer</h3>
-          <p class="experience-date">2022 - 2023</p>
-          <p class="experience-description">Developed and maintained software solutions for real estate platforms.</p>
+          <p class="company-role">Innovate Labs • Full-time</p>
+          <p class="company-duration">March 2022 - December 2022 • 10 mos</p>
+          <ul class="company-achievements">
+            <li>Built RESTful APIs for e-commerce platform</li>
+            <li>Implemented CI/CD pipelines reducing deployment time by 40%</li>
+            <li>Collaborated with cross-functional teams on product features</li>
+          </ul>
         </div>
-      </div>
 
-      <div class="experience-item" data-company="allianz">
-        <div class="experience-company-box">
-          <span class="company-name">Allianz Egypt</span>
-        </div>
-        <div class="experience-details">
+        <div class="company-panel" data-company="startup">
           <h3>Junior Developer</h3>
-          <p class="experience-date">2021 - 2022</p>
-          <p class="experience-description">Contributed to insurance industry projects and learned enterprise development practices.</p>
+          <p class="company-role">StartUp Co • Full-time</p>
+          <p class="company-duration">June 2021 - February 2022 • 9 mos</p>
+          <ul class="company-achievements">
+            <li>Developed front-end components using React</li>
+            <li>Integrated third-party APIs and payment gateways</li>
+            <li>Participated in agile development processes</li>
+          </ul>
+        </div>
+
+        <div class="company-panel" data-company="freelance">
+          <h3>Freelance Developer</h3>
+          <p class="company-role">Self-employed • Remote</p>
+          <p class="company-duration">January 2020 - May 2021 • 1 yr 5 mos</p>
+          <ul class="company-achievements">
+            <li>Delivered 15+ web projects for diverse clients</li>
+            <li>Specialized in WordPress and custom CMS solutions</li>
+            <li>Maintained 100% client satisfaction rate</li>
+          </ul>
         </div>
       </div>
     </div>

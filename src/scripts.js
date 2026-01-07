@@ -119,106 +119,184 @@
   });
 })();
 
-// Experience section interactions
+// Experience Section - Horizontal Timeline Navigation
 (function() {
   'use strict';
 
-  const experienceItems = document.querySelectorAll('.experience-item');
-  const experienceTimeline = document.querySelector('.experience-timeline');
-  const movingCircle = document.querySelector('.experience-moving-circle');
+  const companyBtns = document.querySelectorAll('.company-btn');
+  const companyPanels = document.querySelectorAll('.company-panel');
+  const movingCircle = document.querySelector('.moving-circle');
+  const horizontalProgress = document.querySelector('.horizontal-progress');
+  const lineDots = document.querySelectorAll('.line-dot');
+  const lineContainer = document.querySelector('.horizontal-line-container');
 
-  if (!experienceTimeline || !movingCircle) return;
+  if (!companyBtns.length || !lineContainer) return;
 
-  // Function to move the circle to a specific item
-  const moveCircleToItem = (item) => {
-    const timelineRect = experienceTimeline.getBoundingClientRect();
-    const itemRect = item.getBoundingClientRect();
+  // Calculate positions dynamically based on button positions
+  let positions = [];
 
-    // Calculate the top position relative to the timeline
-    const relativeTop = itemRect.top - timelineRect.top + (itemRect.height / 2);
+  function updatePositions() {
+    positions = [];
+    const containerRect = lineContainer.getBoundingClientRect();
+    const containerLeft = containerRect.left;
+    const containerWidth = containerRect.width;
 
-    // Move the circle
-    movingCircle.style.top = `${relativeTop}px`;
-  };
+    companyBtns.forEach(btn => {
+      const btnRect = btn.getBoundingClientRect();
+      const btnCenter = btnRect.left + btnRect.width / 2;
+      const relativePosition = ((btnCenter - containerLeft) / containerWidth) * 100;
+      positions.push(Math.max(5, Math.min(95, relativePosition)));
+    });
 
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: 0.2
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    // Update line dot positions
+    lineDots.forEach((dot, index) => {
+      if (index < positions.length) {
+        dot.style.left = `${positions[index]}%`;
       }
     });
-  }, observerOptions);
+  }
 
-  // Observe all experience items
-  experienceItems.forEach(item => {
-    observer.observe(item);
-  });
+  // Initial position calculation (delayed for layout to settle)
+  setTimeout(updatePositions, 100);
 
-  // Handle company box clicks
-  const companyBoxes = document.querySelectorAll('.experience-company-box');
-
-  companyBoxes.forEach(box => {
-    box.addEventListener('click', () => {
-      const parentItem = box.closest('.experience-item');
-      const wasActive = parentItem.classList.contains('active');
-
-      // Remove active class from all items
-      experienceItems.forEach(item => {
-        item.classList.remove('active');
-      });
-
-      // If it wasn't active before, activate it
-      if (!wasActive) {
-        parentItem.classList.add('active');
-
-        // Move the circle to this item
-        moveCircleToItem(parentItem);
-
-        // Smooth scroll to the details
-        const details = parentItem.querySelector('.experience-details');
-        if (details) {
-          details.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-          });
-        }
-      } else {
-        // If it was active, move circle back to first item
-        const firstItem = experienceItems[0];
-        if (firstItem) {
-          moveCircleToItem(firstItem);
-        }
-      }
+  // Also recalculate after fonts load
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      setTimeout(updatePositions, 50);
     });
-  });
+  }
 
-  // Initialize circle position to first item on load
-  window.addEventListener('load', () => {
-    if (experienceItems.length > 0) {
-      moveCircleToItem(experienceItems[0]);
-    }
-  });
-
-  // Update circle position on window resize
+  // Recalculate on window resize
   let resizeTimeout;
   window.addEventListener('resize', () => {
-    if (resizeTimeout) {
-      clearTimeout(resizeTimeout);
-    }
+    clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      const activeItem = document.querySelector('.experience-item.active');
-      if (activeItem) {
-        moveCircleToItem(activeItem);
-      } else if (experienceItems.length > 0) {
-        moveCircleToItem(experienceItems[0]);
+      updatePositions();
+      // Update active position if any company is selected
+      const activeBtn = document.querySelector('.company-btn.active');
+      if (activeBtn) {
+        const activeIndex = Array.from(companyBtns).indexOf(activeBtn);
+        if (activeIndex >= 0) {
+          const targetPosition = positions[activeIndex];
+          movingCircle.style.left = `${targetPosition}%`;
+          horizontalProgress.style.width = `${targetPosition}%`;
+        }
       }
-    }, 100);
+    }, 150);
+  });
+
+  // Handle company button clicks
+  companyBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      selectCompany(index);
+    });
+
+    // Keyboard accessibility
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectCompany(index);
+      }
+    });
+  });
+
+  // Function to select a company
+  function selectCompany(index) {
+    const clickedBtn = companyBtns[index];
+    const companyKey = clickedBtn.dataset.company;
+
+    // Remove active class from all buttons and panels
+    companyBtns.forEach(btn => btn.classList.remove('active'));
+    companyPanels.forEach(panel => panel.classList.remove('active'));
+    lineDots.forEach(dot => dot.classList.remove('active'));
+
+    // Add active class to clicked button
+    clickedBtn.classList.add('active');
+
+    // Show corresponding panel
+    const targetPanel = document.querySelector(`.company-panel[data-company="${companyKey}"]`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+    }
+
+    // Update moving circle position
+    const targetPosition = positions[index];
+    movingCircle.style.left = `${targetPosition}%`;
+    movingCircle.classList.add('visible');
+    movingCircle.classList.add('active');
+
+    // Update progress line (fill up to selected position)
+    horizontalProgress.style.width = `${targetPosition}%`;
+
+    // Update line dots
+    lineDots.forEach((dot, dotIndex) => {
+      if (dotIndex <= index) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Brief flash effect on the panel
+    if (targetPanel) {
+      targetPanel.style.background = 'rgba(255, 255, 255, 0.1)';
+      setTimeout(() => {
+        targetPanel.style.background = '';
+      }, 300);
+    }
+  }
+
+  // Handle clicks on line dots
+  lineDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      selectCompany(index);
+    });
+
+    dot.style.cursor = 'pointer';
+  });
+
+  // Scroll-based animation for the experience section
+  const experienceSection = document.querySelector('.experience');
+  if (experienceSection) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate in elements
+          companyBtns.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.style.opacity = '1';
+              btn.style.transform = 'translateY(0)';
+            }, i * 100);
+          });
+
+          // Show the horizontal line with animation
+          const horizontalLine = document.querySelector('.horizontal-line');
+          if (horizontalLine) {
+            horizontalLine.style.width = '0';
+            setTimeout(() => {
+              horizontalLine.style.width = '100%';
+            }, 100);
+          }
+
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sectionObserver.observe(experienceSection);
+  }
+
+  // Set initial state for company buttons (hidden for animation)
+  companyBtns.forEach(btn => {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(10px)';
+    btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   });
 })();
+

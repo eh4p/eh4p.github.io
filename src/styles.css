@@ -423,6 +423,337 @@ p, span, a, button, input, textarea, label {
   }
 }
 
+/* Experience Section */
+.experience {
+  max-width: 1000px;
+  margin: 6rem auto;
+  padding: 0 2rem 4rem;
+  text-align: center;
+}
+
+.experience h2 {
+  font-size: 1.5rem;
+}
+
+.experience > .subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+/* Experience Timeline */
+.experience-timeline {
+  position: relative;
+}
+
+/* Company Navigation */
+.company-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.company-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.company-name {
+  font-family: var(--font-subtitle);
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.company-period {
+  font-size: 0.75rem;
+  opacity: 0.4;
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.company-btn:hover .company-name {
+  opacity: 0.9;
+}
+
+.company-btn:hover .company-period {
+  opacity: 0.6;
+}
+
+.company-btn.active .company-name {
+  opacity: 1;
+  color: #fff;
+}
+
+.company-btn.active .company-period {
+  opacity: 0.8;
+}
+
+/* Horizontal Line Container */
+.horizontal-line-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  height: 4px;
+}
+
+/* Base horizontal line */
+.horizontal-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+  background: rgba(245, 245, 247, 0.1);
+  border-radius: 2px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+}
+
+/* Progress fill line */
+.horizontal-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 245, 247, 0.4),
+    rgba(245, 245, 247, 0.8),
+    rgba(245, 245, 247, 1)
+  );
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 0 8px rgba(245, 245, 247, 0.4),
+    0 0 16px rgba(245, 245, 247, 0.2);
+}
+
+/* Moving circle */
+.moving-circle {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-color);
+  border: 3px solid var(--bg-color);
+  box-shadow:
+    0 0 0 3px rgba(245, 245, 247, 0.2),
+    0 0 12px rgba(245, 245, 247, 0.4);
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+  z-index: 2;
+}
+
+.moving-circle.visible {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.moving-circle.active {
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(245, 245, 247, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.6);
+  animation: circle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes circle-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(245, 245, 247, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(245, 245, 247, 0.2),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Line dots */
+.line-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245, 245, 247, 0.2);
+  border: 2px solid var(--bg-color);
+  transition: all 0.3s ease, left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  /* Positions set dynamically by JavaScript */
+}
+
+.line-dot.active {
+  background: rgba(245, 245, 247, 0.6);
+  width: 10px;
+  height: 10px;
+}
+
+/* Company Details Container */
+.company-details {
+  position: relative;
+  min-height: 200px;
+}
+
+/* Company Panel */
+.company-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.company-panel.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  position: relative;
+}
+
+.company-panel h3 {
+  font-family: var(--font-subtitle);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.company-role {
+  font-family: var(--font-subtitle);
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.company-duration {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 1.5rem;
+}
+
+.company-achievements {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.company-achievements li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.company-achievements li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+/* Empty state hint */
+.company-details::before {
+  content: '↑ Click a company to view details';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.company-details:not(:has(.company-panel.active))::before {
+  opacity: 0.4;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .company-nav {
+    gap: 1rem;
+  }
+
+  .company-btn {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .company-name {
+    font-size: 0.85rem;
+  }
+
+  .company-period {
+    font-size: 0.65rem;
+  }
+
+  .line-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .moving-circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .company-panel h3 {
+    font-size: 1.1rem;
+  }
+
+  .company-role {
+    font-size: 0.9rem;
+  }
+
+  .company-achievements {
+    padding: 0 1rem;
+  }
+
+  .company-achievements li {
+    font-size: 0.9rem;
+  }
+}
+
 /* Projects Section */
 .projects {
   max-width: 800px;
@@ -451,269 +782,4 @@ p, span, a, button, input, textarea, label {
   line-height: 1.8;
   opacity: 0.85;
   margin-bottom: 1rem;
-}
-
-/* Experience Section */
-.experience {
-  max-width: 1000px;
-  margin: 6rem auto;
-  padding: 0 2rem 4rem;
-  text-align: center;
-}
-
-.experience h2 {
-  font-size: 1.5rem;
-}
-
-.experience > .subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
-/* Experience Timeline */
-.experience-timeline {
-  position: relative;
-  margin-top: 3rem;
-  padding: 0 1rem;
-}
-
-/* Vertical line */
-.experience-line {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: rgba(245, 245, 247, 0.1);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 1) 10%,
-    rgba(0, 0, 0, 1) 90%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 1) 10%,
-    rgba(0, 0, 0, 1) 90%,
-    transparent 100%
-  );
-}
-
-/* Experience items */
-.experience-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.experience-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Experience moving circle (single circle that moves between items) */
-.experience-moving-circle {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--text-color);
-  border: 3px solid var(--bg-color);
-  box-shadow:
-    0 0 0 4px rgba(245, 245, 247, 0.3),
-    0 0 16px rgba(245, 245, 247, 0.5);
-  z-index: 3;
-  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.experience-moving-circle::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: var(--text-color);
-  animation: circlePulse 2s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes circlePulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(2);
-    opacity: 0;
-  }
-}
-
-/* Company name box (left side) */
-.experience-company-box {
-  position: relative;
-  width: calc(50% - 30px);
-  padding: 1rem 1.5rem;
-  background: rgba(245, 245, 247, 0.05);
-  border: 1px solid rgba(245, 245, 247, 0.1);
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-right: auto;
-}
-
-.experience-company-box:hover {
-  background: rgba(245, 245, 247, 0.1);
-  border-color: rgba(245, 245, 247, 0.25);
-  transform: translateX(-4px);
-}
-
-.experience-company-box:active {
-  transform: translateX(-2px) scale(0.98);
-}
-
-.experience-item.active .experience-company-box {
-  background: rgba(245, 245, 247, 0.15);
-  border-color: rgba(245, 245, 247, 0.4);
-  box-shadow: 0 0 20px rgba(245, 245, 247, 0.15);
-}
-
-.company-name {
-  font-family: var(--font-subtitle);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-/* Experience details (right side) */
-.experience-details {
-  position: relative;
-  width: calc(50% - 30px);
-  padding: 1.5rem;
-  background: rgba(245, 245, 247, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 245, 247, 0.1);
-  border-radius: 16px;
-  text-align: left;
-  margin-left: auto;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 1.5rem;
-  transition: all 0.4s ease;
-}
-
-.experience-item.active .experience-details {
-  opacity: 1;
-  max-height: 500px;
-  padding: 1.5rem;
-  background: rgba(245, 245, 247, 0.08);
-  border-color: rgba(245, 245, 247, 0.2);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-}
-
-.experience-details h3 {
-  font-family: var(--font-subtitle);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-}
-
-.experience-date {
-  font-size: 0.85rem;
-  opacity: 0.6;
-  margin-bottom: 0.75rem;
-  font-family: var(--font-body);
-}
-
-.experience-description {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  opacity: 0.8;
-  font-family: var(--font-body);
-}
-
-/* Connector line from box to center */
-.experience-company-box::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -30px;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 2px;
-  background: rgba(245, 245, 247, 0.1);
-  transition: background 0.3s ease;
-}
-
-.experience-item.active .experience-company-box::after {
-  background: rgba(245, 245, 247, 0.3);
-}
-
-/* Connector line from center to details */
-.experience-details::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 2px;
-  background: rgba(245, 245, 247, 0.1);
-  transition: background 0.3s ease;
-}
-
-.experience-item.active .experience-details::before {
-  background: rgba(245, 245, 247, 0.3);
-}
-
-/* Responsive design for experience */
-@media (max-width: 768px) {
-  .experience-line {
-    left: 20px;
-  }
-
-  .experience-moving-circle {
-    left: 20px;
-  }
-
-  .experience-company-box {
-    width: calc(100% - 50px);
-    margin-left: 50px;
-    margin-right: 0;
-    text-align: left;
-  }
-
-  .experience-company-box::after {
-    display: none;
-  }
-
-  .experience-details {
-    width: calc(100% - 50px);
-    margin-left: 50px;
-    margin-top: 1rem;
-  }
-
-  .experience-details::before {
-    display: none;
-  }
-
-  .experience-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

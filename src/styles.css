@@ -452,3 +452,268 @@ p, span, a, button, input, textarea, label {
   opacity: 0.85;
   margin-bottom: 1rem;
 }
+
+/* Experience Section */
+.experience {
+  max-width: 1000px;
+  margin: 6rem auto;
+  padding: 0 2rem 4rem;
+  text-align: center;
+}
+
+.experience h2 {
+  font-size: 1.5rem;
+}
+
+.experience > .subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Experience Timeline */
+.experience-timeline {
+  position: relative;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+/* Vertical line */
+.experience-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(245, 245, 247, 0.1);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    transparent 100%
+  );
+}
+
+/* Experience items */
+.experience-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Experience moving circle (single circle that moves between items) */
+.experience-moving-circle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-color);
+  border: 3px solid var(--bg-color);
+  box-shadow:
+    0 0 0 4px rgba(245, 245, 247, 0.3),
+    0 0 16px rgba(245, 245, 247, 0.5);
+  z-index: 3;
+  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-moving-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--text-color);
+  animation: circlePulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes circlePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Company name box (left side) */
+.experience-company-box {
+  position: relative;
+  width: calc(50% - 30px);
+  padding: 1rem 1.5rem;
+  background: rgba(245, 245, 247, 0.05);
+  border: 1px solid rgba(245, 245, 247, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: auto;
+}
+
+.experience-company-box:hover {
+  background: rgba(245, 245, 247, 0.1);
+  border-color: rgba(245, 245, 247, 0.25);
+  transform: translateX(-4px);
+}
+
+.experience-company-box:active {
+  transform: translateX(-2px) scale(0.98);
+}
+
+.experience-item.active .experience-company-box {
+  background: rgba(245, 245, 247, 0.15);
+  border-color: rgba(245, 245, 247, 0.4);
+  box-shadow: 0 0 20px rgba(245, 245, 247, 0.15);
+}
+
+.company-name {
+  font-family: var(--font-subtitle);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Experience details (right side) */
+.experience-details {
+  position: relative;
+  width: calc(50% - 30px);
+  padding: 1.5rem;
+  background: rgba(245, 245, 247, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
+  text-align: left;
+  margin-left: auto;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.experience-item.active .experience-details {
+  opacity: 1;
+  max-height: 500px;
+  padding: 1.5rem;
+  background: rgba(245, 245, 247, 0.08);
+  border-color: rgba(245, 245, 247, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.experience-details h3 {
+  font-family: var(--font-subtitle);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.experience-date {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+}
+
+.experience-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  font-family: var(--font-body);
+}
+
+/* Connector line from box to center */
+.experience-company-box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 2px;
+  background: rgba(245, 245, 247, 0.1);
+  transition: background 0.3s ease;
+}
+
+.experience-item.active .experience-company-box::after {
+  background: rgba(245, 245, 247, 0.3);
+}
+
+/* Connector line from center to details */
+.experience-details::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 2px;
+  background: rgba(245, 245, 247, 0.1);
+  transition: background 0.3s ease;
+}
+
+.experience-item.active .experience-details::before {
+  background: rgba(245, 245, 247, 0.3);
+}
+
+/* Responsive design for experience */
+@media (max-width: 768px) {
+  .experience-line {
+    left: 20px;
+  }
+
+  .experience-moving-circle {
+    left: 20px;
+  }
+
+  .experience-company-box {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .experience-company-box::after {
+    display: none;
+  }
+
+  .experience-details {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+    margin-top: 1rem;
+  }
+
+  .experience-details::before {
+    display: none;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

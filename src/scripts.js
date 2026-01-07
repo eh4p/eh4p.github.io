@@ -118,3 +118,107 @@
     });
   });
 })();
+
+// Experience section interactions
+(function() {
+  'use strict';
+
+  const experienceItems = document.querySelectorAll('.experience-item');
+  const experienceTimeline = document.querySelector('.experience-timeline');
+  const movingCircle = document.querySelector('.experience-moving-circle');
+
+  if (!experienceTimeline || !movingCircle) return;
+
+  // Function to move the circle to a specific item
+  const moveCircleToItem = (item) => {
+    const timelineRect = experienceTimeline.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+
+    // Calculate the top position relative to the timeline
+    const relativeTop = itemRect.top - timelineRect.top + (itemRect.height / 2);
+
+    // Move the circle
+    movingCircle.style.top = `${relativeTop}px`;
+  };
+
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.2
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all experience items
+  experienceItems.forEach(item => {
+    observer.observe(item);
+  });
+
+  // Handle company box clicks
+  const companyBoxes = document.querySelectorAll('.experience-company-box');
+
+  companyBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const parentItem = box.closest('.experience-item');
+      const wasActive = parentItem.classList.contains('active');
+
+      // Remove active class from all items
+      experienceItems.forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // If it wasn't active before, activate it
+      if (!wasActive) {
+        parentItem.classList.add('active');
+
+        // Move the circle to this item
+        moveCircleToItem(parentItem);
+
+        // Smooth scroll to the details
+        const details = parentItem.querySelector('.experience-details');
+        if (details) {
+          details.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }
+      } else {
+        // If it was active, move circle back to first item
+        const firstItem = experienceItems[0];
+        if (firstItem) {
+          moveCircleToItem(firstItem);
+        }
+      }
+    });
+  });
+
+  // Initialize circle position to first item on load
+  window.addEventListener('load', () => {
+    if (experienceItems.length > 0) {
+      moveCircleToItem(experienceItems[0]);
+    }
+  });
+
+  // Update circle position on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout);
+    }
+    resizeTimeout = setTimeout(() => {
+      const activeItem = document.querySelector('.experience-item.active');
+      if (activeItem) {
+        moveCircleToItem(activeItem);
+      } else if (experienceItems.length > 0) {
+        moveCircleToItem(experienceItems[0]);
+      }
+    }, 100);
+  });
+})();

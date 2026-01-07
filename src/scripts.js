@@ -217,7 +217,23 @@
     const targetPanel = document.querySelector(`.company-panel[data-company="${companyKey}"]`);
     if (targetPanel) {
       targetPanel.classList.add('active');
+
+      // Staggered animation for list items
+      const listItems = targetPanel.querySelectorAll('.company-achievements li');
+      listItems.forEach((item, i) => {
+        item.style.transitionDelay = `${i * 0.1}s`;
+      });
     }
+
+    // Reset transition delays for all inactive panels
+    companyPanels.forEach(panel => {
+      if (!panel.classList.contains('active')) {
+        const items = panel.querySelectorAll('.company-achievements li');
+        items.forEach(item => {
+          item.style.transitionDelay = '0s';
+        });
+      }
+    });
 
     // Update moving circle position
     const targetPosition = positions[index];
@@ -236,14 +252,6 @@
         dot.classList.remove('active');
       }
     });
-
-    // Brief flash effect on the panel
-    if (targetPanel) {
-      targetPanel.style.background = 'rgba(255, 255, 255, 0.1)';
-      setTimeout(() => {
-        targetPanel.style.background = '';
-      }, 300);
-    }
   }
 
   // Handle clicks on line dots

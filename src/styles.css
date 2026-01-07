@@ -681,7 +681,14 @@ p, span, a, button, input, textarea, label {
   margin-bottom: 0.75rem;
   font-size: 1rem;
   line-height: 1.6;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.company-panel.active .company-achievements li {
   opacity: 0.85;
+  transform: translateX(0);
 }
 
 .company-achievements li::before {

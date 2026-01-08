@@ -355,6 +355,7 @@
   const projectDetailsPanel = document.getElementById('projectDetails');
   const projectDetailContents = document.querySelectorAll('.project-detail-content');
   const carouselContainer = document.querySelector('.projects-carousel-container');
+  const centerProjectName = document.getElementById('centerProjectName');
 
   if (!projectsRing || !projectItems.length) return;
 
@@ -380,6 +381,8 @@
 
   function selectProject(index) {
     const targetRotation = index;
+    const clickedItem = projectItems[index];
+    const projectName = clickedItem.dataset.name;
 
     // Update current rotation
     currentRotation = targetRotation;
@@ -393,7 +396,11 @@
     });
 
     // Add active class to clicked item
-    projectItems[index].classList.add('active');
+    clickedItem.classList.add('active');
+
+    // Update center project name
+    centerProjectName.textContent = projectName;
+    centerProjectName.classList.add('visible');
 
     // Expand the carousel to the left
     carouselContainer.classList.add('expanded');
@@ -407,7 +414,7 @@
     });
 
     // Show the selected project details
-    const projectKey = projectItems[index].dataset.project;
+    const projectKey = clickedItem.dataset.project;
     const targetContent = document.querySelector(`.project-detail-content[data-project="${projectKey}"]`);
     if (targetContent) {
       targetContent.classList.add('active');

@@ -1,3 +1,62 @@
+// Universal Scroll-Triggered Animations
+(function() {
+  'use strict';
+
+  // Select all elements with fade-in classes
+  const animatedElements = document.querySelectorAll(
+    '.fade-in, .fade-in-left, .fade-in-right'
+  );
+
+  if (!animatedElements.length) return;
+
+  // Create Intersection Observer for scroll-triggered animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Optional: stop observing once animated
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all animated elements
+  animatedElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Fallback for older browsers - check on scroll
+  const checkElements = () => {
+    const triggerBottom = window.innerHeight * 0.9;
+
+    animatedElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+
+      if (elementTop < triggerBottom) {
+        element.classList.add('visible');
+      }
+    });
+  };
+
+  // Initial check
+  checkElements();
+
+  // Throttled scroll listener
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+      cancelAnimationFrame(scrollTimeout);
+    }
+    scrollTimeout = requestAnimationFrame(checkElements);
+  });
+})();
+
 // Timeline scroll animation
 (function() {
   'use strict';

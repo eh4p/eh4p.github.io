@@ -4,7 +4,7 @@
 
   // Select all elements with fade-in classes
   const animatedElements = document.querySelectorAll(
-    '.fade-in, .fade-in-left, .fade-in-right'
+    '.fade-in, .fade-in-sm, .fade-in-left, .fade-in-right'
   );
 
   if (!animatedElements.length) return;

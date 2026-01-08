@@ -81,6 +81,29 @@ p, span, a, button, input, textarea, label {
   align-items: center;
   text-align: center;
   position: relative;
+  background-image: url('/public/images/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(29, 29, 31, 0.4) 0%,
+    rgba(29, 29, 31, 0.7) 50%,
+    var(--bg-color) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -388,7 +411,7 @@ p, span, a, button, input, textarea, label {
   content: '';
   position: absolute;
   top: 8px;
-  width: 40px;
+  width: var(--connector-width, 40px);
   height: 2px;
   background: rgba(245, 245, 247, 0.15);
   -webkit-mask-image: linear-gradient(
@@ -403,7 +426,7 @@ p, span, a, button, input, textarea, label {
     rgba(0, 0, 0, 1) 30%,
     rgba(0, 0, 0, 1) 100%
   );
-  transition: width 0.5s ease, background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .timeline-item:nth-child(odd)::after {

@@ -29,6 +29,38 @@
     progressLine.style.height = `${progress * 100}%`;
   };
 
+  // Update connector line widths based on individual item scroll position
+  const updateConnectorLines = () => {
+    const windowHeight = window.innerHeight;
+    const triggerZone = windowHeight * 0.7; // Point where line reaches full width
+
+    timelineItems.forEach((item) => {
+      const itemRect = item.getBoundingClientRect();
+      const itemTop = itemRect.top;
+      const itemCenter = itemRect.top + itemRect.height / 2;
+
+      // Calculate progress: 0 when item is at bottom of viewport, 1 when centered
+      let progress = 1 - (itemCenter / triggerZone);
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Apply easing for smoother animation (ease-out cubic)
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      // Calculate width from 40px (initial) to calc(50% - 60px) (final)
+      const minWidth = 40;
+      const maxWidth = item.offsetWidth / 2 - 60;
+      const currentWidth = minWidth + (maxWidth - minWidth) * easedProgress;
+
+      // Set CSS variable for the connector line width
+      item.style.setProperty('--connector-width', `${currentWidth}px`);
+
+      // Also add visible class for other animations
+      if (progress > 0) {
+        item.classList.add('visible');
+      }
+    });
+  };
+
   // Use Intersection Observer for better performance
   const observerOptions = {
     root: null,

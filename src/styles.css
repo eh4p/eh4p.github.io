@@ -882,41 +882,44 @@ p, span, a, button, input, textarea, label {
 /* Outer Decorative Ring */
 .projects-ring-outer {
   position: absolute;
-  inset: 0;
+  inset: -20px;
   border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.08) 25%,
-    rgba(255, 255, 255, 0.03) 50%,
-    rgba(255, 255, 255, 0.08) 75%,
-    rgba(255, 255, 255, 0.03)
-  );
-  animation: ring-slow-rotate 30s linear infinite;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03), transparent 50%);
 }
 
 .projects-ring-inner {
   position: absolute;
-  inset: 8px;
+  inset: 0;
   border-radius: 50%;
-  background: var(--bg-color);
+  background: transparent;
+  box-shadow:
+    0 0 60px rgba(255, 255, 255, 0.03),
+    inset 0 0 60px rgba(255, 255, 255, 0.02);
 }
 
-/* Inner decorative border */
+/* Subtle animated ring */
 .projects-ring-inner::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -10px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.03) 90deg,
+    rgba(255, 255, 255, 0.06) 180deg,
+    rgba(255, 255, 255, 0.03) 270deg,
+    transparent 360deg
+  );
+  animation: ring-slow-rotate 20s linear infinite;
 }
 
 .projects-ring-inner::after {
   content: '';
   position: absolute;
-  inset: 6px;
+  inset: 3px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Rotating Ring with Projects */
@@ -956,8 +959,8 @@ p, span, a, button, input, textarea, label {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+  backdrop-filter: blur(4px);
 }
 
 /* Center project name */
@@ -975,6 +978,7 @@ p, span, a, button, input, textarea, label {
   line-height: 1.2;
   word-wrap: break-word;
   hyphens: auto;
+  letter-spacing: 0.05em;
 }
 
 .center-project-name.visible {
@@ -1039,47 +1043,36 @@ p, span, a, button, input, textarea, label {
   height: 70px;
   margin: 0 auto 8px;
   border-radius: 50%;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Medieval decorative border effect */
+/* Subtle glow ring */
 .project-medallion::before {
   content: '';
   position: absolute;
-  inset: 3px;
+  inset: -1px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.project-medallion::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 50%, rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.4s ease;
-  animation: medallion-shimmer 3s linear infinite;
 }
 
-.project-item:hover .project-medallion::after {
-  opacity: 1;
-}
-
-.project-item.active .project-medallion::after {
+.project-item:hover .project-medallion::before,
+.project-item.active .project-medallion::before {
   opacity: 1;
 }
 
@@ -1087,8 +1080,13 @@ p, span, a, button, input, textarea, label {
 .project-initial {
   font-family: var(--font-title);
   font-size: 1.8rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.4s ease;
+}
+
+.project-item:hover .project-initial,
+.project-item.active .project-initial {
+  color: rgba(255, 255, 255, 1);
 }
 
 /* Project Label */
@@ -1098,22 +1096,23 @@ p, span, a, button, input, textarea, label {
 
 /* Hover effect for project items */
 .project-item:hover .project-medallion {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.15),
-    inset 0 0 20px rgba(255, 255, 255, 0.05);
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: scale(1.05);
 }
 
 /* Active state for project items */
 .project-item.active .project-medallion {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 0 30px rgba(255, 255, 255, 0.25),
-    0 0 60px rgba(255, 255, 255, 0.15),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
-  transform: scale(1.15);
+    0 0 40px rgba(255, 255, 255, 0.1),
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 /* Project Details Panel */
@@ -1168,35 +1167,12 @@ p, span, a, button, input, textarea, label {
   transform: translateY(10px);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
   text-align: left;
-}
-
-/* Medieval corner decorations */
-.project-detail-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px 0 0 0;
-}
-
-.project-detail-content::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0 0 4px 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .project-detail-content.active {
@@ -1236,31 +1212,25 @@ p, span, a, button, input, textarea, label {
 }
 
 .tech-tag {
-  font-size: 0.75rem;
-  padding: 0.35rem 0.85rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
+  letter-spacing: 0.03em;
 }
 
 .tech-tag:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Animations */
 @keyframes ring-slow-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes medallion-shimmer {
   from {
     transform: rotate(0deg);
   }

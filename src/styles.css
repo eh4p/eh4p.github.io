@@ -85,6 +85,9 @@ p, span, a, button, input, textarea, label {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .hero::before {
@@ -428,7 +431,7 @@ p, span, a, button, input, textarea, label {
     rgba(0, 0, 0, 1) 30%,
     rgba(0, 0, 0, 1) 100%
   );
-  transition: background 0.3s ease;
+  transition: width 0.6s ease-out, background 0.3s ease;
 }
 
 .timeline-item:nth-child(odd)::after {
@@ -449,10 +452,6 @@ p, span, a, button, input, textarea, label {
     rgba(0, 0, 0, 1) 30%,
     rgba(0, 0, 0, 1) 100%
   );
-}
-
-.timeline-item.visible::after {
-  width: calc(50% - 60px);
 }
 
 .timeline-item:hover::after {

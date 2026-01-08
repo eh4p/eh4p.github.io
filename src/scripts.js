@@ -98,6 +98,7 @@
   // Handle scroll events
   const onScroll = () => {
     updateProgressLine();
+    updateConnectorLines();
     checkTimelineItems();
   };
 
@@ -114,7 +115,10 @@
   });
 
   // Also update on window resize
-  window.addEventListener('resize', updateProgressLine);
+  window.addEventListener('resize', () => {
+    updateProgressLine();
+    updateConnectorLines();
+  });
 
   // Handle dot clicks
   const timelineDots = document.querySelectorAll('.timeline-dot');

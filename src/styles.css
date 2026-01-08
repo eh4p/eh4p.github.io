@@ -924,7 +924,17 @@ p, span, a, button, input, textarea, label {
   position: absolute;
   inset: 20px;
   border-radius: 50%;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: rotate(0deg);
+}
+
+/* Ring rotation states */
+.projects-ring[data-rotation="1"] {
+  transform: rotate(-120deg);
+}
+
+.projects-ring[data-rotation="2"] {
+  transform: rotate(-240deg);
 }
 
 /* Center Decoration */
@@ -954,7 +964,7 @@ p, span, a, button, input, textarea, label {
   width: 90px;
   height: 90px;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center center;
 }
 
@@ -971,29 +981,29 @@ p, span, a, button, input, textarea, label {
   transform: translate(-50%, -50%) rotate(240deg) translateX(110px) rotate(-240deg);
 }
 
-/* Rotated positions for the ring */
+/* Counter-rotate items to keep text upright when ring rotates */
 .projects-ring[data-rotation="1"] .project-item[data-index="0"] {
-  transform: translate(-50%, -50%) rotate(-120deg) translateX(110px) rotate(120deg);
+  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(120deg);
 }
 
 .projects-ring[data-rotation="1"] .project-item[data-index="1"] {
-  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(120deg) translateX(110px) rotate(0deg);
 }
 
 .projects-ring[data-rotation="1"] .project-item[data-index="2"] {
-  transform: translate(-50%, -50%) rotate(120deg) translateX(110px) rotate(-120deg);
+  transform: translate(-50%, -50%) rotate(240deg) translateX(110px) rotate(-120deg);
 }
 
 .projects-ring[data-rotation="2"] .project-item[data-index="0"] {
-  transform: translate(-50%, -50%) rotate(-240deg) translateX(110px) rotate(240deg);
+  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(240deg);
 }
 
 .projects-ring[data-rotation="2"] .project-item[data-index="1"] {
-  transform: translate(-50%, -50%) rotate(-120deg) translateX(110px) rotate(120deg);
+  transform: translate(-50%, -50%) rotate(120deg) translateX(110px) rotate(120deg);
 }
 
 .projects-ring[data-rotation="2"] .project-item[data-index="2"] {
-  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
+  transform: translate(-50%, -50%) rotate(240deg) translateX(110px) rotate(0deg);
 }
 
 /* Project Medallion */
@@ -1267,46 +1277,43 @@ p, span, a, button, input, textarea, label {
     height: 75px;
   }
 
-  .project-item[data-index="0"],
-  .projects-ring[data-rotation="1"] .project-item[data-index="0"],
-  .projects-ring[data-rotation="2"] .project-item[data-index="0"] {
+  /* Base positions for mobile */
+  .project-item[data-index="0"] {
     transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
   }
 
-  .project-item[data-index="1"],
-  .projects-ring[data-rotation="1"] .project-item[data-index="1"],
-  .projects-ring[data-rotation="2"] .project-item[data-index="1"] {
+  .project-item[data-index="1"] {
     transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(-120deg);
   }
 
-  .project-item[data-index="2"],
-  .projects-ring[data-rotation="1"] .project-item[data-index="2"],
-  .projects-ring[data-rotation="2"] .project-item[data-index="2"] {
+  .project-item[data-index="2"] {
     transform: translate(-50%, -50%) rotate(240deg) translateX(85px) rotate(-240deg);
   }
 
+  /* Counter-rotate for rotation state 1 */
   .projects-ring[data-rotation="1"] .project-item[data-index="0"] {
-    transform: translate(-50%, -50%) rotate(-120deg) translateX(85px) rotate(120deg);
+    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(120deg);
   }
 
   .projects-ring[data-rotation="1"] .project-item[data-index="1"] {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(0deg);
   }
 
   .projects-ring[data-rotation="1"] .project-item[data-index="2"] {
-    transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(-120deg);
+    transform: translate(-50%, -50%) rotate(240deg) translateX(85px) rotate(-120deg);
   }
 
+  /* Counter-rotate for rotation state 2 */
   .projects-ring[data-rotation="2"] .project-item[data-index="0"] {
-    transform: translate(-50%, -50%) rotate(-240deg) translateX(85px) rotate(240deg);
+    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(240deg);
   }
 
   .projects-ring[data-rotation="2"] .project-item[data-index="1"] {
-    transform: translate(-50%, -50%) rotate(-120deg) translateX(85px) rotate(120deg);
+    transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(120deg);
   }
 
   .projects-ring[data-rotation="2"] .project-item[data-index="2"] {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(240deg) translateX(85px) rotate(0deg);
   }
 
   .projects-carousel-container.expanded {

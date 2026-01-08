@@ -346,3 +346,106 @@
   });
 })();
 
+// Projects Section - Circular Carousel
+(function() {
+  'use strict';
+
+  const projectsRing = document.getElementById('projectsRing');
+  const projectItems = document.querySelectorAll('.project-item');
+  const projectDetailsPanel = document.getElementById('projectDetails');
+  const projectDetailContents = document.querySelectorAll('.project-detail-content');
+  const carouselContainer = document.querySelector('.projects-carousel-container');
+
+  if (!projectsRing || !projectItems.length) return;
+
+  let currentRotation = 0; // 0, 1, or 2 (representing 0, 120, 240 degrees)
+  let activeProjectIndex = null;
+
+  // Handle project item click
+  projectItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      selectProject(index);
+    });
+
+    // Keyboard accessibility
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectProject(index);
+      }
+    });
+
+    item.setAttribute('tabindex', '0');
+  });
+
+  function selectProject(index) {
+    const targetRotation = index;
+
+    // Update current rotation
+    currentRotation = targetRotation;
+
+    // Set the rotation attribute for CSS
+    projectsRing.setAttribute('data-rotation', currentRotation.toString());
+
+    // Remove active class from all items
+    projectItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Add active class to clicked item
+    projectItems[index].classList.add('active');
+
+    // Expand the carousel to the left
+    carouselContainer.classList.add('expanded');
+
+    // Activate the details panel
+    projectDetailsPanel.classList.add('active');
+
+    // Hide all detail contents
+    projectDetailContents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    // Show the selected project details
+    const projectKey = projectItems[index].dataset.project;
+    const targetContent = document.querySelector(`.project-detail-content[data-project="${projectKey}"]`);
+    if (targetContent) {
+      targetContent.classList.add('active');
+    }
+
+    activeProjectIndex = index;
+  }
+
+  // Animate items in on scroll
+  const projectsSection = document.querySelector('.projects');
+  if (projectsSection) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.2
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate in project items with stagger
+          projectItems.forEach((item, i) => {
+            setTimeout(() => {
+              item.style.opacity = '1';
+            }, i * 150);
+          });
+
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sectionObserver.observe(projectsSection);
+  }
+
+  // Set initial state for project items
+  projectItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transition = 'opacity 0.5s ease';
+  });
+})();

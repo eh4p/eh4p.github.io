@@ -839,32 +839,488 @@ p, span, a, button, input, textarea, label {
 
 /* Projects Section */
 .projects {
-  max-width: 800px;
-  margin: 4rem auto;
+  max-width: 1200px;
+  margin: 6rem auto;
   padding: 0 2rem;
   text-align: center;
 }
 
 .projects h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .projects .subtitle {
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   opacity: 0.9;
 }
 
-.projects-list {
-  list-style: none;
-  margin-top: 2rem;
+/* Projects Showcase Container */
+.projects-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  min-height: 500px;
+  perspective: 1000px;
 }
 
-.projects-list li {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  opacity: 0.85;
+/* Carousel Container */
+.projects-carousel-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  flex-shrink: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-carousel-container.expanded {
+  transform: translateX(-80px);
+}
+
+/* Outer Decorative Ring */
+.projects-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    rgba(255, 255, 255, 0.03)
+  );
+  animation: ring-slow-rotate 30s linear infinite;
+}
+
+.projects-ring-inner {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: var(--bg-color);
+}
+
+/* Inner decorative border */
+.projects-ring-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.projects-ring-inner::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Rotating Ring with Projects */
+.projects-ring {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Center Decoration */
+.ring-center-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+}
+
+.center-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Project Items positioned in circle */
+.project-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+}
+
+/* Position projects around the circle (120 degrees apart) */
+.project-item[data-index="0"] {
+  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
+}
+
+.project-item[data-index="1"] {
+  transform: translate(-50%, -50%) rotate(120deg) translateX(110px) rotate(-120deg);
+}
+
+.project-item[data-index="2"] {
+  transform: translate(-50%, -50%) rotate(240deg) translateX(110px) rotate(-240deg);
+}
+
+/* Rotated positions for the ring */
+.projects-ring[data-rotation="1"] .project-item[data-index="0"] {
+  transform: translate(-50%, -50%) rotate(-120deg) translateX(110px) rotate(120deg);
+}
+
+.projects-ring[data-rotation="1"] .project-item[data-index="1"] {
+  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
+}
+
+.projects-ring[data-rotation="1"] .project-item[data-index="2"] {
+  transform: translate(-50%, -50%) rotate(120deg) translateX(110px) rotate(-120deg);
+}
+
+.projects-ring[data-rotation="2"] .project-item[data-index="0"] {
+  transform: translate(-50%, -50%) rotate(-240deg) translateX(110px) rotate(240deg);
+}
+
+.projects-ring[data-rotation="2"] .project-item[data-index="1"] {
+  transform: translate(-50%, -50%) rotate(-120deg) translateX(110px) rotate(120deg);
+}
+
+.projects-ring[data-rotation="2"] .project-item[data-index="2"] {
+  transform: translate(-50%, -50%) rotate(0deg) translateX(110px) rotate(0deg);
+}
+
+/* Project Medallion */
+.project-medallion {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Medieval decorative border effect */
+.project-medallion::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-medallion::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: medallion-shimmer 3s linear infinite;
+}
+
+.project-item:hover .project-medallion::after {
+  opacity: 1;
+}
+
+.project-item.active .project-medallion::after {
+  opacity: 1;
+}
+
+/* Project Initial */
+.project-initial {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Project Label */
+.project-label {
+  display: block;
+  font-family: var(--font-subtitle);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.project-item:hover .project-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.project-item.active .project-label {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Hover effect for project items */
+.project-item:hover .project-medallion {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+}
+
+/* Active state for project items */
+.project-item.active .project-medallion {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transform: scale(1.15);
+}
+
+/* Project Details Panel */
+.project-details-panel {
+  flex: 1;
+  max-width: 500px;
+  min-height: 320px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.project-details-panel.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Details Inner */
+.project-details-inner {
+  position: relative;
+  min-height: 320px;
+}
+
+/* Placeholder state */
+.project-details-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  transition: opacity 0.4s ease;
+}
+
+.project-details-panel.active .project-details-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Detail Content */
+.project-detail-content {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  text-align: left;
+}
+
+/* Medieval corner decorations */
+.project-detail-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px 0 0 0;
+}
+
+.project-detail-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0 0 4px 0;
+}
+
+.project-detail-content.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-detail-content h3 {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 0.25rem;
+}
+
+.project-type {
+  font-family: var(--font-subtitle);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+/* Tech Tags */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes ring-slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes medallion-shimmer {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .projects-showcase {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .projects-carousel-container {
+    width: 260px;
+    height: 260px;
+  }
+
+  .projects-ring {
+    inset: 10px;
+  }
+
+  .project-item {
+    width: 75px;
+    height: 75px;
+  }
+
+  .project-item[data-index="0"],
+  .projects-ring[data-rotation="1"] .project-item[data-index="0"],
+  .projects-ring[data-rotation="2"] .project-item[data-index="0"] {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
+  }
+
+  .project-item[data-index="1"],
+  .projects-ring[data-rotation="1"] .project-item[data-index="1"],
+  .projects-ring[data-rotation="2"] .project-item[data-index="1"] {
+    transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(-120deg);
+  }
+
+  .project-item[data-index="2"],
+  .projects-ring[data-rotation="1"] .project-item[data-index="2"],
+  .projects-ring[data-rotation="2"] .project-item[data-index="2"] {
+    transform: translate(-50%, -50%) rotate(240deg) translateX(85px) rotate(-240deg);
+  }
+
+  .projects-ring[data-rotation="1"] .project-item[data-index="0"] {
+    transform: translate(-50%, -50%) rotate(-120deg) translateX(85px) rotate(120deg);
+  }
+
+  .projects-ring[data-rotation="1"] .project-item[data-index="1"] {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
+  }
+
+  .projects-ring[data-rotation="1"] .project-item[data-index="2"] {
+    transform: translate(-50%, -50%) rotate(120deg) translateX(85px) rotate(-120deg);
+  }
+
+  .projects-ring[data-rotation="2"] .project-item[data-index="0"] {
+    transform: translate(-50%, -50%) rotate(-240deg) translateX(85px) rotate(240deg);
+  }
+
+  .projects-ring[data-rotation="2"] .project-item[data-index="1"] {
+    transform: translate(-50%, -50%) rotate(-120deg) translateX(85px) rotate(120deg);
+  }
+
+  .projects-ring[data-rotation="2"] .project-item[data-index="2"] {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(85px) rotate(0deg);
+  }
+
+  .projects-carousel-container.expanded {
+    transform: translateX(0) translateY(-20px);
+  }
+
+  .project-details-panel {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .project-detail-content {
+    padding: 1.5rem;
+  }
+
+  .project-detail-content h3 {
+    font-size: 1.2rem;
+  }
 }
 
 /* Social Section */

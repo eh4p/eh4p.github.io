@@ -830,6 +830,31 @@ p, span, a, button, input, textarea, label {
   height: 10px;
 }
 
+/* Current Job Badge */
+.current-badge {
+  position: absolute;
+  top: calc(50% + 15px);
+  left: 0%;
+  transform: translateX(-50%);
+  font-family: var(--font-subtitle);
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 0.2rem 0.6rem;
+  background: rgba(99, 255, 42, 0.15);
+  border: 1px solid #63ff2a;
+  border-radius: 12px;
+  color: #63ff2a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.current-badge.visible {
+  opacity: 1;
+}
+
 /* Company Details Container */
 .company-details {
   position: relative;

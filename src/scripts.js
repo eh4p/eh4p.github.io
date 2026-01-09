@@ -224,6 +224,7 @@
   const horizontalProgress = document.querySelector('.horizontal-progress');
   const lineDots = document.querySelectorAll('.line-dot');
   const lineContainer = document.querySelector('.horizontal-line-container');
+  const currentBadge = document.querySelector('.current-badge');
 
   if (!companyBtns.length || !lineContainer) return;
 
@@ -249,6 +250,16 @@
         dot.style.left = `${positions[index]}%`;
       }
     });
+
+    // Update current badge position (align with first company - TechCorp)
+    if (currentBadge && positions.length > 0) {
+      currentBadge.style.left = `${positions[0]}%`;
+    }
+  }
+
+  // Set initial badge position
+  if (currentBadge) {
+    currentBadge.style.left = '0%';
   }
 
   // Initial position calculation (delayed for layout to settle)

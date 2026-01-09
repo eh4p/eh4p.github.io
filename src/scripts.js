@@ -250,16 +250,6 @@
         dot.style.left = `${positions[index]}%`;
       }
     });
-
-    // Update current badge position (align with first company - TechCorp)
-    if (currentBadge && positions.length > 0) {
-      currentBadge.style.left = `${positions[0]}%`;
-    }
-  }
-
-  // Set initial badge position
-  if (currentBadge) {
-    currentBadge.style.left = '0%';
   }
 
   // Initial position calculation (delayed for layout to settle)
@@ -293,9 +283,18 @@
             horizontalProgress.classList.add('complete');
             movingCircle.classList.add('complete');
             activeBtn.classList.add('complete');
+            // Keep badge visible and positioned at Freelance
+            if (currentBadge) {
+              currentBadge.style.left = `${positions[activeIndex]}%`;
+              currentBadge.classList.add('visible');
+            }
           } else {
             horizontalProgress.classList.remove('complete');
             movingCircle.classList.remove('complete');
+            // Hide badge for other companies
+            if (currentBadge) {
+              currentBadge.classList.remove('visible');
+            }
           }
         }
       }
@@ -378,8 +377,17 @@
     // Add green color when last job (Freelance) is selected
     if (index === companyBtns.length - 1) {
       horizontalProgress.classList.add('complete');
+      // Show current badge when Freelance is clicked
+      if (currentBadge) {
+        currentBadge.style.left = `${positions[index]}%`;
+        currentBadge.classList.add('visible');
+      }
     } else {
       horizontalProgress.classList.remove('complete');
+      // Hide current badge when other companies are clicked
+      if (currentBadge) {
+        currentBadge.classList.remove('visible');
+      }
     }
 
     // Update line dots

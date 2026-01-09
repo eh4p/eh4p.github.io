@@ -833,7 +833,7 @@ p, span, a, button, input, textarea, label {
 /* Current Job Badge */
 .current-badge {
   position: absolute;
-  top: calc(50% + 15px);
+  top: calc(50% + 24px);
   left: 0%;
   transform: translateX(-50%);
   font-family: var(--font-subtitle);

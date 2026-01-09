@@ -261,7 +261,7 @@ p, span, a, button, input, textarea, label {
 /* Education Section */
 .education {
   max-width: 1000px;
-  margin: var(--gap-section) auto;
+  margin: var(--space-3xl) auto;
   padding: 0 var(--space-xl) var(--space-3xl);
   text-align: center;
 }
@@ -580,7 +580,7 @@ p, span, a, button, input, textarea, label {
 /* Experience Section */
 .experience {
   max-width: 1000px;
-  margin: var(--gap-section) auto;
+  margin: var(--space-3xl) auto;
   padding: 0 var(--space-xl) var(--space-3xl);
   text-align: center;
 }
@@ -1002,7 +1002,7 @@ p, span, a, button, input, textarea, label {
 /* Projects Section */
 .projects {
   max-width: 1200px;
-  margin: var(--gap-section) auto;
+  margin: var(--space-3xl) auto;
   padding: 0 var(--space-xl);
   text-align: center;
 }

@@ -244,6 +244,10 @@ p, span, a, button, input, textarea, label {
 
 .overview h2 {
   font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
 }
 
 .overview .subtitle {
@@ -268,6 +272,34 @@ p, span, a, button, input, textarea, label {
 
 .education h2 {
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.education-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.projects-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-bottom: 7px;
+}
+
+.exp-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.overview-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 8px;
 }
 
 .education > .subtitle {
@@ -587,6 +619,10 @@ p, span, a, button, input, textarea, label {
 
 .experience h2 {
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
 }
 
 .experience > .subtitle {
@@ -1009,6 +1045,10 @@ p, span, a, button, input, textarea, label {
 
 .projects h2 {
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
 }
 
 .projects .subtitle {
@@ -1522,6 +1562,7 @@ p, span, a, button, input, textarea, label {
 .social-text .resume-link {
   color: var(--text-color);
   text-decoration: underline;
+  text-decoration-color: #ffc32a;
   text-decoration-thickness: 4px;
   text-underline-offset: 6px;
   opacity: 1;

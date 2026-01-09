@@ -1230,12 +1230,16 @@ p, span, a, button, input, textarea, label {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, background 0.4s ease;
 }
 
-.project-item:hover .project-medallion::before,
+.project-item:not(.active):hover .project-medallion::before {
+  opacity: 1;
+}
+
 .project-item.active .project-medallion::before {
   opacity: 1;
+  background: linear-gradient(135deg, rgba(255, 195, 42, 0.6), transparent 50%, rgba(255, 195, 42, 0.2));
 }
 
 /* Project Initial */
@@ -1246,9 +1250,12 @@ p, span, a, button, input, textarea, label {
   transition: all 0.4s ease;
 }
 
-.project-item:hover .project-initial,
-.project-item.active .project-initial {
+.project-item:not(.active):hover .project-initial {
   color: rgba(255, 255, 255, 1);
+}
+
+.project-item.active .project-initial {
+  color: #ffc32a;
 }
 
 /* Project Label */
@@ -1257,7 +1264,7 @@ p, span, a, button, input, textarea, label {
 }
 
 /* Hover effect for project items */
-.project-item:hover .project-medallion {
+.project-item:not(.active):hover .project-medallion {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.06);
   box-shadow:
@@ -1268,12 +1275,12 @@ p, span, a, button, input, textarea, label {
 
 /* Active state for project items */
 .project-item.active .project-medallion {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffc32a;
+  background: rgba(255, 195, 42, 0.15);
   box-shadow:
-    0 0 40px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 195, 42, 0.3),
     0 10px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 195, 42, 0.3);
   transform: scale(1.1);
 }
 

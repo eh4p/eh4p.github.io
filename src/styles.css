@@ -648,6 +648,11 @@ p, span, a, button, input, textarea, label {
   color: #fff;
 }
 
+/* Green color for company name when Freelance is selected */
+.company-btn.active.complete .company-name {
+  color: #63ff2a;
+}
+
 .company-btn.active .company-period {
   opacity: 0.8;
 }
@@ -702,7 +707,9 @@ p, span, a, button, input, textarea, label {
     rgba(245, 245, 247, 1)
   );
   border-radius: 2px;
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.5s ease,
+              box-shadow 0.5s ease;
   box-shadow:
     0 0 8px rgba(245, 245, 247, 0.4),
     0 0 16px rgba(245, 245, 247, 0.2);
@@ -720,6 +727,19 @@ p, span, a, button, input, textarea, label {
     rgba(0, 0, 0, 1) 85%,
     transparent 100%
   );
+}
+
+/* Green color when last job (Freelance) is selected */
+.horizontal-progress.complete {
+  background: linear-gradient(
+    90deg,
+    rgba(99, 255, 42, 0.4),
+    rgba(99, 255, 42, 0.8),
+    #63ff2a
+  );
+  box-shadow:
+    0 0 8px rgba(99, 255, 42, 0.4),
+    0 0 16px rgba(99, 255, 42, 0.2);
 }
 
 /* Moving circle */
@@ -754,6 +774,15 @@ p, span, a, button, input, textarea, label {
   animation: circle-pulse 2s ease-in-out infinite;
 }
 
+/* Green color for circle when Freelance is selected */
+.moving-circle.active.complete {
+  background: #63ff2a;
+  box-shadow:
+    0 0 0 4px rgba(99, 255, 42, 0.4),
+    0 0 20px rgba(99, 255, 42, 0.6);
+  animation: circle-pulse-green 2s ease-in-out infinite;
+}
+
 @keyframes circle-pulse {
   0%, 100% {
     box-shadow:
@@ -764,6 +793,19 @@ p, span, a, button, input, textarea, label {
     box-shadow:
       0 0 0 6px rgba(245, 245, 247, 0.2),
       0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes circle-pulse-green {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(99, 255, 42, 0.4),
+      0 0 20px rgba(99, 255, 42, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(99, 255, 42, 0.2),
+      0 0 30px rgba(99, 255, 42, 0.4);
   }
 }
 

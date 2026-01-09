@@ -276,6 +276,16 @@
           const progressWidth = activeIndex === companyBtns.length - 1 ? 100 : targetPosition;
           movingCircle.style.left = `${targetPosition}%`;
           horizontalProgress.style.width = `${progressWidth}%`;
+
+          // Maintain green color for Freelance on resize
+          if (activeIndex === companyBtns.length - 1) {
+            horizontalProgress.classList.add('complete');
+            movingCircle.classList.add('complete');
+            activeBtn.classList.add('complete');
+          } else {
+            horizontalProgress.classList.remove('complete');
+            movingCircle.classList.remove('complete');
+          }
         }
       }
     }, 150);
@@ -309,6 +319,12 @@
     // Add active class to clicked button
     clickedBtn.classList.add('active');
 
+    // Add complete class for Freelance (green color)
+    companyBtns.forEach(btn => btn.classList.remove('complete'));
+    if (index === companyBtns.length - 1) {
+      clickedBtn.classList.add('complete');
+    }
+
     // Show corresponding panel
     const targetPanel = document.querySelector(`.company-panel[data-company="${companyKey}"]`);
     if (targetPanel) {
@@ -337,9 +353,23 @@
     movingCircle.classList.add('visible');
     movingCircle.classList.add('active');
 
+    // Add complete class to circle for Freelance (green color)
+    if (index === companyBtns.length - 1) {
+      movingCircle.classList.add('complete');
+    } else {
+      movingCircle.classList.remove('complete');
+    }
+
     // Update progress line (fill up to selected position, or 100% for last item)
     const progressWidth = index === companyBtns.length - 1 ? 100 : targetPosition;
     horizontalProgress.style.width = `${progressWidth}%`;
+
+    // Add green color when last job (Freelance) is selected
+    if (index === companyBtns.length - 1) {
+      horizontalProgress.classList.add('complete');
+    } else {
+      horizontalProgress.classList.remove('complete');
+    }
 
     // Update line dots
     lineDots.forEach((dot, dotIndex) => {

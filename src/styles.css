@@ -2054,18 +2054,11 @@ p, span, a, button, input, textarea, label {
     overflow-x: auto;
     overflow-y: visible;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-md);
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     padding: 0 var(--space-md);
     min-height: 380px;
-  }
-
-  /* Add padding compensation at edges to prevent card from being cut off */
-  .project-details-inner::before,
-  .project-details-inner::after {
-    content: '';
-    flex-shrink: 0;
-    width: 1px;
   }
 
   /* Hide scrollbar */

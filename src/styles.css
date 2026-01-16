@@ -2050,14 +2050,22 @@ p, span, a, button, input, textarea, label {
     order: 1;
     display: flex;
     align-items: stretch;
-    gap: var(--space-md);
+    gap: 0;
     overflow-x: auto;
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: var(--space-sm);
+    padding: 0 var(--space-md);
     min-height: 380px;
+  }
+
+  /* Add padding compensation at edges to prevent card from being cut off */
+  .project-details-inner::before,
+  .project-details-inner::after {
+    content: '';
+    flex-shrink: 0;
+    width: 1px;
   }
 
   /* Hide scrollbar */
@@ -2074,17 +2082,17 @@ p, span, a, button, input, textarea, label {
     display: none;
   }
 
-  /* Project cards in carousel */
+  /* Project cards in carousel - full width */
   .project-detail-content {
     position: relative;
     flex-shrink: 0;
-    width: calc(100% - 3rem);
-    max-width: 320px;
+    width: 100%;
+    max-width: 100%;
     opacity: 1;
     visibility: visible;
     transform: none;
     padding: 1.5rem;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     display: block !important;
     height: fit-content;
   }
@@ -2201,7 +2209,7 @@ p, span, a, button, input, textarea, label {
 
 @media (max-width: 480px) {
   .project-detail-content {
-    width: calc(100% - 2rem);
+    width: 100%;
     max-width: 100%;
     padding: 1.25rem;
   }

@@ -262,6 +262,87 @@ p, span, a, button, input, textarea, label {
   opacity: 0.85;
 }
 
+/* Overview Section - Responsive */
+@media (max-width: 1024px) {
+  .overview {
+    max-width: 700px;
+    padding: 0 var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .overview {
+    max-width: 100%;
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-md);
+  }
+
+  .overview h2 {
+    font-size: 1.15rem;
+    gap: var(--space-xs);
+  }
+
+  .overview .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .overview p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .overview-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview {
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-sm);
+  }
+
+  .overview h2 {
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .overview .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .overview p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .overview-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .overview {
+    padding: 0 var(--space-xs);
+  }
+
+  .overview h2 {
+    font-size: 0.95rem;
+  }
+
+  .overview .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .overview p {
+    font-size: 0.85rem;
+  }
+}
+
 /* Education Section */
 .education {
   max-width: 1000px;

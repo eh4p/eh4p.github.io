@@ -2373,8 +2373,8 @@ p, span, a, button, input, textarea, label {
   }
 }
 
-/* Mobile Carousel Layout - for small screens */
-@media (max-width: 768px) {
+/* Mobile Carousel Layout - for small and medium screens (tablets) */
+@media (max-width: 1024px) {
   .projects-showcase {
     display: block;
     min-height: auto;

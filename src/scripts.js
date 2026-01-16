@@ -848,9 +848,9 @@
     }, 100);
   });
 
-  // Initialize first project as active on mobile
+  // Initialize first project as active on mobile and tablets
   function initMobileCarousel() {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       // Select first project on mobile
       selectProject(0);
     } else {

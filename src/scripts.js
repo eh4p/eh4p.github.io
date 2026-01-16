@@ -529,6 +529,9 @@
     }
 
     activeProjectIndex = index;
+
+    // Update mobile carousel state
+    updateMobileCarousel(index);
   }
 
   // Animate items in on scroll
@@ -562,5 +565,122 @@
   projectItems.forEach(item => {
     item.style.opacity = '0';
     item.style.transition = 'opacity 0.5s ease';
+  });
+
+  // ============================================
+  // Mobile Carousel Functionality
+  // ============================================
+  const carouselPrev = document.getElementById('carouselPrev');
+  const carouselNext = document.getElementById('carouselNext');
+  const carouselDots = document.getElementById('carouselDots');
+
+  if (carouselDots && projectItems.length > 0) {
+    // Create dots for each project
+    projectItems.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('data-index', index);
+      dot.addEventListener('click', () => {
+        scrollToProject(index);
+      });
+      carouselDots.appendChild(dot);
+    });
+  }
+
+  // Update mobile carousel state (dots and button states)
+  function updateMobileCarousel(index) {
+    const dots = carouselDots?.querySelectorAll('.carousel-dot');
+    if (dots) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    // Update button states
+    if (carouselPrev) {
+      carouselPrev.disabled = index === 0;
+    }
+    if (carouselNext) {
+      carouselNext.disabled = index === projectItems.length - 1;
+    }
+  }
+
+  // Scroll to a specific project
+  function scrollToProject(index) {
+    if (index < 0 || index >= projectItems.length) return;
+
+    const targetItem = projectItems[index];
+
+    // Scroll the carousel to the target item
+    targetItem.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
+
+    // Update active state
+    selectProject(index);
+  }
+
+  // Previous button click
+  if (carouselPrev) {
+    carouselPrev.addEventListener('click', () => {
+      const newIndex = Math.max(0, (activeProjectIndex ?? 0) - 1);
+      scrollToProject(newIndex);
+    });
+  }
+
+  // Next button click
+  if (carouselNext) {
+    carouselNext.addEventListener('click', () => {
+      const newIndex = Math.min(projectItems.length - 1, (activeProjectIndex ?? 0) + 1);
+      scrollToProject(newIndex);
+    });
+  }
+
+  // Handle scroll-based position detection for mobile
+  let scrollTimeout;
+  projectsRing?.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // Find which item is most visible
+      const ringRect = projectsRing.getBoundingClientRect();
+      const ringCenter = ringRect.left + ringRect.width / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      projectItems.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+        const distance = Math.abs(itemCenter - ringCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      // Update if a different item is now most visible
+      if (closestIndex !== activeProjectIndex) {
+        selectProject(closestIndex);
+      }
+    }, 100);
+  });
+
+  // Initialize first project as active on mobile
+  function initMobileCarousel() {
+    if (window.innerWidth <= 768) {
+      // Select first project on mobile
+      selectProject(0);
+    }
+  }
+
+  // Initialize on load and resize
+  initMobileCarousel();
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(initMobileCarousel, 150);
   });
 })();

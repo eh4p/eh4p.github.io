@@ -1902,6 +1902,11 @@ p, span, a, button, input, textarea, label {
   }
 }
 
+/* Hide mobile navigation on desktop */
+.projects-carousel-nav {
+  display: none;
+}
+
 /* Subtle pulse animation for the outer ring glow */
 .projects-ring-outer::before {
   animation: glass-pulse 4s ease-in-out infinite;
@@ -2009,6 +2014,255 @@ p, span, a, button, input, textarea, label {
 
   .project-detail-content h3 {
     font-size: 1.2rem;
+  }
+}
+
+/* Mobile Carousel Layout - for small screens */
+@media (max-width: 768px) {
+  .projects-showcase {
+    display: block;
+    min-height: auto;
+  }
+
+  /* Hide the circular ring elements */
+  .projects-ring-outer,
+  .projects-ring-inner,
+  .ring-center-decoration {
+    display: none !important;
+  }
+
+  /* Transform the carousel container into a horizontal card slider */
+  .projects-carousel-container {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Transform the ring into a horizontal scroll container */
+  .projects-ring {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    inset: 0;
+    transform: none !important;
+  }
+
+  /* Hide scrollbar */
+  .projects-ring::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-ring {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Transform project items into cards */
+  .project-item {
+    position: relative;
+    top: auto;
+    left: auto;
+    flex-shrink: 0;
+    width: calc(100% - 3rem);
+    max-width: 280px;
+    height: auto;
+    transform: none !important;
+    scroll-snap-align: center;
+    padding: 0 var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  /* Project medallion becomes a card */
+  .project-medallion {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--space-md);
+  }
+
+  /* Show the project label on mobile */
+  .project-label {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--space-sm);
+    text-align: center;
+  }
+
+  .project-item.active .project-label {
+    color: #ffc32a;
+  }
+
+  /* Navigation buttons container */
+  .projects-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    padding: var(--space-md) 0;
+  }
+
+  .carousel-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-nav-btn:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+  }
+
+  .carousel-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  .carousel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .carousel-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Carousel dots indicator */
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: rgba(255, 195, 42, 0.8);
+  }
+
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .carousel-dot.active:hover {
+    background: rgba(255, 195, 42, 1);
+  }
+
+  /* Details panel - always visible below carousel on mobile */
+  .project-details-panel {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    margin-top: var(--space-lg);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .project-details-inner {
+    min-height: auto;
+  }
+
+  .project-details-placeholder {
+    display: none;
+  }
+
+  /* Always show first project details on mobile */
+  .project-detail-content {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 1.5rem;
+  }
+
+  .project-detail-content:not(.active) {
+    display: none;
+  }
+
+  .project-detail-content.active {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-item {
+    width: calc(100% - 2rem);
+    max-width: 260px;
+  }
+
+  .project-medallion {
+    width: 90px;
+    height: 90px;
+  }
+
+  .project-label {
+    font-size: 0.85rem;
+  }
+
+  .project-detail-content {
+    padding: 1.25rem;
+  }
+
+  .project-detail-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .carousel-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-nav-btn svg {
+    width: 18px;
+    height: 18px;
   }
 }
 

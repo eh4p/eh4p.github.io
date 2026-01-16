@@ -73,48 +73,65 @@
 
       <!-- Company detail panels -->
       <div class="company-details">
-        <div class="company-panel" data-company="techcorp">
-          <h3>Senior Software Engineer</h3>
-          <p class="company-role">TechCorp • Full-time</p>
-          <p class="company-duration">January 2023 - Present • 2 yrs</p>
-          <ul class="company-achievements">
-            <li>Led development of microservices architecture serving 1M+ daily users</li>
-            <li>Reduced API response time by 60% through optimization strategies</li>
-            <li>Mentored team of 5 junior developers</li>
-          </ul>
+        <div class="company-panels-wrapper">
+          <div class="company-panel" data-company="techcorp">
+            <h3>Senior Software Engineer</h3>
+            <p class="company-role">TechCorp • Full-time</p>
+            <p class="company-duration">January 2023 - Present • 2 yrs</p>
+            <ul class="company-achievements">
+              <li>Led development of microservices architecture serving 1M+ daily users</li>
+              <li>Reduced API response time by 60% through optimization strategies</li>
+              <li>Mentored team of 5 junior developers</li>
+            </ul>
+          </div>
+
+          <div class="company-panel" data-company="innovate">
+            <h3>Software Engineer</h3>
+            <p class="company-role">Innovate Labs • Full-time</p>
+            <p class="company-duration">March 2022 - December 2022 • 10 mos</p>
+            <ul class="company-achievements">
+              <li>Built RESTful APIs for e-commerce platform</li>
+              <li>Implemented CI/CD pipelines reducing deployment time by 40%</li>
+              <li>Collaborated with cross-functional teams on product features</li>
+            </ul>
+          </div>
+
+          <div class="company-panel" data-company="startup">
+            <h3>Junior Developer</h3>
+            <p class="company-role">StartUp Co • Full-time</p>
+            <p class="company-duration">June 2021 - February 2022 • 9 mos</p>
+            <ul class="company-achievements">
+              <li>Developed front-end components using React</li>
+              <li>Integrated third-party APIs and payment gateways</li>
+              <li>Participated in agile development processes</li>
+            </ul>
+          </div>
+
+          <div class="company-panel" data-company="freelance">
+            <h3>Freelance Developer</h3>
+            <p class="company-role">Self-employed • Remote</p>
+            <p class="company-duration">January 2020 - May 2021 • 1 yr 5 mos</p>
+            <ul class="company-achievements">
+              <li>Delivered 15+ web projects for diverse clients</li>
+              <li>Specialized in WordPress and custom CMS solutions</li>
+              <li>Maintained 100% client satisfaction rate</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="company-panel" data-company="innovate">
-          <h3>Software Engineer</h3>
-          <p class="company-role">Innovate Labs • Full-time</p>
-          <p class="company-duration">March 2022 - December 2022 • 10 mos</p>
-          <ul class="company-achievements">
-            <li>Built RESTful APIs for e-commerce platform</li>
-            <li>Implemented CI/CD pipelines reducing deployment time by 40%</li>
-            <li>Collaborated with cross-functional teams on product features</li>
-          </ul>
-        </div>
-
-        <div class="company-panel" data-company="startup">
-          <h3>Junior Developer</h3>
-          <p class="company-role">StartUp Co • Full-time</p>
-          <p class="company-duration">June 2021 - February 2022 • 9 mos</p>
-          <ul class="company-achievements">
-            <li>Developed front-end components using React</li>
-            <li>Integrated third-party APIs and payment gateways</li>
-            <li>Participated in agile development processes</li>
-          </ul>
-        </div>
-
-        <div class="company-panel" data-company="freelance">
-          <h3>Freelance Developer</h3>
-          <p class="company-role">Self-employed • Remote</p>
-          <p class="company-duration">January 2020 - May 2021 • 1 yr 5 mos</p>
-          <ul class="company-achievements">
-            <li>Delivered 15+ web projects for diverse clients</li>
-            <li>Specialized in WordPress and custom CMS solutions</li>
-            <li>Maintained 100% client satisfaction rate</li>
-          </ul>
+        <!-- Mobile Navigation Arrows -->
+        <div class="experience-carousel-nav">
+          <button class="carousel-nav-btn carousel-nav-prev" id="expCarouselPrev" aria-label="Previous company">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div class="carousel-dots" id="expCarouselDots"></div>
+          <button class="carousel-nav-btn carousel-nav-next" id="expCarouselNext" aria-label="Next company">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
     </div>

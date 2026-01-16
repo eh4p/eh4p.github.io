@@ -225,13 +225,15 @@
   const lineDots = document.querySelectorAll('.line-dot');
   const lineContainer = document.querySelector('.horizontal-line-container');
   const currentBadge = document.querySelector('.current-badge');
+  const companyPanelsWrapper = document.querySelector('.company-panels-wrapper');
 
-  if (!companyBtns.length || !lineContainer) return;
+  if (!companyBtns.length) return;
 
-  // Calculate positions dynamically based on button positions
+  let activeCompanyIndex = null;
   let positions = [];
 
   function updatePositions() {
+    if (!lineContainer) return;
     positions = [];
     const containerRect = lineContainer.getBoundingClientRect();
     const containerLeft = containerRect.left;
@@ -253,13 +255,15 @@
   }
 
   // Initial position calculation (delayed for layout to settle)
-  setTimeout(updatePositions, 100);
+  if (lineContainer) {
+    setTimeout(updatePositions, 100);
 
-  // Also recalculate after fonts load
-  if (document.fonts) {
-    document.fonts.ready.then(() => {
-      setTimeout(updatePositions, 50);
-    });
+    // Also recalculate after fonts load
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        setTimeout(updatePositions, 50);
+      });
+    }
   }
 
   // Recalculate on window resize
@@ -267,10 +271,10 @@
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      updatePositions();
+      if (lineContainer) updatePositions();
       // Update active position if any company is selected
       const activeBtn = document.querySelector('.company-btn.active');
-      if (activeBtn) {
+      if (activeBtn && lineContainer) {
         const activeIndex = Array.from(companyBtns).indexOf(activeBtn);
         if (activeIndex >= 0) {
           const targetPosition = positions[activeIndex];
@@ -357,47 +361,54 @@
       }
     });
 
-    // Update moving circle position
-    const targetPosition = positions[index];
-    movingCircle.style.left = `${targetPosition}%`;
-    movingCircle.classList.add('visible');
-    movingCircle.classList.add('active');
+    if (lineContainer) {
+      // Update moving circle position
+      const targetPosition = positions[index];
+      movingCircle.style.left = `${targetPosition}%`;
+      movingCircle.classList.add('visible');
+      movingCircle.classList.add('active');
 
-    // Add complete class to circle for Freelance (green color)
-    if (index === companyBtns.length - 1) {
-      movingCircle.classList.add('complete');
-    } else {
-      movingCircle.classList.remove('complete');
-    }
-
-    // Update progress line (fill up to selected position, or 100% for last item)
-    const progressWidth = index === companyBtns.length - 1 ? 100 : targetPosition;
-    horizontalProgress.style.width = `${progressWidth}%`;
-
-    // Add green color when last job (Freelance) is selected
-    if (index === companyBtns.length - 1) {
-      horizontalProgress.classList.add('complete');
-      // Show current badge when Freelance is clicked
-      if (currentBadge) {
-        currentBadge.style.left = `${positions[index]}%`;
-        currentBadge.classList.add('visible');
-      }
-    } else {
-      horizontalProgress.classList.remove('complete');
-      // Hide current badge when other companies are clicked
-      if (currentBadge) {
-        currentBadge.classList.remove('visible');
-      }
-    }
-
-    // Update line dots
-    lineDots.forEach((dot, dotIndex) => {
-      if (dotIndex <= index) {
-        dot.classList.add('active');
+      // Add complete class to circle for Freelance (green color)
+      if (index === companyBtns.length - 1) {
+        movingCircle.classList.add('complete');
       } else {
-        dot.classList.remove('active');
+        movingCircle.classList.remove('complete');
       }
-    });
+
+      // Update progress line (fill up to selected position, or 100% for last item)
+      const progressWidth = index === companyBtns.length - 1 ? 100 : targetPosition;
+      horizontalProgress.style.width = `${progressWidth}%`;
+
+      // Add green color when last job (Freelance) is selected
+      if (index === companyBtns.length - 1) {
+        horizontalProgress.classList.add('complete');
+        // Show current badge when Freelance is clicked
+        if (currentBadge) {
+          currentBadge.style.left = `${positions[index]}%`;
+          currentBadge.classList.add('visible');
+        }
+      } else {
+        horizontalProgress.classList.remove('complete');
+        // Hide current badge when other companies are clicked
+        if (currentBadge) {
+          currentBadge.classList.remove('visible');
+        }
+      }
+
+      // Update line dots
+      lineDots.forEach((dot, dotIndex) => {
+        if (dotIndex <= index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    activeCompanyIndex = index;
+
+    // Update mobile carousel state
+    updateExpMobileCarousel(index);
   }
 
   // Handle clicks on line dots
@@ -451,6 +462,149 @@
     btn.style.opacity = '0';
     btn.style.transform = 'translateY(10px)';
     btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  });
+
+  // ============================================
+  // Mobile Carousel Functionality
+  // ============================================
+  const expCarouselPrev = document.getElementById('expCarouselPrev');
+  const expCarouselNext = document.getElementById('expCarouselNext');
+  const expCarouselDots = document.getElementById('expCarouselDots');
+
+  if (expCarouselDots && companyPanels.length > 0) {
+    // Create dots for each company
+    companyPanels.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('data-index', index);
+      dot.addEventListener('click', () => {
+        scrollToCompany(index);
+      });
+      expCarouselDots.appendChild(dot);
+    });
+  }
+
+  // Update mobile carousel state (dots and button states)
+  function updateExpMobileCarousel(index) {
+    const dots = expCarouselDots?.querySelectorAll('.carousel-dot');
+    if (dots) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    // Update button states
+    if (expCarouselPrev) {
+      expCarouselPrev.disabled = index === 0;
+    }
+    if (expCarouselNext) {
+      expCarouselNext.disabled = index === companyPanels.length - 1;
+    }
+  }
+
+  // Scroll to a specific company (mobile)
+  function scrollToCompany(index) {
+    if (index < 0 || index >= companyPanels.length) return;
+
+    const targetPanel = companyPanels[index];
+
+    // Scroll the carousel to the target panel
+    targetPanel.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
+
+    // Update active state
+    selectCompany(index);
+  }
+
+  // Previous button click
+  if (expCarouselPrev) {
+    expCarouselPrev.addEventListener('click', () => {
+      const newIndex = Math.max(0, (activeCompanyIndex ?? 0) - 1);
+      scrollToCompany(newIndex);
+    });
+  }
+
+  // Next button click
+  if (expCarouselNext) {
+    expCarouselNext.addEventListener('click', () => {
+      const newIndex = Math.min(companyPanels.length - 1, (activeCompanyIndex ?? 0) + 1);
+      scrollToCompany(newIndex);
+    });
+  }
+
+  // Handle scroll-based position detection for mobile
+  let scrollTimeout;
+  companyPanelsWrapper?.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // Find which panel is most visible
+      const wrapperRect = companyPanelsWrapper.getBoundingClientRect();
+      const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      companyPanels.forEach((panel, index) => {
+        const panelRect = panel.getBoundingClientRect();
+        const panelCenter = panelRect.left + panelRect.width / 2;
+        const distance = Math.abs(panelCenter - wrapperCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      // Update if a different panel is now most visible
+      if (closestIndex !== activeCompanyIndex) {
+        const clickedBtn = companyBtns[closestIndex];
+        const companyKey = clickedBtn.dataset.company;
+
+        // Remove active class from all buttons and panels
+        companyBtns.forEach(btn => btn.classList.remove('active'));
+        companyPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active class to clicked button
+        clickedBtn.classList.add('active');
+
+        // Show corresponding panel
+        const targetPanel = document.querySelector(`.company-panel[data-company="${companyKey}"]`);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+
+        activeCompanyIndex = closestIndex;
+        updateExpMobileCarousel(closestIndex);
+      }
+    }, 100);
+  });
+
+  // Initialize first company as active on mobile
+  function initExpMobileCarousel() {
+    if (window.innerWidth <= 768) {
+      // Select first company on mobile
+      selectCompany(0);
+    } else {
+      // On desktop, reset to no selection
+      activeCompanyIndex = null;
+      companyBtns.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      companyPanels.forEach(panel => {
+        panel.classList.remove('active');
+      });
+    }
+  }
+
+  // Initialize on load and resize
+  initExpMobileCarousel();
+  let expResizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(expResizeTimeout);
+    expResizeTimeout = setTimeout(initExpMobileCarousel, 150);
   });
 })();
 

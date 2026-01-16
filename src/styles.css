@@ -1188,48 +1188,228 @@ p, span, a, button, input, textarea, label {
   opacity: 0.4;
 }
 
+/* Hide mobile navigation on desktop */
+.experience-carousel-nav {
+  display: none;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-  .company-nav {
-    gap: var(--space-md);
+  /* Hide the company nav buttons and horizontal line */
+  .company-nav,
+  .horizontal-line-container {
+    display: none !important;
   }
 
-  .company-btn {
-    padding: var(--space-sm) var(--space-md);
+  .company-details::before {
+    display: none;
   }
 
-  .company-name {
-    font-size: 0.85rem;
+  /* Transform company details into a horizontal scroll container */
+  .company-details {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  .company-period {
-    font-size: 0.65rem;
+  /* Create scrollable carousel container - the wrapper */
+  .company-panels-wrapper {
+    order: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-md);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--space-md);
+    min-height: 280px;
   }
 
-  .line-dot {
-    width: 6px;
-    height: 6px;
+  /* Hide scrollbar */
+  .company-panels-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
-  .moving-circle {
-    width: 12px;
-    height: 12px;
+  .company-panels-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Company panels as cards in carousel - full width */
+  .company-panel {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    padding: 1.5rem;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    text-align: left;
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 10px 25px rgba(0, 0, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    display: block !important;
+    height: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  /* Highlight active card */
+  .company-panel.active {
+    border-color: rgba(255, 195, 42, 0.4);
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 10px 25px rgba(0, 0, 0, 0.2),
+      0 0 30px rgba(255, 195, 42, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .company-panel:not(.active) {
+    opacity: 0.5;
+    transform: scale(0.95);
   }
 
   .company-panel h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-color);
   }
 
   .company-role {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .company-duration {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-md);
   }
 
   .company-achievements {
-    padding: 0 var(--space-md);
+    padding: 0;
+    max-width: 100%;
   }
 
   .company-achievements li {
     font-size: 0.9rem;
+    opacity: 0.85;
+    transform: translateX(0);
+  }
+
+  /* Navigation buttons container */
+  .experience-carousel-nav {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .experience-carousel-nav .carousel-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .experience-carousel-nav .carousel-nav-btn:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+  }
+
+  .experience-carousel-nav .carousel-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  .experience-carousel-nav .carousel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .experience-carousel-nav .carousel-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Carousel dots indicator */
+  .experience-carousel-nav .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .experience-carousel-nav .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .experience-carousel-nav .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: rgba(255, 195, 42, 0.8);
+  }
+
+  .experience-carousel-nav .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .experience-carousel-nav .carousel-dot.active:hover {
+    background: rgba(255, 195, 42, 1);
   }
 }
 

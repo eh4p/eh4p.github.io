@@ -867,11 +867,6 @@ p, span, a, button, input, textarea, label {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     text-align: left;
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.4),
-      0 10px 25px rgba(0, 0, 0, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     scroll-snap-align: start;
     display: block !important;
     height: fit-content;
@@ -881,12 +876,6 @@ p, span, a, button, input, textarea, label {
   /* Highlight active card */
   .timeline-item.active {
     border-color: rgba(255, 195, 42, 0.4);
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.4),
-      0 10px 25px rgba(0, 0, 0, 0.2),
-      0 0 30px rgba(255, 195, 42, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .timeline-item:not(.active) {
@@ -1468,11 +1457,6 @@ p, span, a, button, input, textarea, label {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     text-align: left;
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.4),
-      0 10px 25px rgba(0, 0, 0, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     scroll-snap-align: start;
     display: block !important;
     height: fit-content;
@@ -1482,12 +1466,6 @@ p, span, a, button, input, textarea, label {
   /* Highlight active card */
   .company-panel.active {
     border-color: rgba(255, 195, 42, 0.4);
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.4),
-      0 10px 25px rgba(0, 0, 0, 0.2),
-      0 0 30px rgba(255, 195, 42, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .company-panel:not(.active) {
@@ -2466,17 +2444,13 @@ p, span, a, button, input, textarea, label {
     scroll-snap-align: start;
     display: block !important;
     height: fit-content;
+    box-shadow: none;
   }
 
   /* Highlight active card */
   .project-detail-content.active {
     border-color: rgba(255, 195, 42, 0.4);
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.4),
-      0 10px 25px rgba(0, 0, 0, 0.2),
-      0 0 30px rgba(255, 195, 42, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
   }
 
   .project-detail-content:not(.active) {

@@ -873,3 +873,159 @@
     resizeTimeout = setTimeout(initMobileCarousel, 150);
   });
 })();
+
+// Education Section - Mobile Carousel Navigation
+(function() {
+  'use strict';
+
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const eduItemsWrapper = document.querySelector('.education-items-wrapper');
+  const eduCarouselPrev = document.getElementById('eduCarouselPrev');
+  const eduCarouselNext = document.getElementById('eduCarouselNext');
+  const eduCarouselDots = document.getElementById('eduCarouselDots');
+
+  if (!timelineItems.length) return;
+
+  let activeEducationIndex = null;
+
+  // Create dots for each education item
+  if (eduCarouselDots && timelineItems.length > 0) {
+    timelineItems.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('data-index', index);
+      dot.addEventListener('click', () => {
+        scrollToEducation(index);
+      });
+      eduCarouselDots.appendChild(dot);
+    });
+  }
+
+  // Function to select an education item
+  function selectEducation(index) {
+    const targetItem = timelineItems[index];
+
+    // Remove active class from all items
+    timelineItems.forEach(item => item.classList.remove('active'));
+
+    // Add active class to selected item
+    targetItem.classList.add('active');
+
+    activeEducationIndex = index;
+
+    // Update mobile carousel state
+    updateEduMobileCarousel(index);
+  }
+
+  // Update mobile carousel state (dots and button states)
+  function updateEduMobileCarousel(index) {
+    const dots = eduCarouselDots?.querySelectorAll('.carousel-dot');
+    if (dots) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    // Update button states
+    if (eduCarouselPrev) {
+      eduCarouselPrev.disabled = index === 0;
+    }
+    if (eduCarouselNext) {
+      eduCarouselNext.disabled = index === timelineItems.length - 1;
+    }
+  }
+
+  // Scroll to a specific education item (mobile)
+  function scrollToEducation(index) {
+    if (index < 0 || index >= timelineItems.length) return;
+
+    const targetItem = timelineItems[index];
+
+    // Scroll the carousel to the target item
+    targetItem.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
+
+    // Update active state
+    selectEducation(index);
+  }
+
+  // Previous button click
+  if (eduCarouselPrev) {
+    eduCarouselPrev.addEventListener('click', () => {
+      const newIndex = Math.max(0, (activeEducationIndex ?? 0) - 1);
+      scrollToEducation(newIndex);
+    });
+  }
+
+  // Next button click
+  if (eduCarouselNext) {
+    eduCarouselNext.addEventListener('click', () => {
+      const newIndex = Math.min(timelineItems.length - 1, (activeEducationIndex ?? 0) + 1);
+      scrollToEducation(newIndex);
+    });
+  }
+
+  // Handle scroll-based position detection for mobile
+  let scrollTimeout;
+  eduItemsWrapper?.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // Find which item is most visible
+      const wrapperRect = eduItemsWrapper.getBoundingClientRect();
+      const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      timelineItems.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + itemRect.width / 2;
+        const distance = Math.abs(itemCenter - wrapperCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      // Update if a different item is now most visible
+      if (closestIndex !== activeEducationIndex) {
+        const targetItem = timelineItems[closestIndex];
+
+        // Remove active class from all items
+        timelineItems.forEach(item => item.classList.remove('active'));
+
+        // Add active class to closest item
+        targetItem.classList.add('active');
+
+        activeEducationIndex = closestIndex;
+        updateEduMobileCarousel(closestIndex);
+      }
+    }, 100);
+  });
+
+  // Initialize first education item as active on mobile
+  function initEduMobileCarousel() {
+    if (window.innerWidth <= 768) {
+      // Select first education item on mobile
+      selectEducation(0);
+    } else {
+      // On desktop, reset to no selection
+      activeEducationIndex = null;
+      timelineItems.forEach(item => {
+        item.classList.remove('active');
+      });
+    }
+  }
+
+  // Initialize on load and resize
+  initEduMobileCarousel();
+  let eduResizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(eduResizeTimeout);
+    eduResizeTimeout = setTimeout(initEduMobileCarousel, 150);
+  });
+})();

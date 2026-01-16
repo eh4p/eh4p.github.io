@@ -778,32 +778,230 @@ p, span, a, button, input, textarea, label {
   background: rgba(245, 245, 247, 0.3);
 }
 
+/* Hide education carousel navigation on desktop (shown in mobile media query) */
+.education-carousel-nav {
+  display: none;
+}
+
+/* Education details container on desktop */
+.education-details {
+  position: relative;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-progress-line {
-    left: 20px;
+  /* Hide the vertical timeline elements on mobile */
+  .timeline::before,
+  .timeline-progress-line,
+  .timeline-item::after {
+    display: none;
   }
 
   .timeline-dot {
-    left: 20px;
+    display: none;
   }
 
+  /* Education details container */
+  .education-details {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Create scrollable carousel container */
+  .education-items-wrapper {
+    order: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-md);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--space-md);
+    min-height: 280px;
+  }
+
+  /* Hide scrollbar */
+  .education-items-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .education-items-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Timeline items as carousel cards - full width */
+  .timeline-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    margin-bottom: 0;
+    padding: 1.5rem;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    text-align: left;
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 10px 25px rgba(0, 0, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    display: block !important;
+    height: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  /* Highlight active card */
+  .timeline-item.active {
+    border-color: rgba(255, 195, 42, 0.4);
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 10px 25px rgba(0, 0, 0, 0.2),
+      0 0 30px rgba(255, 195, 42, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .timeline-item:not(.active) {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+  /* Timeline content within cards */
   .timeline-content {
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
   }
 
-  .timeline-item::after {
-    left: 36px !important;
-    width: 24px !important;
+  .timeline-content::before {
+    display: none;
   }
 
-  .timeline-item.visible::after {
-    width: 24px !important;
+  .timeline-content:hover {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Education carousel navigation on mobile */
+  .education-carousel-nav {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .education-carousel-nav .carousel-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .education-carousel-nav .carousel-nav-btn:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+  }
+
+  .education-carousel-nav .carousel-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  .education-carousel-nav .carousel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .education-carousel-nav .carousel-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .education-carousel-nav .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .education-carousel-nav .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .education-carousel-nav .carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: rgba(255, 195, 42, 0.8);
+  }
+
+  .education-carousel-nav .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .education-carousel-nav .carousel-dot.active:hover {
+    background: rgba(255, 195, 42, 1);
   }
 }
 

@@ -234,38 +234,56 @@
       Education
     </h2>
     <p class="subtitle fade-in delay-1">Academic Journey</p>
-    <div class="timeline">
-      <div class="timeline-item" data-year="2024">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="timeline-year">2024</span>
-          <h3>Software Engineering</h3>
-          <p class="timeline-institution">Information Technology Institute - ITI</p>
+
+    <div class="education-details">
+      <div class="timeline education-items-wrapper">
+        <div class="timeline-item" data-year="2024" data-edu="iti">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2024</span>
+            <h3>Software Engineering</h3>
+            <p class="timeline-institution">Information Technology Institute - ITI</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2023" data-edu="cairo">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3>Computer Science</h3>
+            <p class="timeline-institution">Cairo University</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2022" data-edu="fgssr">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2022</span>
+            <h3>Mathematics and Statistics</h3>
+            <p class="timeline-institution">Faculty of Graduate Studies for Statistical Research - FGSSR</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2021" data-edu="helwan">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2021</span>
+            <h3>Commerce, Accounting and Business</h3>
+            <p class="timeline-institution">Capital University (Helwan University)</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item" data-year="2023">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="timeline-year">2023</span>
-          <h3>Computer Science</h3>
-          <p class="timeline-institution">Cairo University</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-year="2022">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="timeline-year">2022</span>
-          <h3>Mathematics and Statistics</h3>
-          <p class="timeline-institution">Faculty of Graduate Studies for Statistical Research - FGSSR</p>
-        </div>
-      </div>
-      <div class="timeline-item" data-year="2021">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="timeline-year">2021</span>
-          <h3>Commerce, Accounting and Business</h3>
-          <p class="timeline-institution">Capital University (Helwan University)</p>
-        </div>
+
+      <!-- Mobile Navigation Arrows -->
+      <div class="education-carousel-nav">
+        <button class="carousel-nav-btn carousel-nav-prev" id="eduCarouselPrev" aria-label="Previous education">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="carousel-dots" id="eduCarouselDots"></div>
+        <button class="carousel-nav-btn carousel-nav-next" id="eduCarouselNext" aria-label="Next education">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </div>
   </section>

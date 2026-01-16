@@ -139,6 +139,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -281,10 +286,15 @@ p, span, a, button, input, textarea, label {
 @media (max-width: 480px) {
   .hero {
     min-height: 85vh;
+    overflow-x: hidden;
   }
 
   .hero h1 {
     font-size: 1.4rem;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .hero .est {
@@ -294,17 +304,26 @@ p, span, a, button, input, textarea, label {
 
   .hero .subtitle {
     font-size: 0.85rem;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-quotes {
     top: var(--space-md);
+    left: 0;
+    right: 0;
+    padding: 0 var(--space-sm);
   }
 
   .hero-quote {
     font-size: 0.65rem;
     max-width: 100%;
+    width: 100%;
     padding: 0 var(--space-sm);
     line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 

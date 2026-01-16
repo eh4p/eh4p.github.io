@@ -464,13 +464,14 @@
   const projectDetailContents = document.querySelectorAll('.project-detail-content');
   const carouselContainer = document.querySelector('.projects-carousel-container');
   const centerProjectName = document.getElementById('centerProjectName');
+  const projectDetailsInner = document.querySelector('.project-details-inner');
 
   if (!projectsRing || !projectItems.length) return;
 
   let currentRotation = 0; // 0, 1, or 2 (representing 0, 120, 240 degrees)
   let activeProjectIndex = null;
 
-  // Handle project item click
+  // Handle project item click (desktop only)
   projectItems.forEach((item, index) => {
     item.addEventListener('click', () => {
       selectProject(index);
@@ -574,9 +575,9 @@
   const carouselNext = document.getElementById('carouselNext');
   const carouselDots = document.getElementById('carouselDots');
 
-  if (carouselDots && projectItems.length > 0) {
+  if (carouselDots && projectDetailContents.length > 0) {
     // Create dots for each project
-    projectItems.forEach((_, index) => {
+    projectDetailContents.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.className = 'carousel-dot';
       dot.setAttribute('data-index', index);
@@ -601,24 +602,25 @@
       carouselPrev.disabled = index === 0;
     }
     if (carouselNext) {
-      carouselNext.disabled = index === projectItems.length - 1;
+      carouselNext.disabled = index === projectDetailContents.length - 1;
     }
   }
 
-  // Scroll to a specific project
+  // Scroll to a specific project (mobile)
   function scrollToProject(index) {
-    if (index < 0 || index >= projectItems.length) return;
+    if (index < 0 || index >= projectDetailContents.length) return;
 
+    const targetContent = projectDetailContents[index];
     const targetItem = projectItems[index];
 
-    // Scroll the carousel to the target item
-    targetItem.scrollIntoView({
+    // Scroll the carousel to the target content card
+    targetContent.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'center'
     });
 
-    // Update active state
+    // Update active state for desktop elements too
     selectProject(index);
   }
 
@@ -633,27 +635,27 @@
   // Next button click
   if (carouselNext) {
     carouselNext.addEventListener('click', () => {
-      const newIndex = Math.min(projectItems.length - 1, (activeProjectIndex ?? 0) + 1);
+      const newIndex = Math.min(projectDetailContents.length - 1, (activeProjectIndex ?? 0) + 1);
       scrollToProject(newIndex);
     });
   }
 
   // Handle scroll-based position detection for mobile
   let scrollTimeout;
-  projectsRing?.addEventListener('scroll', () => {
+  projectDetailsInner?.addEventListener('scroll', () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
-      // Find which item is most visible
-      const ringRect = projectsRing.getBoundingClientRect();
-      const ringCenter = ringRect.left + ringRect.width / 2;
+      // Find which card is most visible
+      const innerRect = projectDetailsInner.getBoundingClientRect();
+      const innerCenter = innerRect.left + innerRect.width / 2;
 
       let closestIndex = 0;
       let closestDistance = Infinity;
 
-      projectItems.forEach((item, index) => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
-        const distance = Math.abs(itemCenter - ringCenter);
+      projectDetailContents.forEach((content, index) => {
+        const contentRect = content.getBoundingClientRect();
+        const contentCenter = contentRect.left + contentRect.width / 2;
+        const distance = Math.abs(contentCenter - innerCenter);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -661,9 +663,33 @@
         }
       });
 
-      // Update if a different item is now most visible
+      // Update if a different card is now most visible
       if (closestIndex !== activeProjectIndex) {
-        selectProject(closestIndex);
+        // Just update the active state without re-scrolling
+        const clickedItem = projectItems[closestIndex];
+
+        // Remove active class from all items
+        projectItems.forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Add active class to clicked item
+        clickedItem.classList.add('active');
+
+        // Hide all detail contents
+        projectDetailContents.forEach(content => {
+          content.classList.remove('active');
+        });
+
+        // Show the selected project details
+        const projectKey = clickedItem.dataset.project;
+        const targetContent = document.querySelector(`.project-detail-content[data-project="${projectKey}"]`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+
+        activeProjectIndex = closestIndex;
+        updateMobileCarousel(closestIndex);
       }
     }, 100);
   });
@@ -673,6 +699,15 @@
     if (window.innerWidth <= 768) {
       // Select first project on mobile
       selectProject(0);
+    } else {
+      // On desktop, reset to no selection
+      activeProjectIndex = null;
+      projectItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      projectDetailContents.forEach(content => {
+        content.classList.remove('active');
+      });
     }
   }
 

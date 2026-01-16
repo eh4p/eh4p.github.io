@@ -2024,96 +2024,102 @@ p, span, a, button, input, textarea, label {
     min-height: auto;
   }
 
-  /* Hide the circular ring elements */
-  .projects-ring-outer,
-  .projects-ring-inner,
-  .ring-center-decoration {
+  /* Hide the entire carousel container with circles */
+  .projects-carousel-container {
     display: none !important;
   }
 
-  /* Transform the carousel container into a horizontal card slider */
-  .projects-carousel-container {
+  /* Transform the details panel into a horizontal carousel */
+  .project-details-panel {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
     width: 100%;
-    height: auto;
-    min-height: 280px;
+    max-width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    opacity: 1;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
-  /* Transform the ring into a horizontal scroll container */
-  .projects-ring {
-    position: relative;
-    width: 100%;
-    height: 220px;
+  .project-details-inner {
+    order: 1;
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    gap: var(--space-md);
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    inset: 0;
-    transform: none !important;
+    padding: var(--space-sm);
+    min-height: 380px;
   }
 
   /* Hide scrollbar */
-  .projects-ring::-webkit-scrollbar {
+  .project-details-inner::-webkit-scrollbar {
     display: none;
   }
 
-  .projects-ring {
+  .project-details-inner {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  /* Transform project items into cards */
-  .project-item {
+  .project-details-placeholder {
+    display: none;
+  }
+
+  /* Project cards in carousel */
+  .project-detail-content {
     position: relative;
-    top: auto;
-    left: auto;
     flex-shrink: 0;
     width: calc(100% - 3rem);
-    max-width: 280px;
-    height: auto;
-    transform: none !important;
+    max-width: 320px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 1.5rem;
     scroll-snap-align: center;
-    padding: 0 var(--space-md);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+    display: block !important;
+    height: fit-content;
   }
 
-  /* Project medallion becomes a card */
-  .project-medallion {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto var(--space-md);
+  /* Highlight active card */
+  .project-detail-content.active {
+    border-color: rgba(255, 195, 42, 0.4);
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 10px 25px rgba(0, 0, 0, 0.2),
+      0 0 30px rgba(255, 195, 42, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  /* Show the project label on mobile */
-  .project-label {
-    display: block;
-    font-family: var(--font-title);
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: var(--space-sm);
-    text-align: center;
+  .project-detail-content:not(.active) {
+    opacity: 0.5;
+    transform: scale(0.95);
   }
 
-  .project-item.active .project-label {
-    color: #ffc32a;
+  .project-detail-content h3 {
+    font-size: 1.3rem;
   }
 
-  /* Navigation buttons container */
+  /* Navigation buttons container - below the carousel cards */
   .projects-carousel-nav {
+    order: 2;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: var(--space-lg);
-    margin-top: var(--space-lg);
-    padding: var(--space-md) 0;
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+    padding: 0;
   }
 
   .carousel-nav-btn {
@@ -2191,63 +2197,12 @@ p, span, a, button, input, textarea, label {
   .carousel-dot.active:hover {
     background: rgba(255, 195, 42, 1);
   }
-
-  /* Details panel - always visible below carousel on mobile */
-  .project-details-panel {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    min-height: auto;
-    margin-top: var(--space-lg);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .project-details-inner {
-    min-height: auto;
-  }
-
-  .project-details-placeholder {
-    display: none;
-  }
-
-  /* Always show first project details on mobile */
-  .project-detail-content {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    padding: 1.5rem;
-  }
-
-  .project-detail-content:not(.active) {
-    display: none;
-  }
-
-  .project-detail-content.active {
-    display: block;
-  }
 }
 
 @media (max-width: 480px) {
-  .project-item {
-    width: calc(100% - 2rem);
-    max-width: 260px;
-  }
-
-  .project-medallion {
-    width: 90px;
-    height: 90px;
-  }
-
-  .project-label {
-    font-size: 0.85rem;
-  }
-
   .project-detail-content {
+    width: calc(100% - 2rem);
+    max-width: 100%;
     padding: 1.25rem;
   }
 

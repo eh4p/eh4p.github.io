@@ -234,6 +234,104 @@ p, span, a, button, input, textarea, label {
   margin: calc(-1 * var(--space-xs)) 0;
 }
 
+/* Hero Section - Responsive */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-quote {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero .est {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-quotes {
+    top: var(--space-lg);
+  }
+
+  .hero-quote {
+    font-size: 0.7rem;
+    max-width: 400px;
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 85vh;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero .est {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .hero-quotes {
+    top: var(--space-md);
+  }
+
+  .hero-quote {
+    font-size: 0.65rem;
+    max-width: 100%;
+    padding: 0 var(--space-sm);
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    min-height: 80vh;
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero .est {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-quote {
+    font-size: 0.6rem;
+    padding: 0 var(--space-xs);
+  }
+}
+
 /* Overview Section */
 .overview {
   max-width: 800px;

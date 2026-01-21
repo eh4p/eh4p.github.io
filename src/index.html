@@ -255,55 +255,100 @@
     </h2>
     <p class="subtitle fade-in delay-1">Academic Journey</p>
 
-    <div class="education-details">
-      <div class="timeline education-items-wrapper">
-        <div class="timeline-item" data-year="2024" data-edu="iti">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">2024</span>
-            <h3>Software Engineering</h3>
-            <p class="timeline-institution">Information Technology Institute - ITI</p>
-          </div>
-        </div>
-        <div class="timeline-item" data-year="2023" data-edu="cairo">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">2023</span>
-            <h3>Computer Science</h3>
-            <p class="timeline-institution">Cairo University</p>
-          </div>
-        </div>
-        <div class="timeline-item" data-year="2022" data-edu="fgssr">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">2022</span>
-            <h3>Mathematics and Statistics</h3>
-            <p class="timeline-institution">Faculty of Graduate Studies for Statistical Research - FGSSR</p>
-          </div>
-        </div>
-        <div class="timeline-item" data-year="2021" data-edu="helwan">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">2021</span>
-            <h3>Commerce, Accounting and Business</h3>
-            <p class="timeline-institution">Capital University (Helwan University)</p>
-          </div>
-        </div>
+    <div class="education-timeline">
+      <!-- Institution names navigation -->
+      <div class="institution-nav">
+        <button class="institution-btn" data-institution="helwan" tabindex="0">
+          <span class="institution-name">Helwan University</span>
+          <span class="institution-period">2021</span>
+        </button>
+        <button class="institution-btn" data-institution="fgssr" tabindex="0">
+          <span class="institution-name">FGSSR</span>
+          <span class="institution-period">2022</span>
+        </button>
+        <button class="institution-btn" data-institution="cairo" tabindex="0">
+          <span class="institution-name">Cairo University</span>
+          <span class="institution-period">2023</span>
+        </button>
+        <button class="institution-btn" data-institution="iti" tabindex="0">
+          <span class="institution-name">ITI</span>
+          <span class="institution-period">2024</span>
+        </button>
       </div>
 
-      <!-- Mobile Navigation Arrows -->
-      <div class="education-carousel-nav">
-        <button class="carousel-nav-btn carousel-nav-prev" id="eduCarouselPrev" aria-label="Previous education">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <div class="carousel-dots" id="eduCarouselDots"></div>
-        <button class="carousel-nav-btn carousel-nav-next" id="eduCarouselNext" aria-label="Next education">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+      <!-- Horizontal scrolling line with circle -->
+      <div class="horizontal-line-container">
+        <div class="horizontal-line"></div>
+        <div class="horizontal-progress"></div>
+        <div class="moving-circle"></div>
+        <div class="line-dot" data-index="0"></div>
+        <div class="line-dot" data-index="1"></div>
+        <div class="line-dot" data-index="2"></div>
+        <div class="line-dot" data-index="3"></div>
+      </div>
+
+      <!-- Institution detail panels -->
+      <div class="institution-details">
+        <div class="institution-panels-wrapper">
+          <div class="institution-panel" data-institution="helwan">
+            <h3>Commerce, Accounting and Business</h3>
+            <p class="institution-role">Capital University (Helwan University) • Full-time</p>
+            <p class="institution-duration">2021</p>
+            <ul class="institution-achievements">
+              <li>Business administration and accounting fundamentals</li>
+              <li>Financial management and economics</li>
+              <li>Organizational behavior and management principles</li>
+            </ul>
+          </div>
+
+          <div class="institution-panel" data-institution="fgssr">
+            <h3>Mathematics and Statistics</h3>
+            <p class="institution-role">Faculty of Graduate Studies for Statistical Research - FGSSR</p>
+            <p class="institution-duration">2022</p>
+            <ul class="institution-achievements">
+              <li>Advanced mathematics and statistical analysis</li>
+              <li>Quantitative methods and data modeling</li>
+              <li>Research methodology and academic writing</li>
+            </ul>
+          </div>
+
+          <div class="institution-panel" data-institution="cairo">
+            <h3>Computer Science</h3>
+            <p class="institution-role">Cairo University • Full-time</p>
+            <p class="institution-duration">2023 • Bachelor's Degree</p>
+            <ul class="institution-achievements">
+              <li>Comprehensive computer science curriculum</li>
+              <li>Focus on algorithms, data structures, and software design</li>
+              <li>Multiple programming projects and team collaborations</li>
+            </ul>
+          </div>
+
+          <div class="institution-panel" data-institution="iti">
+            <h3>Software Engineering</h3>
+            <p class="institution-role">Information Technology Institute - ITI • Full-time</p>
+            <p class="institution-duration">2024 • 1 year program</p>
+            <ul class="institution-achievements">
+              <li>Intensive 9-month program in software development</li>
+              <li>Specialized in backend development and APIs</li>
+              <li>Hands-on projects with industry-standard technologies</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Arrows -->
+        <div class="education-carousel-nav">
+          <button class="carousel-nav-btn carousel-nav-prev" id="eduCarouselPrev" aria-label="Previous institution">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div class="carousel-dots" id="eduCarouselDots"></div>
+          <button class="carousel-nav-btn carousel-nav-next" id="eduCarouselNext" aria-label="Next institution">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
     </div>

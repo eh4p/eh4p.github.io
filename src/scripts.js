@@ -777,47 +777,225 @@
   });
 })();
 
-// Education Section - Mobile Carousel Navigation
+// Education Section - Horizontal Timeline Navigation
 (function() {
   'use strict';
 
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  const eduItemsWrapper = document.querySelector('.education-items-wrapper');
+  const institutionBtns = document.querySelectorAll('.institution-btn');
+  const institutionPanels = document.querySelectorAll('.institution-panel');
+  const eduLineContainer = document.querySelector('.education .horizontal-line-container');
+  const eduMovingCircle = document.querySelector('.education .moving-circle');
+  const eduHorizontalProgress = document.querySelector('.education .horizontal-progress');
+  const eduLineDots = document.querySelectorAll('.education .line-dot');
+  const institutionPanelsWrapper = document.querySelector('.institution-panels-wrapper');
+
+  if (!institutionBtns.length) return;
+
+  let activeInstitutionIndex = null;
+  let positions = [];
+
+  function updatePositions() {
+    if (!eduLineContainer) return;
+    positions = [];
+    const containerRect = eduLineContainer.getBoundingClientRect();
+    const containerLeft = containerRect.left;
+    const containerWidth = containerRect.width;
+
+    institutionBtns.forEach(btn => {
+      const btnRect = btn.getBoundingClientRect();
+      const btnCenter = btnRect.left + btnRect.width / 2;
+      const relativePosition = ((btnCenter - containerLeft) / containerWidth) * 100;
+      positions.push(Math.max(5, Math.min(95, relativePosition)));
+    });
+
+    // Update line dot positions
+    eduLineDots.forEach((dot, index) => {
+      if (index < positions.length) {
+        dot.style.left = `${positions[index]}%`;
+      }
+    });
+  }
+
+  // Initial position calculation (delayed for layout to settle)
+  if (eduLineContainer) {
+    setTimeout(updatePositions, 100);
+
+    // Also recalculate after fonts load
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        setTimeout(updatePositions, 50);
+      });
+    }
+  }
+
+  // Recalculate on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (eduLineContainer) updatePositions();
+      // Update active position if any institution is selected
+      const activeBtn = document.querySelector('.institution-btn.active');
+      if (activeBtn && eduLineContainer) {
+        const activeIndex = Array.from(institutionBtns).indexOf(activeBtn);
+        if (activeIndex >= 0) {
+          const targetPosition = positions[activeIndex];
+          const progressWidth = activeIndex === institutionBtns.length - 1 ? 100 : targetPosition;
+          eduMovingCircle.style.left = `${targetPosition}%`;
+          eduHorizontalProgress.style.width = `${progressWidth}%`;
+        }
+      }
+    }, 150);
+  });
+
+  // Handle institution button clicks
+  institutionBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      selectInstitution(index);
+    });
+
+    // Keyboard accessibility
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectInstitution(index);
+      }
+    });
+  });
+
+  // Function to select an institution
+  function selectInstitution(index) {
+    const clickedBtn = institutionBtns[index];
+    const institutionKey = clickedBtn.dataset.institution;
+
+    // Remove active class from all buttons and panels
+    institutionBtns.forEach(btn => btn.classList.remove('active'));
+    institutionPanels.forEach(panel => panel.classList.remove('active'));
+    eduLineDots.forEach(dot => dot.classList.remove('active'));
+
+    // Add active class to clicked button
+    clickedBtn.classList.add('active');
+
+    // Show corresponding panel
+    const targetPanel = document.querySelector(`.institution-panel[data-institution="${institutionKey}"]`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+
+      // Staggered animation for list items
+      const listItems = targetPanel.querySelectorAll('.institution-achievements li');
+      listItems.forEach((item, i) => {
+        item.style.transitionDelay = `${i * 0.1}s`;
+      });
+    }
+
+    // Reset transition delays for all inactive panels
+    institutionPanels.forEach(panel => {
+      if (!panel.classList.contains('active')) {
+        const items = panel.querySelectorAll('.institution-achievements li');
+        items.forEach(item => {
+          item.style.transitionDelay = '0s';
+        });
+      }
+    });
+
+    if (eduLineContainer) {
+      // Update moving circle position
+      const targetPosition = positions[index];
+      eduMovingCircle.style.left = `${targetPosition}%`;
+      eduMovingCircle.classList.add('visible');
+      eduMovingCircle.classList.add('active');
+
+      // Update progress line (fill to selected position, or 100% for last item)
+      const progressWidth = index === institutionBtns.length - 1 ? 100 : targetPosition;
+      eduHorizontalProgress.style.width = `${progressWidth}%`;
+
+      // Update line dots
+      eduLineDots.forEach((dot, dotIndex) => {
+        if (dotIndex <= index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    activeInstitutionIndex = index;
+
+    // Update mobile carousel state
+    updateEduMobileCarousel(index);
+  }
+
+  // Handle clicks on line dots
+  eduLineDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      selectInstitution(index);
+    });
+
+    dot.style.cursor = 'pointer';
+  });
+
+  // Scroll-based animation for the education section
+  const educationSection = document.querySelector('.education');
+  if (educationSection) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate in elements
+          institutionBtns.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.style.opacity = '1';
+              btn.style.transform = 'translateY(0)';
+            }, i * 100);
+          });
+
+          // Show the horizontal line with animation
+          const eduHorizontalLine = document.querySelector('.education .horizontal-line');
+          if (eduHorizontalLine) {
+            eduHorizontalLine.style.width = '0';
+            setTimeout(() => {
+              eduHorizontalLine.style.width = '100%';
+            }, 100);
+          }
+
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sectionObserver.observe(educationSection);
+  }
+
+  // Set initial state for institution buttons (hidden for animation)
+  institutionBtns.forEach(btn => {
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(10px)';
+    btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  });
+
+  // ============================================
+  // Mobile Carousel Functionality
+  // ============================================
   const eduCarouselPrev = document.getElementById('eduCarouselPrev');
   const eduCarouselNext = document.getElementById('eduCarouselNext');
   const eduCarouselDots = document.getElementById('eduCarouselDots');
 
-  if (!timelineItems.length) return;
-
-  let activeEducationIndex = null;
-
-  // Create dots for each education item
-  if (eduCarouselDots && timelineItems.length > 0) {
-    timelineItems.forEach((_, index) => {
+  if (eduCarouselDots && institutionPanels.length > 0) {
+    // Create dots for each institution
+    institutionPanels.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.className = 'carousel-dot';
       dot.setAttribute('data-index', index);
       dot.addEventListener('click', () => {
-        scrollToEducation(index);
+        scrollToInstitution(index);
       });
       eduCarouselDots.appendChild(dot);
     });
-  }
-
-  // Function to select an education item
-  function selectEducation(index) {
-    const targetItem = timelineItems[index];
-
-    // Remove active class from all items
-    timelineItems.forEach(item => item.classList.remove('active'));
-
-    // Add active class to selected item
-    targetItem.classList.add('active');
-
-    activeEducationIndex = index;
-
-    // Update mobile carousel state
-    updateEduMobileCarousel(index);
   }
 
   // Update mobile carousel state (dots and button states)
@@ -834,76 +1012,59 @@
       eduCarouselPrev.disabled = index === 0;
     }
     if (eduCarouselNext) {
-      eduCarouselNext.disabled = index === timelineItems.length - 1;
+      eduCarouselNext.disabled = index === institutionPanels.length - 1;
     }
   }
 
-  // Scroll to a specific education item (mobile)
-  function scrollToEducation(index) {
-    if (index < 0 || index >= timelineItems.length) return;
+  // Scroll to a specific institution (mobile)
+  function scrollToInstitution(index) {
+    if (index < 0 || index >= institutionPanels.length) return;
 
-    const targetItem = timelineItems[index];
+    const targetPanel = institutionPanels[index];
 
-    // Scroll the carousel to the target item
-    targetItem.scrollIntoView({
+    // Scroll the carousel to the target panel
+    targetPanel.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'center'
     });
 
     // Update active state
-    selectEducation(index);
+    selectInstitution(index);
   }
 
   // Previous button click
   if (eduCarouselPrev) {
     eduCarouselPrev.addEventListener('click', () => {
-      const newIndex = Math.max(0, (activeEducationIndex ?? 0) - 1);
-      scrollToEducation(newIndex);
+      const newIndex = Math.max(0, (activeInstitutionIndex ?? 0) - 1);
+      scrollToInstitution(newIndex);
     });
   }
 
   // Next button click
   if (eduCarouselNext) {
     eduCarouselNext.addEventListener('click', () => {
-      const newIndex = Math.min(timelineItems.length - 1, (activeEducationIndex ?? 0) + 1);
-      scrollToEducation(newIndex);
+      const newIndex = Math.min(institutionPanels.length - 1, (activeInstitutionIndex ?? 0) + 1);
+      scrollToInstitution(newIndex);
     });
   }
 
-  // Click on timeline item to expand/collapse on desktop
-  timelineItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      // Only toggle expanded state on desktop (not mobile carousel mode)
-      if (window.innerWidth > 768) {
-        // Close all other expanded items first
-        timelineItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('expanded');
-          }
-        });
-        // Toggle expanded state on clicked item
-        item.classList.toggle('expanded');
-      }
-    });
-  });
-
   // Handle scroll-based position detection for mobile
   let scrollTimeout;
-  eduItemsWrapper?.addEventListener('scroll', () => {
+  institutionPanelsWrapper?.addEventListener('scroll', () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
-      // Find which item is most visible
-      const wrapperRect = eduItemsWrapper.getBoundingClientRect();
+      // Find which panel is most visible
+      const wrapperRect = institutionPanelsWrapper.getBoundingClientRect();
       const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
 
       let closestIndex = 0;
       let closestDistance = Infinity;
 
-      timelineItems.forEach((item, index) => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + itemRect.width / 2;
-        const distance = Math.abs(itemCenter - wrapperCenter);
+      institutionPanels.forEach((panel, index) => {
+        const panelRect = panel.getBoundingClientRect();
+        const panelCenter = panelRect.left + panelRect.width / 2;
+        const distance = Math.abs(panelCenter - wrapperCenter);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -911,32 +1072,43 @@
         }
       });
 
-      // Update if a different item is now most visible
-      if (closestIndex !== activeEducationIndex) {
-        const targetItem = timelineItems[closestIndex];
+      // Update if a different panel is now most visible
+      if (closestIndex !== activeInstitutionIndex) {
+        const clickedBtn = institutionBtns[closestIndex];
+        const institutionKey = clickedBtn.dataset.institution;
 
-        // Remove active class from all items
-        timelineItems.forEach(item => item.classList.remove('active'));
+        // Remove active class from all buttons and panels
+        institutionBtns.forEach(btn => btn.classList.remove('active'));
+        institutionPanels.forEach(panel => panel.classList.remove('active'));
 
-        // Add active class to closest item
-        targetItem.classList.add('active');
+        // Add active class to clicked button
+        clickedBtn.classList.add('active');
 
-        activeEducationIndex = closestIndex;
+        // Show corresponding panel
+        const targetPanel = document.querySelector(`.institution-panel[data-institution="${institutionKey}"]`);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+
+        activeInstitutionIndex = closestIndex;
         updateEduMobileCarousel(closestIndex);
       }
     }, 100);
   });
 
-  // Initialize first education item as active on mobile
+  // Initialize first institution as active on mobile
   function initEduMobileCarousel() {
     if (window.innerWidth <= 768) {
-      // Select first education item on mobile
-      selectEducation(0);
+      // Select first institution on mobile
+      selectInstitution(0);
     } else {
       // On desktop, reset to no selection
-      activeEducationIndex = null;
-      timelineItems.forEach(item => {
-        item.classList.remove('active');
+      activeInstitutionIndex = null;
+      institutionBtns.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      institutionPanels.forEach(panel => {
+        panel.classList.remove('active');
       });
     }
   }

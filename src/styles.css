@@ -795,29 +795,64 @@ p, span, a, button, input, textarea, label {
 .education > .subtitle {
   font-size: 0.75rem;
   opacity: 0.9;
+  margin-bottom: var(--space-2xl);
 }
 
-/* Education Timeline - Horizontal Grid Layout (2 cards per row) */
-.education .timeline {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-  margin-top: var(--space-xl);
-  padding: 0 var(--space-md);
+/* Education Timeline */
+.education-timeline {
   position: relative;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Hide vertical line for education (grid layout) */
-.education .timeline::before {
-  display: none;
+/* Institution Navigation */
+.institution-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
 }
 
-/* Hide progress line for education (grid layout) */
-.education .timeline-progress-line {
-  display: none;
+.institution-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.institution-name {
+  font-family: var(--font-subtitle);
+  font-size: 0.8rem;
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.institution-period {
+  font-size: 0.65rem;
+  opacity: 0.4;
+  margin-top: var(--space-xs);
+  transition: all 0.3s ease;
+}
+
+.institution-btn:hover .institution-name {
+  opacity: 0.9;
+}
+
+.institution-btn:hover .institution-period {
+  opacity: 0.6;
+}
+
+.institution-btn.active .institution-name {
+  opacity: 1;
+  color: #fff;
+}
+
+.institution-btn.active .institution-period {
+  opacity: 0.8;
 }
 
 /* Animated lightning/progress line */
@@ -857,22 +892,107 @@ p, span, a, button, input, textarea, label {
   z-index: 1;
 }
 
-/* Timeline items */
-.timeline-item {
+/* Institution Details Container */
+.institution-details {
   position: relative;
-  margin-bottom: 0;
+  min-height: 40px;
+  transition: min-height 0.3s ease;
+}
+
+.institution-details:has(.institution-panel.active) {
+  min-height: 200px;
+}
+
+/* Institution Panel */
+.institution-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-.timeline-item.visible {
+.institution-panel.active {
   opacity: 1;
-  transform: translateY(0);
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  position: relative;
 }
 
-/* Timeline dot - hide for education grid layout */
-.education .timeline-dot {
+.institution-panel h3 {
+  font-family: var(--font-subtitle);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-color);
+}
+
+.institution-role {
+  font-family: var(--font-subtitle);
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-bottom: var(--space-xs);
+}
+
+.institution-duration {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-bottom: var(--space-lg);
+}
+
+.institution-achievements {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.institution-achievements li {
+  position: relative;
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.institution-panel.active .institution-achievements li {
+  opacity: 0.85;
+  transform: translateX(0);
+}
+
+.institution-achievements li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+/* Empty state hint */
+.institution-details::before {
+  content: '↑ Click an institution to view details';
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.institution-details:not(:has(.institution-panel.active))::before {
+  opacity: 0.4;
+}
+
+/* Hide education carousel navigation on desktop (shown in mobile media query) */
+.education-carousel-nav {
   display: none;
 }
 
@@ -982,23 +1102,6 @@ p, span, a, button, input, textarea, label {
   transform: translateY(-2px);
 }
 
-/* Alternating layout - exclude education */
-:not(.education) .timeline-item:nth-child(odd) .timeline-content {
-  margin-left: auto;
-}
-
-:not(.education) .timeline-item:nth-child(even) .timeline-content {
-  margin-right: auto;
-}
-
-/* Education timeline content - no alternating, full width */
-.education .timeline-content {
-  width: 100%;
-  margin: 0 !important;
-  min-height: 105px;
-  padding: var(--space-md) var(--space-lg) var(--space-lg);
-}
-
 /* Timeline year badge */
 .timeline-year {
   display: inline-block;
@@ -1025,13 +1128,8 @@ p, span, a, button, input, textarea, label {
   opacity: 0.7;
 }
 
-/* Connector lines - hide for education */
-.education .timeline-item::after {
-  display: none;
-}
-
 /* Connector lines */
-:not(.education) .timeline-item::after {
+.timeline-item::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -1053,11 +1151,11 @@ p, span, a, button, input, textarea, label {
   transition: width 0.6s ease-out, background 0.3s ease;
 }
 
-:not(.education) .timeline-item:nth-child(odd)::after {
+.timeline-item:nth-child(odd)::after {
   right: calc(50% + 8px);
 }
 
-:not(.education) .timeline-item:nth-child(even)::after {
+.timeline-item:nth-child(even)::after {
   left: calc(50% + 8px);
   -webkit-mask-image: linear-gradient(
     to left,
@@ -1073,90 +1171,8 @@ p, span, a, button, input, textarea, label {
   );
 }
 
-:not(.education) .timeline-item:hover::after {
+.timeline-item:hover::after {
   background: rgba(245, 245, 247, 0.3);
-}
-
-/* Hide education carousel navigation on desktop (shown in mobile media query) */
-.education-carousel-nav {
-  display: none;
-}
-
-/* Education items wrapper - grid layout on desktop */
-.education .education-items-wrapper.timeline {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Education timeline items - clickable and expandable */
-.education .timeline-item {
-  cursor: pointer;
-}
-
-/* Hide institution by default, show on expanded */
-.education .timeline-institution {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
-}
-
-.education .timeline-item.expanded .timeline-institution {
-  max-height: 50px;
-  opacity: 0.7;
-  margin-top: var(--space-sm);
-}
-
-/* Expanded card styling */
-.education .timeline-item.expanded .timeline-content {
-  border-color: rgba(255, 195, 42, 0.3);
-  background: rgba(245, 245, 247, 0.08);
-}
-
-/* Show/Hide Details badge button */
-.education .timeline-content::after {
-  content: 'Show Details';
-  position: absolute;
-  bottom: var(--space-md);
-  right: var(--space-md);
-  font-family: var(--font-subtitle);
-  font-size: 0.5rem;
-  font-weight: 500;
-  padding: 0.2rem 0.55rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 15px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.education .timeline-item:hover .timeline-content::after {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.education .timeline-item.expanded .timeline-content::after {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Education details container on desktop */
-.education-details {
-  position: relative;
-}
-
-/* Tablet breakpoint - single column for education */
-@media (max-width: 900px) {
-  .education .timeline,
-  .education .education-items-wrapper.timeline {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Responsive design */
@@ -1172,8 +1188,18 @@ p, span, a, button, input, textarea, label {
     display: none;
   }
 
-  /* Education details container */
-  .education-details {
+  /* Hide the institution nav buttons and horizontal line */
+  .institution-nav,
+  .education .horizontal-line-container {
+    display: none !important;
+  }
+
+  .institution-details::before {
+    display: none;
+  }
+
+  /* Transform institution details into a horizontal scroll container */
+  .institution-details {
     position: relative;
     left: 0;
     top: 0;
@@ -1189,8 +1215,8 @@ p, span, a, button, input, textarea, label {
     flex-direction: column;
   }
 
-  /* Create scrollable carousel container */
-  .education-items-wrapper {
+  /* Create scrollable carousel container - the wrapper */
+  .institution-panels-wrapper {
     order: 1;
     display: flex;
     align-items: stretch;
@@ -1206,17 +1232,17 @@ p, span, a, button, input, textarea, label {
   }
 
   /* Hide scrollbar */
-  .education-items-wrapper::-webkit-scrollbar {
+  .institution-panels-wrapper::-webkit-scrollbar {
     display: none;
   }
 
-  .education-items-wrapper {
+  .institution-panels-wrapper {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  /* Timeline items as carousel cards - full width */
-  .timeline-item {
+  /* Institution panels as cards in carousel - full width */
+  .institution-panel {
     position: relative;
     flex-shrink: 0;
     width: 100%;
@@ -1225,7 +1251,6 @@ p, span, a, button, input, textarea, label {
     visibility: visible;
     transform: none;
     pointer-events: auto;
-    margin-bottom: 0;
     padding: 1.5rem;
     background: linear-gradient(
       145deg,
@@ -1245,50 +1270,42 @@ p, span, a, button, input, textarea, label {
   }
 
   /* Highlight active card */
-  .timeline-item.active {
+  .institution-panel.active {
     border-color: rgba(255, 195, 42, 0.4);
   }
 
-  .timeline-item:not(.active) {
+  .institution-panel:not(.active) {
     opacity: 0.5;
     transform: scale(0.95);
   }
 
-  /* Timeline content within cards */
-  .timeline-content {
-    width: 100%;
-    margin: 0 !important;
+  .institution-panel h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-color);
+  }
+
+  .institution-role {
+    font-size: 0.95rem;
+  }
+
+  .institution-duration {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .institution-achievements {
     padding: 0;
-    background: transparent;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
+    max-width: 100%;
   }
 
-  /* Show institution on mobile (always visible in carousel) */
-  .education .timeline-institution {
-    max-height: 50px;
-    opacity: 0.7;
-    margin-top: var(--space-xs);
+  .institution-achievements li {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    transform: translateX(0);
   }
 
-  /* Hide arrow indicator on mobile */
-  .education .timeline-content::after {
-    display: none;
-  }
-
-  .timeline-content::before {
-    display: none;
-  }
-
-  .timeline-content:hover {
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  /* Education carousel navigation on mobile */
+  /* Navigation buttons container */
   .education-carousel-nav {
     order: 2;
     display: flex;
@@ -1347,6 +1364,7 @@ p, span, a, button, input, textarea, label {
     height: 15px;
   }
 
+  /* Carousel dots indicator */
   .education-carousel-nav .carousel-dots {
     display: flex;
     align-items: center;

@@ -250,8 +250,15 @@ html, body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
+  padding-top: var(--space-3xl);
+}
+
+/* Keep title and subtitle at top */
+.section-wrapper[data-section="education"] > .education > h2,
+.section-wrapper[data-section="education"] > .education > .subtitle {
+  flex-shrink: 0;
 }
 
 /* Responsive Navigation */

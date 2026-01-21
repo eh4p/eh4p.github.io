@@ -547,7 +547,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .hero .est {
@@ -582,7 +582,7 @@ p, span, a, button, input, textarea, label {
 /* Hero Section - Responsive */
 @media (max-width: 1024px) {
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.35rem;
   }
 
   .hero .subtitle {
@@ -600,7 +600,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .hero h1 {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .hero .est {
@@ -630,7 +630,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .hero h1 {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -673,7 +673,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .hero h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .hero .est {
@@ -779,9 +779,9 @@ p, span, a, button, input, textarea, label {
 }
 
 .exp-icon {
-  width: 2.2rem;
-  height: 2.2rem;
-  margin-bottom: 10px;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-bottom: 6px;
 }
 
 .education > .subtitle {
@@ -870,8 +870,8 @@ p, span, a, button, input, textarea, label {
   left: 50%;
   top: 0;
   transform: translateX(-50%) scale(0);
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--text-color);
   border: 3px solid var(--bg-color);
@@ -1290,8 +1290,8 @@ p, span, a, button, input, textarea, label {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 33px;
+    height: 33px;
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.1) 0%,
@@ -1328,8 +1328,8 @@ p, span, a, button, input, textarea, label {
   }
 
   .education-carousel-nav .carousel-nav-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   }
 
   .education-carousel-nav .carousel-dots {
@@ -1339,8 +1339,8 @@ p, span, a, button, input, textarea, label {
   }
 
   .education-carousel-nav .carousel-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
@@ -1348,7 +1348,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .education-carousel-nav .carousel-dot.active {
-    width: 24px;
+    width: 18px;
     border-radius: 4px;
     background: rgba(255, 195, 42, 0.8);
   }
@@ -1371,7 +1371,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .experience h2 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1379,7 +1379,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .experience > .subtitle {
-  font-size: 1rem;
+  font-size: 0.75rem;
   opacity: 0.9;
   margin-bottom: var(--space-xl);
 }
@@ -1411,14 +1411,14 @@ p, span, a, button, input, textarea, label {
 
 .company-name {
   font-family: var(--font-subtitle);
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: var(--text-color);
   opacity: 0.6;
   transition: all 0.3s ease;
 }
 
 .company-period {
-  font-size: 0.75rem;
+  font-size: 0.55rem;
   opacity: 0.4;
   margin-top: var(--space-xs);
   transition: all 0.3s ease;
@@ -1452,7 +1452,7 @@ p, span, a, button, input, textarea, label {
   width: 100%;
   max-width: 700px;
   margin: 0 auto var(--space-2xl);
-  height: 4px;
+  height: 3px;
 }
 
 /* Base horizontal line */
@@ -1537,8 +1537,8 @@ p, span, a, button, input, textarea, label {
   top: 50%;
   left: 0%;
   transform: translate(-50%, -50%) scale(0);
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--text-color);
   border: 3px solid var(--bg-color);
@@ -1603,8 +1603,8 @@ p, span, a, button, input, textarea, label {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: rgba(245, 245, 247, 0.2);
   border: 2px solid var(--bg-color);
@@ -1615,8 +1615,8 @@ p, span, a, button, input, textarea, label {
 
 .line-dot.active {
   background: rgba(245, 245, 247, 0.6);
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 /* Current Job Badge */
@@ -1626,7 +1626,7 @@ p, span, a, button, input, textarea, label {
   left: 0%;
   transform: translateX(-50%);
   font-family: var(--font-subtitle);
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   font-weight: bold;
   padding: 0.2rem 0.6rem;
   background: rgba(99, 255, 42, 0.15);
@@ -1678,20 +1678,20 @@ p, span, a, button, input, textarea, label {
 
 .company-panel h3 {
   font-family: var(--font-subtitle);
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: var(--space-sm);
   color: var(--text-color);
 }
 
 .company-role {
   font-family: var(--font-subtitle);
-  font-size: 1rem;
+  font-size: 0.75rem;
   opacity: 0.9;
   margin-bottom: var(--space-xs);
 }
 
 .company-duration {
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   opacity: 0.6;
   margin-bottom: var(--space-lg);
 }
@@ -1707,7 +1707,7 @@ p, span, a, button, input, textarea, label {
   position: relative;
   padding-left: var(--space-lg);
   margin-bottom: var(--space-md);
-  font-size: 1rem;
+  font-size: 0.75rem;
   line-height: 1.6;
   opacity: 0;
   transform: translateX(-10px);
@@ -1733,7 +1733,7 @@ p, span, a, button, input, textarea, label {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -1884,8 +1884,8 @@ p, span, a, button, input, textarea, label {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 33px;
+    height: 33px;
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.1) 0%,
@@ -1922,8 +1922,8 @@ p, span, a, button, input, textarea, label {
   }
 
   .experience-carousel-nav .carousel-nav-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   }
 
   /* Carousel dots indicator */
@@ -1934,8 +1934,8 @@ p, span, a, button, input, textarea, label {
   }
 
   .experience-carousel-nav .carousel-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
@@ -1943,7 +1943,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .experience-carousel-nav .carousel-dot.active {
-    width: 24px;
+    width: 18px;
     border-radius: 4px;
     background: rgba(255, 195, 42, 0.8);
   }

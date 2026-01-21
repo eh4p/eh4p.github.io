@@ -186,12 +186,20 @@ html, body {
 .section-wrapper[data-section="overview"] > .overview,
 .section-wrapper[data-section="experience"] > .experience,
 .section-wrapper[data-section="projects"] > .projects,
-.section-wrapper[data-section="education"] > .education,
 .section-wrapper[data-section="contact"] > .social {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+}
+
+/* Education section - align from top to prevent cutoff */
+.section-wrapper[data-section="education"] > .education {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   margin: 0 auto;
 }
 
@@ -770,37 +778,24 @@ p, span, a, button, input, textarea, label {
   opacity: 0.9;
 }
 
-/* Timeline */
-.timeline {
-  position: relative;
+/* Education Timeline - Horizontal Grid Layout (2 cards per row) */
+.education .timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
   margin-top: var(--space-xl);
   padding: 0 var(--space-md);
+  position: relative;
 }
 
-/* Vertical line */
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: rgba(245, 245, 247, 0.1);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 1) 15%,
-    rgba(0, 0, 0, 1) 85%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 1) 15%,
-    rgba(0, 0, 0, 1) 85%,
-    transparent 100%
-  );
+/* Hide vertical line for education (grid layout) */
+.education .timeline::before {
+  display: none;
+}
+
+/* Hide progress line for education (grid layout) */
+.education .timeline-progress-line {
+  display: none;
 }
 
 /* Animated lightning/progress line */
@@ -843,7 +838,7 @@ p, span, a, button, input, textarea, label {
 /* Timeline items */
 .timeline-item {
   position: relative;
-  margin-bottom: var(--gap-timeline);
+  margin-bottom: 0;
   opacity: 0;
   transform: translateY(60px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -854,7 +849,11 @@ p, span, a, button, input, textarea, label {
   transform: translateY(0);
 }
 
-/* Timeline dot */
+/* Timeline dot - hide for education grid layout */
+.education .timeline-dot {
+  display: none;
+}
+
 .timeline-dot {
   position: absolute;
   left: 50%;
@@ -916,7 +915,7 @@ p, span, a, button, input, textarea, label {
 /* Timeline content */
 .timeline-content {
   position: relative;
-  width: calc(50% - 40px);
+  width: 100%;
   padding: var(--space-lg);
   background: rgba(245, 245, 247, 0.05);
   backdrop-filter: blur(12px);
@@ -961,13 +960,19 @@ p, span, a, button, input, textarea, label {
   transform: translateY(-2px);
 }
 
-/* Alternating layout */
-.timeline-item:nth-child(odd) .timeline-content {
+/* Alternating layout - exclude education */
+:not(.education) .timeline-item:nth-child(odd) .timeline-content {
   margin-left: auto;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
+:not(.education) .timeline-item:nth-child(even) .timeline-content {
   margin-right: auto;
+}
+
+/* Education timeline content - no alternating, full width */
+.education .timeline-content {
+  width: 100%;
+  margin: 0 !important;
 }
 
 /* Timeline year badge */
@@ -996,8 +1001,13 @@ p, span, a, button, input, textarea, label {
   opacity: 0.7;
 }
 
+/* Connector lines - hide for education */
+.education .timeline-item::after {
+  display: none;
+}
+
 /* Connector lines */
-.timeline-item::after {
+:not(.education) .timeline-item::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -1019,11 +1029,11 @@ p, span, a, button, input, textarea, label {
   transition: width 0.6s ease-out, background 0.3s ease;
 }
 
-.timeline-item:nth-child(odd)::after {
+:not(.education) .timeline-item:nth-child(odd)::after {
   right: calc(50% + 8px);
 }
 
-.timeline-item:nth-child(even)::after {
+:not(.education) .timeline-item:nth-child(even)::after {
   left: calc(50% + 8px);
   -webkit-mask-image: linear-gradient(
     to left,
@@ -1039,7 +1049,7 @@ p, span, a, button, input, textarea, label {
   );
 }
 
-.timeline-item:hover::after {
+:not(.education) .timeline-item:hover::after {
   background: rgba(245, 245, 247, 0.3);
 }
 
@@ -1048,9 +1058,65 @@ p, span, a, button, input, textarea, label {
   display: none;
 }
 
+/* Education items wrapper - grid layout on desktop */
+.education .education-items-wrapper.timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Education timeline items - clickable and expandable */
+.education .timeline-item {
+  cursor: pointer;
+}
+
+/* Hide institution by default, show on expanded */
+.education .timeline-institution {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.education .timeline-item.expanded .timeline-institution {
+  max-height: 50px;
+  opacity: 0.7;
+  margin-top: var(--space-sm);
+}
+
+/* Expanded card styling */
+.education .timeline-item.expanded .timeline-content {
+  border-color: rgba(255, 195, 42, 0.3);
+  background: rgba(245, 245, 247, 0.08);
+}
+
+/* Arrow indicator for expandable cards */
+.education .timeline-content::after {
+  content: '▼';
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-sm);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.education .timeline-item.expanded .timeline-content::after {
+  transform: rotate(180deg);
+  color: rgba(255, 195, 42, 0.6);
+}
+
 /* Education details container on desktop */
 .education-details {
   position: relative;
+}
+
+/* Tablet breakpoint - single column for education */
+@media (max-width: 900px) {
+  .education .timeline,
+  .education .education-items-wrapper.timeline {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Responsive design */
@@ -1157,6 +1223,18 @@ p, span, a, button, input, textarea, label {
     backdrop-filter: none;
     border: none;
     box-shadow: none;
+  }
+
+  /* Show institution on mobile (always visible in carousel) */
+  .education .timeline-institution {
+    max-height: 50px;
+    opacity: 0.7;
+    margin-top: var(--space-xs);
+  }
+
+  /* Hide arrow indicator on mobile */
+  .education .timeline-content::after {
+    display: none;
   }
 
   .timeline-content::before {

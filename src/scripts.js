@@ -871,6 +871,23 @@
     });
   }
 
+  // Click on timeline item to expand/collapse on desktop
+  timelineItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Only toggle expanded state on desktop (not mobile carousel mode)
+      if (window.innerWidth > 768) {
+        // Close all other expanded items first
+        timelineItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('expanded');
+          }
+        });
+        // Toggle expanded state on clicked item
+        item.classList.toggle('expanded');
+      }
+    });
+  });
+
   // Handle scroll-based position detection for mobile
   let scrollTimeout;
   eduItemsWrapper?.addEventListener('scroll', () => {

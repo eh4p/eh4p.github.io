@@ -226,14 +226,15 @@ html, body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
-  transition: justify-content 0.4s ease;
+  padding-top: var(--space-3xl);
 }
 
-/* When a company is selected, move to top */
-.section-wrapper[data-section="experience"] > .experience:has(.company-panel.active) {
-  justify-content: flex-start;
+/* Keep title and subtitle at top */
+.section-wrapper[data-section="experience"] > .experience > h2,
+.section-wrapper[data-section="experience"] > .experience > .subtitle {
+  flex-shrink: 0;
 }
 
 /* Contact section - centered vertically */

@@ -183,16 +183,41 @@ html, body {
 }
 
 /* Hero section special handling */
+.section-wrapper[data-section="hero"] {
+  padding: 0;
+}
+
 .section-wrapper[data-section="hero"] > .hero {
   min-height: 100%;
   height: 100%;
   padding: 0;
 }
 
-/* Center content sections vertically when they fit */
-.section-wrapper[data-section="overview"] > .overview,
-.section-wrapper[data-section="experience"] > .experience,
-.section-wrapper[data-section="projects"] > .projects,
+/* Align all sections to start from top except contact and experience */
+.section-wrapper[data-section="projects"] > .projects {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto;
+}
+
+/* Experience section - centered initially, moves to top when company selected */
+.section-wrapper[data-section="experience"] > .experience {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  transition: justify-content 0.4s ease;
+}
+
+/* When a company is selected, move to top */
+.section-wrapper[data-section="experience"] > .experience:has(.company-panel.active) {
+  justify-content: flex-start;
+}
+
+/* Contact section - centered vertically */
 .section-wrapper[data-section="contact"] > .social {
   min-height: 100%;
   display: flex;
@@ -637,112 +662,59 @@ p, span, a, button, input, textarea, label {
   }
 }
 
-/* Overview Section */
-.overview {
-  max-width: 800px;
-  margin: var(--space-3xl) auto;
-  padding: 0 var(--space-xl);
+/* Hero Overview - at bottom of hero */
+.hero-overview {
+  margin-top: var(--space-xl);
+  padding: 0 var(--space-lg);
   text-align: center;
+  max-width: 700px;
 }
 
-.overview h2 {
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-}
-
-.overview .subtitle {
+.hero-overview-subtitle {
+  font-family: var(--font-subtitle);
   font-size: 1rem;
-  margin-bottom: var(--space-md);
   opacity: 0.9;
+  margin-bottom: var(--space-sm);
+  display: block;
 }
 
-.overview p {
-  font-size: 1rem;
-  line-height: 1.8;
-  opacity: 0.85;
+.hero-overview-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.75;
+  display: block;
 }
 
-/* Overview Section - Responsive */
-@media (max-width: 1024px) {
-  .overview {
-    max-width: 700px;
-    padding: 0 var(--space-lg);
-  }
-}
-
+/* Hero Overview - Responsive */
 @media (max-width: 768px) {
-  .overview {
-    max-width: 100%;
-    margin: var(--space-2xl) auto;
+  .hero-overview {
+    margin-top: var(--space-lg);
     padding: 0 var(--space-md);
+    max-width: 100%;
   }
 
-  .overview h2 {
-    font-size: 1.15rem;
-    gap: var(--space-xs);
+  .hero-overview-subtitle {
+    font-size: 0.9rem;
   }
 
-  .overview .subtitle {
-    font-size: 0.95rem;
-    margin-bottom: var(--space-sm);
-  }
-
-  .overview p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .overview-icon {
-    width: 1.6rem;
-    height: 1.6rem;
-    margin-bottom: 6px;
+  .hero-overview-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 480px) {
-  .overview {
-    margin: var(--space-xl) auto;
+  .hero-overview {
+    margin-top: var(--space-md);
     padding: 0 var(--space-sm);
   }
 
-  .overview h2 {
-    font-size: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .overview .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .overview p {
-    font-size: 0.875rem;
-    line-height: 1.6;
-  }
-
-  .overview-icon {
-    width: 1.4rem;
-    height: 1.4rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .overview {
-    padding: 0 var(--space-xs);
-  }
-
-  .overview h2 {
-    font-size: 0.95rem;
-  }
-
-  .overview .subtitle {
+  .hero-overview-subtitle {
     font-size: 0.85rem;
   }
 
-  .overview p {
-    font-size: 0.85rem;
+  .hero-overview-text {
+    font-size: 0.8rem;
   }
 }
 
@@ -778,12 +750,6 @@ p, span, a, button, input, textarea, label {
   width: 2.2rem;
   height: 2.2rem;
   margin-bottom: 10px;
-}
-
-.overview-icon {
-  width: 1.9rem;
-  height: 1.9rem;
-  margin-bottom: 8px;
 }
 
 .education > .subtitle {

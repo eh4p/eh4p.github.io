@@ -68,7 +68,7 @@
 
   // Keyboard arrow navigation
   document.addEventListener('keydown', (e) => {
-    const sections = ['hero', 'overview', 'experience', 'projects', 'education', 'contact'];
+    const sections = ['hero', 'experience', 'projects', 'education', 'contact'];
     const currentIndex = sections.indexOf(currentSection);
 
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {

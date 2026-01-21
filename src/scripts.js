@@ -709,104 +709,56 @@
   });
 })();
 
-// Projects Section - Circular Carousel
+// Projects Section - Card Grid
 (function() {
   'use strict';
 
-  const projectsRing = document.getElementById('projectsRing');
-  const projectItems = document.querySelectorAll('.project-item');
-  const projectDetailsPanel = document.getElementById('projectDetails');
-  const projectDetailContents = document.querySelectorAll('.project-detail-content');
-  const carouselContainer = document.querySelector('.projects-carousel-container');
-  const centerProjectName = document.getElementById('centerProjectName');
-  const projectDetailsInner = document.querySelector('.project-details-inner');
+  const projectCards = document.querySelectorAll('.project-card');
 
-  if (!projectsRing || !projectItems.length) return;
+  if (!projectCards.length) return;
 
-  let currentRotation = 0; // 0, 1, or 2 (representing 0, 120, 240 degrees)
-  let activeProjectIndex = null;
+  // Handle project card clicks
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Toggle active state
+      const isActive = card.classList.contains('active');
 
-  // Handle project item click (desktop only)
-  projectItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      selectProject(index);
-    });
+      // Remove active from all cards
+      projectCards.forEach(c => c.classList.remove('active'));
 
-    // Keyboard accessibility
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectProject(index);
+      // Add active to clicked card if it wasn't active
+      if (!isActive) {
+        card.classList.add('active');
       }
     });
 
-    item.setAttribute('tabindex', '0');
+    // Keyboard accessibility
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
   });
 
-  function selectProject(index) {
-    const targetRotation = index;
-    const clickedItem = projectItems[index];
-    const projectName = clickedItem.dataset.name;
-
-    // Update current rotation
-    currentRotation = targetRotation;
-
-    // Set the rotation attribute for CSS
-    projectsRing.setAttribute('data-rotation', currentRotation.toString());
-
-    // Remove active class from all items
-    projectItems.forEach(item => {
-      item.classList.remove('active');
-    });
-
-    // Add active class to clicked item
-    clickedItem.classList.add('active');
-
-    // Update center project name
-    centerProjectName.textContent = projectName;
-    centerProjectName.classList.add('visible');
-
-    // Expand the carousel to the left
-    carouselContainer.classList.add('expanded');
-
-    // Activate the details panel
-    projectDetailsPanel.classList.add('active');
-
-    // Hide all detail contents
-    projectDetailContents.forEach(content => {
-      content.classList.remove('active');
-    });
-
-    // Show the selected project details
-    const projectKey = clickedItem.dataset.project;
-    const targetContent = document.querySelector(`.project-detail-content[data-project="${projectKey}"]`);
-    if (targetContent) {
-      targetContent.classList.add('active');
-    }
-
-    activeProjectIndex = index;
-
-    // Update mobile carousel state
-    updateMobileCarousel(index);
-  }
-
-  // Animate items in on scroll
+  // Scroll-based animation for the projects section
   const projectsSection = document.querySelector('.projects');
   if (projectsSection) {
     const observerOptions = {
       root: null,
       rootMargin: '0px 0px -10% 0px',
-      threshold: 0.2
+      threshold: 0.1
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animate in project items with stagger
-          projectItems.forEach((item, i) => {
+          // Animate in cards with stagger
+          projectCards.forEach((card, i) => {
             setTimeout(() => {
-              item.style.opacity = '1';
-            }, i * 150);
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, i * 100);
           });
 
           sectionObserver.unobserve(entry.target);
@@ -817,161 +769,11 @@
     sectionObserver.observe(projectsSection);
   }
 
-  // Set initial state for project items
-  projectItems.forEach(item => {
-    item.style.opacity = '0';
-    item.style.transition = 'opacity 0.5s ease';
-  });
-
-  // ============================================
-  // Mobile Carousel Functionality
-  // ============================================
-  const carouselPrev = document.getElementById('carouselPrev');
-  const carouselNext = document.getElementById('carouselNext');
-  const carouselDots = document.getElementById('carouselDots');
-
-  if (carouselDots && projectDetailContents.length > 0) {
-    // Create dots for each project
-    projectDetailContents.forEach((_, index) => {
-      const dot = document.createElement('div');
-      dot.className = 'carousel-dot';
-      dot.setAttribute('data-index', index);
-      dot.addEventListener('click', () => {
-        scrollToProject(index);
-      });
-      carouselDots.appendChild(dot);
-    });
-  }
-
-  // Update mobile carousel state (dots and button states)
-  function updateMobileCarousel(index) {
-    const dots = carouselDots?.querySelectorAll('.carousel-dot');
-    if (dots) {
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-    }
-
-    // Update button states
-    if (carouselPrev) {
-      carouselPrev.disabled = index === 0;
-    }
-    if (carouselNext) {
-      carouselNext.disabled = index === projectDetailContents.length - 1;
-    }
-  }
-
-  // Scroll to a specific project (mobile)
-  function scrollToProject(index) {
-    if (index < 0 || index >= projectDetailContents.length) return;
-
-    const targetContent = projectDetailContents[index];
-    const targetItem = projectItems[index];
-
-    // Scroll the carousel to the target content card
-    targetContent.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center'
-    });
-
-    // Update active state for desktop elements too
-    selectProject(index);
-  }
-
-  // Previous button click
-  if (carouselPrev) {
-    carouselPrev.addEventListener('click', () => {
-      const newIndex = Math.max(0, (activeProjectIndex ?? 0) - 1);
-      scrollToProject(newIndex);
-    });
-  }
-
-  // Next button click
-  if (carouselNext) {
-    carouselNext.addEventListener('click', () => {
-      const newIndex = Math.min(projectDetailContents.length - 1, (activeProjectIndex ?? 0) + 1);
-      scrollToProject(newIndex);
-    });
-  }
-
-  // Handle scroll-based position detection for mobile
-  let scrollTimeout;
-  projectDetailsInner?.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      // Find which card is most visible
-      const innerRect = projectDetailsInner.getBoundingClientRect();
-      const innerCenter = innerRect.left + innerRect.width / 2;
-
-      let closestIndex = 0;
-      let closestDistance = Infinity;
-
-      projectDetailContents.forEach((content, index) => {
-        const contentRect = content.getBoundingClientRect();
-        const contentCenter = contentRect.left + contentRect.width / 2;
-        const distance = Math.abs(contentCenter - innerCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-
-      // Update if a different card is now most visible
-      if (closestIndex !== activeProjectIndex) {
-        // Just update the active state without re-scrolling
-        const clickedItem = projectItems[closestIndex];
-
-        // Remove active class from all items
-        projectItems.forEach(item => {
-          item.classList.remove('active');
-        });
-
-        // Add active class to clicked item
-        clickedItem.classList.add('active');
-
-        // Hide all detail contents
-        projectDetailContents.forEach(content => {
-          content.classList.remove('active');
-        });
-
-        // Show the selected project details
-        const projectKey = clickedItem.dataset.project;
-        const targetContent = document.querySelector(`.project-detail-content[data-project="${projectKey}"]`);
-        if (targetContent) {
-          targetContent.classList.add('active');
-        }
-
-        activeProjectIndex = closestIndex;
-        updateMobileCarousel(closestIndex);
-      }
-    }, 100);
-  });
-
-  // Initialize first project as active on mobile and tablets
-  function initMobileCarousel() {
-    if (window.innerWidth <= 1024) {
-      // Select first project on mobile
-      selectProject(0);
-    } else {
-      // On desktop, reset to no selection
-      activeProjectIndex = null;
-      projectItems.forEach(item => {
-        item.classList.remove('active');
-      });
-      projectDetailContents.forEach(content => {
-        content.classList.remove('active');
-      });
-    }
-  }
-
-  // Initialize on load and resize
-  initMobileCarousel();
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(initMobileCarousel, 150);
+  // Set initial state for cards (hidden for animation)
+  projectCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   });
 })();
 

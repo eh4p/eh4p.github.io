@@ -2203,6 +2203,7 @@ p, span, a, button, input, textarea, label {
   margin: var(--space-3xl) auto;
   padding: 0 var(--space-xl) var(--space-3xl);
   text-align: center;
+  position: relative;
 }
 
 .wave-icon {
@@ -2263,16 +2264,27 @@ p, span, a, button, input, textarea, label {
 }
 
 .footer-text {
-  margin-top: var(--space-2xl);
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 0;
+  right: 0;
   font-size: 0.8rem;
   font-weight: bold;
   opacity: 0.6;
+  text-align: center;
+  padding: 0 var(--space-lg);
 }
 
 .footer-copyright {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 0;
+  right: 0;
   font-size: 0.65rem;
   font-weight: bold;
   opacity: 0.5;
+  text-align: center;
+  padding: 0 var(--space-lg);
 }
 
 /* Responsive design */
@@ -2292,5 +2304,15 @@ p, span, a, button, input, textarea, label {
   .social-icon {
     width: 24px;
     height: 24px;
+  }
+
+  .footer-text {
+    bottom: var(--space-lg);
+    padding: 0 var(--space-md);
+  }
+
+  .footer-copyright {
+    bottom: var(--space-sm);
+    padding: 0 var(--space-md);
   }
 }

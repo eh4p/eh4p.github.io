@@ -759,7 +759,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .education h2 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -767,14 +767,14 @@ p, span, a, button, input, textarea, label {
 }
 
 .education-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.9rem;
+  height: 1.9rem;
   margin-bottom: 8px;
 }
 
 .projects-icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.3rem;
+  height: 1.3rem;
   margin-bottom: 7px;
 }
 
@@ -785,7 +785,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .education > .subtitle {
-  font-size: 1rem;
+  font-size: 0.75rem;
   opacity: 0.9;
 }
 
@@ -932,7 +932,7 @@ p, span, a, button, input, textarea, label {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(245, 245, 247, 0.1);
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: left;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -984,17 +984,17 @@ p, span, a, button, input, textarea, label {
 .education .timeline-content {
   width: 100%;
   margin: 0 !important;
-  min-height: 138px;
+  min-height: 105px;
 }
 
 /* Timeline year badge */
 .timeline-year {
   display: inline-block;
   font-family: var(--font-title);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
+  font-size: 0.55rem;
+  padding: 0.2rem 0.55rem;
   background: rgba(245, 245, 247, 0.1);
-  border-radius: 20px;
+  border-radius: 15px;
   margin-bottom: var(--space-sm);
   opacity: 0.8;
 }
@@ -1002,14 +1002,14 @@ p, span, a, button, input, textarea, label {
 /* Timeline content title */
 .timeline-content h3 {
   font-family: var(--font-subtitle);
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   margin-bottom: var(--space-sm);
   color: var(--text-color);
 }
 
 .timeline-institution {
   font-family: var(--font-subtitle);
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   opacity: 0.7;
 }
 
@@ -1109,12 +1109,12 @@ p, span, a, button, input, textarea, label {
   bottom: var(--space-md);
   right: var(--space-md);
   font-family: var(--font-subtitle);
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   font-weight: 500;
-  padding: 0.3rem 0.75rem;
+  padding: 0.2rem 0.55rem;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  border-radius: 15px;
   color: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
   pointer-events: none;
@@ -1968,7 +1968,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .projects h2 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1976,7 +1976,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .projects > .subtitle {
-  font-size: 1rem;
+  font-size: 0.75rem;
   opacity: 0.9;
   margin-bottom: var(--space-2xl);
 }
@@ -1997,7 +1997,7 @@ p, span, a, button, input, textarea, label {
   flex-direction: column;
   background: transparent;
   border: none;
-  border-radius: 16px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: left;
@@ -2013,7 +2013,7 @@ p, span, a, button, input, textarea, label {
     rgba(255, 255, 255, 0.08) 0%,
     rgba(255, 255, 255, 0.02) 100%
   );
-  border-radius: 16px;
+  border-radius: 12px;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
@@ -2031,7 +2031,7 @@ p, span, a, button, input, textarea, label {
   content: '';
   position: absolute;
   inset: -2px;
-  border-radius: 18px;
+  border-radius: 14px;
   border: 2px solid rgba(255, 195, 42, 0.6);
   z-index: 1;
 }
@@ -2049,7 +2049,7 @@ p, span, a, button, input, textarea, label {
 /* Project Card Icon - Navbar style */
 .project-card-icon {
   font-family: var(--font-title);
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
 }
@@ -2066,7 +2066,7 @@ p, span, a, button, input, textarea, label {
 /* Project Card Type */
 .project-card-type {
   font-family: var(--font-subtitle);
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2101,13 +2101,13 @@ p, span, a, button, input, textarea, label {
 
 .project-card-content h3 {
   font-family: var(--font-subtitle);
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: var(--text-color);
   margin-bottom: var(--space-md);
 }
 
 .project-card-content .project-description {
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-md);
@@ -2121,9 +2121,9 @@ p, span, a, button, input, textarea, label {
 }
 
 .tech-tag {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   font-weight: 500;
-  padding: 0.35rem 0.75rem;
+  padding: 0.25rem 0.55rem;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.08) 0%,
@@ -2132,7 +2132,7 @@ p, span, a, button, input, textarea, label {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 8px;
   color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   letter-spacing: 0.02em;
@@ -2174,11 +2174,11 @@ p, span, a, button, input, textarea, label {
   }
 
   .project-card-content h3 {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
   }
 
   .project-card-content .project-description {
-    font-size: 0.85rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -2191,15 +2191,15 @@ p, span, a, button, input, textarea, label {
 }
 
 .wave-icon {
-  width: 50px;
-  height: 50px;
+  width: 38px;
+  height: 38px;
   margin-bottom: var(--space-sm);
   opacity: 0.7;
   transform: scale(-1, -1);
 }
 
 .social-text {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
   opacity: 0.7;
   margin-bottom: var(--space-md);
@@ -2230,8 +2230,8 @@ p, span, a, button, input, textarea, label {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   opacity: 0.6;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2249,13 +2249,13 @@ p, span, a, button, input, textarea, label {
 
 .footer-text {
   margin-top: var(--space-2xl);
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   font-weight: bold;
   opacity: 0.6;
 }
 
 .footer-copyright {
-  font-size: 0.75rem;
+  font-size: 0.55rem;
   font-weight: bold;
   opacity: 0.5;
 }
@@ -2267,7 +2267,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .social-text {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
   }
 
   .social-icons {
@@ -2275,7 +2275,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .social-icon {
-    width: 36px;
-    height: 36px;
+    width: 27px;
+    height: 27px;
   }
 }

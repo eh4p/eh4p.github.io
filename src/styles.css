@@ -1090,20 +1090,33 @@ p, span, a, button, input, textarea, label {
   background: rgba(245, 245, 247, 0.08);
 }
 
-/* Arrow indicator for expandable cards */
+/* Show/Hide Details badge button */
 .education .timeline-content::after {
-  content: '▼';
+  content: 'Show Details';
   position: absolute;
-  bottom: var(--space-sm);
-  right: var(--space-sm);
-  font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.3);
-  transition: transform 0.3s ease, color 0.3s ease;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  font-family: var(--font-subtitle);
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.education .timeline-item:hover .timeline-content::after {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .education .timeline-item.expanded .timeline-content::after {
-  transform: rotate(180deg);
-  color: rgba(255, 195, 42, 0.6);
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Education details container on desktop */

@@ -664,57 +664,60 @@ p, span, a, button, input, textarea, label {
 
 /* Hero Overview - at bottom of hero */
 .hero-overview {
-  margin-top: var(--space-xl);
-  padding: 0 var(--space-lg);
+  position: absolute;
+  bottom: var(--space-xl);
   text-align: center;
-  max-width: 700px;
+  left: 0;
+  right: 0;
+  padding: 0 var(--space-lg);
 }
 
 .hero-overview-subtitle {
   font-family: var(--font-subtitle);
   font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: var(--space-sm);
+  opacity: 0.8;
+  margin-bottom: var(--space-xs);
   display: block;
 }
 
 .hero-overview-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  opacity: 0.75;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  opacity: 0.65;
+  max-width: 600px;
+  margin: 0 auto;
   display: block;
 }
 
 /* Hero Overview - Responsive */
 @media (max-width: 768px) {
   .hero-overview {
-    margin-top: var(--space-lg);
+    bottom: var(--space-lg);
     padding: 0 var(--space-md);
-    max-width: 100%;
   }
 
   .hero-overview-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .hero-overview-text {
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-size: 0.7rem;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .hero-overview {
-    margin-top: var(--space-md);
+    bottom: var(--space-md);
     padding: 0 var(--space-sm);
   }
 
   .hero-overview-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .hero-overview-text {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
   }
 }
 

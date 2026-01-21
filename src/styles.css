@@ -2049,7 +2049,7 @@ p, span, a, button, input, textarea, label {
 /* Project Card Icon - Navbar style */
 .project-card-icon {
   font-family: var(--font-title);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
 }
@@ -2066,7 +2066,7 @@ p, span, a, button, input, textarea, label {
 /* Project Card Type */
 .project-card-type {
   font-family: var(--font-subtitle);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2101,13 +2101,13 @@ p, span, a, button, input, textarea, label {
 
 .project-card-content h3 {
   font-family: var(--font-subtitle);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-color);
   margin-bottom: var(--space-md);
 }
 
 .project-card-content .project-description {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-md);
@@ -2121,9 +2121,9 @@ p, span, a, button, input, textarea, label {
 }
 
 .tech-tag {
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  padding: 0.25rem 0.55rem;
+  padding: 0.3rem 0.65rem;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.08) 0%,
@@ -2174,11 +2174,11 @@ p, span, a, button, input, textarea, label {
   }
 
   .project-card-content h3 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .project-card-content .project-description {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 }
 

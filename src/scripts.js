@@ -1,3 +1,104 @@
+// ============================================
+// MAIN NAVIGATION - Single Screen Navigation
+// ============================================
+(function() {
+  'use strict';
+
+  const navItems = document.querySelectorAll('.nav-item');
+  const sectionWrappers = document.querySelectorAll('.section-wrapper');
+
+  if (!navItems.length || !sectionWrappers.length) return;
+
+  let currentSection = 'hero';
+  let isTransitioning = false;
+
+  // Navigate to a specific section
+  function navigateToSection(sectionId) {
+    if (isTransitioning || sectionId === currentSection) return;
+
+    isTransitioning = true;
+
+    // Update nav items
+    navItems.forEach(item => {
+      const isActive = item.dataset.section === sectionId;
+      item.classList.toggle('active', isActive);
+    });
+
+    // Update section wrappers
+    sectionWrappers.forEach(wrapper => {
+      const isActive = wrapper.dataset.section === sectionId;
+      wrapper.classList.toggle('active', isActive);
+    });
+
+    // Trigger animations in the new section
+    const activeWrapper = document.querySelector(`.section-wrapper[data-section="${sectionId}"]`);
+    if (activeWrapper) {
+      const animatedElements = activeWrapper.querySelectorAll('.fade-in, .fade-in-sm, .fade-in-left, .fade-in-right');
+      animatedElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 50);
+      });
+    }
+
+    currentSection = sectionId;
+
+    // Reset transition lock after animation completes
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500);
+  }
+
+  // Handle nav item clicks
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const sectionId = item.dataset.section;
+      navigateToSection(sectionId);
+    });
+
+    // Keyboard navigation
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const sectionId = item.dataset.section;
+        navigateToSection(sectionId);
+      }
+    });
+  });
+
+  // Keyboard arrow navigation
+  document.addEventListener('keydown', (e) => {
+    const sections = ['hero', 'overview', 'experience', 'projects', 'education', 'contact'];
+    const currentIndex = sections.indexOf(currentSection);
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = Math.min(currentIndex + 1, sections.length - 1);
+      navigateToSection(sections[nextIndex]);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = Math.max(currentIndex - 1, 0);
+      navigateToSection(sections[prevIndex]);
+    }
+  });
+
+  // Initialize - show animations for hero section
+  const heroWrapper = document.querySelector('.section-wrapper[data-section="hero"]');
+  if (heroWrapper) {
+    const animatedElements = heroWrapper.querySelectorAll('.fade-in, .fade-in-sm, .fade-in-left, .fade-in-right');
+    setTimeout(() => {
+      animatedElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 100);
+      });
+    }, 100);
+  }
+
+  // Expose navigateToSection globally for potential external use
+  window.navigateToSection = navigateToSection;
+})();
+
 // Universal Scroll-Triggered Animations
 (function() {
   'use strict';

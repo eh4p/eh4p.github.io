@@ -12,7 +12,41 @@
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
-  <main class="hero">
+  <!-- Main Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <button class="nav-item active" data-section="hero" aria-label="Home">
+        <span class="nav-icon">H</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-section="overview" aria-label="Overview">
+        <span class="nav-icon">O</span>
+        <span class="nav-label">Overview</span>
+      </button>
+      <button class="nav-item" data-section="experience" aria-label="Experience">
+        <span class="nav-icon">E</span>
+        <span class="nav-label">Experience</span>
+      </button>
+      <button class="nav-item" data-section="projects" aria-label="Projects">
+        <span class="nav-icon">P</span>
+        <span class="nav-label">Projects</span>
+      </button>
+      <button class="nav-item" data-section="education" aria-label="Education">
+        <span class="nav-icon">Ed</span>
+        <span class="nav-label">Education</span>
+      </button>
+      <button class="nav-item" data-section="contact" aria-label="Contact">
+        <span class="nav-icon">C</span>
+        <span class="nav-label">Contact</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sections Container -->
+  <main class="sections-container">
+    <!-- Hero Section -->
+    <section class="section-wrapper active" data-section="hero">
+    <div class="hero">
     <div class="hero-quotes fade-in">
       <p class="hero-quote">If you tried to count Allah's blessings,</p>
       <p class="hero-quote">you would never be able to number them.</p>
@@ -20,18 +54,24 @@
     <p class="subtitle fade-in delay-1">Software Engineer</p>
     <h1 class="fade-in delay-2">Ehab Muhammad</h1>
     <p class="est fade-in delay-3">EST. 2024</p>
-  </main>
+    </div>
+    </section>
 
-  <section class="overview">
+    <!-- Overview Section -->
+    <section class="section-wrapper" data-section="overview">
+    <div class="overview">
     <h2 class="fade-in">
       <img src="/public/images/overview.svg" alt="" class="overview-icon">
       Overview
     </h2>
     <p class="subtitle fade-in delay-1">Bring Vision to Life</p>
     <p class="fade-in delay-2">Building scalable, high-performance, maintainable, and scure APIs, Coupled with crafting robust server-side functionality. ── Hands-on experience with cutting-edge technologies prevalent in the industry.</p>
-  </section>
+    </div>
+    </section>
 
-  <section class="experience">
+    <!-- Experience Section -->
+    <section class="section-wrapper" data-section="experience">
+    <div class="experience">
     <h2 class="fade-in">
       <img src="/public/images/exp.svg" alt="" class="exp-icon">
       Experience
@@ -135,9 +175,12 @@
         </div>
       </div>
     </div>
-  </section>
+    </div>
+    </section>
 
-  <section class="projects">
+    <!-- Projects Section -->
+    <section class="section-wrapper" data-section="projects">
+    <div class="projects">
     <h2 class="fade-in">
       <img src="/public/images/projects.svg" alt="" class="projects-icon">
       Projects
@@ -226,9 +269,12 @@
         </div>
       </div>
     </div>
-  </section>
+    </div>
+    </section>
 
-  <section class="education">
+    <!-- Education Section -->
+    <section class="section-wrapper" data-section="education">
+    <div class="education">
     <h2 class="fade-in">
       <img src="/public/images/edu.svg" alt="" class="education-icon">
       Education
@@ -286,9 +332,12 @@
         </button>
       </div>
     </div>
-  </section>
+    </div>
+    </section>
 
-  <footer class="social">
+    <!-- Contact Section -->
+    <section class="section-wrapper" data-section="contact">
+    <footer class="social">
     <span class="fade-in">
       <img src="/public/images/wave.svg" alt="Wave" class="wave-icon">
     </span>
@@ -316,6 +365,9 @@
     <div class="footer-text fade-in-sm delay-3">Thanks For Visiting My Portfolio</div>
     <div class="footer-copyright fade-in-sm delay-4">© 2026 Ehab Muhammad</div>
   </footer>
+    </section>
+
+  </main>
 
   <script src="/src/scripts.js"></script>
 </body>

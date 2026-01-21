@@ -777,13 +777,13 @@ p, span, a, button, input, textarea, label {
 .education-icon {
   width: 1.9rem;
   height: 1.9rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .projects-icon {
   width: 1.3rem;
   height: 1.3rem;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
 }
 
 .exp-icon {
@@ -1506,17 +1506,17 @@ p, span, a, button, input, textarea, label {
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(245, 245, 247, 0.4),
-    rgba(245, 245, 247, 0.8),
-    rgba(245, 245, 247, 1)
+    rgba(255, 195, 42, 0.4),
+    rgba(255, 195, 42, 0.8),
+    #ffc32a
   );
   border-radius: 2px;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.5s ease,
               box-shadow 0.5s ease;
   box-shadow:
-    0 0 8px rgba(245, 245, 247, 0.4),
-    0 0 16px rgba(245, 245, 247, 0.2);
+    0 0 8px rgba(255, 195, 42, 0.4),
+    0 0 16px rgba(255, 195, 42, 0.2);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -1555,11 +1555,11 @@ p, span, a, button, input, textarea, label {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--text-color);
+  background: #ffc32a;
   border: 3px solid var(--bg-color);
   box-shadow:
-    0 0 0 3px rgba(245, 245, 247, 0.2),
-    0 0 12px rgba(245, 245, 247, 0.4);
+    0 0 0 3px rgba(255, 195, 42, 0.2),
+    0 0 12px rgba(255, 195, 42, 0.4);
   transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.3s ease,
               box-shadow 0.3s ease;
@@ -1571,10 +1571,10 @@ p, span, a, button, input, textarea, label {
 }
 
 .moving-circle.active {
-  background: #fff;
+  background: #ffc32a;
   box-shadow:
-    0 0 0 4px rgba(245, 245, 247, 0.4),
-    0 0 20px rgba(255, 255, 255, 0.6);
+    0 0 0 4px rgba(255, 195, 42, 0.4),
+    0 0 20px rgba(255, 195, 42, 0.6);
   animation: circle-pulse 2s ease-in-out infinite;
 }
 
@@ -1590,13 +1590,13 @@ p, span, a, button, input, textarea, label {
 @keyframes circle-pulse {
   0%, 100% {
     box-shadow:
-      0 0 0 4px rgba(245, 245, 247, 0.4),
-      0 0 20px rgba(255, 255, 255, 0.6);
+      0 0 0 4px rgba(255, 195, 42, 0.4),
+      0 0 20px rgba(255, 195, 42, 0.6);
   }
   50% {
     box-shadow:
-      0 0 0 6px rgba(245, 245, 247, 0.2),
-      0 0 30px rgba(255, 255, 255, 0.4);
+      0 0 0 6px rgba(255, 195, 42, 0.2),
+      0 0 30px rgba(255, 195, 42, 0.4);
   }
 }
 
@@ -1621,7 +1621,7 @@ p, span, a, button, input, textarea, label {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(245, 245, 247, 0.2);
+  background: rgba(255, 195, 42, 0.3);
   border: 2px solid var(--bg-color);
   transition: all 0.3s ease, left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -1629,7 +1629,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .line-dot.active {
-  background: rgba(245, 245, 247, 0.6);
+  background: rgba(255, 195, 42, 0.8);
   width: 8px;
   height: 8px;
 }

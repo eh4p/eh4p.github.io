@@ -97,8 +97,8 @@ html, body {
 }
 
 .nav-item.active .nav-icon svg {
-  fill: #ffc32a;
-  filter: drop-shadow(0 0 8px rgba(255, 195, 42, 0.5));
+  fill: #FFD41D;
+  filter: drop-shadow(0 0 8px rgba(255, 212, 29, 0.5));
 }
 
 .nav-item .nav-label {
@@ -123,22 +123,22 @@ html, body {
 }
 
 .nav-item.active .nav-icon {
-  color: #ffc32a;
-  text-shadow: 0 0 20px rgba(255, 195, 42, 0.5);
+  color: #FFD41D;
+  text-shadow: 0 0 20px rgba(255, 212, 29, 0.5);
 }
 
 .nav-item.active .nav-label {
-  color: #ffc32a;
+  color: #FFD41D;
 }
 
 .nav-item.active::before {
   opacity: 1;
   background: linear-gradient(
     135deg,
-    rgba(255, 195, 42, 0.15) 0%,
-    rgba(255, 195, 42, 0.05) 100%
+    rgba(255, 212, 29, 0.15) 0%,
+    rgba(255, 212, 29, 0.05) 100%
   );
-  border: 1px solid rgba(255, 195, 42, 0.2);
+  border: 1px solid rgba(255, 212, 29, 0.2);
 }
 
 /* Sections Container */
@@ -496,7 +496,7 @@ body {
 /* Section titles */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
-  color: #ffc32a;
+  color: #FFD41D;
 }
 
 /* Subtitles */
@@ -1271,7 +1271,7 @@ p, span, a, button, input, textarea, label {
 
   /* Highlight active card */
   .institution-panel.active {
-    border-color: rgba(255, 195, 42, 0.4);
+    border-color: rgba(255, 212, 29, 0.4);
   }
 
   .institution-panel:not(.active) {
@@ -1383,7 +1383,7 @@ p, span, a, button, input, textarea, label {
   .education-carousel-nav .carousel-dot.active {
     width: 18px;
     border-radius: 4px;
-    background: rgba(255, 195, 42, 0.8);
+    background: rgba(255, 212, 29, 0.8);
   }
 
   .education-carousel-nav .carousel-dot:hover {
@@ -1391,7 +1391,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .education-carousel-nav .carousel-dot.active:hover {
-    background: rgba(255, 195, 42, 1);
+    background: rgba(255, 212, 29, 1);
   }
 }
 
@@ -1524,17 +1524,17 @@ p, span, a, button, input, textarea, label {
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(255, 195, 42, 0.4),
-    rgba(255, 195, 42, 0.8),
-    #ffc32a
+    rgba(255, 212, 29, 0.4),
+    rgba(255, 212, 29, 0.8),
+    #FFD41D
   );
   border-radius: 2px;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.5s ease,
               box-shadow 0.5s ease;
   box-shadow:
-    0 0 8px rgba(255, 195, 42, 0.4),
-    0 0 16px rgba(255, 195, 42, 0.2);
+    0 0 8px rgba(255, 212, 29, 0.4),
+    0 0 16px rgba(255, 212, 29, 0.2);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -1573,11 +1573,11 @@ p, span, a, button, input, textarea, label {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #ffc32a;
+  background: #FFD41D;
   border: 3px solid var(--bg-color);
   box-shadow:
-    0 0 0 3px rgba(255, 195, 42, 0.2),
-    0 0 12px rgba(255, 195, 42, 0.4);
+    0 0 0 3px rgba(255, 212, 29, 0.2),
+    0 0 12px rgba(255, 212, 29, 0.4);
   transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.3s ease,
               box-shadow 0.3s ease;
@@ -1589,10 +1589,10 @@ p, span, a, button, input, textarea, label {
 }
 
 .moving-circle.active {
-  background: #ffc32a;
+  background: #FFD41D;
   box-shadow:
-    0 0 0 4px rgba(255, 195, 42, 0.4),
-    0 0 20px rgba(255, 195, 42, 0.6);
+    0 0 0 4px rgba(255, 212, 29, 0.4),
+    0 0 20px rgba(255, 212, 29, 0.6);
   animation: circle-pulse 2s ease-in-out infinite;
 }
 
@@ -1608,13 +1608,13 @@ p, span, a, button, input, textarea, label {
 @keyframes circle-pulse {
   0%, 100% {
     box-shadow:
-      0 0 0 4px rgba(255, 195, 42, 0.4),
-      0 0 20px rgba(255, 195, 42, 0.6);
+      0 0 0 4px rgba(255, 212, 29, 0.4),
+      0 0 20px rgba(255, 212, 29, 0.6);
   }
   50% {
     box-shadow:
-      0 0 0 6px rgba(255, 195, 42, 0.2),
-      0 0 30px rgba(255, 195, 42, 0.4);
+      0 0 0 6px rgba(255, 212, 29, 0.2),
+      0 0 30px rgba(255, 212, 29, 0.4);
   }
 }
 
@@ -1639,7 +1639,7 @@ p, span, a, button, input, textarea, label {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 195, 42, 0.3);
+  background: rgba(255, 212, 29, 0.3);
   border: 2px solid var(--bg-color);
   transition: all 0.3s ease, left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -1647,7 +1647,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .line-dot.active {
-  background: rgba(255, 195, 42, 0.8);
+  background: rgba(255, 212, 29, 0.8);
   width: 8px;
   height: 8px;
 }
@@ -1866,7 +1866,7 @@ p, span, a, button, input, textarea, label {
 
   /* Highlight active card */
   .company-panel.active {
-    border-color: rgba(255, 195, 42, 0.4);
+    border-color: rgba(255, 212, 29, 0.4);
   }
 
   .company-panel:not(.active) {
@@ -1978,7 +1978,7 @@ p, span, a, button, input, textarea, label {
   .experience-carousel-nav .carousel-dot.active {
     width: 18px;
     border-radius: 4px;
-    background: rgba(255, 195, 42, 0.8);
+    background: rgba(255, 212, 29, 0.8);
   }
 
   .experience-carousel-nav .carousel-dot:hover {
@@ -1986,7 +1986,7 @@ p, span, a, button, input, textarea, label {
   }
 
   .experience-carousel-nav .carousel-dot.active:hover {
-    background: rgba(255, 195, 42, 1);
+    background: rgba(255, 212, 29, 1);
   }
 }
 
@@ -2065,7 +2065,7 @@ p, span, a, button, input, textarea, label {
   position: absolute;
   inset: -2px;
   border-radius: 14px;
-  border: 2px solid rgba(255, 195, 42, 0.6);
+  border: 2px solid rgba(255, 212, 29, 0.6);
   z-index: 1;
 }
 
@@ -2092,8 +2092,8 @@ p, span, a, button, input, textarea, label {
 }
 
 .project-card.active .project-card-icon {
-  color: #ffc32a;
-  text-shadow: 0 0 20px rgba(255, 195, 42, 0.5);
+  color: #FFD41D;
+  text-shadow: 0 0 20px rgba(255, 212, 29, 0.5);
 }
 
 /* Project Card Type */
@@ -2111,7 +2111,7 @@ p, span, a, button, input, textarea, label {
 }
 
 .project-card.active .project-card-type {
-  color: rgba(255, 195, 42, 0.8);
+  color: rgba(255, 212, 29, 0.8);
 }
 
 /* Active state border */
@@ -2119,10 +2119,10 @@ p, span, a, button, input, textarea, label {
   opacity: 1;
   background: linear-gradient(
     135deg,
-    rgba(255, 195, 42, 0.12) 0%,
-    rgba(255, 195, 42, 0.04) 100%
+    rgba(255, 212, 29, 0.12) 0%,
+    rgba(255, 212, 29, 0.04) 100%
   );
-  border: 1px solid rgba(255, 195, 42, 0.2);
+  border: 1px solid rgba(255, 212, 29, 0.2);
 }
 
 /* Project Card Content */
@@ -2242,7 +2242,7 @@ p, span, a, button, input, textarea, label {
 .social-text .resume-link {
   color: var(--text-color);
   text-decoration: underline;
-  text-decoration-color: #ffc32a;
+  text-decoration-color: #FFD41D;
   text-decoration-thickness: 4px;
   text-underline-offset: 6px;
   opacity: 1;

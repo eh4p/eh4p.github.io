@@ -2079,21 +2079,22 @@ p, span, a, button, input, textarea, label {
   z-index: 1;
 }
 
-/* Project Card Icon - Navbar style */
+/* Project Card Icon - Image style */
 .project-card-icon {
-  font-family: var(--font-title);
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.5);
+  width: 2.2rem;
+  height: 2.2rem;
+  object-fit: contain;
+  opacity: 0.5;
   transition: all 0.3s ease;
 }
 
 .project-card:hover .project-card-icon {
-  color: rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
 }
 
 .project-card.active .project-card-icon {
-  color: #FFD41D;
-  text-shadow: 0 0 20px rgba(255, 212, 29, 0.5);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(255, 212, 29, 0.5));
 }
 
 /* Project Card Type */

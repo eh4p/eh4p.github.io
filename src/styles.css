@@ -193,6 +193,51 @@ html, body {
   background: rgba(255, 255, 255, 0.3);
 }
 
+/* Projects section scrollbar - primary themed */
+.section-wrapper[data-section="projects"],
+.section-wrapper[data-section="projects"] > .projects {
+  scrollbar-color: var(--accent-color) rgba(255, 255, 255, 0.08);
+  scrollbar-width: thin;
+}
+
+.section-wrapper[data-section="projects"]::-webkit-scrollbar,
+.section-wrapper[data-section="projects"] > .projects::-webkit-scrollbar {
+  width: 10px;
+}
+
+.section-wrapper[data-section="projects"]::-webkit-scrollbar-track,
+.section-wrapper[data-section="projects"] > .projects::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+}
+
+.section-wrapper[data-section="projects"]::-webkit-scrollbar-thumb,
+.section-wrapper[data-section="projects"] > .projects::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 212, 29, 0.95) 0%,
+    rgba(255, 212, 29, 0.45) 100%
+  );
+  border-radius: 10px;
+  border: 2px solid rgba(12, 10, 9, 0.85);
+  box-shadow: 0 0 10px rgba(255, 212, 29, 0.25);
+}
+
+.section-wrapper[data-section="projects"]::-webkit-scrollbar-thumb:hover,
+.section-wrapper[data-section="projects"] > .projects::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 212, 29, 1) 0%,
+    rgba(255, 212, 29, 0.6) 100%
+  );
+  box-shadow: 0 0 14px rgba(255, 212, 29, 0.4);
+}
+
 /* Adjust inner sections to fit within viewport */
 .section-wrapper > * {
   max-height: 100%;
@@ -455,6 +500,7 @@ html, body {
   /* Colors */
   --bg-color: #0c0a09;
   --text-color: #f5f5f7;
+  --accent-color: #FFD41D;
 
   /* Fonts */
   --font-title: 'GOT', serif;

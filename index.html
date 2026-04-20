@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ehab Muhammad — Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;500&family=Söhne:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
+  <title>Ehab Muhammad — Software Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-MediumItalic.ttf') format('truetype'); font-weight: 500; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Playfair Display'; src: url('public/fonts/playfair/PlayfairDisplay-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-MediumItalic.ttf') format('truetype'); font-weight: 500; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'DM Sans'; src: url('public/fonts/dmsans/DMSans-SemiBoldItalic.ttf') format('truetype'); font-weight: 600; font-style: italic; font-display: swap; }
+  </style>
+  <style>
   :root {
     /* Light Theme (Claude-inspired) */
     --bg: #F2EFE8;
@@ -981,25 +996,27 @@ let typewriterTimeout = null;
 let transitioning = false;
 
 // ─── TYPEWRITER ───
-function typewrite(el, text, speed = 8, callback) {
+function typewrite(el, text, speed = 30, callback) {
   if (typewriterTimeout) clearTimeout(typewriterTimeout);
   el.innerHTML = '';
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
-  let i = 0;
+  const words = text.split(/(\s+)/);
+  let w = 0;
 
   function tick() {
-    if (i < text.length) {
-      const char = text[i];
-      if (char === '\n') {
-        el.insertBefore(document.createElement('br'), cursor);
+    if (w < words.length) {
+      const word = words[w];
+      if (/^\s+$/.test(word)) {
+        el.insertBefore(document.createTextNode(word), cursor);
       } else {
-        const span = document.createTextNode(char);
+        const span = document.createElement('span');
+        span.textContent = word;
         el.insertBefore(span, cursor);
       }
       el.appendChild(cursor);
-      i++;
-      typewriterTimeout = setTimeout(tick, speed + Math.random() * 5);
+      w++;
+      typewriterTimeout = setTimeout(tick, speed + Math.random() * 20);
     } else {
       if (callback) callback();
     }
@@ -1139,10 +1156,9 @@ function animateSubContent(idx) {
 // ─── INIT ───
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('themeBtn').textContent = '☀️';
-  }
+  const theme = saved || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeBtn').textContent = theme === 'dark' ? '☀️' : '🌙';
 
   updateCardPositions(0);
 

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex Mercer — Software Engineer</title>
+<title>Ehab Muhammad — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;500&family=Söhne:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
+    /* Light Theme (Claude-inspired) */
     --bg: #F2EFE8;
     --bg-warm: #EDE8DF;
     --surface: #FDFAF5;
@@ -19,17 +20,30 @@
     --text-secondary: #5A5248;
     --text-muted: #9A8E82;
     --accent: #D97757;
-    --accent-warm: #C96B3E;
-    --accent-cool: #6B8FA3;
-    --accent-gold: #B8924A;
-    --claude-rust: #D97757;
-    --claude-sand: #C4A882;
-    --claude-slate: #4A5568;
+    
     --card-shadow: 0 2px 12px rgba(80, 60, 40, 0.10), 0 1px 3px rgba(80, 60, 40, 0.08);
     --card-shadow-hover: 0 8px 32px rgba(80, 60, 40, 0.18), 0 2px 8px rgba(80, 60, 40, 0.10);
+    
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'DM Mono', monospace;
+  }
+
+  /* Dark Theme Overrides */
+  [data-theme="dark"] {
+    --bg: #1A1918;
+    --bg-warm: #22201F;
+    --surface: #242220;
+    --surface-2: #2A2826;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.15);
+    --text-primary: #EAE6DF;
+    --text-secondary: #B5ACA1;
+    --text-muted: #857C72;
+    --accent: #D97757;
+
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,6 +56,7 @@
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   /* Subtle grain overlay */
@@ -54,6 +69,41 @@
     z-index: 1000;
     opacity: 0.4;
   }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle {
+    position: fixed;
+    top: 32px;
+    right: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.4s ease;
+  }
+
+  [data-theme="dark"] .icon-moon { display: none; }
+  [data-theme="light"] .icon-sun { display: none; }
 
   /* ─── LAYOUT ─── */
   .layout {
@@ -77,6 +127,7 @@
     padding: 48px 32px;
     border-right: 1px solid var(--border);
     background: var(--surface);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
   }
 
   /* ─── CARD STACK ─── */
@@ -92,7 +143,7 @@
     width: 280px;
     height: 340px;
     border-radius: 18px;
-    border: 1px solid var(--border-strong);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, opacity 0.3s ease;
     will-change: transform;
@@ -110,39 +161,14 @@
     z-index: 2;
   }
 
-  .stack-card.card-0 {
-    background: linear-gradient(145deg, #2D2420 0%, #1A1714 100%);
-    z-index: 5;
-    transform: translateY(0px) rotate(0deg);
-    box-shadow: var(--card-shadow-hover);
-  }
-  .stack-card.card-1 {
-    background: linear-gradient(145deg, #D97757 0%, #B85E3A 100%);
-    z-index: 4;
-    transform: translateY(10px) rotate(2.5deg);
-    box-shadow: var(--card-shadow);
-  }
-  .stack-card.card-2 {
-    background: linear-gradient(145deg, #6B8FA3 0%, #4A6B7C 100%);
-    z-index: 3;
-    transform: translateY(20px) rotate(-2deg);
-    box-shadow: var(--card-shadow);
-  }
-  .stack-card.card-3 {
-    background: linear-gradient(145deg, #B8924A 0%, #8A6A2E 100%);
-    z-index: 2;
-    transform: translateY(30px) rotate(4deg);
-    box-shadow: var(--card-shadow);
-  }
-  .stack-card.card-4 {
-    background: linear-gradient(145deg, #4A5568 0%, #2D3748 100%);
-    z-index: 1;
-    transform: translateY(40px) rotate(-3.5deg);
-    box-shadow: var(--card-shadow);
-  }
+  .stack-card.card-0 { background: linear-gradient(145deg, #2D2420 0%, #1A1714 100%); z-index: 5; transform: translateY(0px) rotate(0deg); box-shadow: var(--card-shadow-hover); }
+  .stack-card.card-1 { background: linear-gradient(145deg, #D97757 0%, #B85E3A 100%); z-index: 4; transform: translateY(10px) rotate(2.5deg); box-shadow: var(--card-shadow); }
+  .stack-card.card-2 { background: linear-gradient(145deg, #6B8FA3 0%, #4A6B7C 100%); z-index: 3; transform: translateY(20px) rotate(-2deg); box-shadow: var(--card-shadow); }
+  .stack-card.card-3 { background: linear-gradient(145deg, #B8924A 0%, #8A6A2E 100%); z-index: 2; transform: translateY(30px) rotate(4deg); box-shadow: var(--card-shadow); }
+  .stack-card.card-4 { background: linear-gradient(145deg, #4A5568 0%, #2D3748 100%); z-index: 1; transform: translateY(40px) rotate(-3.5deg); box-shadow: var(--card-shadow); }
 
   .stack-card.active {
-    box-shadow: 0 16px 48px rgba(80, 60, 40, 0.25), 0 4px 12px rgba(80, 60, 40, 0.15) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
   }
 
   .card-inner {
@@ -195,8 +221,13 @@
   .card-num {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.5);
     letter-spacing: 0.08em;
+  }
+
+  .card-nav-arrows {
+    display: flex;
+    gap: 8px;
   }
 
   .card-arrow {
@@ -207,12 +238,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.8);
     font-size: 13px;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    cursor: pointer;
+    z-index: 10;
   }
 
   .stack-card:hover .card-arrow { background: rgba(255,255,255,0.22); }
+  .card-arrow:hover {
+    background: rgba(255,255,255,0.4) !important;
+    color: #fff;
+    transform: scale(1.05);
+  }
 
   /* Dots nav */
   .stack-dots {
@@ -428,7 +466,6 @@
     opacity: 0;
     transform: translateX(-8px);
     transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.25s, box-shadow 0.25s;
-    cursor: pointer;
   }
   .project-card.shown { opacity: 1; transform: translateX(0); }
   .project-card:hover {
@@ -492,7 +529,7 @@
   }
 
   .timeline-role { font-family: var(--font-display); font-size: 17px; font-weight: 500; margin-bottom: 3px; }
-  .timeline-company { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; }
+  .timeline-company { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase;}
   .timeline-desc { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); }
 
   /* Contact */
@@ -549,10 +586,29 @@
     .left-panel { position: relative; height: auto; padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--border); }
     .right-panel { padding: 40px 24px 60px; }
     .content-heading { font-size: 36px; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .theme-toggle { top: 16px; right: 16px; width: 38px; height: 38px; }
+  }
+  
+  @media (max-width: 500px) {
+    .skills-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+  <!-- Sun Icon -->
+  <svg class="icon-sun" viewBox="0 0 24 24">
+    <path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"></path>
+  </svg>
+  <!-- Moon Icon -->
+  <svg class="icon-moon" viewBox="0 0 24 24">
+    <path d="M21.5314 15.827C21.724 16.2731 21.3653 16.7456 20.8906 16.6663C19.5393 16.4402 18.1362 16.4967 16.797 16.8523C13.8291 17.641 11.2335 19.5937 9.80004 22.2858C9.59392 22.673 9.02047 22.6074 8.92055 22.1691C8.25707 19.2612 8.70584 16.1417 10.1587 13.5042C11.6116 10.8667 13.9213 8.9749 16.7454 8.1278C18.1068 7.71917 19.5367 7.62534 20.9255 7.84277C21.3916 7.91578 21.7452 8.3757 21.5647 8.81745C20.655 11.0428 20.6409 13.526 21.5314 15.827Z"></path>
+  </svg>
+</button>
 
 <div class="layout">
   <!-- ─── LEFT PANEL ─── -->
@@ -569,7 +625,10 @@
             <div class="card-icon">✦</div>
             <div class="card-meta" style="margin-top:14px">
               <span class="card-num">01 / 05</span>
-              <span class="card-arrow">→</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -586,7 +645,10 @@
             <div class="card-icon">⬡</div>
             <div class="card-meta" style="margin-top:14px">
               <span class="card-num">02 / 05</span>
-              <span class="card-arrow">→</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -603,7 +665,10 @@
             <div class="card-icon">◈</div>
             <div class="card-meta" style="margin-top:14px">
               <span class="card-num">03 / 05</span>
-              <span class="card-arrow">→</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -620,7 +685,10 @@
             <div class="card-icon">◎</div>
             <div class="card-meta" style="margin-top:14px">
               <span class="card-num">04 / 05</span>
-              <span class="card-arrow">→</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -637,7 +705,10 @@
             <div class="card-icon">⬭</div>
             <div class="card-meta" style="margin-top:14px">
               <span class="card-num">05 / 05</span>
-              <span class="card-arrow">→</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -655,16 +726,15 @@
 
     <!-- Profile info -->
     <div style="margin-top: 36px; text-align: center;">
-      <div class="profile-name">Alex <em>Mercer</em></div>
-      <div class="profile-role">Software Engineer</div>
+      <div class="profile-name">Ehab <em>Muhammad</em></div>
+      <div class="profile-role">Software Engineer | Backend</div>
       <div class="profile-divider" style="margin-left: auto; margin-right: auto;"></div>
       <p class="profile-tagline" style="text-align: center;">
-        Building thoughtful systems at the intersection of performance and craft.
+        Building dynamic, innovative solutions focusing on scalable backend architectures.
       </p>
       <div class="profile-links" style="justify-content: center;">
-        <a class="profile-link" href="#">⌥ GitHub</a>
-        <a class="profile-link" href="#">◎ LinkedIn</a>
-        <a class="profile-link" href="#">↗ Resume</a>
+        <a class="profile-link" href="#" target="_blank">⌥ GitHub</a>
+        <a class="profile-link" href="#" target="_blank">◎ LinkedIn</a>
       </div>
     </div>
   </aside>
@@ -680,7 +750,7 @@
 
     <!-- ABOUT -->
     <div class="content-area visible" id="content-0">
-      <h1 class="content-heading">Crafting code<br>that <em>matters.</em></h1>
+      <h1 class="content-heading">Engineering<br><em>innovation.</em></h1>
       <div class="typewriter-block" id="type-0"></div>
     </div>
 
@@ -689,15 +759,15 @@
       <h1 class="content-heading">Tools of<br>the <em>trade.</em></h1>
       <div class="typewriter-block" id="type-1"></div>
       <div class="skills-grid" id="skillsGrid">
-        <div class="skill-pill"><span class="skill-icon">⚛️</span><div><div class="skill-name">React</div><div class="skill-level">Expert</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🟦</span><div><div class="skill-name">TypeScript</div><div class="skill-level">Expert</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🟢</span><div><div class="skill-name">Node.js</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🐍</span><div><div class="skill-name">Python</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🐳</span><div><div class="skill-name">Docker</div><div class="skill-level">Proficient</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">☁️</span><div><div class="skill-name">AWS</div><div class="skill-level">Proficient</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🗄️</span><div><div class="skill-name">PostgreSQL</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🔴</span><div><div class="skill-name">Redis</div><div class="skill-level">Proficient</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🔁</span><div><div class="skill-name">GraphQL</div><div class="skill-level">Advanced</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🟣</span><div><div class="skill-name">C# & .NET Core</div><div class="skill-level">Expert</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🅰️</span><div><div class="skill-name">Angular</div><div class="skill-level">Advanced</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🟦</span><div><div class="skill-name">TypeScript</div><div class="skill-level">Advanced</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🗄️</span><div><div class="skill-name">SQL Server & EF</div><div class="skill-level">Expert</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🏗️</span><div><div class="skill-name">Microservices</div><div class="skill-level">Advanced</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">🐳</span><div><div class="skill-name">Docker & K8s</div><div class="skill-level">Proficient</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">⚙️</span><div><div class="skill-name">Azure DevOps & CI/CD</div><div class="skill-level">Proficient</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">✉️</span><div><div class="skill-name">RabbitMQ & Kafka</div><div class="skill-level">Advanced</div></div></div>
+        <div class="skill-pill"><span class="skill-icon">⚡</span><div><div class="skill-name">Redis & SignalR</div><div class="skill-level">Advanced</div></div></div>
       </div>
     </div>
 
@@ -708,32 +778,22 @@
       <div class="projects-list" id="projectsList">
         <div class="project-card">
           <div class="project-header">
-            <span class="project-name">Meridian — AI Dashboard</span>
+            <span class="project-name">QwickSite</span>
             <span class="project-year">2024</span>
           </div>
-          <p class="project-desc">A real-time analytics platform with natural language querying. Processes 2M+ events/day with sub-100ms query latency across distributed nodes.</p>
+          <p class="project-desc">A comprehensive no-code website builder platform enabling users to effortlessly create professional websites. Provides tailored SaaS solutions, including e-commerce capabilities for business owners.</p>
           <div class="project-tags">
-            <span class="project-tag">React</span><span class="project-tag">Python</span><span class="project-tag">ClickHouse</span><span class="project-tag">Kafka</span>
+            <span class="project-tag">SaaS</span><span class="project-tag">Full-Stack</span><span class="project-tag">System Architecture</span>
           </div>
         </div>
         <div class="project-card">
           <div class="project-header">
-            <span class="project-name">Velo — Delivery OS</span>
-            <span class="project-year">2023</span>
+            <span class="project-name">Alquileres360</span>
+            <span class="project-year">2025</span>
           </div>
-          <p class="project-desc">End-to-end logistics orchestration platform serving 40+ courier fleets. Built route optimization engine reducing delivery times by 22%.</p>
+          <p class="project-desc">An end-to-end property management platform designed to streamline rental operations, delivering a robust experience for property owners, tenants, and real estate professionals.</p>
           <div class="project-tags">
-            <span class="project-tag">TypeScript</span><span class="project-tag">Node</span><span class="project-tag">PostgreSQL</span><span class="project-tag">Maps API</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-header">
-            <span class="project-name">Cortex — Dev Tooling</span>
-            <span class="project-year">2022</span>
-          </div>
-          <p class="project-desc">Open-source CLI for managing microservice configurations and secrets. 1.2k stars on GitHub, adopted by 80+ engineering teams.</p>
-          <div class="project-tags">
-            <span class="project-tag">Go</span><span class="project-tag">Vault</span><span class="project-tag">Kubernetes</span><span class="project-tag">CLI</span>
+            <span class="project-tag">Backend</span><span class="project-tag">Management System</span><span class="project-tag">API Design</span>
           </div>
         </div>
       </div>
@@ -745,30 +805,30 @@
       <div class="typewriter-block" id="type-3"></div>
       <div class="timeline" id="timeline">
         <div class="timeline-item">
-          <span class="timeline-year">2022—<br>now</span>
+          <span class="timeline-year">2025—<br>now</span>
           <div class="timeline-dot"></div>
           <div>
-            <div class="timeline-role">Senior Software Engineer</div>
-            <div class="timeline-company">STRIPE INC.</div>
-            <p class="timeline-desc">Leading infrastructure for payment reconciliation systems. Reduced error rates by 40% through redesigned idempotency layer.</p>
+            <div class="timeline-role">Software Engineer</div>
+            <div class="timeline-company">ALQUILERES 360 (Freelance, Spain)</div>
+            <p class="timeline-desc">Working remotely to develop and maintain core technical features for a comprehensive property management platform, streamlining operations for users.</p>
           </div>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">2020—<br>22</span>
+          <span class="timeline-year">2025—<br>now</span>
           <div class="timeline-dot"></div>
           <div>
-            <div class="timeline-role">Software Engineer II</div>
-            <div class="timeline-company">NOTION LABS</div>
-            <p class="timeline-desc">Built collaborative editing core features and real-time sync engine serving 20M+ users globally.</p>
+            <div class="timeline-role">Full-Stack Developer</div>
+            <div class="timeline-company">QRFD SOLUTIONS</div>
+            <p class="timeline-desc">Architecting and developing robust full-stack applications with a strong emphasis on scalable backend infrastructure and modern frontend technologies.</p>
           </div>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">2018—<br>20</span>
+          <span class="timeline-year">2024</span>
           <div class="timeline-dot"></div>
           <div>
-            <div class="timeline-role">Frontend Engineer</div>
-            <div class="timeline-company">VERCEL</div>
-            <p class="timeline-desc">Developed deployment pipeline UI and DX tooling. Shipped the redesigned preview deployment workflow used by 500k+ developers.</p>
+            <div class="timeline-role">Software Engineering Trainee</div>
+            <div class="timeline-company">ITI (MCIT)</div>
+            <p class="timeline-desc">Intensive training program focusing on advanced software engineering principles, design patterns, and enterprise-level application development.</p>
           </div>
         </div>
       </div>
@@ -779,25 +839,25 @@
       <h1 class="content-heading">Let's make<br>something <em>great.</em></h1>
       <div class="typewriter-block" id="type-4"></div>
       <div class="contact-grid" id="contactGrid">
-        <a class="contact-item" href="mailto:alex@example.com">
+        <a class="contact-item" href="mailto:em.ehabm@gmail.com">
           <span class="contact-item-icon">✉</span>
           <span class="contact-item-label">Email</span>
-          <span class="contact-item-value">alex@example.com</span>
+          <span class="contact-item-value">em.ehabm@gmail.com</span>
+        </a>
+        <a class="contact-item" href="tel:+201508291561">
+          <span class="contact-item-icon">📱</span>
+          <span class="contact-item-label">Phone</span>
+          <span class="contact-item-value">01508291561</span>
         </a>
         <a class="contact-item" href="#">
           <span class="contact-item-icon">◎</span>
           <span class="contact-item-label">LinkedIn</span>
-          <span class="contact-item-value">/in/alexmercer</span>
+          <span class="contact-item-value">Ehab Muhammad</span>
         </a>
         <a class="contact-item" href="#">
-          <span class="contact-item-icon">⌥</span>
-          <span class="contact-item-label">GitHub</span>
-          <span class="contact-item-value">@alexmercer</span>
-        </a>
-        <a class="contact-item" href="#">
-          <span class="contact-item-icon">↗</span>
-          <span class="contact-item-label">Resume</span>
-          <span class="contact-item-value">Download PDF</span>
+          <span class="contact-item-icon">📍</span>
+          <span class="contact-item-label">Location</span>
+          <span class="contact-item-value">Cairo, Egypt</span>
         </a>
       </div>
     </div>
@@ -811,13 +871,39 @@
 </div>
 
 <script>
+// ─── THEME LOGIC ───
+function initTheme() {
+  try {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch(e) {
+    // Fallback if localStorage is restricted
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  
+  try {
+    localStorage.setItem('theme', newTheme);
+  } catch(e) {
+    // Ignore errors in sandboxed environments
+  }
+}
+
 // ─── DATA ───
 const sections = [
-  { label: 'About', text: "I'm a software engineer with 7 years of experience building high-performance systems and thoughtful user interfaces. I care deeply about the craft — clean abstractions, resilient architecture, and products that feel inevitable.\n\nCurrently at Stripe, where I work on infrastructure that moves money reliably for millions of businesses. Previously at Notion and Vercel, where I learned what it means to build for scale." },
-  { label: 'Skills', text: "My stack leans TypeScript-first on the frontend and Python or Go for systems work. I'm fluent across the full lifecycle — from database schema design to CI/CD pipelines to pixel-perfect UI.\n\nI value depth over breadth: I'd rather know a few tools exceptionally well than have a shallow familiarity with everything." },
-  { label: 'Projects', text: "I build things that solve real problems — often at the intersection of developer tooling, data infrastructure, and product engineering.\n\nEach project below represents a meaningful technical challenge I chose to take on, either professionally or in my own time." },
-  { label: 'Experience', text: "My career has been shaped by working alongside exceptional engineers at companies that take craft seriously.\n\nEvery role taught me something distinct: Stripe taught me reliability. Notion taught me collaboration. Vercel taught me developer empathy." },
-  { label: 'Contact', text: "I'm always open to interesting conversations — whether you're building something ambitious, looking for a collaborator, or just want to talk engineering.\n\nThe best way to reach me is email. I respond to every message, usually within 24 hours." }
+  { label: 'About', text: "A Software Engineer with a dedicated focus on computer science and hands-on experience with cutting-edge technologies prevalent in the industry.\n\nPossessing a strong foundation in software development and a keen interest in staying abreast of emerging trends, I am well-equipped to contribute to dynamic and innovative projects. My academic background includes a Premaster in Computer Science from Cairo University." },
+  { label: 'Skills', text: "My expertise centers around the .NET ecosystem, Angular, and building robust backend architectures.\n\nI have a strong command of Microservices, Clean Architecture, CQRS, and SOLID principles. I also have hands-on experience with modern DevOps tooling like Docker, Kubernetes, RabbitMQ, Kafka, and Azure DevOps." },
+  { label: 'Projects', text: "I enjoy building scalable platforms that solve real-world problems. My recent work involves building comprehensive SaaS solutions and management platforms.\n\nFeel free to explore my GitHub for more open-source projects demonstrating the architectural patterns and technologies I specialize in." },
+  { label: 'Experience', text: "My career journey spans across full-stack development and backend engineering roles, focusing on building high-quality, scalable software.\n\nFrom serving as a Full-Stack Developer at QRFD Solutions to working as a Software Engineer for Alquileres 360 in Spain, I consistently adapt to new challenges and drive technical excellence." },
+  { label: 'Contact', text: "I'm based in Cairo, Egypt, and I'm always open to new opportunities, technical discussions, or collaborations.\n\nYou can reach me directly via email or connect with me on LinkedIn. Let's build something great together." }
 ];
 
 // ─── STATE ───
@@ -883,7 +969,7 @@ function updateCardPositions(activeIdx) {
   });
 }
 
-// ─── SELECT CARD ───
+// ─── SELECT & NAVIGATE CARD ───
 function selectCard(idx) {
   if (idx === currentCard || transitioning) return;
   transitioning = true;
@@ -934,6 +1020,18 @@ function selectCard(idx) {
   }, 350);
 }
 
+// Arrow Navigation Function
+function navigateCard(e, direction) {
+  // Stop propagation to prevent card's generic onclick from firing twice
+  e.stopPropagation();
+  if (transitioning) return;
+  
+  let nextIdx = (currentCard + direction) % 5;
+  if (nextIdx < 0) nextIdx = 4; // Wrap around for negative
+  
+  selectCard(nextIdx);
+}
+
 // ─── SUB-CONTENT ANIMATIONS ───
 function animateSubContent(idx) {
   if (idx === 1) {
@@ -965,6 +1063,7 @@ function animateSubContent(idx) {
 
 // ─── INIT ───
 window.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   updateCardPositions(0);
 
   // Animate in about section on load
@@ -975,8 +1074,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard navigation
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') selectCard((currentCard + 1) % 5);
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') selectCard((currentCard + 4) % 5);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigateCard(new Event('mock'), 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigateCard(new Event('mock'), -1);
   });
 });
 </script>

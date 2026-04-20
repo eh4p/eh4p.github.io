@@ -311,11 +311,12 @@
   .profile-divider {
     margin: 14px auto;
   }
-  .profile-divider svg {
-    width: 28px;
-    height: 28px;
-    fill: var(--accent);
-  }
+.profile-divider svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--accent);
+  transform: rotate(180deg);
+}
 
   .profile-tagline {
     font-size: 13.5px;
@@ -560,8 +561,8 @@
   border-color: var(--accent);
   box-shadow: 0 4px 20px rgba(217, 119, 87, 0.1);
 }
-  .contact-item-icon { font-size: 20px; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
-.contact-item-icon img { width: 22px; height: 22px; }
+  .contact-item-icon { font-size: 24px; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; }
+.contact-item-icon img { width: 28px; height: 28px; }
 [data-theme="light"] .contact-item-icon img { filter: brightness(0) saturate(100%); opacity: 0.55; }
 [data-theme="dark"] .contact-item-icon img { filter: brightness(0) invert(1); opacity: 0.75; }
   .contact-item-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
@@ -750,7 +751,7 @@
     <!-- Profile info -->
     <div style="margin-top: 36px; text-align: center;">
       <div class="profile-name">Ehab <em>Muhammad</em></div>
-      <div class="profile-role">Software Engineer | Backend</div>
+      <div class="profile-role">Software Backend Engineer</div>
       <div class="profile-divider"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.31212 9L1 10.5094L4.77355 13.7897L6.28297 15.1018L7.59509 13.5924L9.13456 11.8214L11.3988 13.7897L12.9082 15.1018L14.2203 13.5924L15.7584 11.823L18.0209 13.7897L19.5303 15.1018L20.8424 13.5924L22.8106 11.3283L21.3012 10.0162L19.333 12.2803L15.5594 9L14.2473 10.5094L14.249 10.5109L12.7109 12.2803L8.93736 9L8.05395 10.0163L6.08567 12.2803L2.31212 9Z"/></svg></div>
       <p class="profile-tagline" style="text-align: center;">
         Building dynamic, innovative solutions focusing on scalable backend architectures.

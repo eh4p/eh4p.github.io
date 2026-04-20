@@ -995,6 +995,7 @@ const sections = [
 // ─── STATE ───
 let currentCard = 0;
 let typewriterTimeout = null;
+const typewritten = new Set();
 let transitioning = false;
 
 // ─── TYPEWRITER ───
@@ -1097,11 +1098,17 @@ function selectCard(idx) {
     // Typewriter
     const typeEl = document.getElementById(`type-${idx}`);
     if (typeEl) {
-      setTimeout(() => {
-        typewrite(typeEl, sections[idx].text, 8, () => {
-          animateSubContent(idx);
-        });
-      }, 250);
+      if (typewritten.has(idx)) {
+        typeEl.innerHTML = sections[idx].text.split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : `<span>${w}</span>`).join('') + '<span class="cursor"></span>';
+        animateSubContent(idx);
+      } else {
+        setTimeout(() => {
+          typewrite(typeEl, sections[idx].text, 8, () => {
+            typewritten.add(idx);
+            animateSubContent(idx);
+          });
+        }, 250);
+      }
     }
 
     transitioning = false;
@@ -1167,7 +1174,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Animate in about section on load
   const typeEl = document.getElementById('type-0');
   setTimeout(() => {
-    typewrite(typeEl, sections[0].text, 8);
+    typewrite(typeEl, sections[0].text, 8, () => { typewritten.add(0); });
   }, 600);
 
   // Keyboard navigation

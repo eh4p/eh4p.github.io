@@ -73,37 +73,28 @@
   /* ─── THEME TOGGLE ─── */
   .theme-toggle {
     position: fixed;
-    top: 32px;
-    right: 40px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    width: 44px;
-    height: 44px;
+    top: 20px;
+    right: 24px;
+    z-index: 999;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
+    font-size: 16px;
     box-shadow: var(--card-shadow);
-  }
+  transition: all 0.25s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
 
-  .theme-toggle:hover {
+.theme-toggle:hover {
     border-color: var(--accent);
-    transform: translateY(-2px);
+    transform: scale(1.08);
+    box-shadow: var(--card-shadow-hover);
   }
-
-  .theme-toggle svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-    transition: transform 0.4s ease;
-  }
-
-  [data-theme="dark"] .icon-moon { display: none; }
-  [data-theme="light"] .icon-sun { display: none; }
 
   /* ─── LAYOUT ─── */
   .layout {
@@ -167,9 +158,13 @@
   .stack-card.card-3 { background: linear-gradient(145deg, #B8924A 0%, #8A6A2E 100%); z-index: 2; transform: translateY(30px) rotate(4deg); box-shadow: var(--card-shadow); }
   .stack-card.card-4 { background: linear-gradient(145deg, #4A5568 0%, #2D3748 100%); z-index: 1; transform: translateY(40px) rotate(-3.5deg); box-shadow: var(--card-shadow); }
 
-  .stack-card.active {
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-  }
+.stack-card.active {
+  box-shadow: 0 16px 48px rgba(80, 60, 40, 0.25), 0 4px 12px rgba(80, 60, 40, 0.15) !important;
+}
+
+[data-theme="dark"] .stack-card.active {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
 
   .card-inner {
     padding: 28px 26px;
@@ -297,11 +292,12 @@
   }
 
   .profile-divider {
-    width: 32px;
-    height: 1.5px;
-    background: var(--accent);
-    margin: 16px 0;
-    border-radius: 2px;
+    margin: 14px auto;
+  }
+  .profile-divider svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--accent);
   }
 
   .profile-tagline {
@@ -419,47 +415,28 @@
     50% { opacity: 0; }
   }
 
-  /* Skills grid */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 36px;
-    max-width: 620px;
+  /* Skills */
+  .skills-section { margin-top: 32px; max-width: 640px; }
+  .skill-category { margin-bottom: 24px; opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .skill-category.shown { opacity: 1; transform: translateY(0); }
+  .skill-cat-label {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
   }
-
-  .skill-pill {
-    padding: 12px 16px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--surface);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.2s, background 0.2s;
+  .skill-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .skill-tag {
+    font-size: 12.5px; font-weight: 500; padding: 6px 13px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--surface); color: var(--text-primary);
+    transition: border-color 0.2s, background 0.2s;
   }
-  .skill-pill.shown { opacity: 1; transform: translateY(0); }
-  .skill-pill:hover {
-    border-color: var(--accent);
-    background: rgba(217, 119, 87, 0.04);
-  }
-
-  .skill-icon { font-size: 18px; }
-  .skill-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
-  .skill-level {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 1px;
-  }
+  .skill-tag:hover { border-color: var(--accent); background: rgba(217,119,87,0.05); }
 
   /* Projects */
-  .projects-list { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; max-width: 620px; }
+  .projects-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; max-width: 620px; }
 
   .project-card {
-    padding: 24px 26px;
+    padding: 22px 24px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -474,10 +451,10 @@
   }
 
   .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .project-name { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--text-primary); }
-  .project-year { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding-top: 3px; }
-  .project-desc { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 14px; }
-  .project-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .project-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--text-primary); }
+  .project-year { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); padding-top: 3px; }
+  .project-desc { font-size: 13px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 12px; }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
   .project-tag {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -532,6 +509,19 @@
   .timeline-company { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase;}
   .timeline-desc { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); }
 
+  /* Education */
+  .edu-list { margin-top: 32px; max-width: 620px; display: flex; flex-direction: column; gap: 14px; }
+  .edu-item {
+    padding: 18px 22px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 12px;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .edu-item.shown { opacity: 1; transform: translateY(0); }
+  .edu-degree { font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 3px; }
+  .edu-school { font-family: var(--font-mono); font-size: 10px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+  .edu-detail { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+
   /* Contact */
   .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 36px; max-width: 520px; }
 
@@ -546,14 +536,17 @@
     gap: 8px;
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.2s, background 0.2s;
-  }
-  .contact-item.shown { opacity: 1; transform: translateY(0); }
-  .contact-item:hover {
-    border-color: var(--accent);
-    background: rgba(217, 119, 87, 0.04);
-  }
-  .contact-item-icon { font-size: 20px; }
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.25s, box-shadow 0.25s;
+}
+.contact-item.shown { opacity: 1; transform: translateY(0); }
+.contact-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(217, 119, 87, 0.1);
+}
+  .contact-item-icon { font-size: 20px; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
+.contact-item-icon img { width: 22px; height: 22px; }
+[data-theme="light"] .contact-item-icon img { filter: brightness(0) saturate(100%); opacity: 0.55; }
+[data-theme="dark"] .contact-item-icon img { filter: brightness(0) invert(1); opacity: 0.75; }
   .contact-item-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
   .contact-item-value { font-size: 13.5px; font-weight: 500; color: var(--text-primary); }
 
@@ -586,29 +579,21 @@
     .left-panel { position: relative; height: auto; padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--border); }
     .right-panel { padding: 40px 24px 60px; }
     .content-heading { font-size: 36px; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-section { max-width: 100%; }
     .contact-grid { grid-template-columns: 1fr; }
     .theme-toggle { top: 16px; right: 16px; width: 38px; height: 38px; }
   }
   
   @media (max-width: 500px) {
-    .skills-grid { grid-template-columns: 1fr; }
+    .skill-tags { gap: 6px; }
+    .skill-tag { font-size: 11.5px; padding: 5px 10px; }
   }
 </style>
 </head>
 <body>
 
 <!-- Theme Toggle -->
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
-  <!-- Sun Icon -->
-  <svg class="icon-sun" viewBox="0 0 24 24">
-    <path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"></path>
-  </svg>
-  <!-- Moon Icon -->
-  <svg class="icon-moon" viewBox="0 0 24 24">
-    <path d="M21.5314 15.827C21.724 16.2731 21.3653 16.7456 20.8906 16.6663C19.5393 16.4402 18.1362 16.4967 16.797 16.8523C13.8291 17.641 11.2335 19.5937 9.80004 22.2858C9.59392 22.673 9.02047 22.6074 8.92055 22.1691C8.25707 19.2612 8.70584 16.1417 10.1587 13.5042C11.6116 10.8667 13.9213 8.9749 16.7454 8.1278C18.1068 7.71917 19.5367 7.62534 20.9255 7.84277C21.3916 7.91578 21.7452 8.3757 21.5647 8.81745C20.655 11.0428 20.6409 13.526 21.5314 15.827Z"></path>
-  </svg>
-</button>
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode" id="themeBtn">🌙</button>
 
 <div class="layout">
   <!-- ─── LEFT PANEL ─── -->
@@ -624,7 +609,7 @@
           <div>
             <div class="card-icon">✦</div>
             <div class="card-meta" style="margin-top:14px">
-              <span class="card-num">01 / 05</span>
+              <span class="card-num">01 / 06</span>
               <div class="card-nav-arrows">
                 <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
                 <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
@@ -644,7 +629,7 @@
           <div>
             <div class="card-icon">⬡</div>
             <div class="card-meta" style="margin-top:14px">
-              <span class="card-num">02 / 05</span>
+              <span class="card-num">02 / 06</span>
               <div class="card-nav-arrows">
                 <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
                 <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
@@ -664,7 +649,7 @@
           <div>
             <div class="card-icon">◈</div>
             <div class="card-meta" style="margin-top:14px">
-              <span class="card-num">03 / 05</span>
+              <span class="card-num">03 / 06</span>
               <div class="card-nav-arrows">
                 <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
                 <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
@@ -684,7 +669,7 @@
           <div>
             <div class="card-icon">◎</div>
             <div class="card-meta" style="margin-top:14px">
-              <span class="card-num">04 / 05</span>
+              <span class="card-num">04 / 06</span>
               <div class="card-nav-arrows">
                 <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
                 <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
@@ -694,17 +679,37 @@
         </div>
       </div>
 
-      <!-- Card 4: Contact -->
+      <!-- Card 4: Education -->
       <div class="stack-card card-4" data-index="4" onclick="selectCard(4)">
         <div class="card-inner">
           <div>
-            <span class="card-tag">Contact</span>
-            <div class="card-title">Let's build something</div>
+            <span class="card-tag">Education</span>
+            <div class="card-title">Academic background</div>
           </div>
           <div>
             <div class="card-icon">⬭</div>
             <div class="card-meta" style="margin-top:14px">
-              <span class="card-num">05 / 05</span>
+              <span class="card-num">05 / 06</span>
+              <div class="card-nav-arrows">
+                <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
+                <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Card 5: Contact -->
+<div class="stack-card" style="background:linear-gradient(145deg,#3D6B52 0%,#2A4D3A 100%); z-index:0; box-shadow:var(--card-shadow);" data-index="5" onclick="selectCard(5)">
+  <div class="card-inner">
+    <div>
+      <span class="card-tag">Contact</span>
+      <div class="card-title">Let's build something</div>
+    </div>
+    <div>
+      <div class="card-icon">⊛</div>
+            <div class="card-meta" style="margin-top:14px">
+              <span class="card-num">06 / 06</span>
               <div class="card-nav-arrows">
                 <span class="card-arrow prev" onclick="navigateCard(event, -1)">←</span>
                 <span class="card-arrow next" onclick="navigateCard(event, 1)">→</span>
@@ -722,13 +727,14 @@
       <div class="dot" onclick="selectCard(2)"></div>
       <div class="dot" onclick="selectCard(3)"></div>
       <div class="dot" onclick="selectCard(4)"></div>
+      <div class="dot" onclick="selectCard(5)"></div>
     </div>
 
     <!-- Profile info -->
     <div style="margin-top: 36px; text-align: center;">
       <div class="profile-name">Ehab <em>Muhammad</em></div>
       <div class="profile-role">Software Engineer | Backend</div>
-      <div class="profile-divider" style="margin-left: auto; margin-right: auto;"></div>
+      <div class="profile-divider"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.31212 9L1 10.5094L4.77355 13.7897L6.28297 15.1018L7.59509 13.5924L9.13456 11.8214L11.3988 13.7897L12.9082 15.1018L14.2203 13.5924L15.7584 11.823L18.0209 13.7897L19.5303 15.1018L20.8424 13.5924L22.8106 11.3283L21.3012 10.0162L19.333 12.2803L15.5594 9L14.2473 10.5094L14.249 10.5109L12.7109 12.2803L8.93736 9L8.05395 10.0163L6.08567 12.2803L2.31212 9Z"/></svg></div>
       <p class="profile-tagline" style="text-align: center;">
         Building dynamic, innovative solutions focusing on scalable backend architectures.
       </p>
@@ -750,7 +756,7 @@
 
     <!-- ABOUT -->
     <div class="content-area visible" id="content-0">
-      <h1 class="content-heading">Engineering<br><em>innovation.</em></h1>
+      <h1 class="content-heading">Engineering<br>systems that <em>scale.</em></h1>
       <div class="typewriter-block" id="type-0"></div>
     </div>
 
@@ -758,16 +764,58 @@
     <div class="content-area" id="content-1">
       <h1 class="content-heading">Tools of<br>the <em>trade.</em></h1>
       <div class="typewriter-block" id="type-1"></div>
-      <div class="skills-grid" id="skillsGrid">
-        <div class="skill-pill"><span class="skill-icon">🟣</span><div><div class="skill-name">C# & .NET Core</div><div class="skill-level">Expert</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🅰️</span><div><div class="skill-name">Angular</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🟦</span><div><div class="skill-name">TypeScript</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🗄️</span><div><div class="skill-name">SQL Server & EF</div><div class="skill-level">Expert</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🏗️</span><div><div class="skill-name">Microservices</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">🐳</span><div><div class="skill-name">Docker & K8s</div><div class="skill-level">Proficient</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">⚙️</span><div><div class="skill-name">Azure DevOps & CI/CD</div><div class="skill-level">Proficient</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">✉️</span><div><div class="skill-name">RabbitMQ & Kafka</div><div class="skill-level">Advanced</div></div></div>
-        <div class="skill-pill"><span class="skill-icon">⚡</span><div><div class="skill-name">Redis & SignalR</div><div class="skill-level">Advanced</div></div></div>
+      <div class="skills-section" id="skillsSection">
+        <div class="skill-category">
+          <div class="skill-cat-label">Languages &amp; Frameworks</div>
+          <div class="skill-tags">
+            <span class="skill-tag">ASP.NET Core</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label">Data &amp; Caching</div>
+          <div class="skill-tags">
+            <span class="skill-tag">MS SQL Server</span>
+            <span class="skill-tag">Entity Framework Core</span>
+            <span class="skill-tag">LINQ</span>
+            <span class="skill-tag">ADO.NET</span>
+            <span class="skill-tag">Redis</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label">Architecture &amp; Design</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">Clean Architecture</span>
+            <span class="skill-tag">Onion Architecture</span>
+            <span class="skill-tag">SOLID</span>
+            <span class="skill-tag">CQRS</span>
+            <span class="skill-tag">MediatR</span>
+            <span class="skill-tag">Repository Pattern</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label">DevOps &amp; Tooling</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Azure DevOps</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">RabbitMQ</span>
+            <span class="skill-tag">Kafka</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-label">Security &amp; Real-Time</div>
+          <div class="skill-tags">
+            <span class="skill-tag">JWT</span>
+            <span class="skill-tag">OAuth</span>
+            <span class="skill-tag">SignalR</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -778,22 +826,32 @@
       <div class="projects-list" id="projectsList">
         <div class="project-card">
           <div class="project-header">
-            <span class="project-name">QwickSite</span>
+            <span class="project-name">QwickSite — No-Code Builder</span>
             <span class="project-year">2024</span>
           </div>
-          <p class="project-desc">A comprehensive no-code website builder platform enabling users to effortlessly create professional websites. Provides tailored SaaS solutions, including e-commerce capabilities for business owners.</p>
+          <p class="project-desc">Participated in developing a no-code website builder platform enabling users to create professional websites effortlessly. Delivered SaaS solutions including e-commerce for business owners.</p>
           <div class="project-tags">
-            <span class="project-tag">SaaS</span><span class="project-tag">Full-Stack</span><span class="project-tag">System Architecture</span>
+            <span class="project-tag">ASP.NET Core</span><span class="project-tag">Angular</span><span class="project-tag">SQL Server</span><span class="project-tag">SaaS</span>
           </div>
         </div>
         <div class="project-card">
           <div class="project-header">
-            <span class="project-name">Alquileres360</span>
+            <span class="project-name">Alquileres360 — Property Management</span>
             <span class="project-year">2025</span>
           </div>
-          <p class="project-desc">An end-to-end property management platform designed to streamline rental operations, delivering a robust experience for property owners, tenants, and real estate professionals.</p>
+          <p class="project-desc">Property management platform for the Spanish market enabling owners, tenants, and professionals to streamline rental operations end-to-end.</p>
           <div class="project-tags">
-            <span class="project-tag">Backend</span><span class="project-tag">Management System</span><span class="project-tag">API Design</span>
+            <span class="project-tag">ASP.NET Core</span><span class="project-tag">Clean Architecture</span><span class="project-tag">Redis</span><span class="project-tag">Docker</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">More on GitHub</span>
+            <span class="project-year">↗</span>
+          </div>
+          <p class="project-desc">Explore additional projects showcasing microservices patterns, CQRS implementations, real-time communication with SignalR, and more architectural experiments.</p>
+          <div class="project-tags">
+            <span class="project-tag">Microservices</span><span class="project-tag">CQRS</span><span class="project-tag">SignalR</span><span class="project-tag">Kafka</span>
           </div>
         </div>
       </div>
@@ -834,31 +892,58 @@
       </div>
     </div>
 
-    <!-- CONTACT -->
+    <!-- EDUCATION -->
     <div class="content-area" id="content-4">
-      <h1 class="content-heading">Let's make<br>something <em>great.</em></h1>
+      <h1 class="content-heading">Academic<br><em>foundations.</em></h1>
       <div class="typewriter-block" id="type-4"></div>
+      <div class="edu-list" id="eduList">
+        <div class="edu-item">
+          <div class="edu-degree">Premaster, Computer Science</div>
+          <div class="edu-school">Cairo University</div>
+          <div class="edu-detail">Graduate Studies for Statistical Research (FGSSR) — deepening theoretical foundations in computer science.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Software Engineering Diploma</div>
+          <div class="edu-school">Information Technology Institute — ITI</div>
+          <div class="edu-detail">Ministry of Communication and Information Technology (MCIT) — intensive practical software engineering programme.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor's Degree, Accounting</div>
+          <div class="edu-school">Helwan University</div>
+          <div class="edu-detail">Faculty of Commerce and Business Administration — Accounting department, English section. Cultivated analytical and problem-solving thinking.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="content-area" id="content-5">
+      <h1 class="content-heading">Let's make<br>something <em>great.</em></h1>
+      <div class="typewriter-block" id="type-5"></div>
       <div class="contact-grid" id="contactGrid">
-        <a class="contact-item" href="mailto:em.ehabm@gmail.com">
-          <span class="contact-item-icon">✉</span>
-          <span class="contact-item-label">Email</span>
-          <span class="contact-item-value">em.ehabm@gmail.com</span>
-        </a>
-        <a class="contact-item" href="tel:+201508291561">
-          <span class="contact-item-icon">📱</span>
-          <span class="contact-item-label">Phone</span>
-          <span class="contact-item-value">01508291561</span>
-        </a>
-        <a class="contact-item" href="#">
-          <span class="contact-item-icon">◎</span>
-          <span class="contact-item-label">LinkedIn</span>
-          <span class="contact-item-value">Ehab Muhammad</span>
-        </a>
-        <a class="contact-item" href="#">
-          <span class="contact-item-icon">📍</span>
-          <span class="contact-item-label">Location</span>
-          <span class="contact-item-value">Cairo, Egypt</span>
-        </a>
+    <a class="contact-item" href="mailto:em.ehabm@gmail.com">
+      <span class="contact-item-icon"><img src="public/images/social/gmail.svg" alt="Email"></span>
+      <span class="contact-item-label">Email</span>
+    </a>
+    <a class="contact-item" href="https://linkedin.com/in/ehab-m" target="_blank">
+      <span class="contact-item-icon"><img src="public/images/social/linkedin.svg" alt="LinkedIn"></span>
+      <span class="contact-item-label">LinkedIn</span>
+    </a>
+    <a class="contact-item" href="https://github.com/eh4p" target="_blank">
+      <span class="contact-item-icon"><img src="public/images/social/github.svg" alt="GitHub"></span>
+      <span class="contact-item-label">GitHub</span>
+    </a>
+    <a class="contact-item" href="https://x.com" target="_blank">
+      <span class="contact-item-icon"><img src="public/images/social/x.svg" alt="X"></span>
+      <span class="contact-item-label">X</span>
+    </a>
+    <a class="contact-item" href="https://facebook.com" target="_blank">
+      <span class="contact-item-icon"><img src="public/images/social/facebook.svg" alt="Facebook"></span>
+      <span class="contact-item-label">Facebook</span>
+    </a>
+    <a class="contact-item" href="https://instagram.com" target="_blank">
+      <span class="contact-item-icon"><img src="public/images/social/instagram.svg" alt="Instagram"></span>
+      <span class="contact-item-label">Instagram</span>
+    </a>
       </div>
     </div>
 
@@ -872,38 +957,22 @@
 
 <script>
 // ─── THEME LOGIC ───
-function initTheme() {
-  try {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  } catch(e) {
-    // Fallback if localStorage is restricted
-  }
-}
-
 function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  
-  try {
-    localStorage.setItem('theme', newTheme);
-  } catch(e) {
-    // Ignore errors in sandboxed environments
-  }
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
 }
 
 // ─── DATA ───
 const sections = [
   { label: 'About', text: "A Software Engineer with a dedicated focus on computer science and hands-on experience with cutting-edge technologies prevalent in the industry.\n\nPossessing a strong foundation in software development and a keen interest in staying abreast of emerging trends, I am well-equipped to contribute to dynamic and innovative projects. My academic background includes a Premaster in Computer Science from Cairo University." },
-  { label: 'Skills', text: "My expertise centers around the .NET ecosystem, Angular, and building robust backend architectures.\n\nI have a strong command of Microservices, Clean Architecture, CQRS, and SOLID principles. I also have hands-on experience with modern DevOps tooling like Docker, Kubernetes, RabbitMQ, Kafka, and Azure DevOps." },
-  { label: 'Projects', text: "I enjoy building scalable platforms that solve real-world problems. My recent work involves building comprehensive SaaS solutions and management platforms.\n\nFeel free to explore my GitHub for more open-source projects demonstrating the architectural patterns and technologies I specialize in." },
-  { label: 'Experience', text: "My career journey spans across full-stack development and backend engineering roles, focusing on building high-quality, scalable software.\n\nFrom serving as a Full-Stack Developer at QRFD Solutions to working as a Software Engineer for Alquileres 360 in Spain, I consistently adapt to new challenges and drive technical excellence." },
-  { label: 'Contact', text: "I'm based in Cairo, Egypt, and I'm always open to new opportunities, technical discussions, or collaborations.\n\nYou can reach me directly via email or connect with me on LinkedIn. Let's build something great together." }
+  { label: 'Skills', text: "My core stack is .NET-first on the backend paired with Angular on the frontend. I care about architectural correctness — SOLID principles, CQRS, and clean separation of concerns aren't just buzzwords to me, they're how I think.\n\nI'm equally fluent in the DevOps layer: containerising with Docker, orchestrating with Kubernetes, and setting up CI/CD pipelines on Azure DevOps." },
+  { label: 'Projects', text: "I build things that solve real problems — from no-code platforms that empower non-technical business owners to property management systems that streamline complex rental workflows.\n\nEach project below represents a meaningful technical challenge where architecture, performance, and user needs had to converge." },
+  { label: 'Experience', text: "My career has been shaped by working across freelance, product, and training environments — each teaching me something distinct.\n\nAlquileres360 taught me how to architect for real-world complexity. QRFD Solutions sharpened my full-stack instincts. ITI gave me the theoretical rigour to reason deeply about software design." },
+  { label: 'Education', text: "My educational path is deliberately multi-disciplinary — computer science theory, intensive software engineering practice, and a business foundation from my bachelor's degree.\n\nThis combination shapes how I think: analytically, with attention to both technical correctness and real-world business impact." },
+  { label: 'Contact', text: "I'm always open to interesting conversations — whether you're building something ambitious, looking for a .NET backend specialist, or just want to exchange ideas about software architecture.\n\nBest way to reach me is email. I respond to every message, usually within 24 hours." }
 ];
 
 // ─── STATE ───
@@ -912,7 +981,7 @@ let typewriterTimeout = null;
 let transitioning = false;
 
 // ─── TYPEWRITER ───
-function typewrite(el, text, speed = 22, callback) {
+function typewrite(el, text, speed = 8, callback) {
   if (typewriterTimeout) clearTimeout(typewriterTimeout);
   el.innerHTML = '';
   const cursor = document.createElement('span');
@@ -930,7 +999,7 @@ function typewrite(el, text, speed = 22, callback) {
       }
       el.appendChild(cursor);
       i++;
-      typewriterTimeout = setTimeout(tick, speed + Math.random() * 12);
+      typewriterTimeout = setTimeout(tick, speed + Math.random() * 5);
     } else {
       if (callback) callback();
     }
@@ -942,14 +1011,14 @@ function typewrite(el, text, speed = 22, callback) {
 
 // ─── CARD POSITIONS ───
 function getCardTransform(cardIdx, activeIdx) {
-  const diff = (cardIdx - activeIdx + 5) % 5;
-  // diff 0 = active (top)
+  const diff = (cardIdx - activeIdx + 6) % 6;
   switch(diff) {
-    case 0: return { y: 0, rot: 0, z: 5, opacity: 1 };
-    case 1: return { y: 10, rot: 2.5, z: 4, opacity: 1 };
-    case 2: return { y: 20, rot: -2, z: 3, opacity: 1 };
-    case 3: return { y: 30, rot: 4, z: 2, opacity: 1 };
-    case 4: return { y: 40, rot: -3.5, z: 1, opacity: 1 };
+    case 0: return { y: 0, rot: 0, z: 6, opacity: 1 };
+    case 1: return { y: 10, rot: 2.5, z: 5, opacity: 1 };
+    case 2: return { y: 20, rot: -2, z: 4, opacity: 1 };
+    case 3: return { y: 30, rot: 4, z: 3, opacity: 1 };
+    case 4: return { y: 40, rot: -3, z: 2, opacity: 1 };
+    case 5: return { y: 50, rot: 4.5, z: 1, opacity: 1 };
   }
 }
 
@@ -1010,7 +1079,7 @@ function selectCard(idx) {
     const typeEl = document.getElementById(`type-${idx}`);
     if (typeEl) {
       setTimeout(() => {
-        typewrite(typeEl, sections[idx].text, 18, () => {
+        typewrite(typeEl, sections[idx].text, 8, () => {
           animateSubContent(idx);
         });
       }, 250);
@@ -1026,8 +1095,8 @@ function navigateCard(e, direction) {
   e.stopPropagation();
   if (transitioning) return;
   
-  let nextIdx = (currentCard + direction) % 5;
-  if (nextIdx < 0) nextIdx = 4; // Wrap around for negative
+  let nextIdx = (currentCard + direction) % 6;
+  if (nextIdx < 0) nextIdx = 5; // Wrap around for negative
   
   selectCard(nextIdx);
 }
@@ -1036,9 +1105,9 @@ function navigateCard(e, direction) {
 function animateSubContent(idx) {
   if (idx === 1) {
     // Skills
-    const pills = document.querySelectorAll('.skill-pill');
-    pills.forEach((p, i) => {
-      setTimeout(() => p.classList.add('shown'), i * 60);
+    const cats = document.querySelectorAll('.skill-category');
+    cats.forEach((c, i) => {
+      setTimeout(() => c.classList.add('shown'), i * 80);
     });
   } else if (idx === 2) {
     // Projects
@@ -1053,6 +1122,12 @@ function animateSubContent(idx) {
       setTimeout(() => item.classList.add('shown'), i * 150);
     });
   } else if (idx === 4) {
+    // Education
+    const items = document.querySelectorAll('.edu-item');
+    items.forEach((item, i) => {
+      setTimeout(() => item.classList.add('shown'), i * 110);
+    });
+  } else if (idx === 5) {
     // Contact
     const items = document.querySelectorAll('.contact-item');
     items.forEach((item, i) => {
@@ -1063,13 +1138,18 @@ function animateSubContent(idx) {
 
 // ─── INIT ───
 window.addEventListener('DOMContentLoaded', () => {
-  initTheme();
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').textContent = '☀️';
+  }
+
   updateCardPositions(0);
 
   // Animate in about section on load
   const typeEl = document.getElementById('type-0');
   setTimeout(() => {
-    typewrite(typeEl, sections[0].text, 18);
+    typewrite(typeEl, sections[0].text, 8);
   }, 600);
 
   // Keyboard navigation

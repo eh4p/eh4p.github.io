@@ -3,148 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Ehab Muhammad — Software Engineer and Backend Engineer portfolio." />
-  <title>Ehab Muhammad — Backend Engineer</title>
-
+  <title>Ehab Muhammad | Software Backend Engineer</title>
   <style>
     /*
-      =========================================================
-      LOCAL FONT FILES
-      =========================================================
-
-      Put this HTML file beside your public folder.
-
-      Your font names from the screenshots:
-
-      League Spartan Black:
-      ./public/fonts/LeagueSpartan/LeagueSpartan-Black.ttf
-
-      Inter:
-      ./public/fonts/inter/Inter_18pt-Regular.ttf
-      ./public/fonts/inter/Inter_18pt-Medium.ttf
-      ./public/fonts/inter/Inter_18pt-SemiBold.ttf
-
-      ./public/fonts/inter/Inter_24pt-Regular.ttf
-      ./public/fonts/inter/Inter_24pt-Medium.ttf
-      ./public/fonts/inter/Inter_24pt-SemiBold.ttf
-
-      ./public/fonts/inter/Inter_28pt-Regular.ttf
-      ./public/fonts/inter/Inter_28pt-Medium.ttf
-      ./public/fonts/inter/Inter_28pt-SemiBold.ttf
-
-      If your site serves public/ as root, change:
-      ./public/fonts/...
-      to:
-      /fonts/...
+      Inter local font files.
+      Put your local font files in ./fonts/ and keep these file names,
+      or change the URLs below to match your actual local Inter files.
     */
-
     @font-face {
-      font-family: "League Spartan";
-      src: url("./public/fonts/LeagueSpartan/LeagueSpartan-Black.ttf") format("truetype");
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 18pt";
-      src: url("./public/fonts/inter/Inter_18pt-Regular.ttf") format("truetype");
+      font-family: 'Inter';
+      src: url('./fonts/inter/Inter_18pt-Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: "Inter 18pt";
-      src: url("./public/fonts/inter/Inter_18pt-Medium.ttf") format("truetype");
+      font-family: 'Inter';
+      src: url('./fonts/inter/Inter_18pt-Medium.ttf') format('truetype');
       font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
 
     @font-face {
-      font-family: "Inter 18pt";
-      src: url("./public/fonts/inter/Inter_18pt-SemiBold.ttf") format("truetype");
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 24pt";
-      src: url("./public/fonts/inter/Inter_24pt-Regular.ttf") format("truetype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 24pt";
-      src: url("./public/fonts/inter/Inter_24pt-Medium.ttf") format("truetype");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 24pt";
-      src: url("./public/fonts/inter/Inter_24pt-SemiBold.ttf") format("truetype");
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 28pt";
-      src: url("./public/fonts/inter/Inter_28pt-Regular.ttf") format("truetype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 28pt";
-      src: url("./public/fonts/inter/Inter_28pt-Medium.ttf") format("truetype");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Inter 28pt";
-      src: url("./public/fonts/inter/Inter_28pt-SemiBold.ttf") format("truetype");
+      font-family: 'Inter';
+      src: url('./fonts/inter/Inter_18pt-SemiBold.ttf') format('truetype');
       font-weight: 600;
       font-style: normal;
       font-display: swap;
     }
 
     :root {
-      /* Wise-inspired colors provided earlier */
-      --primary: #9FE870;
-      --background: #163300;
-      --content: #E8EBE6;
-
-      --text: rgba(232, 235, 230, 0.92);
-      --muted: rgba(232, 235, 230, 0.62);
-      --muted-soft: rgba(232, 235, 230, 0.45);
-
-      --surface: rgba(232, 235, 230, 0.055);
-      --surface-hover: rgba(232, 235, 230, 0.085);
-      --surface-active: rgba(159, 232, 112, 0.16);
-
-      --border: rgba(232, 235, 230, 0.13);
-      --border-primary: rgba(159, 232, 112, 0.34);
-
-      --font-display: "League Spartan", "Arial Black", Impact, sans-serif;
-      --font-body: "Inter 18pt", Inter, Arial, sans-serif;
-      --font-title: "Inter 24pt", Inter, Arial, sans-serif;
-      --font-screen: "Inter 28pt", Inter, Arial, sans-serif;
-
-      --container: 580px;
-      --radius: 7px;
-      --radius-sm: 5px;
-      --radius-pill: 6px;
-      --ease: 170ms ease;
+      --bg: #07020f;
+      --surface: #121018;
+      --surface-2: #191326;
+      --surface-3: #211733;
+      --text: #a7a1b4;
+      --text-soft: #81798f;
+      --heading: #f2efff;
+      --white: #fbfaff;
+      --line: rgba(149, 255, 87, .14);
+      --purple: #6737e3;
+      --purple-deep: #35127e;
+      --purple-soft: #8d66ff;
+      --purple-border: rgba(103, 55, 227, .42);
+      --green: #95ff57;
+      --green-soft: #b9ff8c;
+      --green-muted: #6ed33f;
+      --green-border: rgba(149, 255, 87, .42);
+      --radius: 8px;
+      --font: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * {
@@ -152,29 +61,24 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      background: var(--bg);
+      color-scheme: dark;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: var(--background);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.65;
-      letter-spacing: -0.005em;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
       background:
-        radial-gradient(circle at 50% 0%, rgba(159, 232, 112, 0.09), transparent 310px),
-        radial-gradient(circle at 50% 100%, rgba(232, 235, 230, 0.045), transparent 380px);
+        radial-gradient(circle at 50% -120px, rgba(103, 55, 227, .34), transparent 330px),
+        radial-gradient(circle at 88% 18%, rgba(149, 255, 87, .07), transparent 220px),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      letter-spacing: .055em;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -182,950 +86,838 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input,
+    textarea {
       font: inherit;
     }
 
-    ::selection {
-      color: var(--background);
-      background: var(--primary);
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 3px;
-    }
-
-    .shell {
-      width: min(100% - 32px, var(--container));
-      margin-inline: auto;
-      padding: 26px 0 48px;
-    }
-
-    .profile {
+    .page {
+      width: min(100% - 32px, 980px);
+      margin: 44px auto 74px;
       display: grid;
-      grid-template-columns: 62px 1fr;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 26px;
+      grid-template-columns: 270px minmax(0, 560px);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 28px;
+      align-self: start;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 24px;
     }
 
     .avatar {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--background);
-      background: var(--primary);
-      font-family: var(--font-display);
-      font-size: 25px;
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      box-shadow: 0 0 0 5px rgba(232, 235, 230, 0.05);
+      width: 76px;
+      height: 76px;
+      border-radius: 999px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, var(--green) 0 42%, transparent 43%),
+        linear-gradient(135deg, var(--purple), var(--purple-deep));
+      border: 1px solid var(--purple-border);
+      box-shadow:
+        0 0 0 4px rgba(103, 55, 227, .12),
+        0 16px 34px rgba(103, 55, 227, .24),
+        inset 0 0 0 1px rgba(255, 255, 255, .05);
+      flex: 0 0 auto;
+      position: relative;
     }
 
-    .name-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 0 0 3px;
-    }
-
-    .name {
+    .identity h1 {
       margin: 0;
-      color: var(--content);
-      font-family: var(--font-display);
-      font-size: 34px;
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
+      color: var(--heading);
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: .005em;
     }
 
-    .aka {
-      color: rgba(159, 232, 112, 0.68);
-      font-family: var(--font-body);
+    .identity h1 span {
+      display: inline;
+      color: var(--purple-soft);
       font-size: 12px;
       font-weight: 500;
-      line-height: 1;
-      letter-spacing: 0.015em;
+      letter-spacing: .03em;
+      vertical-align: 20%;
+      margin-left: 5px;
     }
 
-    .role {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: -0.005em;
+    .identity h1 b {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .02em;
     }
 
-    .nav {
+    .identity p {
+      margin: 6px 0 0;
+      color: #c6bdd8;
+      font-size: 17px;
+      letter-spacing: .075em;
+      line-height: 1.35;
+    }
+
+    .tabs {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 0 0 44px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
     }
 
-    .nav button {
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      padding: 9px 15px;
+    .tab-btn {
+      width: 100%;
+      border: 0;
       background: transparent;
-      color: var(--content);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: 0.0125em;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: .01em;
+      text-align: left;
+      padding: 9px 12px 9px 18px;
+      border-radius: 7px;
       cursor: pointer;
-      transition: background var(--ease), border-color var(--ease), color var(--ease);
+      position: relative;
+      transition: color .15s ease, transform .15s ease;
     }
 
-    .nav button:hover {
-      background: var(--surface);
-      border-color: var(--border);
+    .tab-btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 3px;
+      height: 0;
+      border-radius: 999px;
+      background: var(--green);
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: height .15s ease, opacity .15s ease;
     }
 
-    .nav button.active {
-      background: var(--surface-active);
-      border-color: var(--border-primary);
-      color: var(--primary);
+    .tab-btn:hover {
+      color: var(--green);
+    }
+
+    .tab-btn.is-active {
+      color: var(--green);
+    }
+
+    .tab-btn.is-active::before {
+      height: 22px;
+      opacity: 1;
+    }
+
+    .tab-btn:active {
+      transform: translateY(1px);
     }
 
     .view {
       display: none;
-      animation: fade 220ms ease both;
+      animation: show .18s ease both;
     }
 
-    .view.active {
+    .view.is-visible {
       display: block;
     }
 
-    @keyframes fade {
-      from {
-        opacity: 0;
-        transform: translateY(4px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes show {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .intro {
-      display: grid;
-      gap: 17px;
-      margin-bottom: 28px;
-    }
-
-    .intro p {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--font-body);
+    .copy p {
+      margin: 0 0 20px;
+      color: var(--text);
       font-size: 16px;
-      font-weight: 400;
-      line-height: 1.65;
-      letter-spacing: -0.005em;
+      line-height: 1.62;
+      letter-spacing: .055em;
     }
 
-    .intro strong {
-      color: var(--content);
-      font-weight: 600;
+    .copy strong,
+    .headline {
+      color: #ececef;
+      font-weight: 700;
     }
 
-    .inline-link {
-      color: var(--primary);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
+    .copy .accent {
+      color: var(--green);
     }
 
-    .note {
-      margin: 0 0 12px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      color: var(--content);
-      font-family: var(--font-title);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.45;
-      letter-spacing: -0.01em;
+    .divider {
+      height: 1px;
+      border: 0;
+      background: var(--line);
+      margin: 10px 0 12px;
     }
 
-    .small-note {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.65;
-      letter-spacing: 0.01em;
+    .socials {
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: flex-start;
+      gap: 13px;
+      padding-top: 12px;
+      margin-top: 14px;
     }
+
+    .socials a {
+      width: 24px;
+      height: 24px;
+      display: inline-grid;
+      place-items: center;
+      color: #f1f1f1;
+      opacity: .95;
+    }
+    .socials a:hover {
+      color: var(--green);
+    }
+
 
     .section-title {
       margin: 0 0 20px;
-      color: var(--content);
-      font-family: var(--font-display);
-      font-size: 40px;
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
+      color: var(--heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      line-height: 1.2;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 3px;
+      margin-top: 9px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--purple));
     }
 
-    .section-lead {
-      margin: -6px 0 32px;
-      max-width: 500px;
-      color: var(--muted);
-      font-family: var(--font-body);
+
+    .lead {
+      max-width: 552px;
+      margin: 0 0 52px;
+      color: var(--text);
       font-size: 16px;
       line-height: 1.65;
-      letter-spacing: -0.005em;
     }
 
-    .cards {
+    .card-stack {
       display: grid;
       gap: 14px;
     }
 
-    .card {
+    .project-card,
+    .work-card,
+    .post-card,
+    .contact-card {
+      background:
+        linear-gradient(180deg, rgba(103, 55, 227, .075), transparent 72%),
+        var(--surface);
+      border: 1px solid var(--purple-border);
       border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 16px;
-      transition: background var(--ease), border-color var(--ease), transform var(--ease);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.015),
+        0 16px 42px rgba(0, 0, 0, .16);
     }
 
-    .card:hover {
-      background: var(--surface-hover);
-      border-color: var(--border-primary);
-      transform: translateY(-1px);
+    .project-card {
+      min-height: 150px;
+      padding: 19px 12px 16px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card-top {
+    .project-title {
+      margin: 0 0 24px;
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: .035em;
+    }
+
+    .project-card p {
+      margin: 0;
+      padding-right: 48px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.65;
+      letter-spacing: .035em;
+    }
+
+    .project-icon {
+      position: absolute;
+      right: 12px;
+      top: 18px;
+      width: 50px;
+      height: 50px;
+      color: var(--purple-soft);
+      opacity: .86;
+      text-align: center;
+      line-height: 1.35;
+      font-size: 18px;
+      letter-spacing: .05em;
+    }
+
+    .tiny-graphic {
+      width: 51px;
+      height: 48px;
+      border-radius: 3px;
+      background:
+        radial-gradient(circle at 16% 12%, var(--green) 0 8px, transparent 8.5px),
+        repeating-radial-gradient(circle at 90% 88%, transparent 0 5px, rgba(149, 255, 87, .42) 5.5px 7px),
+        linear-gradient(90deg, var(--purple) 0 48%, var(--purple-deep) 48% 100%);
+      border-top: 4px solid var(--green);
+    }
+
+    .metrics {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      min-width: 104px;
+      background: var(--surface-2);
+      border: 1px solid rgba(149, 255, 87, .14);
+      border-radius: 4px;
+      padding: 5px 10px 8px;
+      text-align: center;
+      color: #b0b0b5;
+      line-height: 1.24;
+      font-size: 14px;
+      letter-spacing: .045em;
+    }
+
+    .metric b {
+      display: block;
+      color: var(--green-soft);
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: .015em;
+      margin-top: 1px;
+    }
+
+    .card-link {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+      margin-top: 12px;
+      color: var(--green);
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+
+    .ideas-title {
+      margin: 26px 0 20px;
+      color: #b7b7bb;
+      font-size: 17px;
+      line-height: 1.5;
+      letter-spacing: .045em;
+    }
+
+    .idea-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .idea,
+    .post-line {
+      min-height: 44px;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background:
+        linear-gradient(90deg, rgba(103, 55, 227, .18), transparent),
+        var(--surface);
+      border: 1px solid rgba(103, 55, 227, .32);
+      border-radius: 7px;
+      color: #e0e0e3;
+      line-height: 1.25;
+      letter-spacing: .025em;
+    }
+
+    .idea svg,
+    .post-line svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      color: var(--green);
+    }
+
+    .post-card {
+      padding: 18px 14px;
+    }
+
+    .post-card .date {
+      color: var(--purple-soft);
+      font-size: 14px;
+    }
+
+    .post-card h3 {
+      margin: 6px 0 8px;
+      color: var(--heading);
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: .035em;
+      line-height: 1.3;
+    }
+
+    .post-card p {
+      margin: 0;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
+      letter-spacing: .035em;
+    }
+
+    .contact-card {
+      border-color: var(--green-border);
+      padding: 11px 11px 9px;
+      margin-bottom: 16px;
+    }
+
+    .contact-head {
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.2;
     }
 
-    .card-title {
-      margin: 0;
-      color: var(--content);
-      font-family: var(--font-title);
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.35;
-      letter-spacing: -0.015em;
-    }
-
-    .card-meta {
-      margin: 2px 0 0;
-      color: var(--muted-soft);
-      font-family: var(--font-body);
-      font-size: 13px;
-      line-height: 1.55;
-      letter-spacing: 0.01em;
-    }
-
-    .period {
-      color: var(--muted-soft);
-      white-space: nowrap;
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .description {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.75;
-      letter-spacing: 0.01em;
-    }
-
-    .bullets {
+    .form-grid {
       display: grid;
-      gap: 8px;
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
+      grid-template-columns: 1fr 1.17fr;
+      gap: 8px 22px;
     }
 
-    .bullets li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--muted);
-      font-family: var(--font-body);
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: var(--surface-3);
+      color: #d0d0d4;
+      border-radius: 8px;
+      padding: 7px 10px;
+      min-height: 32px;
+      letter-spacing: .03em;
+    }
+
+    .contact-card input::placeholder,
+    .contact-card textarea::placeholder {
+      color: #77777d;
+    }
+
+    .contact-card textarea {
+      grid-column: 1 / -1;
+      min-height: 102px;
+      resize: vertical;
+      padding-top: 6px;
+    }
+
+    .contact-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .powered {
+      color: #6f6f75;
       font-size: 14px;
-      line-height: 1.7;
-      letter-spacing: 0.01em;
+      letter-spacing: .02em;
     }
 
-    .bullets li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.74em;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-      opacity: 0.95;
+    .powered b {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .submit-btn {
+      border: 0;
+      border-radius: 6px;
+      background: var(--green);
+      color: #18121f;
+      font-weight: 700;
+      padding: 5px 13px;
+      cursor: pointer;
+    }
+
+    .work-card {
+      padding: 13px 11px 12px;
+    }
+
+    .work-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 10px;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .work-card h3 {
+      margin: 0 0 12px;
+      color: var(--heading);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: .05em;
+    }
+
+    .work-card p {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: .035em;
     }
 
     .chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 13px;
+      gap: 6px 8px;
+      margin-bottom: 12px;
     }
 
     .chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      border: 1px solid rgba(159, 232, 112, 0.27);
-      border-radius: var(--radius-pill);
-      padding: 3px 9px;
-      color: var(--muted);
-      background: rgba(159, 232, 112, 0.055);
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 1.4;
-      white-space: nowrap;
-    }
-
-    .stats {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .stat {
-      min-width: 92px;
-      border-radius: 7px;
-      background: rgba(232, 235, 230, 0.065);
-      border: 1px solid rgba(232, 235, 230, 0.07);
-      padding: 8px 10px;
-      text-align: center;
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.25;
-    }
-
-    .stat strong {
-      display: block;
-      margin-top: 3px;
-      color: var(--primary);
-      font-family: var(--font-display);
-      font-size: 25px;
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .project-link {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 12px;
-      color: var(--muted);
+      border: 1px solid rgba(149, 255, 87, .32);
+      background: rgba(103, 55, 227, .12);
+      color: var(--green-soft);
+      border-radius: 999px;
+      padding: 2px 10px 3px;
       font-size: 13px;
+      letter-spacing: .015em;
+      line-height: 1.4;
     }
 
-    .project-link a {
-      color: var(--primary);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
+    .details-btn {
+      width: 100%;
+      border: 0;
+      background: rgba(103, 55, 227, .22);
+      color: var(--green);
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 15px;
+      letter-spacing: .035em;
+      cursor: pointer;
     }
 
-    .simple-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .simple-list a,
-    .simple-list li {
-      display: block;
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-      border: 1px solid transparent;
-      padding: 10px 13px;
-      color: var(--content);
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.45;
-      transition: background var(--ease), border-color var(--ease);
-    }
-
-    .simple-list a:hover {
-      border-color: var(--border-primary);
-      background: var(--surface-hover);
-    }
-
-    .contact {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .contact-links a {
-      color: var(--content);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 5px;
-      transition: color var(--ease);
-    }
-
-    .contact-links a:hover {
-      color: var(--primary);
-    }
-
-    .footer {
-      margin-top: 36px;
-      color: rgba(232, 235, 230, 0.38);
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 620px) {
-      .shell {
-        width: min(100% - 24px, var(--container));
-        padding-top: 20px;
+    @media (max-width: 820px) {
+      .page {
+        width: min(100% - 24px, 560px);
+        margin-top: 12px;
+        display: block;
       }
 
-      .profile {
-        grid-template-columns: 54px 1fr;
-        gap: 12px;
-      }
-
-      .avatar {
-        width: 54px;
-        height: 54px;
-        font-size: 22px;
-      }
-
-      .name {
-        font-size: 29px;
-      }
-
-      .role {
-        font-size: 13px;
-      }
-
-      .nav {
-        gap: 7px;
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 4px;
+      .sidebar {
+        position: static;
         margin-bottom: 34px;
       }
 
-      .nav button {
-        flex: 0 0 auto;
-        padding: 8px 12px;
+      .topbar {
+        grid-template-columns: 60px 1fr;
+        gap: 13px;
+        align-items: center;
+        margin-bottom: 18px;
       }
 
-      .section-title {
-        font-size: 35px;
+      .avatar {
+        width: 60px;
+        height: 60px;
       }
 
-      .card-top {
-        display: grid;
-        gap: 4px;
+      .identity h1 {
+        font-size: 21px;
       }
 
-      .period {
-        white-space: normal;
+      .identity h1 span {
+        display: block;
+        vertical-align: baseline;
+        margin: 7px 0 0;
       }
 
-      .stats {
+      .identity p {
+        font-size: 14px;
+      }
+
+      .tabs {
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+        justify-content: space-between;
+        margin-bottom: 0;
+        overflow-x: auto;
+        padding-top: 12px;
+      }
+
+      .tab-btn {
+        width: auto;
+        flex: 1 0 auto;
+        text-align: center;
+        font-size: 14px;
+        padding: 7px 9px;
+        transition: background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+      }
+
+      .tab-btn::before {
+        display: none;
+      }
+
+      .tab-btn:hover,
+      .tab-btn.is-active {
+        background: rgba(103, 55, 227, .24);
+        color: var(--green);
+        box-shadow: inset 0 0 0 1px var(--purple-border);
+      }
+
+      .socials {
+        justify-content: center;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .metrics {
         justify-content: flex-start;
-      }
-
-      .stat {
-        min-width: 82px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 1ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: 1ms !important;
       }
     }
   </style>
 </head>
-
 <body>
-  <div id="app"></div>
+  <main class="page">
+    <aside class="sidebar" aria-label="Portfolio identity and navigation">
+      <header class="topbar">
+        <div class="avatar" aria-label="Profile colors">
+        </div>
+        <div class="identity">
+          <h1>Ehab Muhammad<span>Based in <b>Cairo</b></span></h1>
+          <p>Software Engineer | Backend Engineer</p>
+        </div>
+      </header>
+
+      <nav class="tabs" aria-label="Portfolio sections">
+        <button class="tab-btn is-active" type="button" data-tab="home">Home</button>
+        <button class="tab-btn" type="button" data-tab="projects">Projects</button>
+        <button class="tab-btn" type="button" data-tab="education">Education</button>
+        <button class="tab-btn" type="button" data-tab="work">Work</button>
+      </nav>
+
+      <footer class="socials" aria-label="Social links">
+        <a href="https://eh4p.github.io" aria-label="Portfolio Website">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/ehab-m" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V8.99h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V8.99H7.1v11.46ZM22.23 0H1.76C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.76 24h20.47c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0Z"/></svg>
+        </a>
+        <a href="https://github.com/eh4p" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.82-.26.82-.58v-2.1c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.78-1.34-1.78-1.1-.75.08-.74.08-.74 1.2.09 1.84 1.25 1.84 1.25 1.08 1.84 2.82 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.46-1.34-5.46-5.93 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.45 11.45 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.6-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.23v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+        </a>
+      </footer>
+    </aside>
+
+    <div class="content">
+      <section id="home" class="view is-visible">
+      <div class="copy">
+        <p>Software Engineer with a strong focus on computer science and hands-on experience with cutting-edge technologies.</p>
+        <p>Skilled in backend development with a solid foundation in software architecture, cloud tooling, and modern frameworks.</p>
+        <p>Proven ability to deliver scalable products and systems serving real users in production.</p>
+        <p>Core backend stack: ASP.NET Core, C#, MS SQL Server, Entity Framework Core, LINQ, ADO.NET, and Redis.</p>
+        <p>Architecture and design: Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID, Repository Pattern, Unit of Work, CQRS, and MediatR.</p>
+        <p>Tooling and practices: Git, GitHub, Docker, CI/CD, Azure DevOps, JWT, OAuth, Identity, SignalR, Unit Testing, Agile, Serilog, and Documentation.</p>
+        <hr class="divider" />
+        <p><strong>Familiar with Microservices, Kubernetes, RabbitMQ, and Kafka.</strong></p>
+        <p>Additional: Angular and TypeScript. Languages: Arabic native and English professional.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="view">
+      <h2 class="section-title">Projects</h2>
+      <p class="lead">In addition to work experience projects, visit github.com/eh4p for more projects demonstrating the technologies and architectural patterns listed in the Skills section.</p>
+
+      <div class="card-stack">
+        <article class="project-card">
+          <h3 class="project-title">Alquileres360</h3>
+          <div class="project-icon">A360</div>
+          <p>Property management platform enabling owners, tenants, and professionals to streamline rental operations.</p>
+          <div class="metrics">
+            <span class="metric">Active Users <b>30+</b></span>
+            <span class="metric">Version <b>Beta</b></span>
+            <span class="metric">Backend <b>Node.js</b></span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">QwickSite</h3>
+          <div class="project-icon">QS</div>
+          <p>No-code website builder SaaS platform enabling business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
+          <div class="metrics">
+            <span class="metric">Business Owners <b>50+</b></span>
+            <span class="metric">Services <b>5+</b></span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">Personal Projects</h3>
+          <div class="project-icon"><div class="tiny-graphic"></div></div>
+          <p>Projects demonstrating backend technologies, software architecture, and engineering patterns listed in the Skills section.</p>
+          <div class="metrics">
+            <span class="metric">GitHub <b>eh4p</b></span>
+            <span class="metric">Portfolio <b>eh4p.github.io</b></span>
+          </div>
+          <a class="card-link" href="https://github.com/eh4p"><span>↗</span> GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <h3 class="project-title">ITI Projects</h3>
+          <p>Built end-to-end projects during the intensive software engineering training program at Information Technology Institute.</p>
+          <div class="metrics">
+            <span class="metric">Projects <b>3+</b></span>
+          </div>
+        </article>
+      </div>
+
+      <p class="ideas-title">Skills and patterns demonstrated across my projects and work.</p>
+      <div class="idea-list">
+        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> ASP.NET Core, C#, MS SQL Server, Entity Framework Core</a>
+        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID</a>
+        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Repository Pattern, Unit of Work, CQRS, MediatR</a>
+        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Docker, CI/CD, Azure DevOps, Git, GitHub</a>
+        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> JWT, OAuth, Identity, SignalR, Serilog</a>
+      </div>
+    </section>
+
+    <section id="education" class="view">
+      <h2 class="section-title">Education</h2>
+      <p class="lead">Education section from my resume.</p>
+
+      <div class="card-stack">
+        <article class="post-card">
+          <span class="date">Graduate Studies</span>
+          <h3>Premaster in Computer Science</h3>
+          <p>Cairo University, Graduate Studies for Statistical Research (FGSSR).</p>
+        </article>
+        <article class="post-card">
+          <span class="date">Diploma</span>
+          <h3>Software Engineering Diploma</h3>
+          <p>Information Technology Institute (ITI), Ministry of Communication and Information Technology (MCIT).</p>
+        </article>
+        <article class="post-card">
+          <span class="date">Bachelor</span>
+          <h3>Bachelor of Commerce and Business Administration</h3>
+          <p>Helwan University, Accounting Department, English Section.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" class="view">
+      <h2 class="section-title">Work Experience</h2>
+      <p class="lead">Backend and full-stack experience building scalable products, APIs, real-time features, and end-to-end software projects.</p>
+
+      <form class="contact-card" onsubmit="event.preventDefault(); alert('Demo form only. Connect this to your backend or form provider.');">
+        <div class="contact-head">
+          <span>em.ehabm@gmail.com</span>
+          <span>Cairo, Egypt</span>
+        </div>
+        <div class="form-grid">
+          <input aria-label="Role" placeholder="Software Engineer | Backend Engineer" />
+          <input aria-label="Phone" type="text" placeholder="01508291561" />
+          <textarea aria-label="Links" placeholder="linkedin.com/in/ehab-m | github.com/eh4p | eh4p.github.io"></textarea>
+        </div>
+        <div class="contact-bottom">
+          <span class="powered">English <b>Professional</b></span>
+          <button class="submit-btn" type="submit">Contact</button>
+        </div>
+      </form>
+
+      <div class="card-stack">
+        <article class="work-card">
+          <div class="work-meta"><span>Freelance, Spain</span><span>Aug 2025 - Present</span></div>
+          <h3>Software Engineer at Alquileres360</h3>
+          <p>Developed and maintained the Alquileres360 property management platform, enabling owners, tenants, and professionals to streamline rental operations for 30+ active users in the Beta version.</p>
+          <p>Built backend services using Node.js from scratch following scalable architecture and industry-standard patterns, reducing code coupling and improving maintainability.</p>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Backend Services</span><span class="chip">Scalable Architecture</span><span class="chip">Real-Time Features</span><span class="chip">Performance</span>
+          </div>
+          <button class="details-btn" type="button">Show detailed contributions</button>
+        </article>
+
+        <article class="work-card">
+          <div class="work-meta"><span>QwickSite</span><span>Jan 2025 - Present</span></div>
+          <h3>Full-Stack Developer at QwickSite</h3>
+          <p>Contributed to QwickSite, a no-code website builder SaaS platform enabling 50+ business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
+          <p>Developed backend APIs using Node.js and frontend using Angular and Next.js, supporting 5+ integrated third-party services including shipment providers and Google services.</p>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Angular</span><span class="chip">Next.js</span><span class="chip">APIs</span><span class="chip">Third-Party Services</span><span class="chip">Google Services</span>
+          </div>
+          <button class="details-btn" type="button">Show detailed contributions</button>
+        </article>
+
+        <article class="work-card">
+          <div class="work-meta"><span>Information Technology Institute</span><span>May 2024 - Oct 2024</span></div>
+          <h3>Software Engineering Trainee at ITI</h3>
+          <p>Completed a 6-month intensive software engineering training program sponsored by the Ministry of Communication and Information Technology (MCIT), covering full-stack development fundamentals.</p>
+          <p>Built 3+ end-to-end projects and had actual exposure to a learning environment focused on understanding software engineering fundamentals thoroughly.</p>
+          <div class="chips">
+            <span class="chip">Full-Stack Development</span><span class="chip">Software Engineering</span><span class="chip">End-to-End Projects</span><span class="chip">Fundamentals</span>
+          </div>
+          <button class="details-btn" type="button">Show detailed contributions</button>
+        </article>
+      </div>
+    </section>
+    </div>
+  </main>
 
   <script>
-    const portfolioData = {
-      name: "Ehab Muhammad",
-      aka: "@kryptted",
-      initials: "EM",
-      role: "Software Backend Engineer",
-      location: "Cairo, Egypt",
-      email: "em.ehabm@gmail.com",
-      phone: "01508291561",
-      links: {
-        linkedin: "https://linkedin.com/in/ehab-m",
-        github: "https://github.com/eh4p",
-        portfolio: "https://eh4p.github.io"
-      },
-      intro: [
-        "I am a software engineer focused on backend engineering, software architecture, and building reliable systems for real users.",
-        "I work with ASP.NET Core, C#, Node.js, SQL Server, Entity Framework Core, Redis, Docker, CI/CD, and modern backend patterns.",
-        "I care about clean architecture, maintainable code, performance, real-time features, and practical engineering decisions.",
-        "Recently, I have worked on SaaS and property management products serving active users, business owners, and real production workflows."
-      ],
-      highlight:
-        "I am interested in backend engineering roles where I can build scalable APIs, improve system design, and ship reliable products.",
-      stats: [
-        { label: "Beta users", value: "30+" },
-        { label: "Business owners", value: "50+" },
-        { label: "Integrations", value: "5+" },
-        { label: "Projects", value: "3+" }
-      ],
-      experience: [
-        {
-          title: "Software Engineer",
-          company: "Alquileres360",
-          type: "Freelance",
-          place: "Spain",
-          period: "Aug 2025 – Present",
-          description:
-            "Developed and maintained a property management platform for owners, tenants, and professionals.",
-          bullets: [
-            "Built backend services using Node.js from scratch following scalable architecture and industry-standard patterns.",
-            "Supported rental operations for 30+ active beta users.",
-            "Reduced code coupling, improved maintainability, implemented real-time features, and improved performance."
-          ],
-          tags: ["Node.js", "Backend", "Real-time", "Architecture", "Performance"]
-        },
-        {
-          title: "Full-Stack Developer",
-          company: "QwickSite",
-          type: "",
-          place: "",
-          period: "Jan 2025 – Present",
-          description:
-            "Contributed to a no-code website builder SaaS platform with e-commerce capabilities and business tooling.",
-          bullets: [
-            "Developed backend APIs using Node.js and frontend features using Angular and Next.js.",
-            "Supported 50+ business owners and 5+ third-party integrations including shipment providers and Google services.",
-            "Explored how large-scale systems and projects interact with each other."
-          ],
-          tags: ["Node.js", "Angular", "Next.js", "SaaS", "APIs"]
-        },
-        {
-          title: "Software Engineering Trainee",
-          company: "Information Technology Institute",
-          type: "ITI",
-          place: "Egypt",
-          period: "May 2024 – Oct 2024",
-          description:
-            "Completed a 6-month intensive software engineering training program sponsored by MCIT.",
-          bullets: [
-            "Covered full-stack development fundamentals and built 3+ end-to-end projects.",
-            "Gained practical exposure to software engineering principles in a structured learning environment."
-          ],
-          tags: ["Full-stack", "Software Engineering", "Projects", "MCIT"]
-        }
-      ],
-      skills: [
-        {
-          group: "Languages & Frameworks",
-          items: ["ASP.NET Core", "C#", "Node.js", "Angular", "TypeScript"]
-        },
-        {
-          group: "Data & Caching",
-          items: ["MS SQL Server", "Entity Framework Core", "LINQ", "ADO.NET", "Redis"]
-        },
-        {
-          group: "Architecture & Design",
-          items: ["Clean Architecture", "N-Tier", "Onion Architecture", "OOP", "SOLID", "Repository Pattern", "Unit of Work", "CQRS", "MediatR"]
-        },
-        {
-          group: "DevOps & Tooling",
-          items: ["Git", "GitHub", "Docker", "CI/CD", "Azure DevOps"]
-        },
-        {
-          group: "Security & Communication",
-          items: ["JWT", "OAuth", "Identity", "SignalR", "Serilog"]
-        },
-        {
-          group: "Familiar With",
-          items: ["Microservices", "Kubernetes", "RabbitMQ", "Kafka"]
-        }
-      ],
-      education: [
-        {
-          title: "Premaster in Computer Science",
-          subtitle: "Cairo University, Graduate Studies for Statistical Research"
-        },
-        {
-          title: "Software Engineering Diploma",
-          subtitle: "Information Technology Institute, MCIT"
-        },
-        {
-          title: "Bachelor of Commerce and Business Administration",
-          subtitle: "Helwan University, Accounting Department, English Section"
-        }
-      ],
-      projects: [
-        {
-          name: "Personal Projects",
-          description:
-            "Additional personal projects on GitHub demonstrate backend technologies, architecture patterns, and engineering practices.",
-          stats: [
-            { label: "Focus", value: "Backend" },
-            { label: "Patterns", value: "Clean" },
-            { label: "Code", value: "GitHub" }
-          ],
-          link: "https://github.com/eh4p"
-        },
-        {
-          name: "Alquileres360",
-          description:
-            "Property management platform for streamlining rental workflows for owners, tenants, and professionals.",
-          stats: [
-            { label: "Users", value: "30+" },
-            { label: "Stage", value: "Beta" }
-          ]
-        },
-        {
-          name: "QwickSite",
-          description:
-            "No-code website builder SaaS platform with e-commerce capabilities and third-party service integrations.",
-          stats: [
-            { label: "Owners", value: "50+" },
-            { label: "Integrations", value: "5+" }
-          ]
-        }
-      ],
-      softSkills: [
-        "Strong problem solving and critical thinking abilities",
-        "Effective communication and collaboration in team environments",
-        "Adaptable and quick to learn new technologies"
-      ],
-      languages: ["Arabic — Native", "English — Professional"]
-    };
+    const buttons = document.querySelectorAll('.tab-btn');
+    const views = document.querySelectorAll('.view');
 
-    const app = document.querySelector("#app");
-
-    const safe = (value) =>
-      String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    const hasItems = (items) => Array.isArray(items) && items.length > 0;
-    const linkAttrs = 'target="_blank" rel="noopener noreferrer"';
-
-    function externalLink(href, label, className = "") {
-      if (!href || !label) return "";
-      const attrs = href.startsWith("http") ? linkAttrs : "";
-      return `<a class="${className}" href="${safe(href)}" ${attrs}>${safe(label)}</a>`;
-    }
-
-    function renderHeader(data) {
-      return `
-        <header>
-          <div class="profile">
-            <div class="avatar" aria-hidden="true">${safe(data.initials)}</div>
-            <div>
-              <div class="name-row">
-                <h1 class="name">${safe(data.name)}</h1>
-                ${data.aka ? `<span class="aka">${safe(data.aka)}</span>` : ""}
-              </div>
-              <p class="role">${safe(data.role)}</p>
-            </div>
-          </div>
-
-          <nav class="nav" aria-label="Portfolio sections">
-            <button type="button" class="active" data-view="home">Home</button>
-            <button type="button" data-view="projects">Projects</button>
-            <button type="button" data-view="skills">Skills</button>
-            <button type="button" data-view="work">Work</button>
-          </nav>
-        </header>
-      `;
-    }
-
-    function renderHome(data) {
-      return `
-        <section class="view active" id="home-view">
-          ${hasItems(data.intro) ? `
-            <div class="intro">
-              ${data.intro.map((text) => `<p>${safe(text)}</p>`).join("")}
-            </div>
-          ` : ""}
-
-          ${hasItems(data.stats) ? `
-            <div class="card" aria-label="Quick stats">
-              <div class="stats">
-                ${data.stats.map((stat) => `
-                  <div class="stat">
-                    <span>${safe(stat.label)}</span>
-                    <strong>${safe(stat.value)}</strong>
-                  </div>
-                `).join("")}
-              </div>
-            </div>
-          ` : ""}
-
-          ${data.highlight ? `<p class="note">${safe(data.highlight)}</p>` : ""}
-
-          <p class="small-note">
-            Reach me at
-            <a class="inline-link" href="mailto:${safe(data.email)}">${safe(data.email)}</a>
-            ${data.location ? ` · ${safe(data.location)}` : ""}
-          </p>
-
-          ${renderContactLinks(data)}
-        </section>
-      `;
-    }
-
-    function renderProjects(projects) {
-      if (!hasItems(projects)) return "";
-
-      return `
-        <section class="view" id="projects-view">
-          <h2 class="section-title">Projects Board</h2>
-          <p class="section-lead">
-            Projects and product work that show backend delivery, SaaS experience, real users, and system thinking.
-          </p>
-
-          <div class="cards">
-            ${projects.map((project) => `
-              <article class="card">
-                <div class="card-top">
-                  <div>
-                    <h3 class="card-title">${safe(project.name)}</h3>
-                  </div>
-                </div>
-
-                ${project.description ? `<p class="description">${safe(project.description)}</p>` : ""}
-
-                ${hasItems(project.stats) ? `
-                  <div class="stats">
-                    ${project.stats.map((stat) => `
-                      <div class="stat">
-                        <span>${safe(stat.label)}</span>
-                        <strong>${safe(stat.value)}</strong>
-                      </div>
-                    `).join("")}
-                  </div>
-                ` : ""}
-
-                ${project.link ? `
-                  <div class="project-link">
-                    ${externalLink(project.link, "↗ Link")}
-                  </div>
-                ` : ""}
-              </article>
-            `).join("")}
-          </div>
-        </section>
-      `;
-    }
-
-    function renderSkills(skills, softSkills, languages) {
-      const skillGroups = hasItems(skills)
-        ? skills.filter((group) => group.group && hasItems(group.items))
-        : [];
-
-      return `
-        <section class="view" id="skills-view">
-          <h2 class="section-title">Skills</h2>
-          <p class="section-lead">
-            Technologies, backend patterns, and practices I use or study for professional software engineering.
-          </p>
-
-          ${skillGroups.length ? `
-            <div class="cards">
-              ${skillGroups.map((group) => `
-                <article class="card">
-                  <h3 class="card-title">${safe(group.group)}</h3>
-                  <div class="chips">
-                    ${group.items.map((item) => `<span class="chip">${safe(item)}</span>`).join("")}
-                  </div>
-                </article>
-              `).join("")}
-            </div>
-          ` : ""}
-
-          ${hasItems(softSkills) ? `
-            <h2 class="section-title" style="margin-top: 32px;">How I Work</h2>
-            <ul class="simple-list">
-              ${softSkills.map((item) => `<li>${safe(item)}</li>`).join("")}
-            </ul>
-          ` : ""}
-
-          ${hasItems(languages) ? `
-            <h2 class="section-title" style="margin-top: 32px;">Languages</h2>
-            <ul class="simple-list">
-              ${languages.map((item) => `<li>${safe(item)}</li>`).join("")}
-            </ul>
-          ` : ""}
-        </section>
-      `;
-    }
-
-    function renderWork(experience, education) {
-      return `
-        <section class="view" id="work-view">
-          <h2 class="section-title">Employment History</h2>
-          <p class="section-lead">
-            Backend and full-stack work on products, APIs, integrations, real-time features, and production-facing systems.
-          </p>
-
-          ${hasItems(experience) ? `
-            <div class="cards">
-              ${experience.map((job) => `
-                <article class="card">
-                  <div class="card-top">
-                    <div>
-                      <p class="card-meta">
-                        ${[job.place, job.type].filter(Boolean).map(safe).join(" · ")}
-                      </p>
-                      <h3 class="card-title">${safe(job.title)} at ${safe(job.company)}</h3>
-                    </div>
-                    ${job.period ? `<span class="period">${safe(job.period)}</span>` : ""}
-                  </div>
-
-                  ${job.description ? `<p class="description">${safe(job.description)}</p>` : ""}
-
-                  ${hasItems(job.bullets) ? `
-                    <ul class="bullets">
-                      ${job.bullets.map((bullet) => `<li>${safe(bullet)}</li>`).join("")}
-                    </ul>
-                  ` : ""}
-
-                  ${hasItems(job.tags) ? `
-                    <div class="chips">
-                      ${job.tags.map((tag) => `<span class="chip">${safe(tag)}</span>`).join("")}
-                    </div>
-                  ` : ""}
-                </article>
-              `).join("")}
-            </div>
-          ` : ""}
-
-          ${hasItems(education) ? `
-            <h2 class="section-title" style="margin-top: 32px;">Education</h2>
-            <ul class="simple-list">
-              ${education.map((item) => `
-                <li>
-                  <strong>${safe(item.title)}</strong><br>
-                  <span style="color: var(--muted);">${safe(item.subtitle)}</span>
-                </li>
-              `).join("")}
-            </ul>
-          ` : ""}
-        </section>
-      `;
-    }
-
-    function renderContactLinks(data) {
-      const items = [
-        data.links?.github ? externalLink(data.links.github, "GitHub") : "",
-        data.links?.linkedin ? externalLink(data.links.linkedin, "LinkedIn") : "",
-        data.links?.portfolio ? externalLink(data.links.portfolio, "Portfolio") : "",
-        data.phone ? externalLink(`tel:${data.phone}`, "Phone") : ""
-      ].filter(Boolean);
-
-      if (!items.length) return "";
-
-      return `
-        <div class="contact">
-          <div class="contact-links" aria-label="Contact and social links">
-            ${items.join("")}
-          </div>
-        </div>
-      `;
-    }
-
-    function renderFooter(data) {
-      return `
-        <footer class="footer">
-          © ${new Date().getFullYear()} ${safe(data.name)} — backend portfolio.
-        </footer>
-      `;
-    }
-
-    function bindNavigation() {
-      const buttons = document.querySelectorAll(".nav button");
-      const views = document.querySelectorAll(".view");
-
+    function activateTab(name, updateHash = true) {
       buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const viewName = button.dataset.view;
-
-          buttons.forEach((item) => item.classList.remove("active"));
-          views.forEach((view) => view.classList.remove("active"));
-
-          button.classList.add("active");
-          document.querySelector(`#${viewName}-view`)?.classList.add("active");
-        });
+        button.classList.toggle('is-active', button.dataset.tab === name);
       });
+
+      views.forEach((view) => {
+        view.classList.toggle('is-visible', view.id === name);
+      });
+
+      if (updateHash) {
+        history.replaceState(null, '', '#' + name);
+      }
     }
 
-    function renderApp(data) {
-      app.innerHTML = `
-        <main class="shell">
-          ${renderHeader(data)}
-          ${renderHome(data)}
-          ${renderProjects(data.projects)}
-          ${renderSkills(data.skills, data.softSkills, data.languages)}
-          ${renderWork(data.experience, data.education)}
-          ${renderFooter(data)}
-        </main>
-      `;
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => activateTab(button.dataset.tab));
+    });
 
-      bindNavigation();
+    const initial = location.hash.replace('#', '');
+    if ([...views].some((view) => view.id === initial)) {
+      activateTab(initial, false);
     }
-
-    renderApp(portfolioData);
   </script>
 </body>
 </html>

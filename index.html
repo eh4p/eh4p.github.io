@@ -3,45 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Ehab Muhammad — Software Engineer and Backend Engineer portfolio."
-  />
+  <meta name="description" content="Ehab Muhammad — Software Engineer and Backend Engineer portfolio." />
   <title>Ehab Muhammad — Backend Engineer</title>
 
   <style>
     /*
       =========================================================
-      LOCAL FONT SETUP
+      LOCAL FONT FILES
       =========================================================
 
-      Your current local font files from the screenshots:
+      Put this HTML file beside your public folder.
 
-      League Spartan:
+      Your font names from the screenshots:
+
+      League Spartan Black:
       ./public/fonts/LeagueSpartan/LeagueSpartan-Black.ttf
 
-      Inter 18pt:
+      Inter:
       ./public/fonts/inter/Inter_18pt-Regular.ttf
       ./public/fonts/inter/Inter_18pt-Medium.ttf
       ./public/fonts/inter/Inter_18pt-SemiBold.ttf
 
-      Inter 24pt:
       ./public/fonts/inter/Inter_24pt-Regular.ttf
       ./public/fonts/inter/Inter_24pt-Medium.ttf
       ./public/fonts/inter/Inter_24pt-SemiBold.ttf
 
-      Inter 28pt:
       ./public/fonts/inter/Inter_28pt-Regular.ttf
       ./public/fonts/inter/Inter_28pt-Medium.ttf
       ./public/fonts/inter/Inter_28pt-SemiBold.ttf
 
-      If your HTML file is NOT beside the public folder, edit these paths.
-      If you use a framework that maps public/ to the site root, change
-      "./public/fonts/..." to "/fonts/...".
+      If your site serves public/ as root, change:
+      ./public/fonts/...
+      to:
+      /fonts/...
     */
 
     @font-face {
-      font-family: "League Spartan Local";
+      font-family: "League Spartan";
       src: url("./public/fonts/LeagueSpartan/LeagueSpartan-Black.ttf") format("truetype");
       font-weight: 900;
       font-style: normal;
@@ -49,7 +47,7 @@
     }
 
     @font-face {
-      font-family: "Inter 18pt Local";
+      font-family: "Inter 18pt";
       src: url("./public/fonts/inter/Inter_18pt-Regular.ttf") format("truetype");
       font-weight: 400;
       font-style: normal;
@@ -57,7 +55,7 @@
     }
 
     @font-face {
-      font-family: "Inter 18pt Local";
+      font-family: "Inter 18pt";
       src: url("./public/fonts/inter/Inter_18pt-Medium.ttf") format("truetype");
       font-weight: 500;
       font-style: normal;
@@ -65,7 +63,7 @@
     }
 
     @font-face {
-      font-family: "Inter 18pt Local";
+      font-family: "Inter 18pt";
       src: url("./public/fonts/inter/Inter_18pt-SemiBold.ttf") format("truetype");
       font-weight: 600;
       font-style: normal;
@@ -73,7 +71,7 @@
     }
 
     @font-face {
-      font-family: "Inter 24pt Local";
+      font-family: "Inter 24pt";
       src: url("./public/fonts/inter/Inter_24pt-Regular.ttf") format("truetype");
       font-weight: 400;
       font-style: normal;
@@ -81,7 +79,7 @@
     }
 
     @font-face {
-      font-family: "Inter 24pt Local";
+      font-family: "Inter 24pt";
       src: url("./public/fonts/inter/Inter_24pt-Medium.ttf") format("truetype");
       font-weight: 500;
       font-style: normal;
@@ -89,7 +87,7 @@
     }
 
     @font-face {
-      font-family: "Inter 24pt Local";
+      font-family: "Inter 24pt";
       src: url("./public/fonts/inter/Inter_24pt-SemiBold.ttf") format("truetype");
       font-weight: 600;
       font-style: normal;
@@ -97,7 +95,7 @@
     }
 
     @font-face {
-      font-family: "Inter 28pt Local";
+      font-family: "Inter 28pt";
       src: url("./public/fonts/inter/Inter_28pt-Regular.ttf") format("truetype");
       font-weight: 400;
       font-style: normal;
@@ -105,7 +103,7 @@
     }
 
     @font-face {
-      font-family: "Inter 28pt Local";
+      font-family: "Inter 28pt";
       src: url("./public/fonts/inter/Inter_28pt-Medium.ttf") format("truetype");
       font-weight: 500;
       font-style: normal;
@@ -113,7 +111,7 @@
     }
 
     @font-face {
-      font-family: "Inter 28pt Local";
+      font-family: "Inter 28pt";
       src: url("./public/fonts/inter/Inter_28pt-SemiBold.ttf") format("truetype");
       font-weight: 600;
       font-style: normal;
@@ -121,39 +119,35 @@
     }
 
     :root {
-      --color-primary: #9FE870;
-      --color-background: #163300;
-      --color-content: #E8EBE6;
+      /* Wise-inspired colors provided earlier */
+      --primary: #9FE870;
+      --background: #163300;
+      --content: #E8EBE6;
 
-      --color-surface: rgba(232, 235, 230, 0.08);
-      --color-surface-strong: rgba(232, 235, 230, 0.14);
-      --color-surface-soft: rgba(232, 235, 230, 0.045);
-      --color-border: rgba(232, 235, 230, 0.18);
-      --color-border-strong: rgba(159, 232, 112, 0.42);
-      --color-muted: rgba(232, 235, 230, 0.72);
-      --color-muted-soft: rgba(232, 235, 230, 0.52);
-      --color-primary-dark: #163300;
-      --color-shadow: rgba(0, 0, 0, 0.28);
+      --text: rgba(232, 235, 230, 0.92);
+      --muted: rgba(232, 235, 230, 0.62);
+      --muted-soft: rgba(232, 235, 230, 0.45);
 
-      --font-display: "League Spartan Local", "Arial Black", Impact, sans-serif;
-      --font-inter-18: "Inter 18pt Local", Inter, Arial, sans-serif;
-      --font-inter-24: "Inter 24pt Local", Inter, Arial, sans-serif;
-      --font-inter-28: "Inter 28pt Local", Inter, Arial, sans-serif;
+      --surface: rgba(232, 235, 230, 0.055);
+      --surface-hover: rgba(232, 235, 230, 0.085);
+      --surface-active: rgba(159, 232, 112, 0.16);
 
-      --radius-small: 16px;
-      --radius-medium: 20px;
-      --radius-large: 30px;
-      --radius-x-large: 40px;
-      --radius-2x-large: 60px;
+      --border: rgba(232, 235, 230, 0.13);
+      --border-primary: rgba(159, 232, 112, 0.34);
 
-      --container-width: 860px;
-      --space-page: clamp(18px, 4vw, 44px);
-      --transition: 180ms ease;
+      --font-display: "League Spartan", "Arial Black", Impact, sans-serif;
+      --font-body: "Inter 18pt", Inter, Arial, sans-serif;
+      --font-title: "Inter 24pt", Inter, Arial, sans-serif;
+      --font-screen: "Inter 28pt", Inter, Arial, sans-serif;
+
+      --container: 580px;
+      --radius: 7px;
+      --radius-sm: 5px;
+      --radius-pill: 6px;
+      --ease: 170ms ease;
     }
 
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
     }
 
@@ -164,175 +158,159 @@
     body {
       margin: 0;
       min-height: 100vh;
-      color: var(--color-content);
-      background:
-        radial-gradient(circle at 50% -10%, rgba(159, 232, 112, 0.20), transparent 32rem),
-        radial-gradient(circle at 14% 22%, rgba(159, 232, 112, 0.12), transparent 23rem),
-        radial-gradient(circle at 90% 60%, rgba(232, 235, 230, 0.07), transparent 28rem),
-        var(--color-background);
-      font-family: var(--font-inter-18);
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
       font-size: 16px;
-      line-height: 24px;
+      line-height: 1.65;
       letter-spacing: -0.005em;
-      overflow-x: hidden;
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      pointer-events: none;
       z-index: -1;
-      background-image:
-        linear-gradient(rgba(232, 235, 230, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 235, 230, 0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, black, transparent 76%);
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(159, 232, 112, 0.09), transparent 310px),
+        radial-gradient(circle at 50% 100%, rgba(232, 235, 230, 0.045), transparent 380px);
     }
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--color-primary);
-      outline-offset: 4px;
-      border-radius: 14px;
+    button {
+      font: inherit;
     }
 
     ::selection {
-      color: var(--color-primary-dark);
-      background: var(--color-primary);
+      color: var(--background);
+      background: var(--primary);
     }
 
-    .page-shell {
-      width: min(100%, calc(var(--container-width) + (var(--space-page) * 2)));
-      margin: 0 auto;
-      padding: 28px var(--space-page) 48px;
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
     }
 
-    .skip-link {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      z-index: 50;
-      transform: translateY(-150%);
-      border-radius: 999px;
-      background: var(--color-primary);
-      color: var(--color-primary-dark);
-      padding: 12px 18px;
-      font-family: var(--font-inter-18);
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform var(--transition);
+    .shell {
+      width: min(100% - 32px, var(--container));
+      margin-inline: auto;
+      padding: 26px 0 48px;
     }
 
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .site-nav {
-      position: sticky;
-      top: 14px;
-      z-index: 20;
-      display: flex;
+    .profile {
+      display: grid;
+      grid-template-columns: 62px 1fr;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      width: 100%;
-      margin-bottom: 72px;
-      padding: 10px 10px 10px 16px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: rgba(22, 51, 0, 0.72);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+      gap: 15px;
+      margin-bottom: 26px;
     }
 
-    .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      color: var(--color-content);
-      text-decoration: none;
-    }
-
-    .brand-icon {
+    .avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      width: 34px;
-      height: 34px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      background: var(--color-primary);
-      color: var(--color-primary-dark);
+      color: var(--background);
+      background: var(--primary);
       font-family: var(--font-display);
-      font-size: 18px;
-      line-height: 1;
-      letter-spacing: 0.01em;
+      font-size: 25px;
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      box-shadow: 0 0 0 5px rgba(232, 235, 230, 0.05);
     }
 
-    .brand-text {
-      overflow: hidden;
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 20px;
-      letter-spacing: 0.0125em;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .nav-links {
+    .name-row {
       display: flex;
-      align-items: center;
-      gap: 6px;
+      align-items: baseline;
+      gap: 8px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      margin: 0 0 3px;
     }
 
-    .nav-link {
-      padding: 9px 12px;
-      border-radius: 999px;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
+    .name {
+      margin: 0;
+      color: var(--content);
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+    }
+
+    .aka {
+      color: rgba(159, 232, 112, 0.68);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.015em;
+    }
+
+    .role {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 0 44px;
+    }
+
+    .nav button {
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 9px 15px;
+      background: transparent;
+      color: var(--content);
+      font-family: var(--font-body);
       font-size: 14px;
       font-weight: 600;
-      line-height: 22px;
+      line-height: 1;
       letter-spacing: 0.0125em;
-      text-decoration: none;
-      transition:
-        color var(--transition),
-        background var(--transition);
+      cursor: pointer;
+      transition: background var(--ease), border-color var(--ease), color var(--ease);
     }
 
-    .nav-link:hover {
-      color: var(--color-content);
-      background: var(--color-surface);
+    .nav button:hover {
+      background: var(--surface);
+      border-color: var(--border);
     }
 
-    main {
-      display: grid;
-      gap: 22px;
+    .nav button.active {
+      background: var(--surface-active);
+      border-color: var(--border-primary);
+      color: var(--primary);
     }
 
-    .section,
-    .hero {
-      opacity: 0;
-      animation: fadeUp 640ms ease forwards;
-      animation-delay: var(--delay, 0ms);
+    .view {
+      display: none;
+      animation: fade 220ms ease both;
     }
 
-    @keyframes fadeUp {
+    .view.active {
+      display: block;
+    }
+
+    @keyframes fade {
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(4px);
       }
 
       to {
@@ -341,676 +319,363 @@
       }
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(28px, 6vw, 54px);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-2x-large);
-      background:
-        linear-gradient(135deg, rgba(232, 235, 230, 0.13), rgba(232, 235, 230, 0.055)),
-        rgba(232, 235, 230, 0.07);
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -110px;
-      right: -90px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      opacity: 0.92;
-      filter: blur(0);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 34px;
-      bottom: 32px;
-      width: 150px;
-      height: 150px;
-      border: 1px solid rgba(159, 232, 112, 0.45);
-      border-radius: 44px;
-      transform: rotate(10deg);
-      opacity: 0.7;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
+    .intro {
       display: grid;
-      gap: 24px;
+      gap: 17px;
+      margin-bottom: 28px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      gap: 10px;
-      padding: 8px 12px;
-      border: 1px solid var(--color-border-strong);
-      border-radius: 999px;
-      background: rgba(159, 232, 112, 0.10);
-      color: var(--color-primary);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      box-shadow: 0 0 0 6px rgba(159, 232, 112, 0.13);
-    }
-
-    .hero-title {
-      max-width: 720px;
+    .intro p {
       margin: 0;
-      color: var(--color-content);
-      font-family: var(--font-display);
-      font-size: clamp(62px, 13vw, 132px);
-      font-weight: 900;
-      line-height: 0.78;
-      letter-spacing: 0.012em;
-      text-transform: uppercase;
-    }
-
-    .hero-title span {
-      color: var(--color-primary);
-    }
-
-    .hero-subtitle {
-      max-width: 690px;
-      margin: 0;
-      font-family: var(--font-inter-28);
-      font-size: clamp(24px, 4vw, 30px);
-      font-weight: 600;
-      line-height: 34px;
-      letter-spacing: -0.025em;
-    }
-
-    .hero-summary {
-      max-width: 690px;
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
+      color: var(--muted);
+      font-family: var(--font-body);
       font-size: 16px;
       font-weight: 400;
-      line-height: 24px;
+      line-height: 1.65;
       letter-spacing: -0.005em;
     }
 
-    .hero-actions,
-    .contact-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .button {
-      display: inline-flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      font-family: var(--font-inter-18);
-      font-size: 16px;
+    .intro strong {
+      color: var(--content);
       font-weight: 600;
-      line-height: 24px;
-      letter-spacing: 0.005em;
-      text-decoration: none;
-      cursor: pointer;
-      transition:
-        transform var(--transition),
-        background var(--transition),
-        color var(--transition),
-        border-color var(--transition);
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      background: var(--color-primary);
-      color: var(--color-primary-dark);
-    }
-
-    .button-primary:hover {
-      background: #b7f18e;
-    }
-
-    .button-secondary {
-      border-color: var(--color-border);
-      background: rgba(232, 235, 230, 0.06);
-      color: var(--color-content);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--color-border-strong);
-      background: rgba(159, 232, 112, 0.12);
-    }
-
-    .section {
-      padding: clamp(24px, 4vw, 32px);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: var(--color-surface);
-      transition:
-        transform var(--transition),
-        background var(--transition),
-        border-color var(--transition);
-    }
-
-    .section:hover {
-      transform: translateY(-2px);
-      border-color: rgba(232, 235, 230, 0.26);
-      background: rgba(232, 235, 230, 0.105);
-    }
-
-    .section-header {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--color-primary);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .section-kicker::after {
-      content: "";
-      display: inline-block;
-      width: 42px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--color-primary);
-    }
-
-    .section-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(40px, 8vw, 64px);
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .section-description {
-      max-width: 650px;
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .stat-card {
-      min-height: 136px;
-      padding: 20px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: rgba(232, 235, 230, 0.06);
-    }
-
-    .stat-value {
-      margin: 0 0 14px;
-      color: var(--color-primary);
-      font-family: var(--font-display);
-      font-size: clamp(40px, 7vw, 64px);
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .stat-label {
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 22px;
-      letter-spacing: 0.01em;
-    }
-
-    .summary-card {
-      padding: 26px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: rgba(232, 235, 230, 0.055);
-    }
-
-    .summary-card p {
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .timeline {
-      position: relative;
-      display: grid;
-      gap: 14px;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding: 24px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: rgba(232, 235, 230, 0.055);
-      transition:
-        transform var(--transition),
-        background var(--transition),
-        border-color var(--transition);
-    }
-
-    .timeline-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--color-border-strong);
-      background: rgba(232, 235, 230, 0.09);
-    }
-
-    .timeline-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-
-    .timeline-role {
-      margin: 0;
-      font-family: var(--font-inter-24);
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 28px;
-      letter-spacing: -0.015em;
-    }
-
-    .timeline-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .meta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 22px;
-      letter-spacing: 0.01em;
-    }
-
-    .timeline-period {
-      flex: 0 0 auto;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: var(--color-primary);
-      color: var(--color-primary-dark);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 22px;
-      letter-spacing: 0.0125em;
-      white-space: nowrap;
-    }
-
-    .bullet-list {
-      display: grid;
-      gap: 10px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .bullet-list li {
-      position: relative;
-      padding-left: 22px;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .bullet-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.65em;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-primary);
-    }
-
-    .skill-groups {
-      display: grid;
-      gap: 16px;
-    }
-
-    .skill-group {
-      padding: 20px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: rgba(232, 235, 230, 0.052);
-    }
-
-    .skill-group-title {
-      margin: 0 0 14px;
-      color: var(--color-primary);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 7px 12px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: rgba(232, 235, 230, 0.052);
-      color: var(--color-content);
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 22px;
-      letter-spacing: 0.0125em;
-      transition:
-        background var(--transition),
-        color var(--transition),
-        border-color var(--transition),
-        transform var(--transition);
-    }
-
-    .chip:hover {
-      transform: translateY(-1px);
-      border-color: var(--color-primary);
-      background: var(--color-primary);
-      color: var(--color-primary-dark);
-    }
-
-    .education-list,
-    .project-list,
-    .simple-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-card,
-    .project-card {
-      padding: 20px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-large);
-      background: rgba(232, 235, 230, 0.052);
-    }
-
-    .mini-card h3,
-    .project-card h3 {
-      margin: 0 0 8px;
-      font-family: var(--font-inter-24);
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 28px;
-      letter-spacing: -0.015em;
-    }
-
-    .mini-card p,
-    .project-card p {
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .project-card {
-      display: grid;
-      gap: 16px;
-    }
-
-    .project-card .button {
-      width: fit-content;
-    }
-
-    .simple-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .simple-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 16px 18px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-medium);
-      background: rgba(232, 235, 230, 0.052);
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .simple-list li::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      margin-top: 7px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      background: var(--color-primary);
-    }
-
-    .contact-panel {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      gap: 18px;
-      padding: clamp(28px, 6vw, 44px);
-      border: 1px solid var(--color-border-strong);
-      border-radius: var(--radius-x-large);
-      background:
-        linear-gradient(135deg, rgba(159, 232, 112, 0.18), rgba(232, 235, 230, 0.06)),
-        rgba(232, 235, 230, 0.08);
-    }
-
-    .contact-panel::after {
-      content: "";
-      position: absolute;
-      right: -54px;
-      bottom: -54px;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      opacity: 0.92;
-    }
-
-    .contact-panel > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(40px, 8vw, 64px);
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-    }
-
-    .contact-text {
-      max-width: 630px;
-      margin: 0;
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: -0.005em;
-    }
-
-    .footer {
-      padding: 28px 0 0;
-      color: var(--color-muted-soft);
-      text-align: center;
-      font-family: var(--font-inter-18);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 22px;
-      letter-spacing: 0.01em;
-    }
-
-    .footer a {
-      font-weight: 600;
+    .inline-link {
+      color: var(--primary);
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
     }
 
-    .empty-state {
-      padding: 22px;
-      border: 1px dashed var(--color-border);
-      border-radius: var(--radius-large);
-      color: var(--color-muted);
-      font-family: var(--font-inter-18);
-      font-size: 16px;
-      line-height: 24px;
+    .note {
+      margin: 0 0 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--content);
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
     }
 
-    @media (max-width: 820px) {
-      .site-nav {
-        align-items: flex-start;
-        border-radius: 28px;
+    .small-note {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    .section-title {
+      margin: 0 0 20px;
+      color: var(--content);
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+    }
+
+    .section-lead {
+      margin: -6px 0 32px;
+      max-width: 500px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: -0.005em;
+    }
+
+    .cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+      transition: background var(--ease), border-color var(--ease), transform var(--ease);
+    }
+
+    .card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-primary);
+      transform: translateY(-1px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      margin: 0;
+      color: var(--content);
+      font-family: var(--font-title);
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+    }
+
+    .card-meta {
+      margin: 2px 0 0;
+      color: var(--muted-soft);
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+    }
+
+    .period {
+      color: var(--muted-soft);
+      white-space: nowrap;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+    }
+
+    .bullets {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.74em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.95;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 13px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 1px solid rgba(159, 232, 112, 0.27);
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      color: var(--muted);
+      background: rgba(159, 232, 112, 0.055);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      min-width: 92px;
+      border-radius: 7px;
+      background: rgba(232, 235, 230, 0.065);
+      border: 1px solid rgba(232, 235, 230, 0.07);
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+    }
+
+    .project-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project-link a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .simple-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .simple-list a,
+    .simple-list li {
+      display: block;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      border: 1px solid transparent;
+      padding: 10px 13px;
+      color: var(--content);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.45;
+      transition: background var(--ease), border-color var(--ease);
+    }
+
+    .simple-list a:hover {
+      border-color: var(--border-primary);
+      background: var(--surface-hover);
+    }
+
+    .contact {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: var(--content);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+      transition: color var(--ease);
+    }
+
+    .contact-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer {
+      margin-top: 36px;
+      color: rgba(232, 235, 230, 0.38);
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 24px, var(--container));
+        padding-top: 20px;
       }
 
-      .nav-links {
-        display: none;
+      .profile {
+        grid-template-columns: 54px 1fr;
+        gap: 12px;
       }
 
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .avatar {
+        width: 54px;
+        height: 54px;
+        font-size: 22px;
       }
 
-      .timeline-top {
-        flex-direction: column;
+      .name {
+        font-size: 29px;
       }
 
-      .timeline-period {
+      .role {
+        font-size: 13px;
+      }
+
+      .nav {
+        gap: 7px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        margin-bottom: 34px;
+      }
+
+      .nav button {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+      }
+
+      .section-title {
+        font-size: 35px;
+      }
+
+      .card-top {
+        display: grid;
+        gap: 4px;
+      }
+
+      .period {
         white-space: normal;
       }
-    }
 
-    @media (max-width: 540px) {
-      .page-shell {
-        padding-top: 18px;
+      .stats {
+        justify-content: flex-start;
       }
 
-      .site-nav {
-        margin-bottom: 38px;
-      }
-
-      .hero {
-        border-radius: 38px;
-      }
-
-      .hero::before {
-        width: 210px;
-        height: 210px;
-        top: -120px;
-        right: -120px;
-      }
-
-      .hero::after {
-        display: none;
-      }
-
-      .hero-title {
-        font-size: clamp(54px, 18vw, 82px);
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 22px;
-      }
-
-      .timeline-item,
-      .skill-group,
-      .mini-card,
-      .project-card {
-        padding: 18px;
-      }
-
-      .button {
-        width: 100%;
+      .stat {
+        min-width: 82px;
       }
     }
 
@@ -1018,29 +683,23 @@
       *,
       *::before,
       *::after {
+        animation-duration: 1ms !important;
         scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .hero,
-      .section {
-        opacity: 1;
-        transform: none;
+        transition-duration: 1ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
   <div id="app"></div>
 
   <script>
     const portfolioData = {
       name: "Ehab Muhammad",
-      role: "Software Engineer | Backend Engineer",
+      aka: "@kryptted",
+      initials: "EM",
+      role: "Software Backend Engineer",
       location: "Cairo, Egypt",
       email: "em.ehabm@gmail.com",
       phone: "01508291561",
@@ -1049,99 +708,70 @@
         github: "https://github.com/eh4p",
         portfolio: "https://eh4p.github.io"
       },
-      hero: {
-        eyebrow: "Software Engineer · Backend Engineer",
-        displayTitle: "Backend Engineer",
-        screenTitle: "I build scalable backend systems for real products.",
-        summary:
-          "Software Engineer with a strong focus on computer science and hands-on experience with modern backend technologies. Skilled in backend development, software architecture, cloud tooling, and modern frameworks, with experience delivering scalable products and systems serving real users in production."
-      },
+      intro: [
+        "I am a software engineer focused on backend engineering, software architecture, and building reliable systems for real users.",
+        "I work with ASP.NET Core, C#, Node.js, SQL Server, Entity Framework Core, Redis, Docker, CI/CD, and modern backend patterns.",
+        "I care about clean architecture, maintainable code, performance, real-time features, and practical engineering decisions.",
+        "Recently, I have worked on SaaS and property management products serving active users, business owners, and real production workflows."
+      ],
+      highlight:
+        "I am interested in backend engineering roles where I can build scalable APIs, improve system design, and ship reliable products.",
       stats: [
-        {
-          value: "30+",
-          label: "Active beta users supported"
-        },
-        {
-          value: "50+",
-          label: "Business owners supported"
-        },
-        {
-          value: "5+",
-          label: "Third-party integrations"
-        },
-        {
-          value: "3+",
-          label: "End-to-end projects"
-        }
+        { label: "Beta users", value: "30+" },
+        { label: "Business owners", value: "50+" },
+        { label: "Integrations", value: "5+" },
+        { label: "Projects", value: "3+" }
       ],
       experience: [
         {
           title: "Software Engineer",
           company: "Alquileres360",
           type: "Freelance",
-          location: "Spain",
+          place: "Spain",
           period: "Aug 2025 – Present",
+          description:
+            "Developed and maintained a property management platform for owners, tenants, and professionals.",
           bullets: [
-            "Developed and maintained the Alquileres360 property management platform, enabling owners, tenants, and professionals to streamline rental operations for 30+ active users in beta.",
-            "Built backend services using Node.js from scratch to meet business requirements, following scalable architecture and industry-standard patterns.",
-            "Reduced code coupling, improved maintainability, implemented real-time features, and significantly improved performance."
-          ]
+            "Built backend services using Node.js from scratch following scalable architecture and industry-standard patterns.",
+            "Supported rental operations for 30+ active beta users.",
+            "Reduced code coupling, improved maintainability, implemented real-time features, and improved performance."
+          ],
+          tags: ["Node.js", "Backend", "Real-time", "Architecture", "Performance"]
         },
         {
           title: "Full-Stack Developer",
           company: "QwickSite",
           type: "",
-          location: "",
+          place: "",
           period: "Jan 2025 – Present",
+          description:
+            "Contributed to a no-code website builder SaaS platform with e-commerce capabilities and business tooling.",
           bullets: [
-            "Contributed to QwickSite, a no-code website builder SaaS platform enabling 50+ business owners to create professional websites with e-commerce capabilities and other business domains.",
             "Developed backend APIs using Node.js and frontend features using Angular and Next.js.",
-            "Supported 5+ integrated third-party services, including shipment providers and Google services.",
-            "Explored how large-scale systems and projects work and interact with each other."
-          ]
+            "Supported 50+ business owners and 5+ third-party integrations including shipment providers and Google services.",
+            "Explored how large-scale systems and projects interact with each other."
+          ],
+          tags: ["Node.js", "Angular", "Next.js", "SaaS", "APIs"]
         },
         {
           title: "Software Engineering Trainee",
           company: "Information Technology Institute",
           type: "ITI",
-          location: "",
+          place: "Egypt",
           period: "May 2024 – Oct 2024",
-          bullets: [
-            "Completed a 6-month intensive software engineering training program sponsored by the Ministry of Communication and Information Technology.",
-            "Covered full-stack development fundamentals and built 3+ end-to-end projects.",
-            "Gained practical exposure to a strong learning environment and developed a deeper understanding of software engineering principles."
-          ]
-        }
-      ],
-      education: [
-        {
-          degree: "Premaster in Computer Science",
-          institution: "Cairo University, Graduate Studies for Statistical Research",
-          details: "FGSSR"
-        },
-        {
-          degree: "Software Engineering Diploma",
-          institution: "Information Technology Institute",
-          details: "Ministry of Communication and Information Technology"
-        },
-        {
-          degree: "Bachelor of Commerce and Business Administration",
-          institution: "Helwan University",
-          details: "Accounting Department, English Section"
-        }
-      ],
-      projects: [
-        {
-          name: "Personal Projects",
           description:
-            "Additional personal projects are available on GitHub, demonstrating backend technologies, software architecture patterns, and engineering practices.",
-          link: "https://github.com/eh4p"
+            "Completed a 6-month intensive software engineering training program sponsored by MCIT.",
+          bullets: [
+            "Covered full-stack development fundamentals and built 3+ end-to-end projects.",
+            "Gained practical exposure to software engineering principles in a structured learning environment."
+          ],
+          tags: ["Full-stack", "Software Engineering", "Projects", "MCIT"]
         }
       ],
       skills: [
         {
           group: "Languages & Frameworks",
-          items: ["ASP.NET Core", "C#"]
+          items: ["ASP.NET Core", "C#", "Node.js", "Angular", "TypeScript"]
         },
         {
           group: "Data & Caching",
@@ -1149,41 +779,64 @@
         },
         {
           group: "Architecture & Design",
-          items: [
-            "Clean Architecture",
-            "N-Tier",
-            "Onion Architecture",
-            "OOP",
-            "SOLID",
-            "Repository Pattern",
-            "Unit of Work",
-            "CQRS",
-            "MediatR"
-          ]
+          items: ["Clean Architecture", "N-Tier", "Onion Architecture", "OOP", "SOLID", "Repository Pattern", "Unit of Work", "CQRS", "MediatR"]
         },
         {
           group: "DevOps & Tooling",
           items: ["Git", "GitHub", "Docker", "CI/CD", "Azure DevOps"]
         },
         {
-          group: "Security & Auth",
-          items: ["JWT", "OAuth", "Identity"]
-        },
-        {
-          group: "Real-Time Communication",
-          items: ["SignalR"]
-        },
-        {
-          group: "Practices & Methodologies",
-          items: ["Unit Testing", "Agile", "Serilog", "Documentation"]
+          group: "Security & Communication",
+          items: ["JWT", "OAuth", "Identity", "SignalR", "Serilog"]
         },
         {
           group: "Familiar With",
           items: ["Microservices", "Kubernetes", "RabbitMQ", "Kafka"]
+        }
+      ],
+      education: [
+        {
+          title: "Premaster in Computer Science",
+          subtitle: "Cairo University, Graduate Studies for Statistical Research"
         },
         {
-          group: "Additional",
-          items: ["Angular", "TypeScript"]
+          title: "Software Engineering Diploma",
+          subtitle: "Information Technology Institute, MCIT"
+        },
+        {
+          title: "Bachelor of Commerce and Business Administration",
+          subtitle: "Helwan University, Accounting Department, English Section"
+        }
+      ],
+      projects: [
+        {
+          name: "Personal Projects",
+          description:
+            "Additional personal projects on GitHub demonstrate backend technologies, architecture patterns, and engineering practices.",
+          stats: [
+            { label: "Focus", value: "Backend" },
+            { label: "Patterns", value: "Clean" },
+            { label: "Code", value: "GitHub" }
+          ],
+          link: "https://github.com/eh4p"
+        },
+        {
+          name: "Alquileres360",
+          description:
+            "Property management platform for streamlining rental workflows for owners, tenants, and professionals.",
+          stats: [
+            { label: "Users", value: "30+" },
+            { label: "Stage", value: "Beta" }
+          ]
+        },
+        {
+          name: "QwickSite",
+          description:
+            "No-code website builder SaaS platform with e-commerce capabilities and third-party service integrations.",
+          stats: [
+            { label: "Owners", value: "50+" },
+            { label: "Integrations", value: "5+" }
+          ]
         }
       ],
       softSkills: [
@@ -1196,7 +849,7 @@
 
     const app = document.querySelector("#app");
 
-    const escapeHtml = (value) =>
+    const safe = (value) =>
       String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -1204,432 +857,273 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 
-    const hasItems = (value) => Array.isArray(value) && value.length > 0;
+    const hasItems = (items) => Array.isArray(items) && items.length > 0;
+    const linkAttrs = 'target="_blank" rel="noopener noreferrer"';
 
-    const externalLinkAttrs = 'target="_blank" rel="noopener noreferrer"';
-
-    const makeButton = ({ href, label, type = "secondary", ariaLabel }) => {
+    function externalLink(href, label, className = "") {
       if (!href || !label) return "";
+      const attrs = href.startsWith("http") ? linkAttrs : "";
+      return `<a class="${className}" href="${safe(href)}" ${attrs}>${safe(label)}</a>`;
+    }
 
-      const finalHref = href.startsWith("mailto:")
-        ? href
-        : href.startsWith("tel:")
-          ? href
-          : href;
-
-      const attrs = finalHref.startsWith("http") ? externalLinkAttrs : "";
-      const safeAria = ariaLabel ? `aria-label="${escapeHtml(ariaLabel)}"` : "";
-
+    function renderHeader(data) {
       return `
-        <a class="button button-${type}" href="${escapeHtml(finalHref)}" ${attrs} ${safeAria}>
-          ${escapeHtml(label)}
-        </a>
-      `;
-    };
-
-    const sectionHeader = ({ kicker, title, description }) => {
-      if (!title) return "";
-
-      return `
-        <div class="section-header">
-          ${kicker ? `<span class="section-kicker">${escapeHtml(kicker)}</span>` : ""}
-          <h2 class="section-title">${escapeHtml(title)}</h2>
-          ${description ? `<p class="section-description">${escapeHtml(description)}</p>` : ""}
-        </div>
-      `;
-    };
-
-    const renderNavigation = (data) => {
-      const navItems = [
-        { label: "Experience", href: "#experience" },
-        { label: "Skills", href: "#skills" },
-        { label: "Projects", href: "#projects" },
-        { label: "Contact", href: "#contact" }
-      ];
-
-      return `
-        <nav class="site-nav" aria-label="Main navigation">
-          <a href="#" class="brand-mark" aria-label="${escapeHtml(data.name)} homepage">
-            <span class="brand-icon" aria-hidden="true">E</span>
-            <span class="brand-text">${escapeHtml(data.name)}</span>
-          </a>
-
-          <div class="nav-links">
-            ${navItems
-              .map(
-                (item) => `
-                  <a class="nav-link" href="${escapeHtml(item.href)}">
-                    ${escapeHtml(item.label)}
-                  </a>
-                `
-              )
-              .join("")}
-          </div>
-        </nav>
-      `;
-    };
-
-    const renderHero = (data) => {
-      if (!data?.hero) return "";
-
-      const titleParts = data.hero.displayTitle.split(" ");
-      const firstPart = titleParts.slice(0, -1).join(" ");
-      const lastPart = titleParts.at(-1) ?? data.hero.displayTitle;
-
-      return `
-        <header class="hero" style="--delay: 60ms;">
-          <div class="hero-content">
-            ${data.hero.eyebrow ? `<span class="eyebrow">${escapeHtml(data.hero.eyebrow)}</span>` : ""}
-
-            <h1 class="hero-title">
-              ${escapeHtml(firstPart || data.hero.displayTitle)}
-              ${firstPart ? `<span>${escapeHtml(lastPart)}</span>` : ""}
-            </h1>
-
-            ${data.hero.screenTitle ? `<p class="hero-subtitle">${escapeHtml(data.hero.screenTitle)}</p>` : ""}
-            ${data.hero.summary ? `<p class="hero-summary">${escapeHtml(data.hero.summary)}</p>` : ""}
-
-            <div class="hero-actions" aria-label="Contact and profile links">
-              ${makeButton({
-                href: `mailto:${data.email}`,
-                label: "Email me",
-                type: "primary",
-                ariaLabel: `Email ${data.name}`
-              })}
-              ${makeButton({
-                href: data.links?.github,
-                label: "GitHub",
-                ariaLabel: `${data.name} on GitHub`
-              })}
-              ${makeButton({
-                href: data.links?.linkedin,
-                label: "LinkedIn",
-                ariaLabel: `${data.name} on LinkedIn`
-              })}
-              ${makeButton({
-                href: data.links?.portfolio,
-                label: "Portfolio",
-                ariaLabel: `${data.name} portfolio website`
-              })}
+        <header>
+          <div class="profile">
+            <div class="avatar" aria-hidden="true">${safe(data.initials)}</div>
+            <div>
+              <div class="name-row">
+                <h1 class="name">${safe(data.name)}</h1>
+                ${data.aka ? `<span class="aka">${safe(data.aka)}</span>` : ""}
+              </div>
+              <p class="role">${safe(data.role)}</p>
             </div>
           </div>
+
+          <nav class="nav" aria-label="Portfolio sections">
+            <button type="button" class="active" data-view="home">Home</button>
+            <button type="button" data-view="projects">Projects</button>
+            <button type="button" data-view="skills">Skills</button>
+            <button type="button" data-view="work">Work</button>
+          </nav>
         </header>
       `;
-    };
+    }
 
-    const renderStats = (stats) => {
-      if (!hasItems(stats)) return "";
-
+    function renderHome(data) {
       return `
-        <section class="section" aria-labelledby="stats-title" style="--delay: 120ms;">
-          ${sectionHeader({
-            kicker: "Snapshot",
-            title: "Impact in numbers",
-            description: "A quick view of shipped work, users supported, integrations, and practical project experience."
-          })}
-          <div class="stats-grid">
-            ${stats
-              .filter((stat) => stat?.value && stat?.label)
-              .map(
-                (stat) => `
-                  <article class="stat-card">
-                    <p class="stat-value">${escapeHtml(stat.value)}</p>
-                    <p class="stat-label">${escapeHtml(stat.label)}</p>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        </section>
-      `;
-    };
-
-    const renderSummary = (data) => {
-      const summary = data?.hero?.summary;
-      if (!summary) return "";
-
-      return `
-        <section class="section" aria-labelledby="about-title" style="--delay: 180ms;">
-          ${sectionHeader({
-            kicker: "About",
-            title: "Backend-focused engineer",
-            description: "Focused on systems that are maintainable, scalable, and useful for real users."
-          })}
-          <div class="summary-card">
-            <p>${escapeHtml(summary)}</p>
-          </div>
-        </section>
-      `;
-    };
-
-    const renderExperience = (experience) => {
-      if (!hasItems(experience)) return "";
-
-      return `
-        <section class="section" id="experience" aria-labelledby="experience-title" style="--delay: 240ms;">
-          ${sectionHeader({
-            kicker: "Experience",
-            title: "Work that shipped",
-            description: "Production-facing work across backend services, SaaS platforms, real-time features, and full-stack product delivery."
-          })}
-
-          <div class="timeline">
-            ${experience
-              .filter((item) => item?.title && item?.company)
-              .map((item) => {
-                const meta = [item.company, item.type, item.location].filter(Boolean);
-
-                return `
-                  <article class="timeline-item">
-                    <div class="timeline-top">
-                      <div>
-                        <h3 class="timeline-role">${escapeHtml(item.title)}</h3>
-                        ${
-                          meta.length
-                            ? `<div class="timeline-meta">
-                                ${meta.map((value) => `<span class="meta-pill">${escapeHtml(value)}</span>`).join("")}
-                              </div>`
-                            : ""
-                        }
-                      </div>
-
-                      ${item.period ? `<span class="timeline-period">${escapeHtml(item.period)}</span>` : ""}
-                    </div>
-
-                    ${
-                      hasItems(item.bullets)
-                        ? `<ul class="bullet-list">
-                            ${item.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
-                          </ul>`
-                        : ""
-                    }
-                  </article>
-                `;
-              })
-              .join("")}
-          </div>
-        </section>
-      `;
-    };
-
-    const renderSkills = (skills) => {
-      if (!hasItems(skills)) return "";
-
-      const validGroups = skills.filter((group) => group?.group && hasItems(group.items));
-      if (!validGroups.length) return "";
-
-      return `
-        <section class="section" id="skills" aria-labelledby="skills-title" style="--delay: 300ms;">
-          ${sectionHeader({
-            kicker: "Skills",
-            title: "Engineering toolkit",
-            description: "Backend, data, architecture, DevOps, security, real-time communication, and delivery practices."
-          })}
-
-          <div class="skill-groups">
-            ${validGroups
-              .map(
-                (group) => `
-                  <article class="skill-group">
-                    <h3 class="skill-group-title">${escapeHtml(group.group)}</h3>
-                    <div class="chips" aria-label="${escapeHtml(group.group)} skills">
-                      ${group.items.map((item) => `<span class="chip">${escapeHtml(item)}</span>`).join("")}
-                    </div>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        </section>
-      `;
-    };
-
-    const renderEducation = (education) => {
-      if (!hasItems(education)) return "";
-
-      return `
-        <section class="section" aria-labelledby="education-title" style="--delay: 360ms;">
-          ${sectionHeader({
-            kicker: "Education",
-            title: "Academic path",
-            description: "Computer science, software engineering training, and business background."
-          })}
-
-          <div class="education-list">
-            ${education
-              .filter((item) => item?.degree && item?.institution)
-              .map(
-                (item) => `
-                  <article class="mini-card">
-                    <h3>${escapeHtml(item.degree)}</h3>
-                    <p>
-                      ${escapeHtml(item.institution)}
-                      ${item.details ? ` · ${escapeHtml(item.details)}` : ""}
-                    </p>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        </section>
-      `;
-    };
-
-    const renderProjects = (projects, links) => {
-      if (!hasItems(projects)) {
-        if (!links?.github) return "";
-
-        return `
-          <section class="section" id="projects" aria-labelledby="projects-title" style="--delay: 420ms;">
-            ${sectionHeader({
-              kicker: "Projects",
-              title: "Code and experiments",
-              description: "Project details are being prepared. You can still explore the code and experiments on GitHub."
-            })}
-            <div class="empty-state">
-              ${makeButton({
-                href: links.github,
-                label: "View GitHub",
-                type: "primary",
-                ariaLabel: "View GitHub profile"
-              })}
+        <section class="view active" id="home-view">
+          ${hasItems(data.intro) ? `
+            <div class="intro">
+              ${data.intro.map((text) => `<p>${safe(text)}</p>`).join("")}
             </div>
-          </section>
-        `;
-      }
+          ` : ""}
+
+          ${hasItems(data.stats) ? `
+            <div class="card" aria-label="Quick stats">
+              <div class="stats">
+                ${data.stats.map((stat) => `
+                  <div class="stat">
+                    <span>${safe(stat.label)}</span>
+                    <strong>${safe(stat.value)}</strong>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          ` : ""}
+
+          ${data.highlight ? `<p class="note">${safe(data.highlight)}</p>` : ""}
+
+          <p class="small-note">
+            Reach me at
+            <a class="inline-link" href="mailto:${safe(data.email)}">${safe(data.email)}</a>
+            ${data.location ? ` · ${safe(data.location)}` : ""}
+          </p>
+
+          ${renderContactLinks(data)}
+        </section>
+      `;
+    }
+
+    function renderProjects(projects) {
+      if (!hasItems(projects)) return "";
 
       return `
-        <section class="section" id="projects" aria-labelledby="projects-title" style="--delay: 420ms;">
-          ${sectionHeader({
-            kicker: "Projects",
-            title: "Built to learn",
-            description: "Personal projects that demonstrate backend technologies, architecture patterns, and engineering practice."
-          })}
+        <section class="view" id="projects-view">
+          <h2 class="section-title">Projects Board</h2>
+          <p class="section-lead">
+            Projects and product work that show backend delivery, SaaS experience, real users, and system thinking.
+          </p>
 
-          <div class="project-list">
-            ${projects
-              .filter((project) => project?.name && project?.description)
-              .map(
-                (project) => `
-                  <article class="project-card">
+          <div class="cards">
+            ${projects.map((project) => `
+              <article class="card">
+                <div class="card-top">
+                  <div>
+                    <h3 class="card-title">${safe(project.name)}</h3>
+                  </div>
+                </div>
+
+                ${project.description ? `<p class="description">${safe(project.description)}</p>` : ""}
+
+                ${hasItems(project.stats) ? `
+                  <div class="stats">
+                    ${project.stats.map((stat) => `
+                      <div class="stat">
+                        <span>${safe(stat.label)}</span>
+                        <strong>${safe(stat.value)}</strong>
+                      </div>
+                    `).join("")}
+                  </div>
+                ` : ""}
+
+                ${project.link ? `
+                  <div class="project-link">
+                    ${externalLink(project.link, "↗ Link")}
+                  </div>
+                ` : ""}
+              </article>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderSkills(skills, softSkills, languages) {
+      const skillGroups = hasItems(skills)
+        ? skills.filter((group) => group.group && hasItems(group.items))
+        : [];
+
+      return `
+        <section class="view" id="skills-view">
+          <h2 class="section-title">Skills</h2>
+          <p class="section-lead">
+            Technologies, backend patterns, and practices I use or study for professional software engineering.
+          </p>
+
+          ${skillGroups.length ? `
+            <div class="cards">
+              ${skillGroups.map((group) => `
+                <article class="card">
+                  <h3 class="card-title">${safe(group.group)}</h3>
+                  <div class="chips">
+                    ${group.items.map((item) => `<span class="chip">${safe(item)}</span>`).join("")}
+                  </div>
+                </article>
+              `).join("")}
+            </div>
+          ` : ""}
+
+          ${hasItems(softSkills) ? `
+            <h2 class="section-title" style="margin-top: 32px;">How I Work</h2>
+            <ul class="simple-list">
+              ${softSkills.map((item) => `<li>${safe(item)}</li>`).join("")}
+            </ul>
+          ` : ""}
+
+          ${hasItems(languages) ? `
+            <h2 class="section-title" style="margin-top: 32px;">Languages</h2>
+            <ul class="simple-list">
+              ${languages.map((item) => `<li>${safe(item)}</li>`).join("")}
+            </ul>
+          ` : ""}
+        </section>
+      `;
+    }
+
+    function renderWork(experience, education) {
+      return `
+        <section class="view" id="work-view">
+          <h2 class="section-title">Employment History</h2>
+          <p class="section-lead">
+            Backend and full-stack work on products, APIs, integrations, real-time features, and production-facing systems.
+          </p>
+
+          ${hasItems(experience) ? `
+            <div class="cards">
+              ${experience.map((job) => `
+                <article class="card">
+                  <div class="card-top">
                     <div>
-                      <h3>${escapeHtml(project.name)}</h3>
-                      <p>${escapeHtml(project.description)}</p>
+                      <p class="card-meta">
+                        ${[job.place, job.type].filter(Boolean).map(safe).join(" · ")}
+                      </p>
+                      <h3 class="card-title">${safe(job.title)} at ${safe(job.company)}</h3>
                     </div>
-                    ${
-                      project.link
-                        ? makeButton({
-                            href: project.link,
-                            label: "View projects",
-                            type: "secondary",
-                            ariaLabel: `View ${project.name}`
-                          })
-                        : ""
-                    }
-                  </article>
-                `
-              )
-              .join("")}
+                    ${job.period ? `<span class="period">${safe(job.period)}</span>` : ""}
+                  </div>
+
+                  ${job.description ? `<p class="description">${safe(job.description)}</p>` : ""}
+
+                  ${hasItems(job.bullets) ? `
+                    <ul class="bullets">
+                      ${job.bullets.map((bullet) => `<li>${safe(bullet)}</li>`).join("")}
+                    </ul>
+                  ` : ""}
+
+                  ${hasItems(job.tags) ? `
+                    <div class="chips">
+                      ${job.tags.map((tag) => `<span class="chip">${safe(tag)}</span>`).join("")}
+                    </div>
+                  ` : ""}
+                </article>
+              `).join("")}
+            </div>
+          ` : ""}
+
+          ${hasItems(education) ? `
+            <h2 class="section-title" style="margin-top: 32px;">Education</h2>
+            <ul class="simple-list">
+              ${education.map((item) => `
+                <li>
+                  <strong>${safe(item.title)}</strong><br>
+                  <span style="color: var(--muted);">${safe(item.subtitle)}</span>
+                </li>
+              `).join("")}
+            </ul>
+          ` : ""}
+        </section>
+      `;
+    }
+
+    function renderContactLinks(data) {
+      const items = [
+        data.links?.github ? externalLink(data.links.github, "GitHub") : "",
+        data.links?.linkedin ? externalLink(data.links.linkedin, "LinkedIn") : "",
+        data.links?.portfolio ? externalLink(data.links.portfolio, "Portfolio") : "",
+        data.phone ? externalLink(`tel:${data.phone}`, "Phone") : ""
+      ].filter(Boolean);
+
+      if (!items.length) return "";
+
+      return `
+        <div class="contact">
+          <div class="contact-links" aria-label="Contact and social links">
+            ${items.join("")}
           </div>
-        </section>
-      `;
-    };
-
-    const renderSimpleList = ({ id, kicker, title, description, items, delay }) => {
-      if (!hasItems(items)) return "";
-
-      return `
-        <section class="section" ${id ? `id="${escapeHtml(id)}"` : ""} style="--delay: ${delay ?? 480}ms;">
-          ${sectionHeader({ kicker, title, description })}
-          <ul class="simple-list">
-            ${items.filter(Boolean).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-          </ul>
-        </section>
-      `;
-    };
-
-    const renderContact = (data) => {
-      if (!data?.email && !data?.links) return "";
-
-      return `
-        <section class="contact-panel" id="contact" aria-labelledby="contact-title" style="--delay: 600ms;">
-          <span class="section-kicker">Contact</span>
-          <h2 class="contact-title" id="contact-title">Let’s build reliable backend systems.</h2>
-          <p class="contact-text">
-            Available for backend engineering opportunities, freelance systems work, and product-focused engineering teams.
-          </p>
-
-          <div class="contact-actions" aria-label="Contact actions">
-            ${makeButton({
-              href: `mailto:${data.email}`,
-              label: "em.ehabm@gmail.com",
-              type: "primary",
-              ariaLabel: `Email ${data.name}`
-            })}
-            ${makeButton({
-              href: data.phone ? `tel:${data.phone}` : "",
-              label: data.phone,
-              type: "secondary",
-              ariaLabel: `Call ${data.name}`
-            })}
-            ${makeButton({
-              href: data.links?.github,
-              label: "GitHub",
-              type: "secondary"
-            })}
-            ${makeButton({
-              href: data.links?.linkedin,
-              label: "LinkedIn",
-              type: "secondary"
-            })}
-          </div>
-        </section>
-      `;
-    };
-
-    const renderFooter = (data) => {
-      return `
-        <footer class="footer">
-          <p>
-            © ${new Date().getFullYear()} ${escapeHtml(data.name)}.
-            Built as a one-column backend portfolio inspired by modern product design.
-          </p>
-        </footer>
-      `;
-    };
-
-    const renderApp = (data) => {
-      app.innerHTML = `
-        <div class="page-shell">
-          ${renderNavigation(data)}
-          <main id="main">
-            ${renderHero(data)}
-            ${renderStats(data.stats)}
-            ${renderSummary(data)}
-            ${renderExperience(data.experience)}
-            ${renderSkills(data.skills)}
-            ${renderEducation(data.education)}
-            ${renderProjects(data.projects, data.links)}
-            ${renderSimpleList({
-              kicker: "Soft skills",
-              title: "How I work",
-              description: "Practical collaboration skills that support engineering delivery.",
-              items: data.softSkills,
-              delay: 480
-            })}
-            ${renderSimpleList({
-              kicker: "Languages",
-              title: "Communication",
-              description: "Languages used for daily work, collaboration, and documentation.",
-              items: data.languages,
-              delay: 540
-            })}
-            ${renderContact(data)}
-          </main>
-          ${renderFooter(data)}
         </div>
       `;
-    };
+    }
+
+    function renderFooter(data) {
+      return `
+        <footer class="footer">
+          © ${new Date().getFullYear()} ${safe(data.name)} — backend portfolio.
+        </footer>
+      `;
+    }
+
+    function bindNavigation() {
+      const buttons = document.querySelectorAll(".nav button");
+      const views = document.querySelectorAll(".view");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const viewName = button.dataset.view;
+
+          buttons.forEach((item) => item.classList.remove("active"));
+          views.forEach((view) => view.classList.remove("active"));
+
+          button.classList.add("active");
+          document.querySelector(`#${viewName}-view`)?.classList.add("active");
+        });
+      });
+    }
+
+    function renderApp(data) {
+      app.innerHTML = `
+        <main class="shell">
+          ${renderHeader(data)}
+          ${renderHome(data)}
+          ${renderProjects(data.projects)}
+          ${renderSkills(data.skills, data.softSkills, data.languages)}
+          ${renderWork(data.experience, data.education)}
+          ${renderFooter(data)}
+        </main>
+      `;
+
+      bindNavigation();
+    }
 
     renderApp(portfolioData);
   </script>

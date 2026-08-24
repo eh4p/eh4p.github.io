@@ -81,6 +81,7 @@
       text-rendering: optimizeLegibility;
       position: relative;
       overflow-x: hidden;
+      overflow-y: hidden;
       isolation: isolate;
     }
 
@@ -119,6 +120,7 @@
 
     .page {
       width: min(100% - 32px, 980px);
+      height: calc(100vh - 118px);
       margin: 44px auto 74px;
       display: grid;
       grid-template-columns: 270px minmax(0, 560px);
@@ -136,6 +138,9 @@
 
     .content {
       min-width: 0;
+      min-height: 0;
+      max-height: 100%;
+      overflow-y: auto;
     }
 
     .topbar {
@@ -660,6 +665,10 @@
     }
 
     @media (max-width: 820px) {
+      body {
+        overflow-y: auto;
+      }
+
       body::before {
         top: -230px;
         width: 150vw;
@@ -668,8 +677,14 @@
 
       .page {
         width: min(100% - 24px, 560px);
+        height: auto;
         margin-top: 12px;
         display: block;
+      }
+
+      .content {
+        max-height: none;
+        overflow-y: visible;
       }
 
       .sidebar {

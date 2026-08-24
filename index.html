@@ -63,13 +63,13 @@
     html {
       background: var(--bg);
       color-scheme: dark;
+      overflow-x: hidden;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 50% -120px, rgba(103, 55, 227, .34), transparent 330px),
         radial-gradient(circle at 88% 18%, rgba(149, 255, 87, .07), transparent 220px),
         var(--bg);
       color: var(--text);
@@ -79,6 +79,31 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      position: relative;
+      overflow-x: hidden;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      left: 50%;
+      top: -280px;
+      width: min(1100px, 150vw);
+      height: 560px;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(103, 55, 227, .48) 0%,
+          rgba(103, 55, 227, .34) 28%,
+          rgba(103, 55, 227, .16) 52%,
+          rgba(103, 55, 227, .06) 68%,
+          transparent 82%
+        );
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
     }
 
     a {
@@ -99,6 +124,8 @@
       grid-template-columns: 270px minmax(0, 560px);
       gap: 56px;
       align-items: start;
+      position: relative;
+      z-index: 1;
     }
 
     .sidebar {
@@ -113,10 +140,10 @@
 
     .topbar {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items: start;
-      margin-bottom: 24px;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 56px;
     }
 
     .avatar {
@@ -175,9 +202,9 @@
       flex-direction: column;
       align-items: stretch;
       gap: 8px;
-      margin: 0 0 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
+      margin: 0;
+      padding-top: 0;
+      border-top: 0;
     }
 
     .tab-btn {
@@ -267,12 +294,11 @@
     }
 
     .socials {
-      border-top: 1px solid var(--line);
       display: flex;
       justify-content: flex-start;
       gap: 13px;
-      padding-top: 12px;
-      margin-top: 14px;
+      padding-top: 10px;
+      margin: 10px 0 0 18px;
     }
 
     .socials a {
@@ -283,10 +309,10 @@
       color: #f1f1f1;
       opacity: .95;
     }
+
     .socials a:hover {
       color: var(--green);
     }
-
 
     .section-title {
       margin: 0 0 20px;
@@ -296,6 +322,7 @@
       letter-spacing: .02em;
       line-height: 1.2;
     }
+
     .section-title::after {
       content: "";
       display: block;
@@ -305,7 +332,6 @@
       border-radius: 999px;
       background: linear-gradient(90deg, var(--green), var(--purple));
     }
-
 
     .lead {
       max-width: 552px;
@@ -364,6 +390,8 @@
       top: 18px;
       width: 50px;
       height: 50px;
+      display: grid;
+      place-items: center;
       color: var(--purple-soft);
       opacity: .86;
       text-align: center;
@@ -372,17 +400,23 @@
       letter-spacing: .05em;
     }
 
-    .tiny-graphic {
-      width: 51px;
-      height: 48px;
-      border-radius: 3px;
-      background:
-        radial-gradient(circle at 16% 12%, var(--green) 0 8px, transparent 8.5px),
-        repeating-radial-gradient(circle at 90% 88%, transparent 0 5px, rgba(149, 255, 87, .42) 5.5px 7px),
-        linear-gradient(90deg, var(--purple) 0 48%, var(--purple-deep) 48% 100%);
-      border-top: 4px solid var(--green);
-    }
+.project-icon svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
 
+.project-icon-grid {
+  color: var(--purple-soft);
+  opacity: .72;
+  filter: drop-shadow(0 0 10px rgba(103, 55, 227, .22));
+}
+
+.project-icon-grid svg path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
     .metrics {
       display: flex;
       justify-content: center;
@@ -543,13 +577,13 @@
       margin-top: 8px;
     }
 
-    .powered {
+    .role {
       color: #6f6f75;
       font-size: 14px;
       letter-spacing: .02em;
     }
 
-    .powered b {
+    .role b {
       color: var(--green);
       font-weight: 700;
     }
@@ -626,6 +660,12 @@
     }
 
     @media (max-width: 820px) {
+      body::before {
+        top: -230px;
+        width: 150vw;
+        height: 460px;
+      }
+
       .page {
         width: min(100% - 24px, 560px);
         margin-top: 12px;
@@ -634,14 +674,14 @@
 
       .sidebar {
         position: static;
-        margin-bottom: 34px;
+        margin-bottom: 28px;
       }
 
       .topbar {
         grid-template-columns: 60px 1fr;
         gap: 13px;
         align-items: center;
-        margin-bottom: 18px;
+        margin-bottom: 38px;
       }
 
       .avatar {
@@ -670,7 +710,7 @@
         justify-content: space-between;
         margin-bottom: 0;
         overflow-x: auto;
-        padding-top: 12px;
+        padding-top: 0;
       }
 
       .tab-btn {
@@ -695,6 +735,7 @@
 
       .socials {
         justify-content: center;
+        margin: 12px 0 0;
       }
 
       .form-grid {
@@ -710,30 +751,19 @@
 </head>
 <body>
   <main class="page">
-    <aside class="sidebar" aria-label="Portfolio identity and navigation">
-      <header class="topbar">
-        <div class="avatar" aria-label="Profile colors">
-        </div>
-        <div class="identity">
-          <h1>Ehab Muhammad<span>Based in <b>Cairo</b></span></h1>
-          <p>Software Engineer | Backend Engineer</p>
-        </div>
-      </header>
-
+    <aside class="sidebar" aria-label="Portfolio navigation">
       <nav class="tabs" aria-label="Portfolio sections">
-        <button class="tab-btn is-active" type="button" data-tab="home">Home</button>
+        <button class="tab-btn is-active" type="button" data-tab="home">Bio</button>
+        <button class="tab-btn" type="button" data-tab="work">Experience</button>
         <button class="tab-btn" type="button" data-tab="projects">Projects</button>
         <button class="tab-btn" type="button" data-tab="education">Education</button>
-        <button class="tab-btn" type="button" data-tab="work">Work</button>
       </nav>
 
       <footer class="socials" aria-label="Social links">
-        <a href="https://eh4p.github.io" aria-label="Portfolio Website">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></svg>
-        </a>
         <a href="https://linkedin.com/in/ehab-m" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V8.99h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V8.99H7.1v11.46ZM22.23 0H1.76C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.76 24h20.47c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0Z"/></svg>
         </a>
+
         <a href="https://github.com/eh4p" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.82-.26.82-.58v-2.1c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.78-1.34-1.78-1.1-.75.08-.74.08-.74 1.2.09 1.84 1.25 1.84 1.25 1.08 1.84 2.82 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.46-1.34-5.46-5.93 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.45 11.45 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.6-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.23v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
         </a>
@@ -741,154 +771,184 @@
     </aside>
 
     <div class="content">
+      <header class="topbar">
+        <div class="avatar" aria-label="Profile colors"></div>
+        <div class="identity">
+          <h1>Ehab Muhammad<span>Based in <b>Cairo</b></span></h1>
+          <p>Software Engineer</p>
+        </div>
+      </header>
+
       <section id="home" class="view is-visible">
-      <div class="copy">
-        <p>Software Engineer with a strong focus on computer science and hands-on experience with cutting-edge technologies.</p>
-        <p>Skilled in backend development with a solid foundation in software architecture, cloud tooling, and modern frameworks.</p>
-        <p>Proven ability to deliver scalable products and systems serving real users in production.</p>
-        <p>Core backend stack: ASP.NET Core, C#, MS SQL Server, Entity Framework Core, LINQ, ADO.NET, and Redis.</p>
-        <p>Architecture and design: Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID, Repository Pattern, Unit of Work, CQRS, and MediatR.</p>
-        <p>Tooling and practices: Git, GitHub, Docker, CI/CD, Azure DevOps, JWT, OAuth, Identity, SignalR, Unit Testing, Agile, Serilog, and Documentation.</p>
-        <hr class="divider" />
-        <p><strong>Familiar with Microservices, Kubernetes, RabbitMQ, and Kafka.</strong></p>
-        <p>Additional: Angular and TypeScript. Languages: Arabic native and English professional.</p>
-      </div>
-    </section>
-
-    <section id="projects" class="view">
-      <h2 class="section-title">Projects</h2>
-      <p class="lead">In addition to work experience projects, visit github.com/eh4p for more projects demonstrating the technologies and architectural patterns listed in the Skills section.</p>
-
-      <div class="card-stack">
-        <article class="project-card">
-          <h3 class="project-title">Alquileres360</h3>
-          <div class="project-icon">A360</div>
-          <p>Property management platform enabling owners, tenants, and professionals to streamline rental operations.</p>
-          <div class="metrics">
-            <span class="metric">Active Users <b>30+</b></span>
-            <span class="metric">Version <b>Beta</b></span>
-            <span class="metric">Backend <b>Node.js</b></span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">QwickSite</h3>
-          <div class="project-icon">QS</div>
-          <p>No-code website builder SaaS platform enabling business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
-          <div class="metrics">
-            <span class="metric">Business Owners <b>50+</b></span>
-            <span class="metric">Services <b>5+</b></span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">Personal Projects</h3>
-          <div class="project-icon"><div class="tiny-graphic"></div></div>
-          <p>Projects demonstrating backend technologies, software architecture, and engineering patterns listed in the Skills section.</p>
-          <div class="metrics">
-            <span class="metric">GitHub <b>eh4p</b></span>
-            <span class="metric">Portfolio <b>eh4p.github.io</b></span>
-          </div>
-          <a class="card-link" href="https://github.com/eh4p"><span>↗</span> GitHub</a>
-        </article>
-
-        <article class="project-card">
-          <h3 class="project-title">ITI Projects</h3>
-          <p>Built end-to-end projects during the intensive software engineering training program at Information Technology Institute.</p>
-          <div class="metrics">
-            <span class="metric">Projects <b>3+</b></span>
-          </div>
-        </article>
-      </div>
-
-      <p class="ideas-title">Skills and patterns demonstrated across my projects and work.</p>
-      <div class="idea-list">
-        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> ASP.NET Core, C#, MS SQL Server, Entity Framework Core</a>
-        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID</a>
-        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Repository Pattern, Unit of Work, CQRS, MediatR</a>
-        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Docker, CI/CD, Azure DevOps, Git, GitHub</a>
-        <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> JWT, OAuth, Identity, SignalR, Serilog</a>
-      </div>
-    </section>
-
-    <section id="education" class="view">
-      <h2 class="section-title">Education</h2>
-      <p class="lead">Education section from my resume.</p>
-
-      <div class="card-stack">
-        <article class="post-card">
-          <span class="date">Graduate Studies</span>
-          <h3>Premaster in Computer Science</h3>
-          <p>Cairo University, Graduate Studies for Statistical Research (FGSSR).</p>
-        </article>
-        <article class="post-card">
-          <span class="date">Diploma</span>
-          <h3>Software Engineering Diploma</h3>
-          <p>Information Technology Institute (ITI), Ministry of Communication and Information Technology (MCIT).</p>
-        </article>
-        <article class="post-card">
-          <span class="date">Bachelor</span>
-          <h3>Bachelor of Commerce and Business Administration</h3>
-          <p>Helwan University, Accounting Department, English Section.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="work" class="view">
-      <h2 class="section-title">Work Experience</h2>
-      <p class="lead">Backend and full-stack experience building scalable products, APIs, real-time features, and end-to-end software projects.</p>
-
-      <form class="contact-card" onsubmit="event.preventDefault(); alert('Demo form only. Connect this to your backend or form provider.');">
-        <div class="contact-head">
-          <span>em.ehabm@gmail.com</span>
-          <span>Cairo, Egypt</span>
+        <div class="copy">
+          <p>Software Engineer with a strong focus on computer science and hands-on experience with cutting-edge technologies.</p>
+          <p>Skilled in backend development with a solid foundation in software architecture, cloud tooling, and modern frameworks.</p>
+          <p>Proven ability to deliver scalable products and systems serving real users in production.</p>
+          <p>Core backend stack: ASP.NET Core, C#, MS SQL Server, Entity Framework Core, LINQ, ADO.NET, and Redis.</p>
+          <p>Architecture and design: Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID, Repository Pattern, Unit of Work, CQRS, and MediatR.</p>
+          <p>Tooling and practices: Git, GitHub, Docker, CI/CD, Azure DevOps, JWT, OAuth, Identity, SignalR, Unit Testing, Agile, Serilog, and Documentation.</p>
+          <hr class="divider" />
+          <p><strong>Familiar with Microservices, Kubernetes, RabbitMQ, and Kafka.</strong></p>
+          <p>Additional: Angular and TypeScript. Languages: Arabic native and English professional.</p>
         </div>
-        <div class="form-grid">
-          <input aria-label="Role" placeholder="Software Engineer | Backend Engineer" />
-          <input aria-label="Phone" type="text" placeholder="01508291561" />
-          <textarea aria-label="Links" placeholder="linkedin.com/in/ehab-m | github.com/eh4p | eh4p.github.io"></textarea>
+      </section>
+
+      <section id="projects" class="view">
+        <h2 class="section-title">Projects</h2>
+        <p class="lead">In addition to work experience projects, visit github.com/eh4p for more projects demonstrating the technologies and architectural patterns listed in the Skills section.</p>
+
+        <div class="card-stack">
+          <article class="project-card">
+            <h3 class="project-title">Alquileres360</h3>
+            <div class="project-icon">A360</div>
+            <p>Property management platform enabling owners, tenants, and professionals to streamline rental operations.</p>
+            <div class="metrics">
+              <span class="metric">Active Users <b>30+</b></span>
+              <span class="metric">Version <b>Beta</b></span>
+              <span class="metric">Backend <b>Node.js</b></span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">QwickSite</h3>
+            <div class="project-icon">QS</div>
+            <p>No-code website builder SaaS platform enabling business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
+            <div class="metrics">
+              <span class="metric">Business Owners <b>50+</b></span>
+              <span class="metric">Services <b>5+</b></span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Personal Projects</h3>
+
+            <div class="project-icon project-icon-grid" aria-hidden="true">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" stroke-width="2" d="M9,15 L9,23 L1,23 L1,15 L9,15 Z M23,15 L23,23 L15,23 L15,15 L23,15 Z M9,1 L9,9 L1,9 L1,1 L9,1 Z M23,1 L23,9 L15,9 L15,1 L23,1 Z"></path>
+              </svg>
+            </div>
+
+            <p>Projects demonstrating backend technologies, software architecture, and engineering patterns listed in the Skills section.</p>
+            <div class="metrics">
+              <span class="metric">GitHub <b>eh4p</b></span>
+              <span class="metric">Portfolio <b>eh4p.github.io</b></span>
+            </div>
+            <a class="card-link" href="https://github.com/eh4p"><span>↗</span> GitHub</a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">ITI Projects</h3>
+            <p>Built end-to-end projects during the intensive software engineering training program at Information Technology Institute.</p>
+            <div class="metrics">
+              <span class="metric">Projects <b>3+</b></span>
+            </div>
+          </article>
         </div>
-        <div class="contact-bottom">
-          <span class="powered">English <b>Professional</b></span>
-          <button class="submit-btn" type="submit">Contact</button>
+
+        <p class="ideas-title">Skills and patterns demonstrated across my projects and work.</p>
+        <div class="idea-list">
+          <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> ASP.NET Core, C#, MS SQL Server, Entity Framework Core</a>
+          <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Clean Architecture, N-Tier, Onion Architecture, OOP, SOLID</a>
+          <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Repository Pattern, Unit of Work, CQRS, MediatR</a>
+          <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> Docker, CI/CD, Azure DevOps, Git, GitHub</a>
+          <a class="idea" href="https://github.com/eh4p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m0 0 5 5m-5-5-5 5"/><path d="M4 14v5h16v-5"/></svg> JWT, OAuth, Identity, SignalR, Serilog</a>
         </div>
-      </form>
+      </section>
 
-      <div class="card-stack">
-        <article class="work-card">
-          <div class="work-meta"><span>Freelance, Spain</span><span>Aug 2025 - Present</span></div>
-          <h3>Software Engineer at Alquileres360</h3>
-          <p>Developed and maintained the Alquileres360 property management platform, enabling owners, tenants, and professionals to streamline rental operations for 30+ active users in the Beta version.</p>
-          <p>Built backend services using Node.js from scratch following scalable architecture and industry-standard patterns, reducing code coupling and improving maintainability.</p>
-          <div class="chips">
-            <span class="chip">Node.js</span><span class="chip">Backend Services</span><span class="chip">Scalable Architecture</span><span class="chip">Real-Time Features</span><span class="chip">Performance</span>
-          </div>
-          <button class="details-btn" type="button">Show detailed contributions</button>
-        </article>
+      <section id="education" class="view">
+        <h2 class="section-title">Education</h2>
+        <p class="lead">Education section from my resume.</p>
 
-        <article class="work-card">
-          <div class="work-meta"><span>QwickSite</span><span>Jan 2025 - Present</span></div>
-          <h3>Full-Stack Developer at QwickSite</h3>
-          <p>Contributed to QwickSite, a no-code website builder SaaS platform enabling 50+ business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
-          <p>Developed backend APIs using Node.js and frontend using Angular and Next.js, supporting 5+ integrated third-party services including shipment providers and Google services.</p>
-          <div class="chips">
-            <span class="chip">Node.js</span><span class="chip">Angular</span><span class="chip">Next.js</span><span class="chip">APIs</span><span class="chip">Third-Party Services</span><span class="chip">Google Services</span>
-          </div>
-          <button class="details-btn" type="button">Show detailed contributions</button>
-        </article>
+        <div class="card-stack">
+          <article class="post-card">
+            <span class="date">Graduate Studies</span>
+            <h3>Premaster in Computer Science</h3>
+            <p>Cairo University, Graduate Studies for Statistical Research (FGSSR).</p>
+          </article>
 
-        <article class="work-card">
-          <div class="work-meta"><span>Information Technology Institute</span><span>May 2024 - Oct 2024</span></div>
-          <h3>Software Engineering Trainee at ITI</h3>
-          <p>Completed a 6-month intensive software engineering training program sponsored by the Ministry of Communication and Information Technology (MCIT), covering full-stack development fundamentals.</p>
-          <p>Built 3+ end-to-end projects and had actual exposure to a learning environment focused on understanding software engineering fundamentals thoroughly.</p>
-          <div class="chips">
-            <span class="chip">Full-Stack Development</span><span class="chip">Software Engineering</span><span class="chip">End-to-End Projects</span><span class="chip">Fundamentals</span>
+          <article class="post-card">
+            <span class="date">Diploma</span>
+            <h3>Software Engineering Diploma</h3>
+            <p>Information Technology Institute (ITI), Ministry of Communication and Information Technology (MCIT).</p>
+          </article>
+
+          <article class="post-card">
+            <span class="date">Bachelor</span>
+            <h3>Bachelor of Commerce and Business Administration</h3>
+            <p>Helwan University, Accounting Department, English Section.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="work" class="view">
+        <h2 class="section-title">Work Experience</h2>
+        <p class="lead">Backend and full-stack experience building scalable products, APIs, real-time features, and end-to-end software projects.</p>
+
+        <div class="card-stack">
+          <article class="work-card">
+            <div class="work-meta"><span>Freelance, Spain</span><span>Aug 2025 - Present</span></div>
+            <h3>Software Engineer at Alquileres360</h3>
+            <p>Developed and maintained the Alquileres360 property management platform, enabling owners, tenants, and professionals to streamline rental operations for 30+ active users in the Beta version.</p>
+            <p>Built backend services using Node.js from scratch following scalable architecture and industry-standard patterns, reducing code coupling and improving maintainability.</p>
+            <div class="chips">
+              <span class="chip">Node.js</span>
+              <span class="chip">Backend Services</span>
+              <span class="chip">Scalable Architecture</span>
+              <span class="chip">Real-Time Features</span>
+              <span class="chip">Performance</span>
+            </div>
+            <button class="details-btn" type="button">Show detailed contributions</button>
+          </article>
+
+          <article class="work-card">
+            <div class="work-meta"><span>QwickSite</span><span>Jan 2025 - Present</span></div>
+            <h3>Software Engineer at QwickSite</h3>
+            <p>Contributed to QwickSite, a no-code website builder SaaS platform enabling 50+ business owners to create professional websites with e-commerce capabilities and many other business domains.</p>
+            <p>Developed backend APIs using Node.js and frontend using Angular and Next.js, supporting 5+ integrated third-party services including shipment providers and Google services.</p>
+            <div class="chips">
+              <span class="chip">Node.js</span>
+              <span class="chip">Angular</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">APIs</span>
+              <span class="chip">Third-Party Services</span>
+              <span class="chip">Google Services</span>
+            </div>
+            <button class="details-btn" type="button">Show detailed contributions</button>
+          </article>
+
+          <article class="work-card">
+            <div class="work-meta"><span>Information Technology Institute</span><span>May 2024 - Oct 2024</span></div>
+            <h3>Software Engineering Trainee at ITI</h3>
+            <p>Completed a 6-month intensive software engineering training program sponsored by the Ministry of Communication and Information Technology (MCIT), covering full-stack development fundamentals.</p>
+            <p>Built 3+ end-to-end projects and had actual exposure to a learning environment focused on understanding software engineering fundamentals thoroughly.</p>
+            <div class="chips">
+              <span class="chip">Full-Stack Development</span>
+              <span class="chip">Software Engineering</span>
+              <span class="chip">End-to-End Projects</span>
+              <span class="chip">Fundamentals</span>
+            </div>
+            <button class="details-btn" type="button">Show detailed contributions</button>
+          </article>
+        </div>
+
+        <form class="contact-card" onsubmit="event.preventDefault(); alert('Demo form only. Connect this to your backend or form provider.');">
+          <div class="contact-head">
+            <span>Start a conversation</span>
+            <span>Hire me</span>
           </div>
-          <button class="details-btn" type="button">Show detailed contributions</button>
-        </article>
-      </div>
-    </section>
+
+          <div class="form-grid">
+            <input aria-label="Subject" placeholder="Subject" />
+            <input aria-label="Email" type="text" placeholder="Email" />
+            <textarea aria-label="Message" placeholder="Message"></textarea>
+          </div>
+
+          <div class="contact-bottom">
+            <span class="role">Open to <b>Backend</b> Opportunities</span>
+            <button class="submit-btn" type="submit">Submit</button>
+          </div>
+        </form>
+      </section>
     </div>
   </main>
 
@@ -915,6 +975,7 @@
     });
 
     const initial = location.hash.replace('#', '');
+
     if ([...views].some((view) => view.id === initial)) {
       activateTab(initial, false);
     }

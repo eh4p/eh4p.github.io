@@ -123,21 +123,24 @@
       height: calc(100vh - 118px);
       margin: 44px auto 74px;
       display: grid;
-      grid-template-columns: 380px minmax(0, 560px);
-      gap: 40px;
+      grid-template-columns: 150px minmax(0, 1fr);
+      grid-template-areas: "sidebar content";
+      gap: 48px;
       align-items: start;
       position: relative;
       z-index: 1;
     }
 
     .sidebar {
+      grid-area: sidebar;
       position: sticky;
-      top: 28px;
+      top: 44px;
       align-self: start;
       z-index: 2;
     }
 
     .content {
+      grid-area: content;
       min-width: 0;
       min-height: 0;
       max-height: 100%;
@@ -152,18 +155,18 @@
 
     @media (min-width: 821px) {
       .content {
-        margin: -64px 0 0 -64px;
-        padding: 64px 0 0 64px;
-        max-height: calc(100% + 64px);
+        max-height: 100%;
       }
     }
 
     .topbar {
-      display: grid;
-      grid-template-columns: 60px minmax(0, 1fr);
-      gap: 13px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
+      gap: 24px;
+      margin-bottom: 44px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
     }
 
     .avatar {
@@ -692,7 +695,12 @@
         width: min(100% - 24px, 560px);
         height: auto;
         margin-top: 12px;
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "sidebar"
+          "content";
+        gap: 0;
       }
 
       .content {
@@ -709,10 +717,9 @@
       }
 
       .topbar {
-        grid-template-columns: 60px 1fr;
-        gap: 13px;
-        align-items: center;
+        gap: 16px;
         margin-bottom: 22px;
+        padding-bottom: 16px;
       }
 
       .identity h1 span {
@@ -774,14 +781,6 @@
 <body>
   <main class="page">
     <aside class="sidebar" aria-label="Portfolio navigation">
-      <header class="topbar">
-        <div class="avatar" aria-label="Profile colors"></div>
-        <div class="identity">
-          <h1>Ehab Muhammad<span>Based in <b>Cairo</b></span></h1>
-          <p>Software Engineer</p>
-        </div>
-      </header>
-
       <nav class="tabs" aria-label="Portfolio sections">
         <button class="tab-btn is-active" type="button" data-tab="home">Bio</button>
         <button class="tab-btn" type="button" data-tab="work">Experience</button>
@@ -801,6 +800,14 @@
     </aside>
 
     <div class="content">
+      <header class="topbar">
+        <div class="identity">
+          <h1>Ehab Muhammad<span>Based in <b>Cairo</b></span></h1>
+          <p>Software Engineer</p>
+        </div>
+        <div class="avatar" aria-label="Profile colors"></div>
+      </header>
+
       <section id="home" class="view is-visible">
         <div class="copy">
           <p>Software Engineer with a strong focus on computer science and hands-on experience with cutting-edge technologies.</p>

@@ -85,6 +85,22 @@
       isolation: isolate;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      top: -280px;
+      left: 50%;
+      width: min(1400px, 145vw);
+      height: 640px;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(ellipse at 38% 48%, rgba(103, 55, 227, .38), transparent 52%),
+        radial-gradient(ellipse at 66% 42%, rgba(34, 197, 94, .24), transparent 48%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -660,9 +676,9 @@
       }
 
       body::before {
-        top: -230px;
-        width: 150vw;
-        height: 460px;
+        top: -210px;
+        width: 170vw;
+        height: 520px;
       }
 
       .page {

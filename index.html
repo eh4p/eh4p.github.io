@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Hacking, Building and Solving" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+    <title>ehab, swe</title>
+    <style>
+      @font-face {
+        font-family: "SF Pro Display";
+        src: url("./public/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "SF Pro Display";
+        src: url("./public/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "SF Pro Display";
+        src: url("./public/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "SF Pro Display";
+        src: url("./public/fonts/SF-Pro-Display-Black.otf") format("opentype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Helvetica";
+        src: url("./public/fonts/HelveticaNeueRegular.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Helvetica";
+        src: url("./public/fonts/HelveticaNeueMedium.otf") format("opentype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Helvetica";
+        src: url("./public/fonts/HelveticaNeueBold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Helvetica";
+        src: url("./public/fonts/HelveticaNeueBlack.otf") format("opentype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "ProtestRiot";
+        src: url("./public/fonts/ProtestRiot-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "PlayfairDisplay";
+        src: url("./public/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "PlayfairDisplay";
+        src: url("./public/fonts/PlayfairDisplay-Black.ttf") format("truetype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Allan";
+        src: url("./public/fonts/Allan-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-ExtraBold.ttf") format("truetype");
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("./public/fonts/Geist-Black.ttf") format("truetype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+0020-007F, U+0100-017F;
+      }
+
+      :root {
+        background: #f5f5f7;
+        color: #1d1d1f;
+      }
+
+      html {
+        line-height: 1.5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      body {
+        min-width: 320px;
+        background: #f5f5f7;
+        color: #1d1d1f;
+        line-height: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+      }
+
+      h1 {
+        font-family: "ProtestRiot";
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: inherit;
+        font-weight: inherit;
+      }
+
+      h2 {
+        font-family: "PlayfairDisplay";
+      }
+
+      h3 {
+        font-family: "SF Pro Display";
+        font-weight: 700;
+        letter-spacing: 0.004em;
+      }
+
+      h4 {
+        font-family: "PlayfairDisplay";
+      }
+
+      h5 {
+        font-family: "SF Pro Display";
+      }
+
+      p {
+        font-family: "SF Pro Display";
+        letter-spacing: 0.004rem;
+        line-height: 1.35;
+      }
+
+      .font-allan {
+        font-family: "Allan";
+      }
+
+      .text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+
+      .font-geist {
+        font-family: "Geist";
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        font-family: "Geist";
+        font-size: 1.125rem;
+      }
+
+      .contact-wave {
+        width: 50px;
+        height: 50px;
+        transform: rotate(180deg);
+      }
+
+      .contact-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .contact-copy h2 {
+        font-family: "SF Pro Display";
+        font-size: 0.9rem;
+        line-height: 1.35;
+        font-weight: 700;
+        opacity: 0.5;
+      }
+
+      .contact-copy h2 a {
+        border-bottom: 4px solid #312aff;
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+      }
+
+      .social-links img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .portfolio-header {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem 0.5rem;
+        color: #0c0821;
+      }
+
+      .portfolio-hero {
+        display: flex;
+        flex: 1 1 0%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .portfolio-hero-content {
+        text-align: center;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 6rem;
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      .portfolio-hero h2 {
+        opacity: 0.8;
+      }
+
+      .hero-role {
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      .hero-location {
+        font-size: 1.1rem;
+        line-height: 1.25;
+      }
+
+      .portfolio-main {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+      }
+
+      .portfolio-main-inner {
+        display: flex;
+        max-width: 80rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+
+      .about,
+      .work {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .about-card {
+        display: flex;
+        max-width: 60rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 0.2rem;
+        text-align: center;
+      }
+
+      .about-card h3 {
+        font-size: 5rem;
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: -0.015rem;
+      }
+
+      .about-card p {
+        font-size: 1.55rem;
+        font-weight: 700;
+        opacity: 0.5;
+      }
+
+      .work-card {
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      .work-card h3 {
+        margin-bottom: 1.25rem;
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+
+      .work-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .work-experience-item {
+        flex: 0 0 auto;
+      }
+
+      .work-experience-item p:first-child,
+      .work-experience-item p:last-child {
+        font-weight: 600;
+        opacity: 0.5;
+      }
+
+      .work-experience-item p:first-child {
+        margin-bottom: 0.25rem;
+      }
+
+      .work-experience-item p:nth-child(2) {
+        font-size: 1.3rem;
+        line-height: 1.35;
+        font-weight: 700;
+      }
+
+      .portfolio-footer {
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+      }
+
+      .footer-copy {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-copy h2,
+      .footer-copy p {
+        font-family: "SF Pro Display";
+        font-size: 0.8rem;
+        line-height: 1.35;
+        font-weight: 700;
+        opacity: 0.5;
+      }
+
+      @media (min-width: 768px) {
+        .portfolio-header {
+          padding-right: 1rem;
+          padding-left: 1rem;
+        }
+
+        .portfolio-main {
+          padding-top: 6rem;
+          padding-bottom: 3rem;
+        }
+
+        .portfolio-main-inner {
+          gap: 6rem;
+        }
+
+        .about-card,
+        .work-card {
+          padding: 2.5rem;
+        }
+
+        .portfolio-footer {
+          padding-top: 1.5rem;
+          padding-bottom: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="portfolio-view" class="view">
+      <header class="portfolio-header">
+        <section class="portfolio-hero">
+          <div class="portfolio-hero-content">
+            <h1>Ehab Muhammad</h1>
+            <h2 class="hero-role">Software Engineer,</h2>
+            <h2 class="hero-location">Based in Cairo, Egypt</h2>
+          </div>
+        </section>
+      </header>
+
+      <main class="portfolio-main">
+        <div class="portfolio-main-inner">
+          <section id="about" class="about">
+            <div class="about-card">
+              <h3>Bring Vision to Life.</h3>
+              <p>Building scalable, high-performance, maintainable, and scure APIs, Coupled with crafting robust server-side functionality. ── Hands-on experience with cutting-edge technologies prevalent in the industry.</p>
+            </div>
+          </section>
+
+          <section id="work" class="work">
+            <div class="work-card">
+              <div>
+                <h3>Experience. Special places that I have been.</h3>
+                <div class="work-list">
+                  <div class="work-experience-item">
+                    <p>Software Engineer</p>
+                    <p>QRFDS</p>
+                    <p>Jan 2025 • Present</p>
+                  </div>
+                  <div class="work-experience-item">
+                    <p>Software Engineer</p>
+                    <p>Alquileres360</p>
+                    <p>Aug 2025 • Jul 2026</p>
+                  </div>
+                  <div class="work-experience-item">
+                    <p>SWE Intern</p>
+                    <p>Information Technology Institute (ITI)</p>
+                    <p>May 2024 • Oct 2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="portfolio-footer">
+        <div>
+          <section id="portfolio-contact" class="contact">
+            <img class="contact-wave" src="./public/images/wave.svg" width="50" height="50" alt="" />
+            <div class="contact-copy">
+              <h2>
+                Find me on social media platforms
+              </h2>
+              <div class="social-links">
+                <a href="mailto:em.ehabm@gmail.com"><img src="./public/images/social/gmail.svg" width="30" height="30" alt="gmail" /></a>
+                <a href="https://linkedin.com/in/ehab-m"><img src="./public/images/social/linkedin.svg" width="30" height="30" alt="linkedin" /></a>
+                <a href="https://github.com/eh4p"><img src="./public/images/social/github.svg" width="30" height="30" alt="github" /></a>
+                <a href="https://x.com"><img src="./public/images/social/x.svg" width="30" height="30" alt="x" /></a>
+                <a href="https://facebook.com"><img src="./public/images/social/facebook.svg" width="30" height="30" alt="facebook" /></a>
+                <a href="https://instagram.com"><img src="./public/images/social/instagram.svg" width="30" height="30" alt="instagram" /></a>
+              </div>
+            </div>
+          </section>
+          <section class="footer-copy">
+            <h2>Thanks For Visting My Portfolio</h2>
+            <p>© 2026 Ehab Muhammad</p>
+          </section>
+        </div>
+      </footer>
+    </div>
+
+  </body>
+</html>
